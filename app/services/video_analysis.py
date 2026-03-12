@@ -535,7 +535,7 @@ def analyze_video_with_llm(combined_video_text: str, video_url: str, accompanyin
                         f"- 40-74: Questionable\n"
                         f"- 0-39: High Risk\n\n"
                         f"Video URL: {video_url}\n"
-                        f"{'USER TEXT CONTEXT: ' + repr(accompanying_text) + '\\n\\n' if accompanying_text else ''}"
+                        f"{('USER TEXT CONTEXT: ' + repr(accompanying_text) + chr(10) + chr(10)) if accompanying_text else ''}"
                         f"\n--- VIDEO CONTENT (MULTIMODAL) ---\n"
                         f"{combined_video_text}\n"
                         f"--- END VIDEO CONTENT ---"
