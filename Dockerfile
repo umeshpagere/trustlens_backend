@@ -37,7 +37,7 @@ COPY . .
 RUN mkdir -p /tmp/trustlens && chmod 777 /tmp/trustlens
 
 # Expose the application port
-EXPOSE $PORT
+EXPOSE 10000
 
 # Start the application using Hypercorn
-CMD ["hypercorn", "run:app", "--bind", "0.0.0.0:5000", "--keep-alive", "120"]
+CMD ["sh", "-c", "hypercorn run:app --bind 0.0.0.0:$PORT --keep-alive 120"]

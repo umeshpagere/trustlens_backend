@@ -1,15 +1,27 @@
+import os
 from app.main import create_app
 from app.models.model_loader import load_embedding_model
 
-# 1. Preload models once at startup
+# ----------------------------------------------------
+# 1. Preload ML models once at startup
+# ----------------------------------------------------
 print("⚙️ [Startup] Preloading ML models...")
 load_embedding_model()
 
-# 2. Initialize Flask app
+# ----------------------------------------------------
+# 2. Initialize Flask application
+# ----------------------------------------------------
 app = create_app()
 
-# Expose 'app' for ASGI workers (Hypercorn / Uvicorn)
+# ----------------------------------------------------
+# 3. Determine runtime port
+# Render provides PORT environment variable
+# ----------------------------------------------------
+PORT = int(os.environ.get("PORT", 5000))
+
+# ----------------------------------------------------
+# 4. Local execution
+# ----------------------------------------------------
 if __name__ == "__main__":
-    from app.config.settings import Config
-    print(f"🚀 TrustLens backend running locally on http://127.0.0.1:{Config.PORT}")
-    app.run(host='0.0.0.0', port=Config.PORT, debug=True)
+    print(f"🚀 TrustLens backend running on http://0.0.0.0:{PORT}")
+    app.run(host="0.0.0.0", port=PORT, debug=False)
