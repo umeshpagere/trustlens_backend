@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: trustlens-backend
+    runtime: python
+    plan: starter
+    region: ohio # Adjust if needed
+    buildCommand: ./build.sh
+    startCommand: hypercorn run:app --bind 0.0.0.0:$PORT --keep-alive 120
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10
+      - key: MONGODB_URI
+        sync: false
+      - key: AZURE_OPENAI_API_KEY
+        sync: false
+      - key: AZURE_OPENAI_ENDPOINT
+        sync: false
+      - key: AZURE_OPENAI_DEPLOYMENT
+        sync: false
+      - key: AZURE_OPENAI_API_VERSION
+        sync: false
+      - key: AZURE_VISION_KEY
+        sync: false
+      - key: AZURE_VISION_ENDPOINT
+        sync: false
+      - key: GOOGLE_APPLICATION_CREDENTIALS
+        value: ./google-credentials.json
