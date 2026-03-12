@@ -2,11 +2,9 @@ services:
   - type: web
     name: trustlens-backend
     runtime: docker
-    plan: starter
-    region: ohio # Adjust if needed
+    plan: free
+    region: singapore
     envVars:
-      - key: PYTHON_VERSION
-        value: 3.10
       - key: MONGODB_URI
         sync: false
       - key: AZURE_OPENAI_API_KEY
