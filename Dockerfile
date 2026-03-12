@@ -21,11 +21,16 @@ WORKDIR /app
 RUN pip install --upgrade pip
 
 # Install dependencies
-# We use requirements.txt which now points to CPU-only PyTorch
+# We use requirements.txt which points to CPU-only PyTorch
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the application code
+# Pre-download ML models to bake them into the image
+# This eliminates cold start delay
+COPY pre_download_models.py .
+RUN python pre_download_models.py
+
+# Copy the rest of the application code
 COPY . .
 
 # Ensure the /tmp/trustlens directory exists and is writable
