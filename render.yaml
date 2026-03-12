@@ -1,11 +1,9 @@
 services:
   - type: web
     name: trustlens-backend
-    runtime: python
+    runtime: docker
     plan: starter
     region: ohio # Adjust if needed
-    buildCommand: ./build.sh
-    startCommand: hypercorn run:app --bind 0.0.0.0:$PORT --keep-alive 120
     envVars:
       - key: PYTHON_VERSION
         value: 3.10
