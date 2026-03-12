@@ -6,11 +6,9 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 ENV PORT=5000
 
-# Install system dependencies
-# ffmpeg: required for video extraction
-# libgl1: required for opencv-python-headless (even though headless, some libs might be needed)
-# curl/git: useful for debugging or extra pulls
-RUN apt-get update && apt-get install -y --no-install-recommends \
+# Install system dependencies with retry logic for robustness
+RUN for i in 1 2 3; do apt-get update && break || sleep 5; done && \
+    apt-get install -y --no-install-recommends \
     ffmpeg \
     libgl1-mesa-glx \
     libglib2.0-0 \
