@@ -110,29 +110,32 @@ Each claim must:
 • Extract only what is written.
 
 Return ONLY valid JSON."""
-SEMANTIC_USER_PROMPT_TEMPLATE = """Extract factual claims and assess verifiability of the following post. Return a JSON object with these exact keys. Output nothing else.
+SEMANTIC_USER_PROMPT_TEMPLATE = """Analyze the following social media post for credibility. Return a JSON object with these exact keys. Output nothing else.
 
 Required JSON schema:
 {
-  "semanticScore": <number 0-100: 100 = clear verifiable claims with strong evidence/sources; 50 = mixed or unclear claims; 0 = no checkable claims>,
+  "semanticScore": <number 0-100: 100 = clear verifiable claims with strong evidence; 50 = mixed/unclear; 0 = no checkable claims>,
   "confidenceScore": <number 0-1, your confidence in this assessment>,
-  "primaryClaim": "<THE single most important factual claim to fact-check — must have a subject + action, concrete and checkable>",
-  "keyClaims": ["<up to 5 specific verifiable claims — each must have a subject + action; omit vague or emotional statements>"],
-  "manipulationIndicators": ["<string>", ...],
-  "riskFactors": ["<string>", ...],
+  "primaryClaim": "<THE single most important factual claim to fact-check — must have subject + action, concrete and checkable>",
+  "keyClaims": ["<up to 5 specific verifiable claims — each must have subject + action>"],
+  "manipulationIndicators": ["<specific manipulation technique detected, e.g. 'emotionally charged language', 'missing attribution'>"],
+  "riskFactors": ["<specific credibility risk, e.g. 'unverified statistics', 'no named source for claims'>"],
   "evidenceStrength": "<one of: Weak | Moderate | Strong>",
-  "reasoningSummary": "<short paragraph: what factual claims were found, how verifiable they are — NOT sentiment or tone>"
+  "reasoningSummary": "<short paragraph: what factual claims were found, how verifiable they are>",
+  "scoreReasoning": "<1-3 sentences explaining WHY this specific score was assigned: what claims support or undermine credibility, what specific risk factors or strengths were found. If score is low, clearly state what makes it not credible. If high, state what makes it credible.>"
 }
 
 keyClaims rules:
   - Maximum 5 claims
-  - Each claim must have a clear subject (person/org/government) AND a specific action or event
-  - If a statement has no subject or no action, do NOT include it
-  - Omit opinions, emotional reactions, and vague sentences entirely
+  - Each must have a clear subject (person/org/government) AND a specific action or event
+  - Omit opinions, emotional reactions, and vague sentences
 
-primaryClaim: The one claim a fact-checker should verify first (the main statistic, event, or attribution).
-evidence Strength: Weak = no sources; Moderate = some attribution; Strong = verifiable sources or named authorities.
-semanticScore: Base on VERIFIABILITY and EVIDENCE only — NOT on emotional language or urgency.
+scoreReasoning MUST:
+  - Directly reference claims found in the text
+  - Mention specific risk factors OR explain why the content is credible
+  - Be written for a non-expert reader
+  - If credibility score < 50: explain what makes it not credible (missing sources, manipulation tactics, vague claims)
+  - If credibility score >= 50: explain what supports credibility (verifiable claims, named sources, specific events)
 
 ---POST TO ANALYZE---
 {text}
@@ -346,110 +349,56 @@ async def analyze_image_with_llm(image_bytes: bytes, accompanying_text: str = ""
                 "content": (
                     """You are an expert AI image analyst, forensic investigator, and misinformation detection specialist.
 
-Your task is to analyze an image and extract factual information WITHOUT guessing, inventing context, or inferring events that are not visually supported.
-
-Your analysis must strictly follow these rules.
+Your task is to analyze an image across THREE distinct dimensions and return a scored analysis for each.
 
 ========================
 GENERAL RULES
 ========================
-
 1. Only describe what is directly visible in the image.
 2. Do NOT infer causes, motivations, or unseen events.
-3. Do NOT assume political events, wars, protests, or attacks unless clearly visible.
+3. Do NOT assume political events unless clearly visible.
 4. If something cannot be confirmed visually, mark it as "uncertain".
-5. Never invent text, locations, people, or events that are not present in the image.
-6. If the image lacks enough information to verify a claim, return "UNVERIFIED".
+5. Never invent text, locations, people, or events not present in the image.
 
 ========================
 CURRENT CONTEXT
 ========================
-
-CURRENT_DATE: March 11, 2026  
-Standard date format reference: DD.MM.YYYY
-
-This date is provided only for interpreting visible dates in the image.
+CURRENT_DATE: March 13, 2026
+Standard date format: DD.MM.YYYY
 
 ========================
-DATE HANDLING RULES
+THREE SCORING DIMENSIONS
 ========================
 
-1. Extract dates ONLY if they are explicitly visible in the image text.
-2. Do NOT assume a date if one is not visible.
-3. If a date appears, interpret it relative to CURRENT_DATE.
-4. If the date is in the future relative to CURRENT_DATE, mark the claim as "future_event_unverifiable".
-5. If the image contains no visible date, do NOT penalize the credibility or verification potential.
-6. Many images (memes, screenshots, photos) naturally lack dates - this is normal.
-7. If numbers appear in the image but are ambiguous (e.g., 08.03, 2026, 11/3), only interpret them as dates if the surrounding context clearly indicates a date.
+DIMENSION 1 — MEDIA AUTHENTICITY SCORE (0-100)
+How genuine and unmanipulated does this media appear?
+  100 = Clearly authentic, consistent lighting/shadows, natural anatomy
+  50  = Some ambiguity, minor inconsistencies
+  0   = Heavy manipulation artifacts, clear fabrication
 
-========================
-ANALYSIS LAYERS
-========================
+Deduct points for:
+- Inconsistent lighting or shadows
+- Unnatural textures or blurring
+- Signs of splicing or compositing
+- Suspicious image quality patterns
+- Visible editing tool artifacts
 
-1. FULL TEXT EXTRACTION
-- Extract ALL visible text exactly as it appears.
-- Include small print, captions, overlays, labels, and background text.
-- Do NOT correct spelling or rewrite text.
-- If text is partially readable, mark it as "partial_text".
+DIMENSION 2 — AI GENERATION PROBABILITY (0-100)
+How likely is this image AI-generated?
+  0  = Clearly a genuine photograph (natural noise, organic imperfections)
+  50 = Ambiguous, some synthetic patterns possible
+  100 = Almost certainly AI-generated
 
-2. VISUAL CONTENT DESCRIPTION
-Provide a strictly factual description of what is visible in the image.
+AI indicators to detect:
+- Distorted anatomy (hands, fingers, teeth, ears)
+- Unnaturally smooth or plastic-looking skin
+- Background artifacts or repeating patterns
+- Inconsistent text rendering
+- Over-perfect symmetry
+- Watermarks from AI tools (e.g., DALL-E, MidJourney)
 
-Focus on:
-- people
-- objects
-- environment
-- observable actions
-
-Important:
-Only describe visible details.
-Do NOT interpret meaning, intent, or narrative.
-
-Example correct description:
-"A group of people standing in a street holding signs."
-
-Example hallucination (forbidden):
-"Protesters demonstrating against government corruption."
-
-3. VISUAL CLAIM EXTRACTION
-From the visible elements, extract factual claims that could potentially be verified externally.
-
-Each claim must contain:
-- subject
-- action or state
-- object or context
-
-Example:
-"Several people are holding signs in a public street."
-
-If no clear factual claims exist, return an empty claim list.
-
-4. AI-GENERATION & MANIPULATION FORENSICS
-Analyze the image for possible AI generation or manipulation artifacts.
-
-Look for:
-- distorted anatomy (hands, fingers, faces)
-- inconsistent lighting or shadows
-- unnatural textures
-- repeating patterns
-- abnormal reflections
-
-If no artifacts are visible, return:
-"ai_artifacts_detected": false
-
-Do NOT claim AI generation unless clear artifacts are visible.
-
-5. VERIFICATION POSSIBILITY
-Assess whether the image content could potentially be verified using external sources.
-
-Possible values:
-- "VERIFIABLE"
-- "PARTIALLY_VERIFIABLE"
-- "UNVERIFIABLE"
-
-Important:
-Do NOT determine whether the claim is true or false.
-Only evaluate whether the image provides verifiable information.
+DIMENSION 3 — FACTUAL VERIFICATION
+Extract claims and assess whether they can be externally verified.
 
 ========================
 OUTPUT FORMAT
@@ -459,14 +408,18 @@ Return ONLY valid JSON in this exact format:
 {
   "extracted_text": [],
   "visible_dates": [],
-  "visual_description": "",
-  "claims": [],
+  "visual_description": "<strictly factual description of visible content>",
+  "claims": ["<verifiable factual claims with subject + action>"],
+  "media_authenticity_score": <0-100 integer>,
+  "media_explanation": "<2-3 sentences explaining the media authenticity score: what specific visual observations support or undermine authenticity. If authentic, state what makes it look real. If suspicious, cite exact artifacts>",
+  "ai_generated_probability": <0-100 integer>,
+  "ai_reasoning": "<2-3 sentences explaining the AI probability score: list specific artifacts detected (distorted fingers, unnatural skin, etc.) OR explicitly state that none were detected and the image shows organic photographic properties>",
   "manipulation_analysis": {
-      "ai_artifacts_detected": false,
-      "artifact_details": ""
+      "ai_artifacts_detected": <true|false>,
+      "artifact_details": "<specific artifacts found, or 'None detected'>"
   },
-  "verification_status": "",
-  "confidence": 0.0
+  "verification_status": "<VERIFIABLE | PARTIALLY_VERIFIABLE | UNVERIFIABLE>",
+  "confidence": <0.0-1.0>
 }"""
                 ),
             },
@@ -476,19 +429,23 @@ Return ONLY valid JSON in this exact format:
                     {
                         "type": "text",
                         "text": (
-                            "Perform a rigorous multi-layered analysis of this image.\n\n"
+                            "Analyze this image across all three scoring dimensions.\n\n"
                             "Return JSON in this exact format:\n"
                             "{\n"
                             '  "extracted_text": string[],\n'
                             '  "visible_dates": string[],\n'
                             '  "visual_description": string,\n'
                             '  "claims": string[],\n'
+                            '  "media_authenticity_score": number (0-100),\n'
+                            '  "media_explanation": string,\n'
+                            '  "ai_generated_probability": number (0-100),\n'
+                            '  "ai_reasoning": string,\n'
                             '  "manipulation_analysis": {\n'
                             '      "ai_artifacts_detected": boolean,\n'
                             '      "artifact_details": string\n'
                             '  },\n'
                             '  "verification_status": "VERIFIABLE" | "PARTIALLY_VERIFIABLE" | "UNVERIFIABLE",\n'
-                            '  "confidence": number\n'
+                            '  "confidence": number (0-1)\n'
                             "}"
                         ),
                     },
@@ -533,7 +490,7 @@ Return ONLY valid JSON in this exact format:
         if not all(k in result for k in required_keys):
             raise ValueError(f"Invalid response format: missing {required_keys}")
             
-        # Map new schema to existing application model
+        # Map verification status to verdict
         verification_map = {
             "VERIFIABLE": "Reliable",
             "PARTIALLY_VERIFIABLE": "Questionable",
@@ -543,16 +500,33 @@ Return ONLY valid JSON in this exact format:
         mapped_verdict = verification_map.get(result.get("verification_status"), "Questionable")
         risk_level = "low" if mapped_verdict == "Reliable" else ("medium" if mapped_verdict == "Questionable" else "high")
         
-        # Ensure compatibility with existing fields
+        # Media authenticity score (new field, fallback to confidence-based)
+        raw_media_score = result.get("media_authenticity_score")
+        if raw_media_score is not None:
+            media_score = int(max(0, min(100, raw_media_score)))
+        else:
+            media_score = int(result.get("confidence", 0.5) * 100)
+        
+        # AI generated probability — new field returns 0-100, convert to 0-1 float
+        raw_ai_prob = result.get("ai_generated_probability")
+        if raw_ai_prob is not None:
+            ai_probability_float = max(0.0, min(1.0, float(raw_ai_prob) / 100.0))
+        else:
+            ai_artifacts = result.get("manipulation_analysis", {}).get("ai_artifacts_detected", False)
+            ai_probability_float = 0.65 if ai_artifacts else 0.05
+        
         result["verdict"] = mapped_verdict
         result["riskLevel"] = risk_level
-        result["credibilityScore"] = int(result.get("confidence", 0.5) * 100)
+        result["credibilityScore"] = media_score
         result["explanation"] = result.get("visual_description", "")
+        result["aiGeneratedProbability"] = round(ai_probability_float, 4)
+        result["mediaExplanation"] = result.get("media_explanation") or result.get("visual_description", "")
+        result["aiReasoning"] = result.get("ai_reasoning", "")
         
         return {
             "claims": result.get("claims", []),
             "analysis": result,
-            "imageAuthenticityScore": result["credibilityScore"]
+            "imageAuthenticityScore": media_score
         }
 
     except Exception as e:
