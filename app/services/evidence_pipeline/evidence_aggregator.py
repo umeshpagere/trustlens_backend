@@ -40,8 +40,8 @@ def search_wikipedia(query: str) -> list:
                 "trust_score": get_source_trust("Wikipedia", "knowledge")
             })
         return results
-    except Exception as e:
-        logger.error(f"Error fetching from Wikipedia API: {e}")
+    except Exception:
+        logger.exception("Error fetching from Wikipedia API")
         return []
 
 def search_factcheck(query: str) -> list:
@@ -74,8 +74,8 @@ def search_factcheck(query: str) -> list:
                 "trust_score": get_source_trust(publisher, "fact_check")
             })
         return results
-    except Exception as e:
-        logger.error(f"Error fetching from Fact Check API: {e}")
+    except Exception:
+        logger.exception("Error fetching from Fact Check API")
         return []
 
 def search_news(query: str) -> list:
@@ -110,8 +110,8 @@ def search_news(query: str) -> list:
                 "trust_score": get_source_trust(source_name, "news")
             })
         return results
-    except Exception as e:
-        logger.error(f"Error fetching from News API: {e}")
+    except Exception:
+        logger.exception("Error fetching from News API")
         return []
 
 def aggregate_evidence(queries: list) -> list:
@@ -153,8 +153,8 @@ def aggregate_evidence(queries: list) -> list:
                     for item in data[:5]:
                         all_evidence.append(item)
                         counts["news"] += 1
-            except Exception as e:
-                logger.error(f"Parallel search error: {e}")
+            except Exception:
+                logger.exception("Parallel search error")
 
     logger.info(f"Evidence retrieved: {len(all_evidence)} | Fact-check sources: {counts['fact_check']} | News sources: {counts['news']} | Knowledge sources: {counts['knowledge']}")
     return all_evidence

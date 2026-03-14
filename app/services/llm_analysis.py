@@ -23,6 +23,9 @@ import base64
 import asyncio
 from app.config.azure import get_azure_client
 from app.config.settings import Config
+import logging
+
+logger = logging.getLogger(__name__)
 
 # --- Shared constants / helpers (unchanged) ---
 
@@ -312,7 +315,7 @@ async def analyze_text_with_llm(text: str) -> dict:
         if not raw_content:
             raise ValueError("No response content from Azure OpenAI")
 
-        print(f"🔬 Raw Azure text response (first 300 chars): {raw_content[:300]!r}")
+        logger.info(f"🔬 Raw Azure text response (first 300 chars): {raw_content[:300]!r}")
         analysis = _parse_and_validate_semantic_response(raw_content)
         return {
             "claims": analysis.get("keyClaims", []),
@@ -324,9 +327,9 @@ async def analyze_text_with_llm(text: str) -> dict:
         raise ValueError(f"Failed to parse LLM response as JSON: {e}")
     except ValueError:
         raise
-    except Exception as e:
-        print(f"Azure OpenAI text analysis failed: {e}")
-        raise ValueError(f"LLM text analysis failed: {e}")
+    except Exception:
+        logger.exception("Azure OpenAI text analysis failed")
+        raise ValueError("LLM text analysis failed")
 
 
 async def analyze_image_with_llm(image_bytes: bytes, accompanying_text: str = "") -> dict:
@@ -339,7 +342,7 @@ async def analyze_image_with_llm(image_bytes: bytes, accompanying_text: str = ""
 
     try:
         mime_type = detect_image_mime_type(image_bytes)
-        print(f"🔍 Detected image MIME type: {mime_type}")
+        logger.info(f"🔍 Detected image MIME type: {mime_type}")
         base64_image = base64.b64encode(image_bytes).decode("utf-8")
         client = get_azure_client()
 
@@ -529,6 +532,6 @@ Return ONLY valid JSON in this exact format:
             "imageAuthenticityScore": media_score
         }
 
-    except Exception as e:
-        print(f"Azure OpenAI image analysis failed: {e}")
-        raise ValueError(f"LLM image analysis failed: {e}")
+    except Exception:
+        logger.exception("Azure OpenAI image analysis failed")
+        raise ValueError("LLM image analysis failed")

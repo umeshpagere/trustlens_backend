@@ -75,10 +75,6 @@ def rank_evidence(claim: str, evidence_items: list, use_nli: bool = False) -> li
         ranked_results.sort(key=lambda x: x["score"], reverse=True)
         return ranked_results
 
-    except Exception as e:
-        logger.error(f"Error in semantic ranking: {e}")
-        return []
-
-    except Exception as e:
-        logger.error(f"Error in semantic ranking: {e}")
+    except Exception:
+        logger.exception("Error in semantic ranking")
         return []

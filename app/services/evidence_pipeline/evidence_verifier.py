@@ -76,7 +76,7 @@ Return ONLY valid JSON (no markdown fences):
 
         return json.loads(content)
     except Exception as e:
-        logger.error(f"Error verifying claim: {e}")
+        logger.exception("Error verifying claim")
         return {
             "verdict": "UNVERIFIED",
             "confidence": 0.0,
