@@ -16,10 +16,18 @@ def create_app():
 
     app = Flask(__name__)
     
-    # Configure CORS for production (replace with actual frontend domain in production)
-    # For now, allowing localhost for development and a placeholder for production
-    allowed_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000,https://trustlens-frontend.onrender.com").split(",")
-    CORS(app, origins=allowed_origins)
+    # Configure CORS for extension compatibility
+    # In production, Cloud Run instances need to handle preflight requests correctly
+    CORS(app, resources={r"/api/*": {"origins": "*"}}, supports_credentials=True)
+    
+    @app.route('/')
+    def index():
+        return jsonify({
+            "status": "online",
+            "message": "TrustLens Backend API is running on Cloud Run",
+            "version": "1.2.1"
+        }), 200
+
     
     app.register_blueprint(analyze_bp, url_prefix='/api/analyze')
     

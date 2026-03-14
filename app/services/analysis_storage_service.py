@@ -45,15 +45,19 @@ def _get_collection():
         return None
     
     try:
+        allow_invalid = getattr(Config, "MONGODB_TLS_ALLOW_INVALID_CERTIFICATES", False)
         connect_args = {
             "connect": True,
-            "serverSelectionTimeoutMS": 2000,
-            "socketTimeoutMS": 2000,
-            "tlsAllowInvalidCertificates": getattr(Config, "MONGODB_TLS_ALLOW_INVALID_CERTIFICATES", False),
+            "serverSelectionTimeoutMS": 30000,
+            "socketTimeoutMS": 30000,
+            "tls": True,
+            "tlsAllowInvalidCertificates": allow_invalid,
         }
-        if certifi:
+        # Only use certifi CA file if NOT using invalid cert override
+        # (certifi causes TLSV1_ALERT_INTERNAL_ERROR on some hosted environments)
+        if certifi and not allow_invalid:
             connect_args["tlsCAFile"] = certifi.where()
-            
+
         _mongo_client = MongoClient(Config.MONGODB_URI, **connect_args)
         db = _mongo_client[Config.MONGODB_DATABASE]
         _collection = db[Config.MONGODB_COLLECTION]

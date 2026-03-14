@@ -12,7 +12,7 @@ class Config:
     AZURE_OPENAI_API_VERSION = os.getenv("AZURE_OPENAI_API_VERSION", "2024-10-21")
     
     # Server Configuration
-    PORT = int(os.getenv("PORT", 5000))
+    PORT = int(os.getenv("PORT", 8080))
     DEBUG = os.getenv("FLASK_DEBUG", "false").lower() == "true"
 
     # Temporary Storage Management

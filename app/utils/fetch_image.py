@@ -34,7 +34,7 @@ _HEADERS = {
         "Chrome/120.0.0.0 Safari/537.36"
     )
 }
-_TIMEOUT = 5.0
+_TIMEOUT = 30.0
 _MAX_IMAGE_BYTES = 10 * 1024 * 1024  # 10 MB upper bound
 
 

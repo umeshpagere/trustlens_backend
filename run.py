@@ -17,7 +17,7 @@ app = create_app()
 # 3. Determine runtime port
 # Render provides PORT environment variable
 # ----------------------------------------------------
-PORT = int(os.environ.get("PORT", 5000))
+PORT = int(os.environ.get("PORT", 8080))
 
 # ----------------------------------------------------
 # 4. Local execution

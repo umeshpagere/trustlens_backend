@@ -1,3 +1,7 @@
+import os
+os.environ["HF_HOME"] = "/app/model_cache"
+os.environ["SENTENCE_TRANSFORMERS_HOME"] = "/app/model_cache"
+
 from sentence_transformers import SentenceTransformer
 import spacy
 
