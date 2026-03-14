@@ -1,6 +1,9 @@
 import os
 import logging
 import warnings
+from transformers import pipeline
+
+logger = logging.getLogger(__name__)
 
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 os.environ["TRANSFORMERS_VERBOSITY"] = "error"
@@ -8,25 +11,31 @@ os.environ["HF_HUB_DISABLE_PROGRESS_BARS"] = "1"
 warnings.filterwarnings("ignore")
 logging.getLogger("transformers").setLevel(logging.ERROR)
 
-
-# Lazy-loaded NLI pipeline
-_nli_pipeline = None
+# ---------------------------------------------------------------------------
+# NLI Model Preloading
+# ---------------------------------------------------------------------------
+print("⚙️ Loading NLI verification model (cross-encoder/nli-roberta-base)...")
+try:
+    _nli_pipeline = pipeline(
+        "text-classification",
+        model="cross-encoder/nli-roberta-base",   # lighter alternative to roberta-large-mnli
+        device=-1  # CPU; switch to 0 for GPU
+    )
+    print("✅ NLI verification model loaded")
+except Exception as e:
+    print(f"❌ Failed to load NLI model: {e}")
+    logger.error(f"Failed to load NLI model: {e}")
+    _nli_pipeline = None
 
 def get_nli_pipeline():
-    global _nli_pipeline
-    if _nli_pipeline is None:
-        try:
-            from transformers import pipeline
-            _nli_pipeline = pipeline(
-                "text-classification",
-                model="cross-encoder/nli-roberta-base",   # lighter alternative to roberta-large-mnli
-                device=-1  # CPU; switch to 0 for GPU
-            )
-        except ImportError:
-            logger.warning("transformers/torch not installed. Run: pip install transformers torch")
-        except Exception as e:
-            logger.error(f"Error loading NLI model: {e}")
-    return _nli_pipeline
+    """Access the preloaded NLI singleton."""
+    try:
+        if _nli_pipeline is None:
+            logger.warning("NLI pipeline requested but it is None")
+        return _nli_pipeline
+    except Exception:
+        logger.exception("NLI pipeline not available")
+        raise
 
 
 def check_contradiction(claim: str, evidence: str) -> dict:
@@ -61,8 +70,8 @@ def check_contradiction(claim: str, evidence: str) -> dict:
             "label": label,
             "score": float(result["score"])
         }
-    except Exception as e:
-        logger.error(f"Error in NLI check: {e}")
+    except Exception:
+        logger.exception("Error in NLI check")
         return {"label": "NEUTRAL", "score": 0.0}
 
 
