@@ -3,23 +3,18 @@ from sentence_transformers import SentenceTransformer
 
 logger = logging.getLogger(__name__)
 
-# Global model instance
-_model = None
+# ---------------------------------------------------------------------------
+# ML Model Preloading
+# ---------------------------------------------------------------------------
+print("⚙️ [Startup] Preloading ML models...")
+try:
+    embedding_model = SentenceTransformer("all-MiniLM-L6-v2")
+    logger.info("Embedding model loaded successfully")
+    print("Embedding model loaded successfully")
+except Exception as e:
+    logger.error(f"Failed to load embedding model: {e}")
+    embedding_model = None
 
-def load_embedding_model():
-    """
-    Loads the sentence-transformer model once and caches it.
-    Used for semantic ranking and evidence alignment.
-    """
-    global _model
-
-    if _model is None:
-        logger.info("Loading sentence transformer model (all-MiniLM-L6-v2)...")
-        _model = SentenceTransformer("all-MiniLM-L6-v2")
-        logger.info("Embedding model loaded successfully")
-
-    return _model
-
-def get_model():
+def get_embedding_model():
     """Access the preloaded model."""
-    return _model
+    return embedding_model

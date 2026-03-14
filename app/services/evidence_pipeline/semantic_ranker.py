@@ -15,10 +15,10 @@ warnings.filterwarnings("ignore")
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 from .nli_verifier import check_contradiction, compute_nli_score
-from app.models.model_loader import load_embedding_model
+from app.models.model_loader import get_embedding_model
 
 def get_model():
-    return load_embedding_model()
+    return get_embedding_model()
 
 
 def rank_evidence(claim: str, evidence_items: list, use_nli: bool = False) -> list:

@@ -39,6 +39,7 @@ COPY . .
 # Expose the application port
 EXPOSE 8080
 
-# Start the application using Gunicorn (with Uvicorn worker for async support)
-# We use 2 workers and 1 thread per worker to stay within Cloud Run memory limits (default 512MB-2GB)
-CMD exec gunicorn --bind 0.0.0.0:$PORT --workers 1 --worker-class uvicorn.workers.UvicornWorker --timeout 120 run:app
+# Start the application using Gunicorn (WSGI)
+# Use exactly 1 worker to avoid memory duplication when loading ML models.
+# Multiple threads (8) allow for concurrency within that single worker.
+CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:8080", "--workers", "1", "--threads", "8", "--timeout", "300"]
