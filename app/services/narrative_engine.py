@@ -31,14 +31,8 @@ from typing import Optional
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 
-try:
-    from pymongo import MongoClient, ASCENDING
-    import certifi
-except Exception:
-    MongoClient = None
-    certifi = None
-
 from app.config.settings import Config
+from app.config.mongo import get_mongo_client
 from app.utils.text_utils import normalize_claim_text
 from app.models.model_loader import get_embedding_model
 
@@ -103,27 +97,12 @@ def _get_graph_col():
 
 
 def _init_collection(name: str):
-    global _mongo_client
-    if MongoClient is None:
-        logger.warning("[NarrativeEngine] pymongo not installed — narrative tracking disabled")
-        return None
     if not Config.MONGODB_URI:
         logger.warning("[NarrativeEngine] MONGODB_URI not set — narrative tracking disabled")
         return None
     try:
-        if _mongo_client is None:
-            allow_invalid = getattr(Config, "MONGODB_TLS_ALLOW_INVALID_CERTIFICATES", False)
-            args = {
-                "connect": True,
-                "serverSelectionTimeoutMS": 10000,
-                "socketTimeoutMS": 10000,
-                "tls": True,
-                "tlsAllowInvalidCertificates": allow_invalid,
-            }
-            if certifi and not allow_invalid:
-                args["tlsCAFile"] = certifi.where()
-            _mongo_client = MongoClient(Config.MONGODB_URI, **args)
-        db = _mongo_client[Config.MONGODB_DATABASE]
+        client = get_mongo_client()
+        db = client[Config.MONGODB_DATABASE]
         logger.info(f"[NarrativeEngine] Connected to MongoDB collection: {name}")
         return db[name]
     except Exception as exc:
@@ -359,38 +338,44 @@ async def process_narratives(evidence_results: list) -> list:
 
     narrative_summaries = []
 
-    # Collect (claim_text, embedding, verdict) for graph edge computation
-    processed_this_batch: list[tuple[str, list, str]] = []
-
-    for result in evidence_results:
+    # Filter and extract valid claims
+    valid_claims = []
+    for idx, result in enumerate(evidence_results):
         verification = result.get("verification", {})
         stats        = result.get("stats", {})
+        confidence   = float(verification.get("confidence", 0.0))
+        cov_score    = float(stats.get("coverage_score", 0.0))
+        aligned      = int(stats.get("aligned_sentences", 0))
+        verdict      = str(verification.get("verdict", "UNVERIFIED"))
+        raw_text     = result.get("claim", "")
 
-        confidence        = float(verification.get("confidence", 0.0))
-        coverage_score    = float(stats.get("coverage_score", 0.0))
-        aligned_sentences = int(stats.get("aligned_sentences", 0))
-        verdict           = str(verification.get("verdict", "UNVERIFIED"))
-        claim_text        = result.get("claim", "")
-
-        # Quality gate — skip low-confidence results
         if (confidence < MIN_CONFIDENCE or
-                coverage_score < MIN_COVERAGE_SCORE or
-                aligned_sentences < MIN_ALIGNED_SENTENCES):
-            narrative_summaries.append({})
+                cov_score < MIN_COVERAGE_SCORE or
+                aligned < MIN_ALIGNED_SENTENCES):
             continue
 
-        normalized = normalize_claim_text(claim_text)
-        if not normalized:
-            narrative_summaries.append({})
-            continue
+        normalized = normalize_claim_text(raw_text)
+        if normalized:
+            valid_claims.append((idx, normalized, verdict))
 
-        # Embedding (CPU-bound — run in thread)
-        embedding: list = await asyncio.to_thread(embed_claim, normalized)
+    if not valid_claims:
+        # Pre-fill empty narratives for all
+        return [{}] * len(evidence_results)
+
+    # Parallelize embeddings
+    embed_coros = [asyncio.to_thread(embed_claim, c[1]) for c in valid_claims]
+    embeddings = await asyncio.gather(*embed_coros)
+
+    # Prepare batch loop state
+    processed_this_batch: list[tuple[str, list, str]] = []
+    narrative_summaries = [{}] * len(evidence_results)
+
+    # We still do cluster updates sequentially to avoid write races on the same centroid
+    for i, (orig_idx, normalized, verdict) in enumerate(valid_claims):
+        embedding = embeddings[i]
         if not embedding:
-            narrative_summaries.append({})
             continue
 
-        # Cluster lookup (Mongo IO — run in thread)
         cluster = await asyncio.to_thread(find_similar_cluster, embedding)
 
         if cluster:
@@ -398,7 +383,6 @@ async def process_narratives(evidence_results: list) -> list:
             cluster_id = cluster["cluster_id"]
         else:
             cluster_id = await asyncio.to_thread(create_cluster, normalized, embedding, verdict)
-            # Build a minimal cluster dict for the response
             ratio = 1.0 if verdict == "CONTRADICTED" else 0.0
             cluster = {
                 "cluster_id":           cluster_id,
@@ -411,9 +395,7 @@ async def process_narratives(evidence_results: list) -> list:
         # Graph edges — compare against claims already processed in this batch
         for prev_text, prev_embedding, prev_verdict in processed_this_batch:
             try:
-                sim = cosine_similarity(
-                    [embedding], [prev_embedding]
-                )[0][0]
+                sim = cosine_similarity([embedding], [prev_embedding])[0][0]
                 if sim >= GRAPH_EDGE_THRESHOLD:
                     await asyncio.to_thread(
                         store_graph_edge,
@@ -424,13 +406,12 @@ async def process_narratives(evidence_results: list) -> list:
 
         processed_this_batch.append((normalized, embedding, verdict))
 
-        # Build per-claim narrative summary for API response
-        narrative_summaries.append({
+        narrative_summaries[orig_idx] = {
             "cluster_id":           cluster.get("cluster_id", cluster_id),
             "cluster_size":         cluster.get("claim_count", 1),
             "misinformation_ratio": cluster.get("misinformation_ratio", 0.0),
             "risk_level":           cluster.get("risk_level", "LOW"),
             "campaign_detected":    cluster.get("campaign_detected", False),
-        })
+        }
 
     return narrative_summaries

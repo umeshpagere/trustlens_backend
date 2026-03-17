@@ -7,6 +7,8 @@ with confidence scores and short reasoning.
 """
 
 import logging
+import json
+from tenacity import retry, stop_after_attempt, wait_exponential
 from app.config.settings import Config
 from app.config.azure import get_async_azure_client
 from app.services.verification_agents._utils import extract_json, GLOBAL_SAFETY_RULES
@@ -37,10 +39,10 @@ STRICT RULES:
 
 USER_TEMPLATE = """\
 Claim:
-{claim}
+{{claim}}
 
 Evidence Items:
-{evidence_block}
+{{evidence_block}}
 
 Return ONLY valid JSON:
 {{
@@ -55,28 +57,35 @@ Return ONLY valid JSON:
 }}
 """
 
-
-async def evaluate_evidence(claim: str, evidence: list) -> dict:
+@retry(
+    stop=stop_after_attempt(3),
+    wait=wait_exponential(multiplier=1, min=2, max=10),
+    reraise=True,
+    retry_error_callback=lambda retry_state: logger.warning(f"[EvidenceAgent] Retrying LLM call: attempt {retry_state.attempt_number}")
+)
+async def evaluate_evidence(
+    claim: str, 
+    claim_analysis: dict, 
+    evidence_items: list,
+    request_id: str = "REQ-UNKNOWN"
+) -> dict:
     """
-    Agent 2: Evaluate each evidence item's relation to the claim.
-    evidence: list of dicts with keys id, source, domain, nli_hint, text
-    Returns: {"evaluations": [...]}
+    Agent 2: Compare each evidence item against the claim (NLI-style).
+    Returns list of evaluations (SUPPORT | CONTRADICT | NEUTRAL).
     """
-    _fallback = {"evaluations": []}
-
-    if not evidence or not claim:
+    _fallback = {"evaluations": [], "explanation": "Failed to evaluate evidence."}
+    if not evidence_items:
         return _fallback
 
     # Build evidence block for the prompt
     lines = []
-    for item in evidence:
-        eid    = item.get("id", "?")
+    for i, item in enumerate(evidence_items):
+        eid    = item.get("id", i+1)
         source = item.get("source", "Unknown")
         domain = item.get("domain", "unknown")
-        hint   = item.get("nli_hint", "unknown")
         text   = item.get("text", "")
         lines.append(
-            f"[{eid}] Source: {source} | Domain: {domain} | NLI_HINT: {hint}\n"
+            f"[{eid}] Source: {source} | Domain: {domain}\n"
             f"     Text: {text}"
         )
     evidence_block = "\n\n".join(lines)
@@ -93,13 +102,13 @@ async def evaluate_evidence(claim: str, evidence: list) -> dict:
                 )},
             ],
             temperature=0,
-            max_tokens=900,
+            max_tokens=800,
         )
         raw = response.choices[0].message.content.strip()
         result = extract_json(raw)
         evals = result.get("evaluations", [])
-        logger.info(f"[EvidenceAgent] {len(evals)} evaluations received")
-        return {"evaluations": evals}
+        logger.info(f"[{request_id}] [EvidenceAgent] {len(evals)} evaluations received for {len(evidence_items)} items.")
+        return result
     except Exception as exc:
-        logger.warning(f"[EvidenceAgent] Failed: {exc}")
+        logger.warning(f"[{request_id}] [EvidenceAgent] Failed: {exc}")
         return _fallback

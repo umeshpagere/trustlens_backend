@@ -7,9 +7,14 @@ Runs first so downstream agents can use its entity/temporal output.
 
 import json
 import logging
+from tenacity import retry, stop_after_attempt, wait_exponential
 from app.config.settings import Config
 from app.config.azure import get_async_azure_client
-from app.services.verification_agents._utils import extract_json, GLOBAL_SAFETY_RULES
+from app.services.verification_agents._utils import (
+    extract_json, 
+    GLOBAL_SAFETY_RULES,
+    CLAIM_ANALYSIS_CACHE
+)
 
 logger = logging.getLogger(__name__)
 
@@ -46,7 +51,13 @@ Return ONLY valid JSON:
 """
 
 
-async def analyze_claim(claim: str) -> dict:
+@retry(
+    stop=stop_after_attempt(3),
+    wait=wait_exponential(multiplier=1, min=2, max=10),
+    reraise=True,
+    retry_error_callback=lambda retry_state: logger.warning(f"[ClaimAgent] Retrying LLM call: attempt {retry_state.attempt_number}")
+)
+async def analyze_claim(claim: str, request_id: str = "REQ-UNKNOWN") -> dict:
     """
     Agent 1: Extract structured metadata from claim text.
     Returns a dict with entities, event_type, temporal_signal, etc.
@@ -63,6 +74,13 @@ async def analyze_claim(claim: str) -> dict:
     if not claim or not claim.strip():
         return _fallback
 
+    # 1. Check Cache
+    cache_key = claim.strip().lower()
+    cached_result = await CLAIM_ANALYSIS_CACHE.get(cache_key)
+    if cached_result:
+        logger.info(f"[{request_id}] [ClaimAgent] Cache hit for claim: {claim[:50]}...")
+        return cached_result
+
     try:
         client = get_async_azure_client()
         response = await client.chat.completions.create(
@@ -76,8 +94,13 @@ async def analyze_claim(claim: str) -> dict:
         )
         raw = response.choices[0].message.content.strip()
         result = extract_json(raw)
-        logger.info(f"[ClaimAgent] entities={result.get('entities')} signal={result.get('temporal_signal')}")
-        return {**_fallback, **result}
+        logger.info(f"[{request_id}] [ClaimAgent] entities={result.get('entities')} signal={result.get('temporal_signal')}")
+        
+        full_result = {**_fallback, **result}
+        # 2. Store in Cache
+        await CLAIM_ANALYSIS_CACHE.set(cache_key, full_result)
+        
+        return full_result
     except Exception as exc:
-        logger.warning(f"[ClaimAgent] Failed: {exc}")
+        logger.warning(f"[{request_id}] [ClaimAgent] Failed: {exc}")
         return _fallback

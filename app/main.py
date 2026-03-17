@@ -11,14 +11,12 @@ from app.config.storage import init_temp_storage
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 def create_app():
-    # Initialize ephemeral storage for Render (/tmp)
-    init_temp_storage()
-
     app = Flask(__name__)
     
     # Configure CORS for extension compatibility
     # In production, Cloud Run instances need to handle preflight requests correctly
-    CORS(app, resources={r"/api/*": {"origins": "*"}}, supports_credentials=True)
+    # Fix: Browser restricts wildcard origins (*) when supports_credentials=True
+    CORS(app, resources={r"/api/*": {"origins": "*"}}, supports_credentials=False)
     
     @app.route('/')
     def index():

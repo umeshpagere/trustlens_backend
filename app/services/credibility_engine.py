@@ -7,23 +7,24 @@ SCORING PHILOSOPHY (v2 — evidence-driven):
   scoring formula. Domain trust is still used downstream for evidence FILTERING
   (evidence_ranker.py) but must NOT influence credibilityScore.
 
-NEW WEIGHTED FORMULA (v3):
-  EvidenceSupportScore   × 0.65  — primary: LLM verification + trusted sources
-  ClaimClarityScore      × 0.05  — claim structure / verifiability
-  MediaAuthenticityScore × 0.15  — AI detection / metadata checks
-  SemanticRiskScore      × 0.15  — manipulation signals / propaganda patterns
+ACTUAL WEIGHTED FORMULA (v3 — matches WEIGHTS dict below):
+  EvidenceSupportScore   × 0.50  — primary: LLM verification + trusted sources
+  SourceTrustScore       × 0.20  — domain reputation of retrieved sources
+  MediaAuthenticityScore × 0.20  — AI detection / metadata checks
+  SemanticRiskScore      × 0.10  — manipulation signals / propaganda patterns
 
-Weights sum to 1.00.  Final score is clamped to [0, 95].
+Weights sum to 1.00.  Final score is clamped to [0, 100].
 
-ASYNC ARCHITECTURE (Phase 6 — unchanged):
-  Phase 1: LLM text analysis (must complete first — primaryClaim needed)
-  Phase 2+3+4: fact-check, domain (filtering only), image — CONCURRENT
-  Phase 5: synchronous scoring + confidence (pure CPU)
+ASYNC ARCHITECTURE:
+  Phase A: LLM text analysis (must complete first — primaryClaim needed)
+  Phase B: domain (filtering only), image — CONCURRENT async I/O
+  Phase C: synchronous scoring + confidence (pure CPU)
 
   return_exceptions=True means one failing service does not abort others.
 """
 
 import asyncio
+import datetime
 import logging
 import math
 from typing import Any
@@ -184,21 +185,20 @@ def compute_weighted_final_result(
 
     if breaking_news_detected and breaking_news_confidence is not None:
         component_scores["breakingNewsConfidence"] = _safe(breaking_news_confidence, "evidenceSupportScore")
-        
-        # Adjust weights: Fact checks are irrelevant for breaking news
-        # Move verification weights into breakingNewsConfidence
-        bn_weight = WEIGHTS["evidenceSupportScore"]
-        
-        bn_conf       = component_scores["breakingNewsConfidence"]
-        clarity       = component_scores["claimClarityScore"]
-        media_auth    = component_scores["mediaAuthenticityScore"]
-        risk          = component_scores["semanticRiskScore"]
-        
+
+        # Adjust weights: For breaking news, use breakingNewsConfidence in place
+        # of evidenceSupportScore.  No claimClarityScore key exists — use the
+        # existing semanticRiskScore as the residual component.
+        bn_weight  = WEIGHTS["evidenceSupportScore"]
+        bn_conf    = component_scores["breakingNewsConfidence"]
+        media_auth = component_scores["mediaAuthenticityScore"]
+        risk       = component_scores["semanticRiskScore"]
+
         final = (
             bn_conf    * bn_weight
-            + clarity  * WEIGHTS["claimClarityScore"]
             + media_auth * WEIGHTS["mediaAuthenticityScore"]
-            + risk     * WEIGHTS["semanticRiskScore"]
+            + risk       * WEIGHTS["semanticRiskScore"]
+            + component_scores["sourceTrustScore"] * WEIGHTS["sourceTrustScore"]
         )
         base_score = int(round(max(0.0, min(95.0, final))))
     else:
@@ -211,11 +211,11 @@ def compute_weighted_final_result(
     _ir = image_auth_result or {}
 
     if ai_video_probability is not None and ai_video_probability > 0.7:
-        logger.warning("Phase B Penalty applied: AI video probability = %.2f", ai_video_probability)
+        logger.warning("Penalty applied [AI-video]: probability = %.2f", ai_video_probability)
         base_score = max(0, base_score - 40)
 
     if context_reuse_detected:
-        logger.warning("Phase C Penalty applied: reused historical video context")
+        logger.warning("Penalty applied [context-reuse]: reused historical video context")
         base_score = max(0, base_score - 25)
 
     # -----------------------------------------------------------------------
@@ -227,10 +227,10 @@ def compute_weighted_final_result(
     # Phase 5: principled confidence (synchronous CPU-only)
     # -----------------------------------------------------------------------
     def classify_score(score: int) -> tuple[str, str]:
-        if score >= 75:   return "Low",         "RELIABLE"
-        elif score >= 50: return "Medium",      "LIKELY_RELIABLE"
-        elif score >= 30: return "High",        "QUESTIONABLE"
-        else:             return "Critical",    "HIGH_RISK"
+        if score >= 75:   return "Low",         "Reliable"
+        elif score >= 50: return "Medium",      "Likely Reliable"
+        elif score >= 30: return "High",        "Questionable"
+        else:             return "Critical",    "High Risk"
 
     risk_level, final_verdict = classify_score(final_score)
 
@@ -246,7 +246,8 @@ def compute_weighted_final_result(
         "media_score": component_scores.get("mediaAuthenticityScore", 75.0),
         "clarity_score": component_scores.get("claimClarityScore", 70.0),
         "confidence": evidence_confidence if evidence_confidence is not None else 0.0,
-        "verdict": final_verdict
+        "verdict": final_verdict,
+        "risk_level": risk_level
     }
     
     if breaking_news_detected:
@@ -256,7 +257,39 @@ def compute_weighted_final_result(
 
 
 # ---------------------------------------------------------------------------
-# Async orchestrator — Phase 6 parallel execution
+# Claim-type classifier (module-level so it is testable and reusable)
+# ---------------------------------------------------------------------------
+
+def _classify_claim_type(text: str) -> str:
+    """
+    Lightweight heuristic classifier.
+      - Scientific / geographic / mathematical claims → STATIC
+      - News / events / politics / disasters → DYNAMIC
+    Static claims are NOT penalised for older but consistent evidence.
+    """
+    static_keywords = [
+        "is located", "capital of", "population of", "produces",
+        "consists of", "distance between", "defined as", "equals",
+        "formula for",
+    ]
+    dynamic_keywords = [
+        "election", "protest", "riots", "explosion", "earthquake", "flood",
+        "won", "lost", "killed", "injured", "announced", "declared",
+        "appointed", "resigned",
+    ]
+    lower = (text or "").lower()
+    if any(k in lower for k in dynamic_keywords):
+        return "dynamic"
+    if any(k in lower for k in static_keywords):
+        return "static"
+    # Heuristic: presence of a specific year → likely dynamic news event
+    if any(str(y) in lower for y in range(1900, 2051)):
+        return "dynamic"
+    return "static"
+
+
+# ---------------------------------------------------------------------------
+# Async orchestrator — full credibility pipeline
 # ---------------------------------------------------------------------------
 
 async def compute_full_credibility(
@@ -268,14 +301,14 @@ async def compute_full_credibility(
     image_bytes: bytes | None = None,
 ) -> dict[str, Any]:
     """
-    Async: Run the full Phase 6 credibility pipeline.
+    Async: Run the full credibility pipeline.
 
     Execution order:
-      Phase 1: LLM text analysis (awaited in ROUTE before this is called)
-      Phase 2+3+4: fact-check, domain (filtering only), image — CONCURRENT
-      Phase 5: synchronous scoring + confidence
+      Phase A: LLM text analysis (awaited in ROUTE before this is called)
+      Phase B: domain (filtering only) + image authenticity — CONCURRENT async I/O
+      Phase C: evidence aggregation + synchronous scoring + confidence
 
-    Domain Phase (3) still runs for evidence filtering downstream but its
+    Domain Phase (B) still runs for evidence filtering downstream but its
     score is NOT included in the credibility formula.
     """
     primary_claim = ""
@@ -345,17 +378,12 @@ async def compute_full_credibility(
                 if image_auth_score_override < 40:
                     semantic_score -= 10
 
-    # ---- Phase 2 + 3 + 4: concurrent I/O ----
+    # ---- Phase 2 + 3: concurrent I/O (domain + image) ----
     domain_result, image_auth_result = await asyncio.gather(
         evaluate_domain(source_url),
         asyncio.to_thread(evaluate_image, image_bytes, primary_claim or None),
         return_exceptions=True,
     )
-    fc_raw = {"claims": []}
-
-    if isinstance(fc_raw, Exception):
-        logger.warning("Fact-check phase failed: %s", fc_raw)
-        fc_raw = {"claims": []}
     if isinstance(domain_result, Exception):
         logger.warning("Domain phase failed: %s", domain_result)
         domain_result = _neutral_domain()
@@ -429,11 +457,10 @@ async def compute_full_credibility(
             evidence_confidence = 1.0 - float(variance)
 
     # ---- Evaluate Temporal Logic ----
-    import datetime
     temporal_consistency_score = 50.0
     temporal_gap_days = None
     gap_classification = "UNKNOWN"
-    
+
     evidence_timestamps_dt = []
     oldest_ev = None
     newest_ev = None
@@ -443,63 +470,19 @@ async def compute_full_credibility(
             evidence_timestamps_dt.append(dt)
         except Exception:
             pass
-            
+
     if evidence_timestamps_dt:
         oldest_ev = min(evidence_timestamps_dt).isoformat()
         newest_ev = max(evidence_timestamps_dt).isoformat()
-        
+
         claim_dt = claim_explicit_date
         if not claim_dt and claim_temporal_signal in ["today", "just happened", "breaking", "minutes ago", "now", "recent"]:
             # Default to now if relative
             claim_dt = datetime.datetime.utcnow()
-            
+
         if claim_dt:
             temporal_gap_days = compute_temporal_gap(claim_dt, oldest_ev)
             gap_classification = classify_temporal_gap(temporal_gap_days)
-
-            # Classify claim as static vs dynamic for temporal handling.
-            def _classify_claim_type(text: str) -> str:
-                """
-                Very lightweight classifier:
-                  - Scientific / geographic / mathematical → STATIC
-                  - News / events / politics / disasters → DYNAMIC
-                """
-                static_keywords = [
-                    "is located",
-                    "capital of",
-                    "population of",
-                    "produces",
-                    "consists of",
-                    "distance between",
-                    "defined as",
-                    "equals",
-                    "formula for",
-                ]
-                dynamic_keywords = [
-                    "election",
-                    "protest",
-                    "riots",
-                    "explosion",
-                    "earthquake",
-                    "flood",
-                    "won",
-                    "lost",
-                    "killed",
-                    "injured",
-                    "announced",
-                    "declared",
-                    "appointed",
-                    "resigned",
-                ]
-                lower = (text or "").lower()
-                if any(k in lower for k in dynamic_keywords):
-                    return "dynamic"
-                if any(k in lower for k in static_keywords):
-                    return "static"
-                # Heuristic: presence of a specific year → likely dynamic news event
-                if any(str(y) in lower for y in range(1900, 2051)):
-                    return "dynamic"
-                return "static"
 
             claim_type = _classify_claim_type(primary_claim or "")
 
@@ -546,7 +529,6 @@ async def compute_full_credibility(
         "temporal_gap": temporal_gap_days
     }
     
-    from app.services.confidence_service import calculate_confidence
     confidence_result = calculate_confidence(confidence_metrics)
 
     if breaking_news_detected:

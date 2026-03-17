@@ -81,17 +81,70 @@ async def extract_claims_from_text(text: str) -> list:
         return []
 
 async def analyze_text_with_llm(text: str) -> dict:
-    """Backward compatibility wrapper around claim extraction."""
+    """Performs full semantic analysis and claim extraction from text."""
     if not text or not isinstance(text, str) or len(text.strip()) == 0:
         raise ValueError("Text input is required")
-        
-    claims = await extract_claims_from_text(text)
     
-    return {
-        "claims": claims,
-        "analysis": {},
-        "semanticScore": 50
-    }
+    sanitized_text = _sanitize_user_input(text)
+    
+    # We'll use a single call to extract both claims and analysis for efficiency
+    messages = [
+        {"role": "system", "content": f"{CLAIM_EXTRACTION_SYSTEM_PROMPT}\n\nAlso perform a semantic risk analysis of the text. Identify manipulation indicators, risk factors, and provide a reasoning summary."},
+        {"role": "user", "content": f"Analyze this content:\n\n{sanitized_text}"},
+    ]
+
+    client = get_azure_client()
+
+    def _sdk_call() -> str:
+        response = client.chat.completions.create(
+            model=Config.AZURE_OPENAI_DEPLOYMENT,
+            messages=messages,
+            temperature=0,
+            max_tokens=800,
+            response_format={"type": "json_object"}
+        )
+        return response.choices[0].message.content
+
+    try:
+        content = await asyncio.to_thread(_sdk_call)
+        result = json.loads(content.strip())
+        
+        raw_claims = result.get("claims", [])
+        structured_claims = []
+        for c in raw_claims:
+            if isinstance(c, str):
+                structured_claims.append({"text": c, "temporal_signal": None, "explicit_date": None})
+            elif isinstance(c, dict):
+                structured_claims.append({
+                    "text": c.get("text", str(c)),
+                    "temporal_signal": c.get("temporal_signal"),
+                    "explicit_date": c.get("explicit_date")
+                })
+        
+        analysis = {
+            "semanticScore": result.get("semanticScore", 50),
+            "confidenceScore": result.get("confidenceScore", 0.5),
+            "primaryClaim": result.get("primaryClaim", ""),
+            "manipulationIndicators": result.get("manipulationIndicators", []),
+            "riskFactors": result.get("riskFactors", []),
+            "evidenceStrength": result.get("evidenceStrength", "Medium"),
+            "reasoningSummary": result.get("reasoningSummary", result.get("explanation", ""))
+        }
+        
+        return {
+            "claims": structured_claims,
+            "analysis": analysis,
+            "semanticScore": analysis["semanticScore"]
+        }
+    except Exception as e:
+        logger.error(f"Full text analysis failed: {e}")
+        # Fallback to just claims if full analysis fails
+        claims = await extract_claims_from_text(text)
+        return {
+            "claims": claims,
+            "analysis": {"reasoningSummary": "Could not perform detailed semantic analysis."},
+            "semanticScore": 50
+        }
 
 async def extract_claims_from_image(image_bytes: bytes) -> list:
     """Extract verifiable factual claims from an image."""

@@ -1,11 +1,13 @@
 """
-Agent 5 — Consensus Synthesizer
+Agent 5 — Consensus Agent
 
-Receives structured outputs from all four upstream agents and
-synthesises a final verdict. It does NOT re-read raw evidence.
+Synthesizes the outputs of all other agents (Metadata, Evidence,
+Source, Temporal) into a final verdict, credibility score, and explanation.
 """
 
 import logging
+import json
+from tenacity import retry, stop_after_attempt, wait_exponential
 from app.config.settings import Config
 from app.config.azure import get_async_azure_client
 from app.services.verification_agents._utils import extract_json, GLOBAL_SAFETY_RULES
@@ -15,84 +17,95 @@ logger = logging.getLogger(__name__)
 SYSTEM_PROMPT = f"""\
 {GLOBAL_SAFETY_RULES}
 
-You are the verification consensus engine for a fact-checking system.
+You are a master fact-checker and consensus builder.
 
-You will receive structured outputs from four specialist agents:
-  1. Claim Analysis Agent     — claim structure and entities
-  2. Evidence Validation Agent — per-evidence SUPPORT / CONTRADICT / NEUTRAL labels
-  3. Source Credibility Agent  — domain credibility index
-  4. Temporal Consistency Agent — temporal consistency of evidence
+You will be provided with:
+1. The original claim.
+2. Metadata analysis of the claim.
+3. Evidence evaluations (SUPPORT / CONTRADICT / NEUTRAL).
+4. Source credibility assessments.
+5. Temporal consistency findings.
 
-Your task is to synthesise these into a final verification verdict.
+Your goal is to synthesize these into a single authoritative verdict and a user-friendly explanation.
 
-STRICT RULES:
-• Do NOT re-interpret raw evidence — only use the agent outputs provided.
-• If evidence_validation shows strong contradictions, lean towards CONTRADICTED.
-• If temporal_consistency_score < 0.40, add a temporal warning note to reasoning.
-• If credibility_index < 0.45, reduce confidence by assigning it closer to 0.3.
-• If evidence is insufficient or conflicting, return UNVERIFIED.
-• credibility_score must reflect evidence strength, NOT domain reputation alone.
-• confidence must be a float between 0.0 and 1.0.
-• verdict must be exactly one of: SUPPORTED | CONTRADICTED | UNVERIFIED
+VERDICT TYPES:
+- TRUE: Overwhelmingly supported by high-credibility sources with NO temporal issues.
+- MOSTLY_TRUE: Supported by mostly credible sources; minor caveats.
+- MIXED: Evidence is contradictory or inconclusive.
+- MOSTLY_FALSE: Contradicted by credible sources; minor supporting evidence.
+- FALSE: Overwhelmingly contradicted by high-credibility sources.
+- UNVERIFIED: Insufficient or extremely low-quality evidence.
+
+EXPLANATION RULES (Write for non-expert users):
+1. If the claim is FALSE or MOSTLY_FALSE:
+   - Explain clearly WHY it is false (e.g., miscontextualized, fabricated, or debunked).
+   - Provide the CORRECT information based on the evidence.
+   - Example: "The claim is false because no credible news outlets reported this event. The viral post misrepresents an older video recorded in 2021."
+
+2. If the claim is TRUE or MOSTLY_TRUE:
+   - Explain WHY it is accurate (e.g., confirmed by multiple reliable sources).
+   - Provide additional helpful context.
+   - Example: "The claim is accurate. Multiple news outlets including Reuters and BBC reported this event. The incident occurred on March 3rd during a public rally."
+
+3. For MIXED or UNVERIFIED:
+   - State that the claim cannot be fully verified.
+   - Mention what parts are supported and what parts are contradictory or missing.
+
+Return:
+- verdict
+- credibility_score (0-100)
+- confidence_score (0.0-1.0)
+- explanation (user-friendly synthesis)
 """
 
 USER_TEMPLATE = """\
-Claim:
-{claim}
+Claim: {{claim}}
 
 Claim Analysis:
-{claim_analysis}
+{{claim_analysis}}
 
-Evidence Validation:
-{evidence_analysis}
+Evidence Evaluations:
+{{evidence_analysis}}
 
 Source Credibility:
-{source_analysis}
+{{source_analysis}}
 
 Temporal Consistency:
-{temporal_analysis}
+{{temporal_analysis}}
 
 Return ONLY valid JSON:
 {{
-  "verdict": "SUPPORTED | CONTRADICTED | UNVERIFIED",
+  "verdict": "TRUE | MOSTLY_TRUE | MIXED | MOSTLY_FALSE | FALSE | UNVERIFIED",
   "credibility_score": <int 0-100>,
-  "confidence": <float 0.0-1.0>,
-  "support_count": <int>,
-  "contradict_count": <int>,
-  "temporal_warning": "<string or null>",
-  "reasoning": "<detailed explanation referencing agent outputs>"
+  "confidence_score": <float 0.0-1.0>,
+  "explanation": "<concise paragraph synthesis>"
 }}
 """
 
-
+@retry(
+    stop=stop_after_attempt(3),
+    wait=wait_exponential(multiplier=1, min=2, max=10),
+    reraise=True,
+    retry_error_callback=lambda retry_state: logger.warning(f"[ConsensusAgent] Retrying LLM call: attempt {retry_state.attempt_number}")
+)
 async def synthesize_verdict(
     claim: str,
     claim_analysis: dict,
     evidence_analysis: dict,
     source_analysis: dict,
     temporal_analysis: dict,
+    request_id: str = "REQ-UNKNOWN"
 ) -> dict:
     """
-    Agent 5: Synthesize final verdict from all agent outputs.
-    Returns a dict compatible with the existing verification result schema.
+    Agent 5: Final synthesis of all inputs into a verdict and score.
+    Returns: verdict, credibility_score, explanation, confidence_score.
     """
     _fallback = {
         "verdict": "UNVERIFIED",
         "credibility_score": 50,
-        "confidence": 0.3,
-        "support_count": 0,
-        "contradict_count": 0,
-        "temporal_warning": None,
-        "reasoning": "Consensus agent unavailable.",
+        "explanation": "Synthesis failed.",
+        "confidence_score": 0.5
     }
-
-    import json as _json
-
-    def _safe_json(obj: dict) -> str:
-        try:
-            return _json.dumps(obj, indent=2)
-        except Exception:
-            return str(obj)
 
     try:
         client = get_async_azure_client()
@@ -102,10 +115,10 @@ async def synthesize_verdict(
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user",   "content": USER_TEMPLATE.format(
                     claim=claim,
-                    claim_analysis=_safe_json(claim_analysis),
-                    evidence_analysis=_safe_json(evidence_analysis),
-                    source_analysis=_safe_json(source_analysis),
-                    temporal_analysis=_safe_json(temporal_analysis),
+                    claim_analysis=json.dumps(claim_analysis, indent=2),
+                    evidence_analysis=json.dumps(evidence_analysis, indent=2),
+                    source_analysis=json.dumps(source_analysis, indent=2),
+                    temporal_analysis=json.dumps(temporal_analysis, indent=2),
                 )},
             ],
             temperature=0,
@@ -113,25 +126,8 @@ async def synthesize_verdict(
         )
         raw = response.choices[0].message.content.strip()
         result = extract_json(raw)
-
-        # Clamp numeric fields
-        result["confidence"]       = max(0.0, min(1.0, float(result.get("confidence", 0.5))))
-        result["credibility_score"] = max(0, min(100, int(result.get("credibility_score", 50))))
-
-        # Normalise verdict
-        verdict_map = {
-            "SUPPORTED": "SUPPORTED", "SUPPORT": "SUPPORTED", "TRUE": "SUPPORTED",
-            "CONTRADICTED": "CONTRADICTED", "CONTRADICT": "CONTRADICTED", "FALSE": "CONTRADICTED",
-        }
-        raw_verdict = str(result.get("verdict", "UNVERIFIED")).upper()
-        result["verdict"] = verdict_map.get(raw_verdict, "UNVERIFIED")
-
-        logger.info(
-            f"[ConsensusAgent] verdict={result['verdict']} "
-            f"score={result['credibility_score']} confidence={result['confidence']}"
-        )
+        logger.info(f"[{request_id}] [ConsensusAgent] Verdict: {result.get('verdict')} Score: {result.get('credibility_score')}")
         return result
-
     except Exception as exc:
-        logger.warning(f"[ConsensusAgent] Failed: {exc}")
+        logger.warning(f"[{request_id}] [ConsensusAgent] Failed: {exc}")
         return _fallback

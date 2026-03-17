@@ -5,6 +5,7 @@ logger = logging.getLogger(__name__)
 import nltk
 from nltk.tokenize import sent_tokenize
 from .semantic_ranker import rank_evidence
+from .evidence_filter import classify_evidence
 
 # Ensure punkt is downloaded lazily
 _punkt_downloaded = False
@@ -51,7 +52,9 @@ def align_evidence(claim: str, evidence_items: list, use_nli: bool = True) -> li
                 "trust_score": trust_score,
                 "source": source,
                 "domain": item.get("domain", "unknown"),
-                "timestamp": published_at
+                "timestamp": published_at,
+                "url": item.get("url", ""),
+                "title": item.get("title", "")
             })
 
     if not all_sentence_items:
@@ -85,7 +88,6 @@ def align_evidence(claim: str, evidence_items: list, use_nli: bool = True) -> li
             continue
             
         if use_nli:
-            from .evidence_filter import classify_evidence
             nli_result = classify_evidence(claim, rs["text"])
             rs["nli_label"] = nli_result["label"]
             rs["nli_score"] = nli_result["confidence"]

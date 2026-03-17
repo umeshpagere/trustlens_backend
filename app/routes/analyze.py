@@ -38,6 +38,7 @@ from app.services import job_registry
 from app.utils.text_utils import normalize_claim_text
 from app.services.claim_memory_service import find_similar_claim, store_claim_result
 from app.services.narrative_engine import process_narratives
+from app.services.response_builder import build_analysis_response
 
 import logging
 
@@ -46,11 +47,21 @@ logger = logging.getLogger(__name__)
 analyze_bp = Blueprint('analyze', __name__)
 
 VALID_VERDICTS = ["Highly Reliable", "Reliable", "Likely Reliable", "Questionable", "High Risk"]
+VERDICT_MAP = {v.lower(): v for v in VALID_VERDICTS}
 
 
 def normalize_verdict(verdict: Any) -> str:
-    if isinstance(verdict, str) and verdict in VALID_VERDICTS:
-        return verdict
+    if isinstance(verdict, str):
+        # Handle snake_case or SCREAMING_SNAKE_CASE from agents
+        normalized = verdict.replace("_", " ").lower()
+        if normalized in VERDICT_MAP:
+            return VERDICT_MAP[normalized]
+        # Map common variations
+        if "likely" in normalized and "reliable" in normalized:
+            return "Likely Reliable"
+        if "medium" in normalized or "risk" in normalized:
+            return "Questionable" if "medium" in normalized else "High Risk"
+            
     return "High Risk"
 
 
@@ -365,7 +376,7 @@ async def analyze():
                             print(f"🤖 Starting LLM video analysis against Multimodal String...")
                             llm_video_container = await asyncio.to_thread(
                                 analyze_video_with_llm,
-                                extraction_result["combinedVideoText"],
+                                extraction_result.get("combinedVideoText", ""),
                                 validated_data.videoUrl,
                                 validated_data.text or ""
                             )
@@ -389,7 +400,7 @@ async def analyze():
                                 "status": "processed",
                                 "platform": extraction_result.get("platform"),
                                 "credibilityScore": llm_video_result.get("credibilityScore", 50),
-                                "verdict": normalize_verdict(llm_video_result.get("verdict", "Medium Risk")),
+                                "verdict": normalize_verdict(llm_video_result.get("verdict", "Questionable")),
                                 "riskLevel": llm_video_result.get("riskLevel", "medium"),
                                 "explanation": llm_video_result.get("explanation", ""),
                                 "topicSummary": llm_video_result.get("topicSummary", ""),
@@ -398,6 +409,8 @@ async def analyze():
                                 "visualTextDetected": extraction_result.get("visualTextDetected", False),
                                 "ocrText": extraction_result.get("ocrText", []),
                                 "validatedClaims": video_claims,
+                                "aiDetection": extraction_result.get("aiDetection", {}),
+                                "contextDetection": extraction_result.get("contextDetection", {}),
                                 "llmAnalysis": {
                                     "riskKeywordsFound": llm_video_result.get("riskKeywordsFound", []),
                                     "claims": video_claims,
@@ -463,7 +476,7 @@ async def analyze():
 
             # --- Run pipeline only for cache misses ---
             if claims_to_verify:
-                pipeline_results = await run_evidence_pipeline(claims_to_verify)
+                pipeline_results = await run_evidence_pipeline(claims_to_verify, request_id=job_id)
             else:
                 pipeline_results = []
 
@@ -523,33 +536,108 @@ async def analyze():
         # Expose temporalAnalysis at the top level for convenience
         temporal_analysis = final_result.get("temporalAnalysis", {})
 
-        # ---- Source Analysis Block (Part-9) ----
-        from app.services.evidence_pipeline.source_registry import TIER1_SOURCES, TIER2_SOURCES, TIER3_SOURCES, FACTCHECK_DOMAINS
-        tier1_count = 0
-        tier2_count = 0
-        low_trust_count = 0
-        agreement_scores = []
-
-        for res in evidence_results:
-            verif = res.get("verification", {})
-            agreement_scores.append(verif.get("source_agreement", 0.0))
-            for doc in res.get("evidence", []):
-                domain = doc.get("domain", "unknown")
-                if domain in TIER1_SOURCES or domain in FACTCHECK_DOMAINS:
-                    tier1_count += 1
-                elif domain in TIER2_SOURCES:
-                    tier2_count += 1
-                elif domain not in {"unknown"}:
-                    low_trust_count += 1
-
-        source_analysis = {
-            "tier1_sources": tier1_count,
-            "tier2_sources": tier2_count,
-            "low_trust_sources": low_trust_count,
-            "agreement_score": round(sum(agreement_scores) / len(agreement_scores), 3) if agreement_scores else 0.0
-        }
+        # ------------------------------------------------------------------ #
+        # Step 5: Construct Unified Structured Response (Antigravity restructure)
+        # ------------------------------------------------------------------ #
         
-        # Build top-level narrative summary: pick the highest-risk cluster detected
+        # 1. Credibility Block
+        cred_res = {
+            "score":     final_result.get("credibility_score", 50),
+            "verdict":   final_result.get("verdict", "UNVERIFIED"),
+            "riskLevel": final_result.get("risk_level", "medium"),
+            "summary":   final_result.get("explanation", "")
+        }
+
+        # 2. Text Analysis Block
+        # Gather unique sources from all verified claims
+        ev_sources = []
+        seen_urls = set()
+        for res in evidence_results:
+            for doc in res.get("evidence", []):
+                url = doc.get("url", "")
+                if url and url not in seen_urls:
+                    seen_urls.add(url)
+                    ev_sources.append({
+                        "title":  doc.get("title", "Unknown Source"),
+                        "source": doc.get("source", doc.get("domain", "unknown")),
+                        "url":    url
+                    })
+
+        text_res = {
+            "score":               text_analysis.get("credibilityScore", 50),
+            "verdict":             text_analysis.get("verdict", "Unknown"),
+            "primaryClaim":        text_analysis.get("semantic", {}).get("primaryClaim", ""),
+            "analysis":            text_analysis.get("explanation", ""),
+            "claims":              evidence_results,
+            "evidenceSources":     ev_sources,
+            "detailedExplanation": final_result.get("explanation", "")
+        }
+
+        # 3. Media Analysis Block
+        # Prioritize video if present, then image
+        media_score = 50
+        media_verdict = "Unknown"
+        media_analysis_txt = ""
+        media_type = "text"
+        visual_desc = ""
+        media_verification = ""
+        
+        if validated_data.videoUrl and video_analysis.get("status") == "processed":
+            media_type = "video"
+            media_score = video_analysis.get("credibilityScore", 50)
+            media_verdict = video_analysis.get("verdict", "Medium Risk")
+            media_analysis_txt = video_analysis.get("explanation", "")
+            visual_desc = video_analysis.get("visualSummary", "")
+            media_verification = video_analysis.get("topicSummary", "")
+        elif validated_data.imageUrl and image_analysis.get("status") == "processed":
+            media_type = "image"
+            media_score = image_analysis.get("credibilityScore", 50)
+            media_verdict = image_analysis.get("verdict", "High Risk")
+            llm_ia = image_analysis.get("llmAnalysis", {})
+            media_analysis_txt = llm_ia.get("explanation", "")
+            visual_desc = llm_ia.get("imageContent", "")
+            media_verification = llm_ia.get("veracityCheck", "")
+
+        media_res = {
+            "score":             media_score,
+            "verdict":           media_verdict,
+            "analysis":          media_analysis_txt,
+            "mediaType":         media_type,
+            "visualDescription": visual_desc,
+            "verification":      media_verification,
+            "evidenceSources":   [] # Media specific sources if any
+        }
+
+        # 4. AI Probability Block
+        ai_score = 0
+        ai_verdict = "Unknown"
+        ai_analysis = ""
+        
+        if media_type == "video" and video_analysis.get("status") == "processed":
+            ai_det = video_analysis.get("aiDetection", {})
+            ai_score = int(ai_det.get("aiGeneratedProbability", 0) * 100)
+            ai_verdict = "High Risk" if ai_score > 70 else "Low Risk"
+            ai_analysis = ai_det.get("aiReasoning", "No AI artifacts detected.")
+        elif media_type == "image" and image_analysis.get("status") == "processed":
+            llm_ia = image_analysis.get("llmAnalysis", {})
+            ai_score = int(llm_ia.get("aiGeneratedProbability", 0) * 100)
+            ai_verdict = normalize_verdict(llm_ia.get("verdict", "Reliable"))
+            ai_analysis = llm_ia.get("aiReasoning", "No AI artifacts detected.")
+
+        ai_res = {
+            "score":    ai_score,
+            "verdict":  ai_verdict,
+            "analysis": ai_analysis
+        }
+
+        # 5. Metadata Block
+        meta_res = {
+            "processingTimeMs": elapsed,
+            "claimsAnalyzed":   len(deduped_claims),
+            "sourcesUsed":      len(seen_urls)
+        }
+
+        # 6. Narrative Analysis (Derived for synthesis)
         _populated = [s for s in narrative_summaries if s]
         _campaign_clusters  = [s for s in _populated if s.get("campaign_detected")]
         _high_risk_clusters = [s for s in _populated if s.get("risk_level") == "HIGH"]
@@ -560,23 +648,18 @@ async def analyze():
             else {}
         )
 
-        response_data = {
-            "success":        True,
-            "textAnalysis":   text_analysis,
-            "imageAnalysis":  image_analysis,
-            "videoAnalysis":  video_analysis,
-            "claimsVerified": [{"claim": r["claim"], "source": r["source"], "verdict": r["verification"].get("verdict")} for r in evidence_results],
-            "evidence":       evidence_results,
-            "finalResult":    final_result,
-            "temporalAnalysis": temporal_analysis,
-            "sourceAnalysis": source_analysis,
-            "narrativeAnalysis": {
-                "summary":          _top_narrative,
-                "claim_narratives": narrative_summaries,
-                "clusters_detected": len({s.get("cluster_id") for s in _populated if s.get("cluster_id")}),
-                "campaign_detected": bool(_campaign_clusters),
-            },
-            "processingMs":   elapsed,
+        # Build final unified response
+        response_data = build_analysis_response(
+            cred_res, text_res, media_res, ai_res, meta_res
+        )
+
+        # Preserve additional useful fields for debug/compatibility
+        response_data["temporalAnalysis"] = temporal_analysis
+        response_data["narrativeAnalysis"] = {
+            "summary":          _top_narrative,
+            "claim_narratives": narrative_summaries,
+            "clusters_detected": len({s.get("cluster_id") for s in _populated if s.get("cluster_id")}),
+            "campaign_detected": bool(_campaign_clusters),
         }
 
         # Store the complete results for future identical requests

@@ -26,25 +26,19 @@ async def verify_claim_credibility(
     source_names: list = None,
     domain_names: list = None,
     nli_labels: list = None,
-    timestamps: list = None,          # Fix-2: per-sentence publish timestamps
+    timestamps: list = None,
     claim_temporal_signal: str = None,
     claim_date: str = None,
+    claim_meta: dict = None,   # pre-computed by pipeline; skips a redundant LLM call
+    request_id: str = "REQ-UNKNOWN",
 ) -> dict:
     """
     Entry point called by pipeline.py.
-
-    Delegates to the multi-agent orchestrator.  Timestamps are extracted
-    from evidence_sentences metadata where possible; the pipeline passes
-    them explicitly via the 'timestamps' parameter in the orchestrator
-    but pipeline.py currently uses domain_names for that list — so we
-    keep the signature unchanged and let the orchestrator default timestamps
-    to None (neutral recency).
-
-    If you want to pass per-sentence timestamps in the future, add a
-    'timestamps' parameter here and forward it.
+    Delegates to the multi-agent orchestrator.  When claim_meta is provided
+    the orchestrator skips Phase A (analyze_claim) and uses it directly.
     """
     logger.info(
-        f"[VerificationEngine] Delegating to multi-agent orchestrator. "
+        f"[{request_id}] Delegating to multi-agent orchestrator. "
         f"claim='{claim[:60]}' evidence_count={len(evidence_sentences)}"
     )
 
@@ -54,9 +48,11 @@ async def verify_claim_credibility(
         source_names=source_names,
         domain_names=domain_names,
         nli_labels=nli_labels,
-        timestamps=timestamps,         # Fix-2: now forwarded from pipeline.py
+        timestamps=timestamps,
         claim_temporal_signal=claim_temporal_signal,
         claim_date=claim_date,
+        claim_meta=claim_meta,
+        request_id=request_id,
     )
 
     return result

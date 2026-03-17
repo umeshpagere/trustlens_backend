@@ -9,8 +9,59 @@ Provides:
 import json
 import re
 import logging
+import asyncio
+import time
+from typing import Dict, Any, Optional
 
 logger = logging.getLogger(__name__)
+
+# ---------------------------------------------------------------------------
+# Simple Async Memory Cache (In-Memory)
+# ---------------------------------------------------------------------------
+class AsyncCache:
+    """
+    Thread-safe in-memory async cache with TTL expiry and oldest-first eviction.
+
+    Parameters
+    ----------
+    max_size : int
+        Maximum number of entries before the oldest is evicted.
+    ttl_seconds : float
+        How long (in seconds) an entry is considered fresh. A ``get()`` call
+        for an expired entry will delete it and return ``None``.
+    """
+
+    def __init__(self, max_size: int = 100, ttl_seconds: float = 300):
+        self._cache: Dict[str, Any] = {}
+        self._timestamps: Dict[str, float] = {}
+        self._lock = asyncio.Lock()
+        self._max_size = max_size
+        self._ttl = ttl_seconds
+
+    async def get(self, key: str) -> Optional[Any]:
+        async with self._lock:
+            if key not in self._cache:
+                return None
+            if time.monotonic() - self._timestamps[key] > self._ttl:
+                # Entry has expired — delete and treat as a miss
+                del self._cache[key]
+                del self._timestamps[key]
+                return None
+            return self._cache[key]
+
+    async def set(self, key: str, value: Any):
+        async with self._lock:
+            if len(self._cache) >= self._max_size:
+                # Evict the entry with the oldest insertion timestamp
+                oldest_key = min(self._timestamps, key=lambda k: self._timestamps[k])
+                del self._cache[oldest_key]
+                del self._timestamps[oldest_key]
+            self._cache[key] = value
+            self._timestamps[key] = time.monotonic()
+
+
+# Global cache instance for claim analysis (5-minute TTL)
+CLAIM_ANALYSIS_CACHE = AsyncCache(max_size=200, ttl_seconds=300)
 
 # ---------------------------------------------------------------------------
 # Global safety block injected at the top of every agent system prompt

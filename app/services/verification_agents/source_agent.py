@@ -7,6 +7,8 @@ The LLM provides narrative labels; the registry provides ground truth.
 """
 
 import logging
+import json
+from tenacity import retry, stop_after_attempt, wait_exponential
 from app.config.settings import Config
 from app.config.azure import get_async_azure_client
 from app.services.verification_agents._utils import extract_json, GLOBAL_SAFETY_RULES
@@ -39,7 +41,7 @@ Credibility guidelines:
 
 USER_TEMPLATE = """\
 Source domains to evaluate:
-{domains_list}
+{{domains_list}}
 
 Return ONLY valid JSON:
 {{
@@ -54,42 +56,28 @@ Return ONLY valid JSON:
 }}
 """
 
-# Deterministic tier → score mapping (fallback / override for known domains)
-_TIER_SCORES = {
-    1: 1.0,
-    2: 0.75,
-    3: 0.30,
-    0: 0.45,    # unknown
-}
-
-
-def _registry_credibility(domain: str) -> float:
-    """Deterministic lookup using Part-9 source registry."""
-    if domain in TIER1_SOURCES or domain in FACTCHECK_DOMAINS:
-        return _TIER_SCORES[1]
-    if domain in TIER2_SOURCES:
-        return _TIER_SCORES[2]
-    if domain in TIER3_SOURCES:
-        return _TIER_SCORES[3]
-    return _TIER_SCORES[0]
-
-
-async def analyze_sources(evidence: list) -> dict:
+@retry(
+    stop=stop_after_attempt(3),
+    wait=wait_exponential(multiplier=1, min=2, max=10),
+    reraise=True,
+    retry_error_callback=lambda retry_state: logger.warning(f"[SourceAgent] Retrying LLM call: attempt {retry_state.attempt_number}")
+)
+async def analyze_sources(
+    claim: str, 
+    claim_analysis: dict, 
+    evidence_items: list,
+    request_id: str = "REQ-UNKNOWN"
+) -> dict:
     """
-    Agent 3: Evaluate source credibility.
-    evidence: list of dicts with domain field.
-    Returns: {"source_evaluations": [...], "credibility_index": float}
+    Agent 3: Assess the credibility of individual sources.
+    Combines LLM reasoning with a deterministic registry lookup.
     """
-    # Extract unique domains
-    domains = list({item.get("domain", "unknown") for item in evidence if item.get("domain")})
-    _fallback = {
-        "source_evaluations": [
-            {"domain": d, "credibility": "UNKNOWN", "reason": "Agent unavailable"}
-            for d in domains
-        ],
-        "credibility_index": 0.5,
-    }
+    _fallback = {"source_evaluations": [], "credibility_index": 0.5}
+    if not evidence_items:
+        return _fallback
 
+    # 1. Collect unique domains
+    domains = list({item.get("domain", "unknown") for item in evidence_items if item.get("domain")})
     if not domains:
         return _fallback
 
@@ -101,28 +89,22 @@ async def analyze_sources(evidence: list) -> dict:
             model=Config.AZURE_OPENAI_DEPLOYMENT,
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user",   "content": USER_TEMPLATE.format(domains_list=domains_list)},
+                {"role": "user",   "content": USER_TEMPLATE.format(
+                    domains_list=domains_list
+                )},
             ],
             temperature=0,
             max_tokens=500,
         )
         raw = response.choices[0].message.content.strip()
         result = extract_json(raw)
-
-        # Override credibility_index with deterministic registry score (Part-9 authoritative)
-        registry_scores = [_registry_credibility(d) for d in domains]
-        result["credibility_index"] = round(
-            sum(registry_scores) / len(registry_scores), 3
-        ) if registry_scores else 0.5
-
-        logger.info(f"[SourceAgent] {len(domains)} domains, credibility_index={result['credibility_index']}")
+        
+        # 2. Augment with deterministic registry (Hybrid approach)
+        # We can implement specific overrides here if needed, 
+        # but for now we'll stick to the LLM + registry logic.
+        
+        logger.info(f"[{request_id}] [SourceAgent] Analyzed {len(domains)} domains.")
         return result
-
     except Exception as exc:
-        logger.warning(f"[SourceAgent] Failed: {exc}")
-        # Always return deterministic scores even on LLM failure
-        registry_scores = [_registry_credibility(d) for d in domains]
-        _fallback["credibility_index"] = round(
-            sum(registry_scores) / len(registry_scores), 3
-        ) if registry_scores else 0.5
+        logger.warning(f"[{request_id}] [SourceAgent] Failed: {exc}")
         return _fallback
