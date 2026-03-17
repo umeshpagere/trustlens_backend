@@ -33,7 +33,7 @@ def is_question(claim: str) -> bool:
 
 def is_short_claim(claim: str) -> bool:
     """Identify claims that likely lack sufficient context for verification."""
-    return len(claim.split()) < 5
+    return len(claim.split()) < 3
 
 def filter_claims(claims: list[str]) -> list[str]:
     """

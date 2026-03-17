@@ -1,0 +1,207 @@
+{
+    "timestamp": "2026-03-16T19:53:44.978204",
+    "dataset_size": 1,
+    "retrieval_metrics": {
+        "recall_at_k": 0.0,
+        "precision_at_k": 0.0,
+        "source_diversity": 0.0,
+        "planner_efficiency": 5.0
+    },
+    "agent_metrics": {
+        "claim_agent_accuracy": 0.16563180088996887,
+        "verdict_stability": 1.0
+    },
+    "system_metrics": {
+        "verdict_accuracy": 0.0,
+        "credibility_calibration_error": 0.0,
+        "confidence_calibration_error": 0.0
+    },
+    "narrative_metrics": {
+        "cluster_coherence": 0.85,
+        "campaign_detection_accuracy": 0.9
+    },
+    "detailed_results": [
+        {
+            "sample_id": 1,
+            "success": true,
+            "evaluation_trace": {
+                "claim_agent": {
+                    "entities": [
+                        "India",
+                        "Chandrayaan-3",
+                        "Moon\u2019s south pole"
+                    ],
+                    "event_type": "scientific",
+                    "temporal_signal": "UNKNOWN",
+                    "explicit_date": "UNKNOWN",
+                    "claim_complexity": "SIMPLE",
+                    "expected_evidence_types": [
+                        "news",
+                        "fact_check",
+                        "government",
+                        "academic"
+                    ]
+                },
+                "planner": {
+                    "sources": [
+                        "news_api",
+                        "rss_feeds",
+                        "factcheck_api"
+                    ],
+                    "max_queries": 5,
+                    "retrieval_depth": "medium",
+                    "priority_entities": [
+                        "Chandrayaan-3",
+                        "India",
+                        "Moon\u2019s south pole"
+                    ],
+                    "target_documents": 30
+                },
+                "retrieval": [
+                    {
+                        "score": 0.6429436922073364,
+                        "semantic_score": 0.6358873844146729,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: Video shows a glimpse of Chandrayaan 3 captured by NASA.",
+                        "source": "BOOM Fact Check",
+                        "domain": "boomlive.in",
+                        "timestamp": "2023-08-24T13:21:30Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.6178634881973266,
+                        "semantic_score": 0.5857269763946533,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: NASA released footage of CHandrayaan landing on moon; Ashoka Stambh will be imprinted on lunar surface",
+                        "source": "Alt News",
+                        "domain": "altnews.in",
+                        "timestamp": "2016-06-20T00:00:00Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "alignment": [
+                    {
+                        "score": 0.6429436922073364,
+                        "semantic_score": 0.6358873844146729,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: Video shows a glimpse of Chandrayaan 3 captured by NASA.",
+                        "source": "BOOM Fact Check",
+                        "domain": "boomlive.in",
+                        "timestamp": "2023-08-24T13:21:30Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.6178634881973266,
+                        "semantic_score": 0.5857269763946533,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: NASA released footage of CHandrayaan landing on moon; Ashoka Stambh will be imprinted on lunar surface",
+                        "source": "Alt News",
+                        "domain": "altnews.in",
+                        "timestamp": "2016-06-20T00:00:00Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "evidence_agent": {
+                    "evaluations": [
+                        {
+                            "evidence_id": 1,
+                            "relation": "NEUTRAL",
+                            "confidence": 0.9,
+                            "reason": "The evidence mentions a video of Chandrayaan 3 captured by NASA but does not confirm the success or location of the landing."
+                        },
+                        {
+                            "evidence_id": 2,
+                            "relation": "NEUTRAL",
+                            "confidence": 0.9,
+                            "reason": "The evidence refers to NASA footage of the Chandrayaan landing and an Ashoka Stambh imprint but does not explicitly confirm a successful landing near the Moon's south pole."
+                        }
+                    ]
+                },
+                "source_agent": {
+                    "source_evaluations": [
+                        {
+                            "domain": "boomlive.in",
+                            "credibility": "MEDIUM",
+                            "reason": "Boomlive.in is known as a fact-checking website that addresses misinformation, indicating a level of reliability but not as established as major news wires."
+                        },
+                        {
+                            "domain": "altnews.in",
+                            "credibility": "MEDIUM",
+                            "reason": "Altnews.in is a recognized fact-checking platform in India, suggesting moderate credibility though not at the level of global news agencies."
+                        }
+                    ],
+                    "credibility_index": 1.0
+                },
+                "temporal_agent": {
+                    "temporal_assessment": [
+                        {
+                            "evidence_id": 1,
+                            "classification": "RECENT",
+                            "evidence_date": "2023-08-24T13:21:30Z",
+                            "reason": "The evidence is recent and likely consistent with the claim about Chandrayaan-3 landing near the Moon\u2019s south pole."
+                        },
+                        {
+                            "evidence_id": 2,
+                            "classification": "OUTDATED",
+                            "evidence_date": "2016-06-20T00:00:00Z",
+                            "reason": "The evidence predates Chandrayaan-3 and refers to an earlier Chandrayaan mission, so it may no longer support the claim."
+                        }
+                    ],
+                    "temporal_consistency_score": 0.5
+                },
+                "consensus_agent": "The evidence provided is neutral and does not explicitly confirm the claim that India successfully landed Chandrayaan-3 near the Moon's south pole. Both pieces of evidence mention related content (NASA footage and Ashoka Stambh imprint) but do not confirm the success or exact location of the landing. The source credibility is medium, and the temporal consistency score is moderate (0.5), indicating no strong temporal issues. Given the lack of supporting evidence and no contradictions, the claim remains unverified.",
+                "final_verdict": "UNVERIFIED",
+                "credibility": 60,
+                "confidence": 0.45
+            },
+            "metrics": {
+                "recall_at_k": 0.0,
+                "precision_at_k": 0.0,
+                "source_diversity": 0.0,
+                "planner_efficiency": 5.0,
+                "claim_structure_accuracy": 0.16563180088996887,
+                "entity_extraction_accuracy": 0.0,
+                "verdict_correct": false,
+                "score_correct": false,
+                "score_error_distance": 20.0,
+                "stability_score": 1.0
+            },
+            "raw": {
+                "extracted_claims": [
+                    "India successfully landed Chandrayaan-3 near the Moon\u2019s south pole."
+                ],
+                "evidence": [
+                    {
+                        "score": 0.6429436922073364,
+                        "semantic_score": 0.6358873844146729,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: Video shows a glimpse of Chandrayaan 3 captured by NASA.",
+                        "source": "BOOM Fact Check",
+                        "domain": "boomlive.in",
+                        "timestamp": "2023-08-24T13:21:30Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.6178634881973266,
+                        "semantic_score": 0.5857269763946533,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: NASA released footage of CHandrayaan landing on moon; Ashoka Stambh will be imprinted on lunar surface",
+                        "source": "Alt News",
+                        "domain": "altnews.in",
+                        "timestamp": "2016-06-20T00:00:00Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "score": 60,
+                "explanation": "The evidence provided is neutral and does not explicitly confirm the claim that India successfully landed Chandrayaan-3 near the Moon's south pole. Both pieces of evidence mention related content (NASA footage and Ashoka Stambh imprint) but do not confirm the success or exact location of the landing. The source credibility is medium, and the temporal consistency score is moderate (0.5), indicating no strong temporal issues. Given the lack of supporting evidence and no contradictions, the claim remains unverified."
+            }
+        }
+    ]
+}

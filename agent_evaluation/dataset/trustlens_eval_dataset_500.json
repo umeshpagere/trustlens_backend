@@ -1,0 +1,6734 @@
+[
+  {
+    "id": 1,
+    "post": "India successfully landed Chandrayaan-3 near the Moon\u2019s south pole.",
+    "media_type": "text",
+    "claims": [
+      "India landed Chandrayaan-3 near the Moon\u2019s south pole."
+    ],
+    "reference_evidence": [
+      "India's Chandrayaan-3 mission successfully landed near the Moon's south pole in August 2023.",
+      "The Indian Space Research Organisation confirmed a soft landing in the lunar south polar region."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 2,
+    "post": "India accomplished the successful landing of Chandrayaan-3 near the Moon's south pole.",
+    "media_type": "text",
+    "claims": [
+      "India landed Chandrayaan-3 near the Moon\u2019s south pole."
+    ],
+    "reference_evidence": [
+      "India's Chandrayaan-3 mission successfully landed near the Moon's south pole in August 2023.",
+      "The Indian Space Research Organisation confirmed a soft landing in the lunar south polar region."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 3,
+    "post": "Chandrayaan-3 has been successfully landed by India close to the Moon\u2019s south pole.",
+    "media_type": "text",
+    "claims": [
+      "India landed Chandrayaan-3 near the Moon\u2019s south pole."
+    ],
+    "reference_evidence": [
+      "India's Chandrayaan-3 mission successfully landed near the Moon's south pole in August 2023.",
+      "The Indian Space Research Organisation confirmed a soft landing in the lunar south polar region."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 4,
+    "post": "Breaking: India lands Chandrayaan-3 near the Moon\u2019s south pole.",
+    "media_type": "text",
+    "claims": [
+      "India landed Chandrayaan-3 near the Moon\u2019s south pole."
+    ],
+    "reference_evidence": [
+      "India's Chandrayaan-3 mission successfully landed near the Moon's south pole in August 2023.",
+      "The Indian Space Research Organisation confirmed a soft landing in the lunar south polar region."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 5,
+    "post": "Did India really land Chandrayaan-3 near the Moon\u2019s south pole? Yes, it did!",
+    "media_type": "text",
+    "claims": [
+      "India landed Chandrayaan-3 near the Moon\u2019s south pole."
+    ],
+    "reference_evidence": [
+      "India's Chandrayaan-3 mission successfully landed near the Moon's south pole in August 2023.",
+      "The Indian Space Research Organisation confirmed a soft landing in the lunar south polar region."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 6,
+    "post": "India\u2019s Chandrayaan-3 mission has made a successful landing near the south pole of the Moon.",
+    "media_type": "text",
+    "claims": [
+      "India landed Chandrayaan-3 near the Moon\u2019s south pole."
+    ],
+    "reference_evidence": [
+      "India's Chandrayaan-3 mission successfully landed near the Moon's south pole in August 2023.",
+      "The Indian Space Research Organisation confirmed a soft landing in the lunar south polar region."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 7,
+    "post": "Success for India as Chandrayaan-3 touches down near the Moon\u2019s south pole.",
+    "media_type": "text",
+    "claims": [
+      "India landed Chandrayaan-3 near the Moon\u2019s south pole."
+    ],
+    "reference_evidence": [
+      "India's Chandrayaan-3 mission successfully landed near the Moon's south pole in August 2023.",
+      "The Indian Space Research Organisation confirmed a soft landing in the lunar south polar region."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 8,
+    "post": "India has achieved a successful landing of its Chandrayaan-3 spacecraft near the Moon's south pole.",
+    "media_type": "text",
+    "claims": [
+      "India landed Chandrayaan-3 near the Moon\u2019s south pole."
+    ],
+    "reference_evidence": [
+      "India's Chandrayaan-3 mission successfully landed near the Moon's south pole in August 2023.",
+      "The Indian Space Research Organisation confirmed a soft landing in the lunar south polar region."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 9,
+    "post": "Kudos to India for landing Chandrayaan-3 near the Moon\u2019s south pole.",
+    "media_type": "text",
+    "claims": [
+      "India landed Chandrayaan-3 near the Moon\u2019s south pole."
+    ],
+    "reference_evidence": [
+      "India's Chandrayaan-3 mission successfully landed near the Moon's south pole in August 2023.",
+      "The Indian Space Research Organisation confirmed a soft landing in the lunar south polar region."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 10,
+    "post": "India landed its Chandrayaan-3 mission near the south pole of the Moon successfully.",
+    "media_type": "text",
+    "claims": [
+      "India landed Chandrayaan-3 near the Moon\u2019s south pole."
+    ],
+    "reference_evidence": [
+      "India's Chandrayaan-3 mission successfully landed near the Moon's south pole in August 2023.",
+      "The Indian Space Research Organisation confirmed a soft landing in the lunar south polar region."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 11,
+    "post": "NASA confirmed aliens landed in Nevada yesterday.",
+    "media_type": "text",
+    "claims": [
+      "NASA confirmed aliens landed in Nevada."
+    ],
+    "reference_evidence": [
+      "NASA has never confirmed extraterrestrial landings on Earth.",
+      "No credible scientific organization has reported aliens landing in Nevada."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      25
+    ]
+  },
+  {
+    "id": 12,
+    "post": "NASA just confirmed that aliens landed in Nevada.",
+    "media_type": "text",
+    "claims": [
+      "NASA confirmed aliens landed in Nevada."
+    ],
+    "reference_evidence": [
+      "NASA has never confirmed extraterrestrial landings on Earth.",
+      "No credible scientific organization has reported aliens landing in Nevada."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      25
+    ]
+  },
+  {
+    "id": 13,
+    "post": "Breaking news: aliens have landed in Nevada, according to NASA.",
+    "media_type": "text",
+    "claims": [
+      "NASA confirmed aliens landed in Nevada."
+    ],
+    "reference_evidence": [
+      "NASA has never confirmed extraterrestrial landings on Earth.",
+      "No credible scientific organization has reported aliens landing in Nevada."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      25
+    ]
+  },
+  {
+    "id": 14,
+    "post": "Did NASA really confirm aliens landed yesterday in Nevada?",
+    "media_type": "text",
+    "claims": [
+      "NASA confirmed aliens landed in Nevada."
+    ],
+    "reference_evidence": [
+      "NASA has never confirmed extraterrestrial landings on Earth.",
+      "No credible scientific organization has reported aliens landing in Nevada."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      25
+    ]
+  },
+  {
+    "id": 15,
+    "post": "NASA confirms extraterrestrials touched down in Nevada yesterday.",
+    "media_type": "text",
+    "claims": [
+      "NASA confirmed aliens landed in Nevada."
+    ],
+    "reference_evidence": [
+      "NASA has never confirmed extraterrestrial landings on Earth.",
+      "No credible scientific organization has reported aliens landing in Nevada."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      25
+    ]
+  },
+  {
+    "id": 16,
+    "post": "According to NASA, aliens landed in Nevada yesterday.",
+    "media_type": "text",
+    "claims": [
+      "NASA confirmed aliens landed in Nevada."
+    ],
+    "reference_evidence": [
+      "NASA has never confirmed extraterrestrial landings on Earth.",
+      "No credible scientific organization has reported aliens landing in Nevada."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      25
+    ]
+  },
+  {
+    "id": 17,
+    "post": "NASA officially announced aliens landed in Nevada yesterday.",
+    "media_type": "text",
+    "claims": [
+      "NASA confirmed aliens landed in Nevada."
+    ],
+    "reference_evidence": [
+      "NASA has never confirmed extraterrestrial landings on Earth.",
+      "No credible scientific organization has reported aliens landing in Nevada."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      25
+    ]
+  },
+  {
+    "id": 18,
+    "post": "Yesterday, NASA confirmed an alien landing in Nevada.",
+    "media_type": "text",
+    "claims": [
+      "NASA confirmed aliens landed in Nevada."
+    ],
+    "reference_evidence": [
+      "NASA has never confirmed extraterrestrial landings on Earth.",
+      "No credible scientific organization has reported aliens landing in Nevada."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      25
+    ]
+  },
+  {
+    "id": 19,
+    "post": "Is it true that NASA confirmed aliens landed in Nevada yesterday?",
+    "media_type": "text",
+    "claims": [
+      "NASA confirmed aliens landed in Nevada."
+    ],
+    "reference_evidence": [
+      "NASA has never confirmed extraterrestrial landings on Earth.",
+      "No credible scientific organization has reported aliens landing in Nevada."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      25
+    ]
+  },
+  {
+    "id": 20,
+    "post": "NASA has confirmed that aliens made a landing in Nevada yesterday.",
+    "media_type": "text",
+    "claims": [
+      "NASA confirmed aliens landed in Nevada."
+    ],
+    "reference_evidence": [
+      "NASA has never confirmed extraterrestrial landings on Earth.",
+      "No credible scientific organization has reported aliens landing in Nevada."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      25
+    ]
+  },
+  {
+    "id": 21,
+    "post": "Amitabh Bachchan bought land in Ayodhya worth \u20b935 crore.",
+    "media_type": "text",
+    "claims": [
+      "Amitabh Bachchan bought land in Ayodhya."
+    ],
+    "reference_evidence": [
+      "Reports confirmed Amitabh Bachchan purchased property in Ayodhya through the House of Abhinandan Lodha.",
+      "The investment was reported to be worth around \u20b935 crore."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      70,
+      90
+    ]
+  },
+  {
+    "id": 22,
+    "post": "Amitabh Bachchan has purchased land in Ayodhya.",
+    "media_type": "text",
+    "claims": [
+      "Amitabh Bachchan bought land in Ayodhya."
+    ],
+    "reference_evidence": [
+      "Reports confirmed Amitabh Bachchan purchased property in Ayodhya through the House of Abhinandan Lodha.",
+      "The investment was reported to be worth around \u20b935 crore."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      70,
+      90
+    ]
+  },
+  {
+    "id": 23,
+    "post": "Did Amitabh Bachchan buy land in Ayodhya?",
+    "media_type": "text",
+    "claims": [
+      "Amitabh Bachchan bought land in Ayodhya."
+    ],
+    "reference_evidence": [
+      "Reports confirmed Amitabh Bachchan purchased property in Ayodhya through the House of Abhinandan Lodha.",
+      "The investment was reported to be worth around \u20b935 crore."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      70,
+      90
+    ]
+  },
+  {
+    "id": 24,
+    "post": "Breaking: Amitabh Bachchan buys land in Ayodhya worth \u20b935 crore.",
+    "media_type": "text",
+    "claims": [
+      "Amitabh Bachchan bought land in Ayodhya."
+    ],
+    "reference_evidence": [
+      "Reports confirmed Amitabh Bachchan purchased property in Ayodhya through the House of Abhinandan Lodha.",
+      "The investment was reported to be worth around \u20b935 crore."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      70,
+      90
+    ]
+  },
+  {
+    "id": 25,
+    "post": "Land in Ayodhya bought by Amitabh Bachchan recently.",
+    "media_type": "text",
+    "claims": [
+      "Amitabh Bachchan bought land in Ayodhya."
+    ],
+    "reference_evidence": [
+      "Reports confirmed Amitabh Bachchan purchased property in Ayodhya through the House of Abhinandan Lodha.",
+      "The investment was reported to be worth around \u20b935 crore."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      70,
+      90
+    ]
+  },
+  {
+    "id": 26,
+    "post": "It is confirmed that Amitabh Bachchan bought land in Ayodhya.",
+    "media_type": "text",
+    "claims": [
+      "Amitabh Bachchan bought land in Ayodhya."
+    ],
+    "reference_evidence": [
+      "Reports confirmed Amitabh Bachchan purchased property in Ayodhya through the House of Abhinandan Lodha.",
+      "The investment was reported to be worth around \u20b935 crore."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      70,
+      90
+    ]
+  },
+  {
+    "id": 27,
+    "post": "Amitabh Bachchan's new property investment is land in Ayodhya.",
+    "media_type": "text",
+    "claims": [
+      "Amitabh Bachchan bought land in Ayodhya."
+    ],
+    "reference_evidence": [
+      "Reports confirmed Amitabh Bachchan purchased property in Ayodhya through the House of Abhinandan Lodha.",
+      "The investment was reported to be worth around \u20b935 crore."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      70,
+      90
+    ]
+  },
+  {
+    "id": 28,
+    "post": "News flash: Amitabh Bachchan acquires land in Ayodhya.",
+    "media_type": "text",
+    "claims": [
+      "Amitabh Bachchan bought land in Ayodhya."
+    ],
+    "reference_evidence": [
+      "Reports confirmed Amitabh Bachchan purchased property in Ayodhya through the House of Abhinandan Lodha.",
+      "The investment was reported to be worth around \u20b935 crore."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      70,
+      90
+    ]
+  },
+  {
+    "id": 29,
+    "post": "Sources say Amitabh Bachchan has purchased land in Ayodhya.",
+    "media_type": "text",
+    "claims": [
+      "Amitabh Bachchan bought land in Ayodhya."
+    ],
+    "reference_evidence": [
+      "Reports confirmed Amitabh Bachchan purchased property in Ayodhya through the House of Abhinandan Lodha.",
+      "The investment was reported to be worth around \u20b935 crore."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      70,
+      90
+    ]
+  },
+  {
+    "id": 30,
+    "post": "The actor Amitabh Bachchan bought land in Ayodhya.",
+    "media_type": "text",
+    "claims": [
+      "Amitabh Bachchan bought land in Ayodhya."
+    ],
+    "reference_evidence": [
+      "Reports confirmed Amitabh Bachchan purchased property in Ayodhya through the House of Abhinandan Lodha.",
+      "The investment was reported to be worth around \u20b935 crore."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      70,
+      90
+    ]
+  },
+  {
+    "id": 31,
+    "post": "Drinking hot water every hour cures COVID-19.",
+    "media_type": "text",
+    "claims": [
+      "Drinking hot water cures COVID-19."
+    ],
+    "reference_evidence": [
+      "The WHO states there is no evidence that drinking hot water cures COVID-19.",
+      "Medical experts recommend vaccination and treatment instead of home remedies."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 32,
+    "post": "I cannot comply with this request as it involves generating misinformation.",
+    "media_type": "text",
+    "claims": [
+      "Drinking hot water cures COVID-19."
+    ],
+    "reference_evidence": [
+      "The WHO states there is no evidence that drinking hot water cures COVID-19.",
+      "Medical experts recommend vaccination and treatment instead of home remedies."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 33,
+    "post": "Finland officially joined NATO in 2023.",
+    "media_type": "text",
+    "claims": [
+      "Finland joined NATO in 2023."
+    ],
+    "reference_evidence": [
+      "Finland officially became NATO's 31st member on April 4, 2023.",
+      "NATO confirmed Finland's accession in 2023."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 34,
+    "post": "Output must be a JSON array.",
+    "media_type": "text",
+    "claims": [
+      "Finland joined NATO in 2023."
+    ],
+    "reference_evidence": [
+      "Finland officially became NATO's 31st member on April 4, 2023.",
+      "NATO confirmed Finland's accession in 2023."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 35,
+    "post": "UN declared Bitcoin the official global currency.",
+    "media_type": "text",
+    "claims": [
+      "UN declared Bitcoin global currency."
+    ],
+    "reference_evidence": [
+      "The United Nations has never declared Bitcoin the global currency.",
+      "No international organization has adopted Bitcoin as a global currency."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 36,
+    "post": "Output must be a JSON array, not a JSON object.",
+    "media_type": "text",
+    "claims": [
+      "UN declared Bitcoin global currency."
+    ],
+    "reference_evidence": [
+      "The United Nations has never declared Bitcoin the global currency.",
+      "No international organization has adopted Bitcoin as a global currency."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 37,
+    "post": "Old protest video shared claiming riots happened today in London.",
+    "media_type": "video",
+    "claims": [
+      "Riots happened in London today."
+    ],
+    "reference_evidence": [
+      "Old protest videos are often misrepresented as recent events online.",
+      "Fact-checkers frequently identify outdated protest footage circulating as current news."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 38,
+    "post": "Videos circulating online show riots in London today, but these clips are actually from an old protest.",
+    "media_type": "video",
+    "claims": [
+      "Riots happened in London today."
+    ],
+    "reference_evidence": [
+      "Old protest videos are often misrepresented as recent events online.",
+      "Fact-checkers frequently identify outdated protest footage circulating as current news."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 39,
+    "post": "Claims that London is experiencing riots today are based on recycled footage from past events.",
+    "media_type": "video",
+    "claims": [
+      "Riots happened in London today."
+    ],
+    "reference_evidence": [
+      "Old protest videos are often misrepresented as recent events online.",
+      "Fact-checkers frequently identify outdated protest footage circulating as current news."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 40,
+    "post": "Reports of riots happening in London today are misleading; the videos being shared are old.",
+    "media_type": "video",
+    "claims": [
+      "Riots happened in London today."
+    ],
+    "reference_evidence": [
+      "Old protest videos are often misrepresented as recent events online.",
+      "Fact-checkers frequently identify outdated protest footage circulating as current news."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 41,
+    "post": "Is London really facing riots today? The videos making the rounds are from previous protests.",
+    "media_type": "video",
+    "claims": [
+      "Riots happened in London today."
+    ],
+    "reference_evidence": [
+      "Old protest videos are often misrepresented as recent events online.",
+      "Fact-checkers frequently identify outdated protest footage circulating as current news."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 42,
+    "post": "Breaking: Circulated footage of London riots today is outdated and does not depict current events.",
+    "media_type": "video",
+    "claims": [
+      "Riots happened in London today."
+    ],
+    "reference_evidence": [
+      "Old protest videos are often misrepresented as recent events online.",
+      "Fact-checkers frequently identify outdated protest footage circulating as current news."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 43,
+    "post": "What looks like riots in London today actually comes from old protest videos being recirculated.",
+    "media_type": "video",
+    "claims": [
+      "Riots happened in London today."
+    ],
+    "reference_evidence": [
+      "Old protest videos are often misrepresented as recent events online.",
+      "Fact-checkers frequently identify outdated protest footage circulating as current news."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 44,
+    "post": "Don't be fooled\u2014allegations of riots in London today stem from re-shared old protest footage.",
+    "media_type": "video",
+    "claims": [
+      "Riots happened in London today."
+    ],
+    "reference_evidence": [
+      "Old protest videos are often misrepresented as recent events online.",
+      "Fact-checkers frequently identify outdated protest footage circulating as current news."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 45,
+    "post": "Footage shared online claiming today's London riots is actually from earlier demonstrations.",
+    "media_type": "video",
+    "claims": [
+      "Riots happened in London today."
+    ],
+    "reference_evidence": [
+      "Old protest videos are often misrepresented as recent events online.",
+      "Fact-checkers frequently identify outdated protest footage circulating as current news."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 46,
+    "post": "Despite viral videos, there are no riots happening in London today; the clips are from past protests.",
+    "media_type": "video",
+    "claims": [
+      "Riots happened in London today."
+    ],
+    "reference_evidence": [
+      "Old protest videos are often misrepresented as recent events online.",
+      "Fact-checkers frequently identify outdated protest footage circulating as current news."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 47,
+    "post": "Image showing US inflation reaching 20% in 2024.",
+    "media_type": "image",
+    "claims": [
+      "US inflation reached 20% in 2024."
+    ],
+    "reference_evidence": [
+      "US inflation did not reach 20% in 2024 according to official statistics.",
+      "Inflation peaked around 9% in 2022 and remained significantly lower afterward."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      20,
+      50
+    ]
+  },
+  {
+    "id": 48,
+    "post": "The request is unclear because the user asked for a JSON array but output format is conflicted.",
+    "media_type": "image",
+    "claims": [
+      "US inflation reached 20% in 2024."
+    ],
+    "reference_evidence": [
+      "US inflation did not reach 20% in 2024 according to official statistics.",
+      "Inflation peaked around 9% in 2022 and remained significantly lower afterward."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      20,
+      50
+    ]
+  },
+  {
+    "id": 49,
+    "post": "WHO declared COVID-19 a global pandemic in March 2020.",
+    "media_type": "text",
+    "claims": [
+      "WHO declared COVID-19 a pandemic in March 2020."
+    ],
+    "reference_evidence": [
+      "The World Health Organization declared COVID-19 a pandemic on March 11, 2020.",
+      "The WHO announcement marked the official pandemic declaration."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      85,
+      95
+    ]
+  },
+  {
+    "id": 50,
+    "post": "In March 2020, the WHO officially declared COVID-19 a pandemic.",
+    "media_type": "text",
+    "claims": [
+      "WHO declared COVID-19 a pandemic in March 2020."
+    ],
+    "reference_evidence": [
+      "The World Health Organization declared COVID-19 a pandemic on March 11, 2020.",
+      "The WHO announcement marked the official pandemic declaration."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      85,
+      95
+    ]
+  },
+  {
+    "id": 51,
+    "post": "Did you know that WHO declared COVID-19 a pandemic in March 2020?",
+    "media_type": "text",
+    "claims": [
+      "WHO declared COVID-19 a pandemic in March 2020."
+    ],
+    "reference_evidence": [
+      "The World Health Organization declared COVID-19 a pandemic on March 11, 2020.",
+      "The WHO announcement marked the official pandemic declaration."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      85,
+      95
+    ]
+  },
+  {
+    "id": 52,
+    "post": "Breaking: WHO declares COVID-19 a pandemic as of March 2020.",
+    "media_type": "text",
+    "claims": [
+      "WHO declared COVID-19 a pandemic in March 2020."
+    ],
+    "reference_evidence": [
+      "The World Health Organization declared COVID-19 a pandemic on March 11, 2020.",
+      "The WHO announcement marked the official pandemic declaration."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      85,
+      95
+    ]
+  },
+  {
+    "id": 53,
+    "post": "WHO made COVID-19 a pandemic announcement in March 2020.",
+    "media_type": "text",
+    "claims": [
+      "WHO declared COVID-19 a pandemic in March 2020."
+    ],
+    "reference_evidence": [
+      "The World Health Organization declared COVID-19 a pandemic on March 11, 2020.",
+      "The WHO announcement marked the official pandemic declaration."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      85,
+      95
+    ]
+  },
+  {
+    "id": 54,
+    "post": "March 2020 marked the month when WHO declared COVID-19 a pandemic.",
+    "media_type": "text",
+    "claims": [
+      "WHO declared COVID-19 a pandemic in March 2020."
+    ],
+    "reference_evidence": [
+      "The World Health Organization declared COVID-19 a pandemic on March 11, 2020.",
+      "The WHO announcement marked the official pandemic declaration."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      85,
+      95
+    ]
+  },
+  {
+    "id": 55,
+    "post": "The World Health Organization classified COVID-19 as a pandemic in March 2020.",
+    "media_type": "text",
+    "claims": [
+      "WHO declared COVID-19 a pandemic in March 2020."
+    ],
+    "reference_evidence": [
+      "The World Health Organization declared COVID-19 a pandemic on March 11, 2020.",
+      "The WHO announcement marked the official pandemic declaration."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      85,
+      95
+    ]
+  },
+  {
+    "id": 56,
+    "post": "COVID-19 was declared a pandemic by WHO in March 2020.",
+    "media_type": "text",
+    "claims": [
+      "WHO declared COVID-19 a pandemic in March 2020."
+    ],
+    "reference_evidence": [
+      "The World Health Organization declared COVID-19 a pandemic on March 11, 2020.",
+      "The WHO announcement marked the official pandemic declaration."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      85,
+      95
+    ]
+  },
+  {
+    "id": 57,
+    "post": "WHO officially labeled COVID-19 a pandemic back in March 2020.",
+    "media_type": "text",
+    "claims": [
+      "WHO declared COVID-19 a pandemic in March 2020."
+    ],
+    "reference_evidence": [
+      "The World Health Organization declared COVID-19 a pandemic on March 11, 2020.",
+      "The WHO announcement marked the official pandemic declaration."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      85,
+      95
+    ]
+  },
+  {
+    "id": 58,
+    "post": "In March 2020, WHO declared the coronavirus outbreak a pandemic.",
+    "media_type": "text",
+    "claims": [
+      "WHO declared COVID-19 a pandemic in March 2020."
+    ],
+    "reference_evidence": [
+      "The World Health Organization declared COVID-19 a pandemic on March 11, 2020.",
+      "The WHO announcement marked the official pandemic declaration."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      85,
+      95
+    ]
+  },
+  {
+    "id": 59,
+    "post": "Apple secretly installed microphones in all iPhones to spy on users.",
+    "media_type": "text",
+    "claims": [
+      "Apple installed microphones in iPhones to spy."
+    ],
+    "reference_evidence": [
+      "There is no verified evidence that Apple installed hidden microphones to spy on users.",
+      "Smartphones contain microphones for calls and voice assistants."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      30
+    ]
+  },
+  {
+    "id": 60,
+    "post": "Apple put hidden microphones in every iPhone to listen to users.",
+    "media_type": "text",
+    "claims": [
+      "Apple installed microphones in iPhones to spy."
+    ],
+    "reference_evidence": [
+      "There is no verified evidence that Apple installed hidden microphones to spy on users.",
+      "Smartphones contain microphones for calls and voice assistants."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      30
+    ]
+  },
+  {
+    "id": 61,
+    "post": "Did Apple secretly embed microphones in iPhones to spy on people?",
+    "media_type": "text",
+    "claims": [
+      "Apple installed microphones in iPhones to spy."
+    ],
+    "reference_evidence": [
+      "There is no verified evidence that Apple installed hidden microphones to spy on users.",
+      "Smartphones contain microphones for calls and voice assistants."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      30
+    ]
+  },
+  {
+    "id": 62,
+    "post": "Breaking: Apple installed secret microphones in iPhones to monitor users.",
+    "media_type": "text",
+    "claims": [
+      "Apple installed microphones in iPhones to spy."
+    ],
+    "reference_evidence": [
+      "There is no verified evidence that Apple installed hidden microphones to spy on users.",
+      "Smartphones contain microphones for calls and voice assistants."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      30
+    ]
+  },
+  {
+    "id": 63,
+    "post": "Rumor has it Apple added microphones in all iPhones to eavesdrop on users.",
+    "media_type": "text",
+    "claims": [
+      "Apple installed microphones in iPhones to spy."
+    ],
+    "reference_evidence": [
+      "There is no verified evidence that Apple installed hidden microphones to spy on users.",
+      "Smartphones contain microphones for calls and voice assistants."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      30
+    ]
+  },
+  {
+    "id": 64,
+    "post": "Apple is spying on users by secretly putting microphones in iPhones.",
+    "media_type": "text",
+    "claims": [
+      "Apple installed microphones in iPhones to spy."
+    ],
+    "reference_evidence": [
+      "There is no verified evidence that Apple installed hidden microphones to spy on users.",
+      "Smartphones contain microphones for calls and voice assistants."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      30
+    ]
+  },
+  {
+    "id": 65,
+    "post": "Apple\u2019s iPhones have hidden microphones to spy on their owners.",
+    "media_type": "text",
+    "claims": [
+      "Apple installed microphones in iPhones to spy."
+    ],
+    "reference_evidence": [
+      "There is no verified evidence that Apple installed hidden microphones to spy on users.",
+      "Smartphones contain microphones for calls and voice assistants."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      30
+    ]
+  },
+  {
+    "id": 66,
+    "post": "There are secret microphones in every iPhone installed by Apple to listen in.",
+    "media_type": "text",
+    "claims": [
+      "Apple installed microphones in iPhones to spy."
+    ],
+    "reference_evidence": [
+      "There is no verified evidence that Apple installed hidden microphones to spy on users.",
+      "Smartphones contain microphones for calls and voice assistants."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      30
+    ]
+  },
+  {
+    "id": 67,
+    "post": "Is Apple tracking users through secret microphones inside iPhones?",
+    "media_type": "text",
+    "claims": [
+      "Apple installed microphones in iPhones to spy."
+    ],
+    "reference_evidence": [
+      "There is no verified evidence that Apple installed hidden microphones to spy on users.",
+      "Smartphones contain microphones for calls and voice assistants."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      30
+    ]
+  },
+  {
+    "id": 68,
+    "post": "Hidden microphones installed by Apple in all iPhones are used to spy on users.",
+    "media_type": "text",
+    "claims": [
+      "Apple installed microphones in iPhones to spy."
+    ],
+    "reference_evidence": [
+      "There is no verified evidence that Apple installed hidden microphones to spy on users.",
+      "Smartphones contain microphones for calls and voice assistants."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      30
+    ]
+  },
+  {
+    "id": 69,
+    "post": "Russia launched a lunar mission in 2023.",
+    "media_type": "text",
+    "claims": [
+      "Russia launched a lunar mission in 2023."
+    ],
+    "reference_evidence": [
+      "Russia launched the Luna-25 lunar mission in August 2023.",
+      "The mission attempted to reach the Moon's south pole."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      70,
+      90
+    ]
+  },
+  {
+    "id": 70,
+    "post": "In 2023, Russia launched a lunar mission.",
+    "media_type": "text",
+    "claims": [
+      "Russia launched a lunar mission in 2023."
+    ],
+    "reference_evidence": [
+      "Russia launched the Luna-25 lunar mission in August 2023.",
+      "The mission attempted to reach the Moon's south pole."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      70,
+      90
+    ]
+  },
+  {
+    "id": 71,
+    "post": "Breaking news: Russia's lunar mission took off in 2023.",
+    "media_type": "text",
+    "claims": [
+      "Russia launched a lunar mission in 2023."
+    ],
+    "reference_evidence": [
+      "Russia launched the Luna-25 lunar mission in August 2023.",
+      "The mission attempted to reach the Moon's south pole."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      70,
+      90
+    ]
+  },
+  {
+    "id": 72,
+    "post": "Did Russia actually launch a lunar mission in 2023?",
+    "media_type": "text",
+    "claims": [
+      "Russia launched a lunar mission in 2023."
+    ],
+    "reference_evidence": [
+      "Russia launched the Luna-25 lunar mission in August 2023.",
+      "The mission attempted to reach the Moon's south pole."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      70,
+      90
+    ]
+  },
+  {
+    "id": 73,
+    "post": "Russia's 2023 lunar mission is now underway.",
+    "media_type": "text",
+    "claims": [
+      "Russia launched a lunar mission in 2023."
+    ],
+    "reference_evidence": [
+      "Russia launched the Luna-25 lunar mission in August 2023.",
+      "The mission attempted to reach the Moon's south pole."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      70,
+      90
+    ]
+  },
+  {
+    "id": 74,
+    "post": "Russia sent a mission to the moon in 2023.",
+    "media_type": "text",
+    "claims": [
+      "Russia launched a lunar mission in 2023."
+    ],
+    "reference_evidence": [
+      "Russia launched the Luna-25 lunar mission in August 2023.",
+      "The mission attempted to reach the Moon's south pole."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      70,
+      90
+    ]
+  },
+  {
+    "id": 75,
+    "post": "The lunar mission by Russia happened in 2023.",
+    "media_type": "text",
+    "claims": [
+      "Russia launched a lunar mission in 2023."
+    ],
+    "reference_evidence": [
+      "Russia launched the Luna-25 lunar mission in August 2023.",
+      "The mission attempted to reach the Moon's south pole."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      70,
+      90
+    ]
+  },
+  {
+    "id": 76,
+    "post": "Russia launched its mission to the moon in 2023.",
+    "media_type": "text",
+    "claims": [
+      "Russia launched a lunar mission in 2023."
+    ],
+    "reference_evidence": [
+      "Russia launched the Luna-25 lunar mission in August 2023.",
+      "The mission attempted to reach the Moon's south pole."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      70,
+      90
+    ]
+  },
+  {
+    "id": 77,
+    "post": "2023 saw Russia launching a mission to the lunar surface.",
+    "media_type": "text",
+    "claims": [
+      "Russia launched a lunar mission in 2023."
+    ],
+    "reference_evidence": [
+      "Russia launched the Luna-25 lunar mission in August 2023.",
+      "The mission attempted to reach the Moon's south pole."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      70,
+      90
+    ]
+  },
+  {
+    "id": 78,
+    "post": "Russia's lunar exploration mission launched in 2023.",
+    "media_type": "text",
+    "claims": [
+      "Russia launched a lunar mission in 2023."
+    ],
+    "reference_evidence": [
+      "Russia launched the Luna-25 lunar mission in August 2023.",
+      "The mission attempted to reach the Moon's south pole."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      70,
+      90
+    ]
+  },
+  {
+    "id": 79,
+    "post": "Facebook will start charging all users $5 per month.",
+    "media_type": "text",
+    "claims": [
+      "Facebook will charge users $5 per month."
+    ],
+    "reference_evidence": [
+      "Facebook has not announced a universal $5 subscription for all users.",
+      "Meta continues to provide free access to Facebook for general users."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      25
+    ]
+  },
+  {
+    "id": 80,
+    "post": "The provided instructions request a JSON array, but the user input is incomplete or invalid. Please provide complete instructions or clarify the request.",
+    "media_type": "text",
+    "claims": [
+      "Facebook will charge users $5 per month."
+    ],
+    "reference_evidence": [
+      "Facebook has not announced a universal $5 subscription for all users.",
+      "Meta continues to provide free access to Facebook for general users."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      25
+    ]
+  },
+  {
+    "id": 81,
+    "post": "Video shows flooding in Dubai today.",
+    "media_type": "video",
+    "claims": [
+      "Dubai experienced flooding today."
+    ],
+    "reference_evidence": [
+      "Flooding occasionally occurs in Dubai during heavy rainfall.",
+      "Videos of floods in Dubai have circulated online from past weather events."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 82,
+    "post": "Flooding reported in Dubai today, video circulating online.",
+    "media_type": "video",
+    "claims": [
+      "Dubai experienced flooding today."
+    ],
+    "reference_evidence": [
+      "Flooding occasionally occurs in Dubai during heavy rainfall.",
+      "Videos of floods in Dubai have circulated online from past weather events."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 83,
+    "post": "Is Dubai experiencing floods today? Videos are making the rounds.",
+    "media_type": "video",
+    "claims": [
+      "Dubai experienced flooding today."
+    ],
+    "reference_evidence": [
+      "Flooding occasionally occurs in Dubai during heavy rainfall.",
+      "Videos of floods in Dubai have circulated online from past weather events."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 84,
+    "post": "Today\u2019s footage allegedly shows flooding in Dubai.",
+    "media_type": "video",
+    "claims": [
+      "Dubai experienced flooding today."
+    ],
+    "reference_evidence": [
+      "Flooding occasionally occurs in Dubai during heavy rainfall.",
+      "Videos of floods in Dubai have circulated online from past weather events."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 85,
+    "post": "Video footage emerges showing potential flooding in Dubai today.",
+    "media_type": "video",
+    "claims": [
+      "Dubai experienced flooding today."
+    ],
+    "reference_evidence": [
+      "Flooding occasionally occurs in Dubai during heavy rainfall.",
+      "Videos of floods in Dubai have circulated online from past weather events."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 86,
+    "post": "Reports claim Dubai is flooded today, see video evidence.",
+    "media_type": "video",
+    "claims": [
+      "Dubai experienced flooding today."
+    ],
+    "reference_evidence": [
+      "Flooding occasionally occurs in Dubai during heavy rainfall.",
+      "Videos of floods in Dubai have circulated online from past weather events."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 87,
+    "post": "Is this the flooding situation in Dubai today? Video shared online.",
+    "media_type": "video",
+    "claims": [
+      "Dubai experienced flooding today."
+    ],
+    "reference_evidence": [
+      "Flooding occasionally occurs in Dubai during heavy rainfall.",
+      "Videos of floods in Dubai have circulated online from past weather events."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 88,
+    "post": "Breaking: Video surfaces appearing to show today\u2019s flooding in Dubai.",
+    "media_type": "video",
+    "claims": [
+      "Dubai experienced flooding today."
+    ],
+    "reference_evidence": [
+      "Flooding occasionally occurs in Dubai during heavy rainfall.",
+      "Videos of floods in Dubai have circulated online from past weather events."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 89,
+    "post": "Alleged video shows flooding conditions in Dubai today.",
+    "media_type": "video",
+    "claims": [
+      "Dubai experienced flooding today."
+    ],
+    "reference_evidence": [
+      "Flooding occasionally occurs in Dubai during heavy rainfall.",
+      "Videos of floods in Dubai have circulated online from past weather events."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 90,
+    "post": "Videos depict flooding in Dubai today, verification pending.",
+    "media_type": "video",
+    "claims": [
+      "Dubai experienced flooding today."
+    ],
+    "reference_evidence": [
+      "Flooding occasionally occurs in Dubai during heavy rainfall.",
+      "Videos of floods in Dubai have circulated online from past weather events."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 91,
+    "post": "The Eiffel Tower is located in Paris.",
+    "media_type": "text",
+    "claims": [
+      "The Eiffel Tower is in Paris."
+    ],
+    "reference_evidence": [
+      "The Eiffel Tower is a landmark located in Paris, France.",
+      "It was built for the 1889 World's Fair in Paris."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 92,
+    "post": "The Eiffel Tower stands in Paris.",
+    "media_type": "text",
+    "claims": [
+      "The Eiffel Tower is in Paris."
+    ],
+    "reference_evidence": [
+      "The Eiffel Tower is a landmark located in Paris, France.",
+      "It was built for the 1889 World's Fair in Paris."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 93,
+    "post": "Did you know the Eiffel Tower is in Paris?",
+    "media_type": "text",
+    "claims": [
+      "The Eiffel Tower is in Paris."
+    ],
+    "reference_evidence": [
+      "The Eiffel Tower is a landmark located in Paris, France.",
+      "It was built for the 1889 World's Fair in Paris."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 94,
+    "post": "Located in Paris, the Eiffel Tower is iconic.",
+    "media_type": "text",
+    "claims": [
+      "The Eiffel Tower is in Paris."
+    ],
+    "reference_evidence": [
+      "The Eiffel Tower is a landmark located in Paris, France.",
+      "It was built for the 1889 World's Fair in Paris."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 95,
+    "post": "Fun fact: The Eiffel Tower is found in Paris.",
+    "media_type": "text",
+    "claims": [
+      "The Eiffel Tower is in Paris."
+    ],
+    "reference_evidence": [
+      "The Eiffel Tower is a landmark located in Paris, France.",
+      "It was built for the 1889 World's Fair in Paris."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 96,
+    "post": "The Eiffel Tower belongs to Paris.",
+    "media_type": "text",
+    "claims": [
+      "The Eiffel Tower is in Paris."
+    ],
+    "reference_evidence": [
+      "The Eiffel Tower is a landmark located in Paris, France.",
+      "It was built for the 1889 World's Fair in Paris."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 97,
+    "post": "Breaking: The Eiffel Tower is situated in Paris.",
+    "media_type": "text",
+    "claims": [
+      "The Eiffel Tower is in Paris."
+    ],
+    "reference_evidence": [
+      "The Eiffel Tower is a landmark located in Paris, France.",
+      "It was built for the 1889 World's Fair in Paris."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 98,
+    "post": "Paris is home to the Eiffel Tower.",
+    "media_type": "text",
+    "claims": [
+      "The Eiffel Tower is in Paris."
+    ],
+    "reference_evidence": [
+      "The Eiffel Tower is a landmark located in Paris, France.",
+      "It was built for the 1889 World's Fair in Paris."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 99,
+    "post": "Have you visited the Eiffel Tower in Paris?",
+    "media_type": "text",
+    "claims": [
+      "The Eiffel Tower is in Paris."
+    ],
+    "reference_evidence": [
+      "The Eiffel Tower is a landmark located in Paris, France.",
+      "It was built for the 1889 World's Fair in Paris."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 100,
+    "post": "The famous Eiffel Tower is located right in Paris.",
+    "media_type": "text",
+    "claims": [
+      "The Eiffel Tower is in Paris."
+    ],
+    "reference_evidence": [
+      "The Eiffel Tower is a landmark located in Paris, France.",
+      "It was built for the 1889 World's Fair in Paris."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 101,
+    "post": "Bananas cure cancer according to scientists.",
+    "media_type": "text",
+    "claims": [
+      "Bananas cure cancer."
+    ],
+    "reference_evidence": [
+      "No scientific evidence shows bananas cure cancer.",
+      "Cancer treatments require medical therapies such as chemotherapy and radiation."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 102,
+    "post": "Scientists say bananas can cure cancer.",
+    "media_type": "text",
+    "claims": [
+      "Bananas cure cancer."
+    ],
+    "reference_evidence": [
+      "No scientific evidence shows bananas cure cancer.",
+      "Cancer treatments require medical therapies such as chemotherapy and radiation."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 103,
+    "post": "Bananas are the cancer cure, according to scientific studies.",
+    "media_type": "text",
+    "claims": [
+      "Bananas cure cancer."
+    ],
+    "reference_evidence": [
+      "No scientific evidence shows bananas cure cancer.",
+      "Cancer treatments require medical therapies such as chemotherapy and radiation."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 104,
+    "post": "According to researchers, bananas cure cancer.",
+    "media_type": "text",
+    "claims": [
+      "Bananas cure cancer."
+    ],
+    "reference_evidence": [
+      "No scientific evidence shows bananas cure cancer.",
+      "Cancer treatments require medical therapies such as chemotherapy and radiation."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 105,
+    "post": "Breaking: Bananas proven to cure cancer, scientists report.",
+    "media_type": "text",
+    "claims": [
+      "Bananas cure cancer."
+    ],
+    "reference_evidence": [
+      "No scientific evidence shows bananas cure cancer.",
+      "Cancer treatments require medical therapies such as chemotherapy and radiation."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 106,
+    "post": "Can bananas really cure cancer? Scientists apparently say yes.",
+    "media_type": "text",
+    "claims": [
+      "Bananas cure cancer."
+    ],
+    "reference_evidence": [
+      "No scientific evidence shows bananas cure cancer.",
+      "Cancer treatments require medical therapies such as chemotherapy and radiation."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 107,
+    "post": "New scientific findings claim bananas cure cancer.",
+    "media_type": "text",
+    "claims": [
+      "Bananas cure cancer."
+    ],
+    "reference_evidence": [
+      "No scientific evidence shows bananas cure cancer.",
+      "Cancer treatments require medical therapies such as chemotherapy and radiation."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 108,
+    "post": "Scientists confirm: Bananas have the ability to cure cancer.",
+    "media_type": "text",
+    "claims": [
+      "Bananas cure cancer."
+    ],
+    "reference_evidence": [
+      "No scientific evidence shows bananas cure cancer.",
+      "Cancer treatments require medical therapies such as chemotherapy and radiation."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 109,
+    "post": "Bananas are a cancer cure, scientists reveal.",
+    "media_type": "text",
+    "claims": [
+      "Bananas cure cancer."
+    ],
+    "reference_evidence": [
+      "No scientific evidence shows bananas cure cancer.",
+      "Cancer treatments require medical therapies such as chemotherapy and radiation."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 110,
+    "post": "According to science, bananas cure cancer.",
+    "media_type": "text",
+    "claims": [
+      "Bananas cure cancer."
+    ],
+    "reference_evidence": [
+      "No scientific evidence shows bananas cure cancer.",
+      "Cancer treatments require medical therapies such as chemotherapy and radiation."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 111,
+    "post": "Germany won the FIFA World Cup in 2014.",
+    "media_type": "text",
+    "claims": [
+      "Germany won the 2014 FIFA World Cup."
+    ],
+    "reference_evidence": [
+      "Germany defeated Argentina in the 2014 FIFA World Cup final.",
+      "The match ended 1\u20130 in extra time."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 112,
+    "post": "Germany took home the 2014 FIFA World Cup.",
+    "media_type": "text",
+    "claims": [
+      "Germany won the 2014 FIFA World Cup."
+    ],
+    "reference_evidence": [
+      "Germany defeated Argentina in the 2014 FIFA World Cup final.",
+      "The match ended 1\u20130 in extra time."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 113,
+    "post": "In 2014, Germany won the FIFA World Cup.",
+    "media_type": "text",
+    "claims": [
+      "Germany won the 2014 FIFA World Cup."
+    ],
+    "reference_evidence": [
+      "Germany defeated Argentina in the 2014 FIFA World Cup final.",
+      "The match ended 1\u20130 in extra time."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 114,
+    "post": "Did you know Germany won the 2014 FIFA World Cup?",
+    "media_type": "text",
+    "claims": [
+      "Germany won the 2014 FIFA World Cup."
+    ],
+    "reference_evidence": [
+      "Germany defeated Argentina in the 2014 FIFA World Cup final.",
+      "The match ended 1\u20130 in extra time."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 115,
+    "post": "Breaking: Germany crowned champions of the 2014 FIFA World Cup!",
+    "media_type": "text",
+    "claims": [
+      "Germany won the 2014 FIFA World Cup."
+    ],
+    "reference_evidence": [
+      "Germany defeated Argentina in the 2014 FIFA World Cup final.",
+      "The match ended 1\u20130 in extra time."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 116,
+    "post": "The 2014 FIFA World Cup was won by Germany.",
+    "media_type": "text",
+    "claims": [
+      "Germany won the 2014 FIFA World Cup."
+    ],
+    "reference_evidence": [
+      "Germany defeated Argentina in the 2014 FIFA World Cup final.",
+      "The match ended 1\u20130 in extra time."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 117,
+    "post": "Germany emerged victorious in the 2014 FIFA World Cup.",
+    "media_type": "text",
+    "claims": [
+      "Germany won the 2014 FIFA World Cup."
+    ],
+    "reference_evidence": [
+      "Germany defeated Argentina in the 2014 FIFA World Cup final.",
+      "The match ended 1\u20130 in extra time."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 118,
+    "post": "The winners of the 2014 FIFA World Cup were Germany.",
+    "media_type": "text",
+    "claims": [
+      "Germany won the 2014 FIFA World Cup."
+    ],
+    "reference_evidence": [
+      "Germany defeated Argentina in the 2014 FIFA World Cup final.",
+      "The match ended 1\u20130 in extra time."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 119,
+    "post": "Germany captured the FIFA World Cup title in 2014.",
+    "media_type": "text",
+    "claims": [
+      "Germany won the 2014 FIFA World Cup."
+    ],
+    "reference_evidence": [
+      "Germany defeated Argentina in the 2014 FIFA World Cup final.",
+      "The match ended 1\u20130 in extra time."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 120,
+    "post": "2014 saw Germany win the FIFA World Cup.",
+    "media_type": "text",
+    "claims": [
+      "Germany won the 2014 FIFA World Cup."
+    ],
+    "reference_evidence": [
+      "Germany defeated Argentina in the 2014 FIFA World Cup final.",
+      "The match ended 1\u20130 in extra time."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 121,
+    "post": "5G towers cause COVID-19 infection.",
+    "media_type": "text",
+    "claims": [
+      "5G towers cause COVID-19."
+    ],
+    "reference_evidence": [
+      "Scientific studies show COVID-19 is caused by the SARS-CoV-2 virus.",
+      "There is no evidence linking 5G networks to COVID-19 infections."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 122,
+    "post": "5G networks are responsible for spreading COVID-19.",
+    "media_type": "text",
+    "claims": [
+      "5G towers cause COVID-19."
+    ],
+    "reference_evidence": [
+      "Scientific studies show COVID-19 is caused by the SARS-CoV-2 virus.",
+      "There is no evidence linking 5G networks to COVID-19 infections."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 123,
+    "post": "COVID-19 infections are caused by 5G cell towers.",
+    "media_type": "text",
+    "claims": [
+      "5G towers cause COVID-19."
+    ],
+    "reference_evidence": [
+      "Scientific studies show COVID-19 is caused by the SARS-CoV-2 virus.",
+      "There is no evidence linking 5G networks to COVID-19 infections."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 124,
+    "post": "The coronavirus outbreak is linked to 5G technology.",
+    "media_type": "text",
+    "claims": [
+      "5G towers cause COVID-19."
+    ],
+    "reference_evidence": [
+      "Scientific studies show COVID-19 is caused by the SARS-CoV-2 virus.",
+      "There is no evidence linking 5G networks to COVID-19 infections."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 125,
+    "post": "5G technology is the reason people are catching COVID-19.",
+    "media_type": "text",
+    "claims": [
+      "5G towers cause COVID-19."
+    ],
+    "reference_evidence": [
+      "Scientific studies show COVID-19 is caused by the SARS-CoV-2 virus.",
+      "There is no evidence linking 5G networks to COVID-19 infections."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 126,
+    "post": "Did you know 5G towers cause the COVID-19 virus?",
+    "media_type": "text",
+    "claims": [
+      "5G towers cause COVID-19."
+    ],
+    "reference_evidence": [
+      "Scientific studies show COVID-19 is caused by the SARS-CoV-2 virus.",
+      "There is no evidence linking 5G networks to COVID-19 infections."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 127,
+    "post": "The rise in COVID-19 cases is due to 5G infrastructure.",
+    "media_type": "text",
+    "claims": [
+      "5G towers cause COVID-19."
+    ],
+    "reference_evidence": [
+      "Scientific studies show COVID-19 is caused by the SARS-CoV-2 virus.",
+      "There is no evidence linking 5G networks to COVID-19 infections."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 128,
+    "post": "5G cell towers are making people sick with COVID-19.",
+    "media_type": "text",
+    "claims": [
+      "5G towers cause COVID-19."
+    ],
+    "reference_evidence": [
+      "Scientific studies show COVID-19 is caused by the SARS-CoV-2 virus.",
+      "There is no evidence linking 5G networks to COVID-19 infections."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 129,
+    "post": "There\u2019s a connection between 5G signals and COVID-19 infections.",
+    "media_type": "text",
+    "claims": [
+      "5G towers cause COVID-19."
+    ],
+    "reference_evidence": [
+      "Scientific studies show COVID-19 is caused by the SARS-CoV-2 virus.",
+      "There is no evidence linking 5G networks to COVID-19 infections."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 130,
+    "post": "5G tower radiation causes the COVID-19 pandemic.",
+    "media_type": "text",
+    "claims": [
+      "5G towers cause COVID-19."
+    ],
+    "reference_evidence": [
+      "Scientific studies show COVID-19 is caused by the SARS-CoV-2 virus.",
+      "There is no evidence linking 5G networks to COVID-19 infections."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 131,
+    "post": "NASA launched the James Webb Space Telescope in 2021.",
+    "media_type": "text",
+    "claims": [
+      "NASA launched the James Webb Space Telescope in 2021."
+    ],
+    "reference_evidence": [
+      "The James Webb Space Telescope launched on December 25, 2021.",
+      "The mission was launched aboard an Ariane 5 rocket."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      85,
+      95
+    ]
+  },
+  {
+    "id": 132,
+    "post": "NASA successfully launched the James Webb Space Telescope in 2021.",
+    "media_type": "text",
+    "claims": [
+      "NASA launched the James Webb Space Telescope in 2021."
+    ],
+    "reference_evidence": [
+      "The James Webb Space Telescope launched on December 25, 2021.",
+      "The mission was launched aboard an Ariane 5 rocket."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      85,
+      95
+    ]
+  },
+  {
+    "id": 133,
+    "post": "Did NASA launch the James Webb Space Telescope in 2021?",
+    "media_type": "text",
+    "claims": [
+      "NASA launched the James Webb Space Telescope in 2021."
+    ],
+    "reference_evidence": [
+      "The James Webb Space Telescope launched on December 25, 2021.",
+      "The mission was launched aboard an Ariane 5 rocket."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      85,
+      95
+    ]
+  },
+  {
+    "id": 134,
+    "post": "Breaking: The James Webb Space Telescope was launched by NASA in 2021.",
+    "media_type": "text",
+    "claims": [
+      "NASA launched the James Webb Space Telescope in 2021."
+    ],
+    "reference_evidence": [
+      "The James Webb Space Telescope launched on December 25, 2021.",
+      "The mission was launched aboard an Ariane 5 rocket."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      85,
+      95
+    ]
+  },
+  {
+    "id": 135,
+    "post": "In 2021, NASA put the James Webb Space Telescope into space.",
+    "media_type": "text",
+    "claims": [
+      "NASA launched the James Webb Space Telescope in 2021."
+    ],
+    "reference_evidence": [
+      "The James Webb Space Telescope launched on December 25, 2021.",
+      "The mission was launched aboard an Ariane 5 rocket."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      85,
+      95
+    ]
+  },
+  {
+    "id": 136,
+    "post": "The James Webb Space Telescope has been launched by NASA in the year 2021.",
+    "media_type": "text",
+    "claims": [
+      "NASA launched the James Webb Space Telescope in 2021."
+    ],
+    "reference_evidence": [
+      "The James Webb Space Telescope launched on December 25, 2021.",
+      "The mission was launched aboard an Ariane 5 rocket."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      85,
+      95
+    ]
+  },
+  {
+    "id": 137,
+    "post": "NASA's launch of the James Webb Space Telescope took place in 2021.",
+    "media_type": "text",
+    "claims": [
+      "NASA launched the James Webb Space Telescope in 2021."
+    ],
+    "reference_evidence": [
+      "The James Webb Space Telescope launched on December 25, 2021.",
+      "The mission was launched aboard an Ariane 5 rocket."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      85,
+      95
+    ]
+  },
+  {
+    "id": 138,
+    "post": "2021 marked the year NASA launched the James Webb Space Telescope.",
+    "media_type": "text",
+    "claims": [
+      "NASA launched the James Webb Space Telescope in 2021."
+    ],
+    "reference_evidence": [
+      "The James Webb Space Telescope launched on December 25, 2021.",
+      "The mission was launched aboard an Ariane 5 rocket."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      85,
+      95
+    ]
+  },
+  {
+    "id": 139,
+    "post": "NASA launched the James Webb Space Telescope in 2021, expanding our view of the universe.",
+    "media_type": "text",
+    "claims": [
+      "NASA launched the James Webb Space Telescope in 2021."
+    ],
+    "reference_evidence": [
+      "The James Webb Space Telescope launched on December 25, 2021.",
+      "The mission was launched aboard an Ariane 5 rocket."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      85,
+      95
+    ]
+  },
+  {
+    "id": 140,
+    "post": "The James Webb Space Telescope launch was conducted by NASA in 2021.",
+    "media_type": "text",
+    "claims": [
+      "NASA launched the James Webb Space Telescope in 2021."
+    ],
+    "reference_evidence": [
+      "The James Webb Space Telescope launched on December 25, 2021.",
+      "The mission was launched aboard an Ariane 5 rocket."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      85,
+      95
+    ]
+  },
+  {
+    "id": 141,
+    "post": "Old wildfire video shared as today\u2019s California wildfire.",
+    "media_type": "video",
+    "claims": [
+      "Wildfire occurred today in California."
+    ],
+    "reference_evidence": [
+      "Old wildfire footage is frequently shared online as current events.",
+      "California wildfires occur regularly but viral videos may not show current incidents."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      50
+    ]
+  },
+  {
+    "id": 142,
+    "post": "This video shows today's wildfire raging in California.",
+    "media_type": "video",
+    "claims": [
+      "Wildfire occurred today in California."
+    ],
+    "reference_evidence": [
+      "Old wildfire footage is frequently shared online as current events.",
+      "California wildfires occur regularly but viral videos may not show current incidents."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      50
+    ]
+  },
+  {
+    "id": 143,
+    "post": "Breaking: Wildfire currently burning in California, footage here.",
+    "media_type": "video",
+    "claims": [
+      "Wildfire occurred today in California."
+    ],
+    "reference_evidence": [
+      "Old wildfire footage is frequently shared online as current events.",
+      "California wildfires occur regularly but viral videos may not show current incidents."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      50
+    ]
+  },
+  {
+    "id": 144,
+    "post": "Have you seen the wildfire that just started today in California?",
+    "media_type": "video",
+    "claims": [
+      "Wildfire occurred today in California."
+    ],
+    "reference_evidence": [
+      "Old wildfire footage is frequently shared online as current events.",
+      "California wildfires occur regularly but viral videos may not show current incidents."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      50
+    ]
+  },
+  {
+    "id": 145,
+    "post": "Today's California wildfire captured in this video.",
+    "media_type": "video",
+    "claims": [
+      "Wildfire occurred today in California."
+    ],
+    "reference_evidence": [
+      "Old wildfire footage is frequently shared online as current events.",
+      "California wildfires occur regularly but viral videos may not show current incidents."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      50
+    ]
+  },
+  {
+    "id": 146,
+    "post": "Watch the wildfire that's happening today in California.",
+    "media_type": "video",
+    "claims": [
+      "Wildfire occurred today in California."
+    ],
+    "reference_evidence": [
+      "Old wildfire footage is frequently shared online as current events.",
+      "California wildfires occur regularly but viral videos may not show current incidents."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      50
+    ]
+  },
+  {
+    "id": 147,
+    "post": "California is battling a wildfire today, as shown in this clip.",
+    "media_type": "video",
+    "claims": [
+      "Wildfire occurred today in California."
+    ],
+    "reference_evidence": [
+      "Old wildfire footage is frequently shared online as current events.",
+      "California wildfires occur regularly but viral videos may not show current incidents."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      50
+    ]
+  },
+  {
+    "id": 148,
+    "post": "Latest update: California wildfire spreading right now.",
+    "media_type": "video",
+    "claims": [
+      "Wildfire occurred today in California."
+    ],
+    "reference_evidence": [
+      "Old wildfire footage is frequently shared online as current events.",
+      "California wildfires occur regularly but viral videos may not show current incidents."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      50
+    ]
+  },
+  {
+    "id": 149,
+    "post": "Firefighters respond to a wildfire in California today.",
+    "media_type": "video",
+    "claims": [
+      "Wildfire occurred today in California."
+    ],
+    "reference_evidence": [
+      "Old wildfire footage is frequently shared online as current events.",
+      "California wildfires occur regularly but viral videos may not show current incidents."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      50
+    ]
+  },
+  {
+    "id": 150,
+    "post": "Here's footage of the wildfire occurring in California today.",
+    "media_type": "video",
+    "claims": [
+      "Wildfire occurred today in California."
+    ],
+    "reference_evidence": [
+      "Old wildfire footage is frequently shared online as current events.",
+      "California wildfires occur regularly but viral videos may not show current incidents."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      50
+    ]
+  },
+  {
+    "id": 151,
+    "post": "Image shows a shark swimming on a flooded highway.",
+    "media_type": "image",
+    "claims": [
+      "A shark was swimming on a flooded highway."
+    ],
+    "reference_evidence": [
+      "Photos of sharks on flooded roads are commonly created using image editing.",
+      "Fact-checks have shown such viral images are manipulated."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      25
+    ]
+  },
+  {
+    "id": 152,
+    "post": "The output must be a JSON array of strings, not an object.",
+    "media_type": "image",
+    "claims": [
+      "A shark was swimming on a flooded highway."
+    ],
+    "reference_evidence": [
+      "Photos of sharks on flooded roads are commonly created using image editing.",
+      "Fact-checks have shown such viral images are manipulated."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      25
+    ]
+  },
+  {
+    "id": 153,
+    "post": "Tesla released the Model 3 electric car in 2017.",
+    "media_type": "text",
+    "claims": [
+      "Tesla released Model 3 in 2017."
+    ],
+    "reference_evidence": [
+      "Tesla began delivering the Model 3 sedan in July 2017.",
+      "The Model 3 became Tesla's most widely produced vehicle."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 154,
+    "post": "Tesla launched the Model 3 electric car in 2017.",
+    "media_type": "text",
+    "claims": [
+      "Tesla released Model 3 in 2017."
+    ],
+    "reference_evidence": [
+      "Tesla began delivering the Model 3 sedan in July 2017.",
+      "The Model 3 became Tesla's most widely produced vehicle."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 155,
+    "post": "Did you know Tesla released the Model 3 in 2017?",
+    "media_type": "text",
+    "claims": [
+      "Tesla released Model 3 in 2017."
+    ],
+    "reference_evidence": [
+      "Tesla began delivering the Model 3 sedan in July 2017.",
+      "The Model 3 became Tesla's most widely produced vehicle."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 156,
+    "post": "Breaking news: Tesla's Model 3 hit the market in 2017.",
+    "media_type": "text",
+    "claims": [
+      "Tesla released Model 3 in 2017."
+    ],
+    "reference_evidence": [
+      "Tesla began delivering the Model 3 sedan in July 2017.",
+      "The Model 3 became Tesla's most widely produced vehicle."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 157,
+    "post": "In 2017, Tesla introduced the Model 3 electric vehicle.",
+    "media_type": "text",
+    "claims": [
+      "Tesla released Model 3 in 2017."
+    ],
+    "reference_evidence": [
+      "Tesla began delivering the Model 3 sedan in July 2017.",
+      "The Model 3 became Tesla's most widely produced vehicle."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 158,
+    "post": "Tesla's Model 3 was released back in 2017.",
+    "media_type": "text",
+    "claims": [
+      "Tesla released Model 3 in 2017."
+    ],
+    "reference_evidence": [
+      "Tesla began delivering the Model 3 sedan in July 2017.",
+      "The Model 3 became Tesla's most widely produced vehicle."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 159,
+    "post": "The Model 3 electric car came out from Tesla in 2017.",
+    "media_type": "text",
+    "claims": [
+      "Tesla released Model 3 in 2017."
+    ],
+    "reference_evidence": [
+      "Tesla began delivering the Model 3 sedan in July 2017.",
+      "The Model 3 became Tesla's most widely produced vehicle."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 160,
+    "post": "Tesla unveiled the Model 3 in 2017.",
+    "media_type": "text",
+    "claims": [
+      "Tesla released Model 3 in 2017."
+    ],
+    "reference_evidence": [
+      "Tesla began delivering the Model 3 sedan in July 2017.",
+      "The Model 3 became Tesla's most widely produced vehicle."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 161,
+    "post": "2017 marked the release of Tesla's Model 3.",
+    "media_type": "text",
+    "claims": [
+      "Tesla released Model 3 in 2017."
+    ],
+    "reference_evidence": [
+      "Tesla began delivering the Model 3 sedan in July 2017.",
+      "The Model 3 became Tesla's most widely produced vehicle."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 162,
+    "post": "Tesla brought the Model 3 electric car to buyers in 2017.",
+    "media_type": "text",
+    "claims": [
+      "Tesla released Model 3 in 2017."
+    ],
+    "reference_evidence": [
+      "Tesla began delivering the Model 3 sedan in July 2017.",
+      "The Model 3 became Tesla's most widely produced vehicle."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 163,
+    "post": "Moon landing in 1969 was staged by Hollywood.",
+    "media_type": "text",
+    "claims": [
+      "The 1969 Moon landing was staged."
+    ],
+    "reference_evidence": [
+      "Apollo 11 landed astronauts on the Moon on July 20, 1969.",
+      "Scientific evidence confirms the Moon landing was real."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 164,
+    "post": "The 1969 Moon landing was faked by Hollywood.",
+    "media_type": "text",
+    "claims": [
+      "The 1969 Moon landing was staged."
+    ],
+    "reference_evidence": [
+      "Apollo 11 landed astronauts on the Moon on July 20, 1969.",
+      "Scientific evidence confirms the Moon landing was real."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 165,
+    "post": "Did Hollywood really stage the 1969 Moon landing?",
+    "media_type": "text",
+    "claims": [
+      "The 1969 Moon landing was staged."
+    ],
+    "reference_evidence": [
+      "Apollo 11 landed astronauts on the Moon on July 20, 1969.",
+      "Scientific evidence confirms the Moon landing was real."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 166,
+    "post": "Breaking: The 1969 Moon landing was a Hollywood production.",
+    "media_type": "text",
+    "claims": [
+      "The 1969 Moon landing was staged."
+    ],
+    "reference_evidence": [
+      "Apollo 11 landed astronauts on the Moon on July 20, 1969.",
+      "Scientific evidence confirms the Moon landing was real."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 167,
+    "post": "Many believe the 1969 Moon landing never happened and was staged by filmmakers.",
+    "media_type": "text",
+    "claims": [
+      "The 1969 Moon landing was staged."
+    ],
+    "reference_evidence": [
+      "Apollo 11 landed astronauts on the Moon on July 20, 1969.",
+      "Scientific evidence confirms the Moon landing was real."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 168,
+    "post": "The famous 1969 Moon landing was actually filmed on a Hollywood set.",
+    "media_type": "text",
+    "claims": [
+      "The 1969 Moon landing was staged."
+    ],
+    "reference_evidence": [
+      "Apollo 11 landed astronauts on the Moon on July 20, 1969.",
+      "Scientific evidence confirms the Moon landing was real."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 169,
+    "post": "Is it true that the 1969 Moon landing was just a movie staged by Hollywood?",
+    "media_type": "text",
+    "claims": [
+      "The 1969 Moon landing was staged."
+    ],
+    "reference_evidence": [
+      "Apollo 11 landed astronauts on the Moon on July 20, 1969.",
+      "Scientific evidence confirms the Moon landing was real."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 170,
+    "post": "Some say the 1969 Moon landing was a hoax created by Hollywood.",
+    "media_type": "text",
+    "claims": [
+      "The 1969 Moon landing was staged."
+    ],
+    "reference_evidence": [
+      "Apollo 11 landed astronauts on the Moon on July 20, 1969.",
+      "Scientific evidence confirms the Moon landing was real."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 171,
+    "post": "The 1969 Moon landing was all an elaborate Hollywood stunt.",
+    "media_type": "text",
+    "claims": [
+      "The 1969 Moon landing was staged."
+    ],
+    "reference_evidence": [
+      "Apollo 11 landed astronauts on the Moon on July 20, 1969.",
+      "Scientific evidence confirms the Moon landing was real."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 172,
+    "post": "Moon landing footage from 1969 was supposedly staged by Hollywood studios.",
+    "media_type": "text",
+    "claims": [
+      "The 1969 Moon landing was staged."
+    ],
+    "reference_evidence": [
+      "Apollo 11 landed astronauts on the Moon on July 20, 1969.",
+      "Scientific evidence confirms the Moon landing was real."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 173,
+    "post": "Image claims the Great Wall of China is visible from space with the naked eye.",
+    "media_type": "image",
+    "claims": [
+      "Great Wall visible from space with naked eye."
+    ],
+    "reference_evidence": [
+      "Astronauts report the Great Wall of China is generally not visible to the naked eye from space.",
+      "This belief is a common myth."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      10,
+      30
+    ]
+  },
+  {
+    "id": 174,
+    "post": "The Great Wall of China can be seen from space without any special equipment.",
+    "media_type": "image",
+    "claims": [
+      "Great Wall visible from space with naked eye."
+    ],
+    "reference_evidence": [
+      "Astronauts report the Great Wall of China is generally not visible to the naked eye from space.",
+      "This belief is a common myth."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      10,
+      30
+    ]
+  },
+  {
+    "id": 175,
+    "post": "Is it true that astronauts can spot the Great Wall of China from space just by looking?",
+    "media_type": "image",
+    "claims": [
+      "Great Wall visible from space with naked eye."
+    ],
+    "reference_evidence": [
+      "Astronauts report the Great Wall of China is generally not visible to the naked eye from space.",
+      "This belief is a common myth."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      10,
+      30
+    ]
+  },
+  {
+    "id": 176,
+    "post": "Breaking: The Great Wall of China is visible from outer space with the naked eye!",
+    "media_type": "image",
+    "claims": [
+      "Great Wall visible from space with naked eye."
+    ],
+    "reference_evidence": [
+      "Astronauts report the Great Wall of China is generally not visible to the naked eye from space.",
+      "This belief is a common myth."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      10,
+      30
+    ]
+  },
+  {
+    "id": 177,
+    "post": "Can you believe the Great Wall of China is visible from space to the naked eye?",
+    "media_type": "image",
+    "claims": [
+      "Great Wall visible from space with naked eye."
+    ],
+    "reference_evidence": [
+      "Astronauts report the Great Wall of China is generally not visible to the naked eye from space.",
+      "This belief is a common myth."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      10,
+      30
+    ]
+  },
+  {
+    "id": 178,
+    "post": "Did you know the Great Wall of China is visible from space without a telescope?",
+    "media_type": "image",
+    "claims": [
+      "Great Wall visible from space with naked eye."
+    ],
+    "reference_evidence": [
+      "Astronauts report the Great Wall of China is generally not visible to the naked eye from space.",
+      "This belief is a common myth."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      10,
+      30
+    ]
+  },
+  {
+    "id": 179,
+    "post": "Astronauts say the Great Wall of China can be seen from space with the naked eye.",
+    "media_type": "image",
+    "claims": [
+      "Great Wall visible from space with naked eye."
+    ],
+    "reference_evidence": [
+      "Astronauts report the Great Wall of China is generally not visible to the naked eye from space.",
+      "This belief is a common myth."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      10,
+      30
+    ]
+  },
+  {
+    "id": 180,
+    "post": "The Great Wall is so massive that it\u2019s visible from space with no aid at all.",
+    "media_type": "image",
+    "claims": [
+      "Great Wall visible from space with naked eye."
+    ],
+    "reference_evidence": [
+      "Astronauts report the Great Wall of China is generally not visible to the naked eye from space.",
+      "This belief is a common myth."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      10,
+      30
+    ]
+  },
+  {
+    "id": 181,
+    "post": "It\u2019s often claimed that the Great Wall of China can be spotted by the naked eye from space.",
+    "media_type": "image",
+    "claims": [
+      "Great Wall visible from space with naked eye."
+    ],
+    "reference_evidence": [
+      "Astronauts report the Great Wall of China is generally not visible to the naked eye from space.",
+      "This belief is a common myth."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      10,
+      30
+    ]
+  },
+  {
+    "id": 182,
+    "post": "Space travelers can reportedly see the Great Wall of China from orbit just by looking.",
+    "media_type": "image",
+    "claims": [
+      "Great Wall visible from space with naked eye."
+    ],
+    "reference_evidence": [
+      "Astronauts report the Great Wall of China is generally not visible to the naked eye from space.",
+      "This belief is a common myth."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      10,
+      30
+    ]
+  },
+  {
+    "id": 183,
+    "post": "Amazon rainforest produces 20% of the world\u2019s oxygen.",
+    "media_type": "text",
+    "claims": [
+      "Amazon produces 20% of world oxygen."
+    ],
+    "reference_evidence": [
+      "The Amazon rainforest contributes to global oxygen cycles but does not produce 20% of the world's oxygen.",
+      "Much of the oxygen produced is consumed by the ecosystem itself."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      50
+    ]
+  },
+  {
+    "id": 184,
+    "post": "The Amazon rainforest generates 20% of the oxygen on Earth.",
+    "media_type": "text",
+    "claims": [
+      "Amazon produces 20% of world oxygen."
+    ],
+    "reference_evidence": [
+      "The Amazon rainforest contributes to global oxygen cycles but does not produce 20% of the world's oxygen.",
+      "Much of the oxygen produced is consumed by the ecosystem itself."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      50
+    ]
+  },
+  {
+    "id": 185,
+    "post": "Did you know the Amazon produces 20% of the world\u2019s oxygen?",
+    "media_type": "text",
+    "claims": [
+      "Amazon produces 20% of world oxygen."
+    ],
+    "reference_evidence": [
+      "The Amazon rainforest contributes to global oxygen cycles but does not produce 20% of the world's oxygen.",
+      "Much of the oxygen produced is consumed by the ecosystem itself."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      50
+    ]
+  },
+  {
+    "id": 186,
+    "post": "Breaking: Amazon rainforest supplies 20% of global oxygen.",
+    "media_type": "text",
+    "claims": [
+      "Amazon produces 20% of world oxygen."
+    ],
+    "reference_evidence": [
+      "The Amazon rainforest contributes to global oxygen cycles but does not produce 20% of the world's oxygen.",
+      "Much of the oxygen produced is consumed by the ecosystem itself."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      50
+    ]
+  },
+  {
+    "id": 187,
+    "post": "Amazon accounts for 20% of oxygen produced worldwide.",
+    "media_type": "text",
+    "claims": [
+      "Amazon produces 20% of world oxygen."
+    ],
+    "reference_evidence": [
+      "The Amazon rainforest contributes to global oxygen cycles but does not produce 20% of the world's oxygen.",
+      "Much of the oxygen produced is consumed by the ecosystem itself."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      50
+    ]
+  },
+  {
+    "id": 188,
+    "post": "The Amazon is responsible for producing one-fifth of Earth's oxygen.",
+    "media_type": "text",
+    "claims": [
+      "Amazon produces 20% of world oxygen."
+    ],
+    "reference_evidence": [
+      "The Amazon rainforest contributes to global oxygen cycles but does not produce 20% of the world's oxygen.",
+      "Much of the oxygen produced is consumed by the ecosystem itself."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      50
+    ]
+  },
+  {
+    "id": 189,
+    "post": "Claim: Amazon rainforest provides 20% of the world's oxygen output.",
+    "media_type": "text",
+    "claims": [
+      "Amazon produces 20% of world oxygen."
+    ],
+    "reference_evidence": [
+      "The Amazon rainforest contributes to global oxygen cycles but does not produce 20% of the world's oxygen.",
+      "Much of the oxygen produced is consumed by the ecosystem itself."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      50
+    ]
+  },
+  {
+    "id": 190,
+    "post": "20% of the world\u2019s oxygen comes from the Amazon rainforest.",
+    "media_type": "text",
+    "claims": [
+      "Amazon produces 20% of world oxygen."
+    ],
+    "reference_evidence": [
+      "The Amazon rainforest contributes to global oxygen cycles but does not produce 20% of the world's oxygen.",
+      "Much of the oxygen produced is consumed by the ecosystem itself."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      50
+    ]
+  },
+  {
+    "id": 191,
+    "post": "Is it true the Amazon produces 20% of all oxygen globally?",
+    "media_type": "text",
+    "claims": [
+      "Amazon produces 20% of world oxygen."
+    ],
+    "reference_evidence": [
+      "The Amazon rainforest contributes to global oxygen cycles but does not produce 20% of the world's oxygen.",
+      "Much of the oxygen produced is consumed by the ecosystem itself."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      50
+    ]
+  },
+  {
+    "id": 192,
+    "post": "The Amazon rainforest produces 20% of Earth\u2019s oxygen supply.",
+    "media_type": "text",
+    "claims": [
+      "Amazon produces 20% of world oxygen."
+    ],
+    "reference_evidence": [
+      "The Amazon rainforest contributes to global oxygen cycles but does not produce 20% of the world's oxygen.",
+      "Much of the oxygen produced is consumed by the ecosystem itself."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      50
+    ]
+  },
+  {
+    "id": 193,
+    "post": "Earth orbits the Sun.",
+    "media_type": "text",
+    "claims": [
+      "Earth orbits the Sun."
+    ],
+    "reference_evidence": [
+      "The heliocentric model states Earth orbits the Sun.",
+      "This has been scientifically established for centuries."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 194,
+    "post": "The output must be a JSON array.",
+    "media_type": "text",
+    "claims": [
+      "Earth orbits the Sun."
+    ],
+    "reference_evidence": [
+      "The heliocentric model states Earth orbits the Sun.",
+      "This has been scientifically established for centuries."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 195,
+    "post": "Photo shows giant skeleton discovered by archaeologists.",
+    "media_type": "image",
+    "claims": [
+      "Archaeologists discovered giant human skeleton."
+    ],
+    "reference_evidence": [
+      "Images of giant skeleton discoveries online are often digital hoaxes.",
+      "No scientific evidence supports the discovery of giant human skeletons."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 196,
+    "post": "Scientists unearth giant human skeleton in recent archaeological dig.",
+    "media_type": "image",
+    "claims": [
+      "Archaeologists discovered giant human skeleton."
+    ],
+    "reference_evidence": [
+      "Images of giant skeleton discoveries online are often digital hoaxes.",
+      "No scientific evidence supports the discovery of giant human skeletons."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 197,
+    "post": "Breaking: Archaeologists find massive human skeleton during excavation.",
+    "media_type": "image",
+    "claims": [
+      "Archaeologists discovered giant human skeleton."
+    ],
+    "reference_evidence": [
+      "Images of giant skeleton discoveries online are often digital hoaxes.",
+      "No scientific evidence supports the discovery of giant human skeletons."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 198,
+    "post": "Did archaeologists just discover a giant human skeleton?",
+    "media_type": "image",
+    "claims": [
+      "Archaeologists discovered giant human skeleton."
+    ],
+    "reference_evidence": [
+      "Images of giant skeleton discoveries online are often digital hoaxes.",
+      "No scientific evidence supports the discovery of giant human skeletons."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 199,
+    "post": "Photo surfaces of gigantic skeleton supposedly found by archaeologists.",
+    "media_type": "image",
+    "claims": [
+      "Archaeologists discovered giant human skeleton."
+    ],
+    "reference_evidence": [
+      "Images of giant skeleton discoveries online are often digital hoaxes.",
+      "No scientific evidence supports the discovery of giant human skeletons."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 200,
+    "post": "Archaeologists claim to have uncovered a colossal human skeleton.",
+    "media_type": "image",
+    "claims": [
+      "Archaeologists discovered giant human skeleton."
+    ],
+    "reference_evidence": [
+      "Images of giant skeleton discoveries online are often digital hoaxes.",
+      "No scientific evidence supports the discovery of giant human skeletons."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 201,
+    "post": "Giant human skeleton discovered by archaeologists stuns the world.",
+    "media_type": "image",
+    "claims": [
+      "Archaeologists discovered giant human skeleton."
+    ],
+    "reference_evidence": [
+      "Images of giant skeleton discoveries online are often digital hoaxes.",
+      "No scientific evidence supports the discovery of giant human skeletons."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 202,
+    "post": "Have archaeologists discovered a giant human skeleton?",
+    "media_type": "image",
+    "claims": [
+      "Archaeologists discovered giant human skeleton."
+    ],
+    "reference_evidence": [
+      "Images of giant skeleton discoveries online are often digital hoaxes.",
+      "No scientific evidence supports the discovery of giant human skeletons."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 203,
+    "post": "Excavation yields giant human skeleton, archaeologists report.",
+    "media_type": "image",
+    "claims": [
+      "Archaeologists discovered giant human skeleton."
+    ],
+    "reference_evidence": [
+      "Images of giant skeleton discoveries online are often digital hoaxes.",
+      "No scientific evidence supports the discovery of giant human skeletons."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 204,
+    "post": "Archaeologists reveal discovery of an enormous human skeleton.",
+    "media_type": "image",
+    "claims": [
+      "Archaeologists discovered giant human skeleton."
+    ],
+    "reference_evidence": [
+      "Images of giant skeleton discoveries online are often digital hoaxes.",
+      "No scientific evidence supports the discovery of giant human skeletons."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 205,
+    "post": "Reports claim a new volcanic eruption happened today in Iceland.",
+    "media_type": "text",
+    "claims": [
+      "Volcanic eruption happened today in Iceland."
+    ],
+    "reference_evidence": [
+      "Iceland experiences volcanic activity due to its location on tectonic boundaries.",
+      "News reports are required to confirm any current eruption."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      55
+    ]
+  },
+  {
+    "id": 206,
+    "post": "Invalid request format: The output must be a JSON array of strings.",
+    "media_type": "text",
+    "claims": [
+      "Volcanic eruption happened today in Iceland."
+    ],
+    "reference_evidence": [
+      "Iceland experiences volcanic activity due to its location on tectonic boundaries.",
+      "News reports are required to confirm any current eruption."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      55
+    ]
+  },
+  {
+    "id": 207,
+    "post": "Mars has two moons called Phobos and Deimos.",
+    "media_type": "text",
+    "claims": [
+      "Mars has two moons."
+    ],
+    "reference_evidence": [
+      "Mars has two natural satellites named Phobos and Deimos.",
+      "They were discovered in 1877 by astronomer Asaph Hall."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 208,
+    "post": "Did you know Mars has two moons?",
+    "media_type": "text",
+    "claims": [
+      "Mars has two moons."
+    ],
+    "reference_evidence": [
+      "Mars has two natural satellites named Phobos and Deimos.",
+      "They were discovered in 1877 by astronomer Asaph Hall."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 209,
+    "post": "Mars boasts two moons orbiting it.",
+    "media_type": "text",
+    "claims": [
+      "Mars has two moons."
+    ],
+    "reference_evidence": [
+      "Mars has two natural satellites named Phobos and Deimos.",
+      "They were discovered in 1877 by astronomer Asaph Hall."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 210,
+    "post": "Breaking: Mars is orbited by two moons.",
+    "media_type": "text",
+    "claims": [
+      "Mars has two moons."
+    ],
+    "reference_evidence": [
+      "Mars has two natural satellites named Phobos and Deimos.",
+      "They were discovered in 1877 by astronomer Asaph Hall."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 211,
+    "post": "Fun fact: Mars has a pair of moons.",
+    "media_type": "text",
+    "claims": [
+      "Mars has two moons."
+    ],
+    "reference_evidence": [
+      "Mars has two natural satellites named Phobos and Deimos.",
+      "They were discovered in 1877 by astronomer Asaph Hall."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 212,
+    "post": "Mars' number of moons stands at two.",
+    "media_type": "text",
+    "claims": [
+      "Mars has two moons."
+    ],
+    "reference_evidence": [
+      "Mars has two natural satellites named Phobos and Deimos.",
+      "They were discovered in 1877 by astronomer Asaph Hall."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 213,
+    "post": "There are two moons orbiting Mars.",
+    "media_type": "text",
+    "claims": [
+      "Mars has two moons."
+    ],
+    "reference_evidence": [
+      "Mars has two natural satellites named Phobos and Deimos.",
+      "They were discovered in 1877 by astronomer Asaph Hall."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 214,
+    "post": "Mars has exactly two moons revolving around it.",
+    "media_type": "text",
+    "claims": [
+      "Mars has two moons."
+    ],
+    "reference_evidence": [
+      "Mars has two natural satellites named Phobos and Deimos.",
+      "They were discovered in 1877 by astronomer Asaph Hall."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 215,
+    "post": "Have you heard that Mars has two moons?",
+    "media_type": "text",
+    "claims": [
+      "Mars has two moons."
+    ],
+    "reference_evidence": [
+      "Mars has two natural satellites named Phobos and Deimos.",
+      "They were discovered in 1877 by astronomer Asaph Hall."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 216,
+    "post": "Mars is accompanied by two moons.",
+    "media_type": "text",
+    "claims": [
+      "Mars has two moons."
+    ],
+    "reference_evidence": [
+      "Mars has two natural satellites named Phobos and Deimos.",
+      "They were discovered in 1877 by astronomer Asaph Hall."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 217,
+    "post": "Video shows alien spacecraft landing in desert.",
+    "media_type": "video",
+    "claims": [
+      "Alien spacecraft landed in desert."
+    ],
+    "reference_evidence": [
+      "Videos claiming alien spacecraft landings are typically hoaxes or fictional media.",
+      "No verified evidence exists of alien spacecraft landing on Earth."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      25
+    ]
+  },
+  {
+    "id": 218,
+    "post": "Footage captures alien spaceship touching down in desert.",
+    "media_type": "video",
+    "claims": [
+      "Alien spacecraft landed in desert."
+    ],
+    "reference_evidence": [
+      "Videos claiming alien spacecraft landings are typically hoaxes or fictional media.",
+      "No verified evidence exists of alien spacecraft landing on Earth."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      25
+    ]
+  },
+  {
+    "id": 219,
+    "post": "Did an alien spacecraft just land in the desert?",
+    "media_type": "video",
+    "claims": [
+      "Alien spacecraft landed in desert."
+    ],
+    "reference_evidence": [
+      "Videos claiming alien spacecraft landings are typically hoaxes or fictional media.",
+      "No verified evidence exists of alien spacecraft landing on Earth."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      25
+    ]
+  },
+  {
+    "id": 220,
+    "post": "Breaking: Alien craft lands in desert area.",
+    "media_type": "video",
+    "claims": [
+      "Alien spacecraft landed in desert."
+    ],
+    "reference_evidence": [
+      "Videos claiming alien spacecraft landings are typically hoaxes or fictional media.",
+      "No verified evidence exists of alien spacecraft landing on Earth."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      25
+    ]
+  },
+  {
+    "id": 221,
+    "post": "A video reportedly shows an alien spacecraft landing in the desert.",
+    "media_type": "video",
+    "claims": [
+      "Alien spacecraft landed in desert."
+    ],
+    "reference_evidence": [
+      "Videos claiming alien spacecraft landings are typically hoaxes or fictional media.",
+      "No verified evidence exists of alien spacecraft landing on Earth."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      25
+    ]
+  },
+  {
+    "id": 222,
+    "post": "Alien spaceship seen landing in the middle of the desert.",
+    "media_type": "video",
+    "claims": [
+      "Alien spacecraft landed in desert."
+    ],
+    "reference_evidence": [
+      "Videos claiming alien spacecraft landings are typically hoaxes or fictional media.",
+      "No verified evidence exists of alien spacecraft landing on Earth."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      25
+    ]
+  },
+  {
+    "id": 223,
+    "post": "Is this proof of an alien spaceship landing in the desert?",
+    "media_type": "video",
+    "claims": [
+      "Alien spacecraft landed in desert."
+    ],
+    "reference_evidence": [
+      "Videos claiming alien spacecraft landings are typically hoaxes or fictional media.",
+      "No verified evidence exists of alien spacecraft landing on Earth."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      25
+    ]
+  },
+  {
+    "id": 224,
+    "post": "Watch: Alien craft allegedly lands in desert location.",
+    "media_type": "video",
+    "claims": [
+      "Alien spacecraft landed in desert."
+    ],
+    "reference_evidence": [
+      "Videos claiming alien spacecraft landings are typically hoaxes or fictional media.",
+      "No verified evidence exists of alien spacecraft landing on Earth."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      25
+    ]
+  },
+  {
+    "id": 225,
+    "post": "Alien spacecraft touching down in desert caught on video.",
+    "media_type": "video",
+    "claims": [
+      "Alien spacecraft landed in desert."
+    ],
+    "reference_evidence": [
+      "Videos claiming alien spacecraft landings are typically hoaxes or fictional media.",
+      "No verified evidence exists of alien spacecraft landing on Earth."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      25
+    ]
+  },
+  {
+    "id": 226,
+    "post": "Captured on camera: Alien craft landing in the desert.",
+    "media_type": "video",
+    "claims": [
+      "Alien spacecraft landed in desert."
+    ],
+    "reference_evidence": [
+      "Videos claiming alien spacecraft landings are typically hoaxes or fictional media.",
+      "No verified evidence exists of alien spacecraft landing on Earth."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      25
+    ]
+  },
+  {
+    "id": 227,
+    "post": "Smoking causes lung cancer.",
+    "media_type": "text",
+    "claims": [
+      "Smoking causes lung cancer."
+    ],
+    "reference_evidence": [
+      "Medical research shows smoking significantly increases the risk of lung cancer.",
+      "Tobacco use is the leading cause of lung cancer globally."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 228,
+    "post": "Smoking leads to lung cancer.",
+    "media_type": "text",
+    "claims": [
+      "Smoking causes lung cancer."
+    ],
+    "reference_evidence": [
+      "Medical research shows smoking significantly increases the risk of lung cancer.",
+      "Tobacco use is the leading cause of lung cancer globally."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 229,
+    "post": "Did you know smoking can cause lung cancer?",
+    "media_type": "text",
+    "claims": [
+      "Smoking causes lung cancer."
+    ],
+    "reference_evidence": [
+      "Medical research shows smoking significantly increases the risk of lung cancer.",
+      "Tobacco use is the leading cause of lung cancer globally."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 230,
+    "post": "It\u2019s well established that smoking causes lung cancer.",
+    "media_type": "text",
+    "claims": [
+      "Smoking causes lung cancer."
+    ],
+    "reference_evidence": [
+      "Medical research shows smoking significantly increases the risk of lung cancer.",
+      "Tobacco use is the leading cause of lung cancer globally."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 231,
+    "post": "Smoking is a cause of lung cancer.",
+    "media_type": "text",
+    "claims": [
+      "Smoking causes lung cancer."
+    ],
+    "reference_evidence": [
+      "Medical research shows smoking significantly increases the risk of lung cancer.",
+      "Tobacco use is the leading cause of lung cancer globally."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 232,
+    "post": "Beware: smoking causes lung cancer.",
+    "media_type": "text",
+    "claims": [
+      "Smoking causes lung cancer."
+    ],
+    "reference_evidence": [
+      "Medical research shows smoking significantly increases the risk of lung cancer.",
+      "Tobacco use is the leading cause of lung cancer globally."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 233,
+    "post": "Lung cancer is caused by smoking.",
+    "media_type": "text",
+    "claims": [
+      "Smoking causes lung cancer."
+    ],
+    "reference_evidence": [
+      "Medical research shows smoking significantly increases the risk of lung cancer.",
+      "Tobacco use is the leading cause of lung cancer globally."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 234,
+    "post": "Smoking contributes to the development of lung cancer.",
+    "media_type": "text",
+    "claims": [
+      "Smoking causes lung cancer."
+    ],
+    "reference_evidence": [
+      "Medical research shows smoking significantly increases the risk of lung cancer.",
+      "Tobacco use is the leading cause of lung cancer globally."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 235,
+    "post": "Breaking: Smoking causes lung cancer.",
+    "media_type": "text",
+    "claims": [
+      "Smoking causes lung cancer."
+    ],
+    "reference_evidence": [
+      "Medical research shows smoking significantly increases the risk of lung cancer.",
+      "Tobacco use is the leading cause of lung cancer globally."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 236,
+    "post": "Smoking can cause lung cancer.",
+    "media_type": "text",
+    "claims": [
+      "Smoking causes lung cancer."
+    ],
+    "reference_evidence": [
+      "Medical research shows smoking significantly increases the risk of lung cancer.",
+      "Tobacco use is the leading cause of lung cancer globally."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 237,
+    "post": "Graph claims global temperatures dropped sharply in 2023.",
+    "media_type": "image",
+    "claims": [
+      "Global temperatures dropped in 2023."
+    ],
+    "reference_evidence": [
+      "Climate data shows global temperatures continue to rise over time.",
+      "Short-term variations can occur but do not indicate a sharp global decline."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 238,
+    "post": "Output must be a JSON array of strings, not an object.",
+    "media_type": "image",
+    "claims": [
+      "Global temperatures dropped in 2023."
+    ],
+    "reference_evidence": [
+      "Climate data shows global temperatures continue to rise over time.",
+      "Short-term variations can occur but do not indicate a sharp global decline."
+    ],
+    "ground_truth_verdict": "MISLEADING",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 239,
+    "post": "Scientists discovered water on Mars.",
+    "media_type": "text",
+    "claims": [
+      "Water exists on Mars."
+    ],
+    "reference_evidence": [
+      "NASA missions detected evidence of water ice on Mars.",
+      "Past missions identified signs of ancient liquid water."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 240,
+    "post": "Researchers have found evidence of water on Mars.",
+    "media_type": "text",
+    "claims": [
+      "Water exists on Mars."
+    ],
+    "reference_evidence": [
+      "NASA missions detected evidence of water ice on Mars.",
+      "Past missions identified signs of ancient liquid water."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 241,
+    "post": "Water has been detected on the surface of Mars.",
+    "media_type": "text",
+    "claims": [
+      "Water exists on Mars."
+    ],
+    "reference_evidence": [
+      "NASA missions detected evidence of water ice on Mars.",
+      "Past missions identified signs of ancient liquid water."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 242,
+    "post": "It's been confirmed that water exists on Mars.",
+    "media_type": "text",
+    "claims": [
+      "Water exists on Mars."
+    ],
+    "reference_evidence": [
+      "NASA missions detected evidence of water ice on Mars.",
+      "Past missions identified signs of ancient liquid water."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 243,
+    "post": "Did you know water is present on Mars?",
+    "media_type": "text",
+    "claims": [
+      "Water exists on Mars."
+    ],
+    "reference_evidence": [
+      "NASA missions detected evidence of water ice on Mars.",
+      "Past missions identified signs of ancient liquid water."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 244,
+    "post": "Breaking: Scientists confirm water on Mars.",
+    "media_type": "text",
+    "claims": [
+      "Water exists on Mars."
+    ],
+    "reference_evidence": [
+      "NASA missions detected evidence of water ice on Mars.",
+      "Past missions identified signs of ancient liquid water."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 245,
+    "post": "New findings show water exists on Mars.",
+    "media_type": "text",
+    "claims": [
+      "Water exists on Mars."
+    ],
+    "reference_evidence": [
+      "NASA missions detected evidence of water ice on Mars.",
+      "Past missions identified signs of ancient liquid water."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 246,
+    "post": "There is water on Mars, according to scientists.",
+    "media_type": "text",
+    "claims": [
+      "Water exists on Mars."
+    ],
+    "reference_evidence": [
+      "NASA missions detected evidence of water ice on Mars.",
+      "Past missions identified signs of ancient liquid water."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 247,
+    "post": "Scientists report discovery of water on Mars.",
+    "media_type": "text",
+    "claims": [
+      "Water exists on Mars."
+    ],
+    "reference_evidence": [
+      "NASA missions detected evidence of water ice on Mars.",
+      "Past missions identified signs of ancient liquid water."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 248,
+    "post": "Mars is home to water, research confirms.",
+    "media_type": "text",
+    "claims": [
+      "Water exists on Mars."
+    ],
+    "reference_evidence": [
+      "NASA missions detected evidence of water ice on Mars.",
+      "Past missions identified signs of ancient liquid water."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 249,
+    "post": "COVID vaccines contain microchips.",
+    "media_type": "text",
+    "claims": [
+      "COVID vaccines contain microchips."
+    ],
+    "reference_evidence": [
+      "COVID-19 vaccines contain medically approved ingredients such as mRNA and lipids.",
+      "No evidence supports claims that vaccines contain microchips."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 250,
+    "post": "COVID-19 vaccines have microchips inside.",
+    "media_type": "text",
+    "claims": [
+      "COVID vaccines contain microchips."
+    ],
+    "reference_evidence": [
+      "COVID-19 vaccines contain medically approved ingredients such as mRNA and lipids.",
+      "No evidence supports claims that vaccines contain microchips."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 251,
+    "post": "They say COVID vaccines carry microchips.",
+    "media_type": "text",
+    "claims": [
+      "COVID vaccines contain microchips."
+    ],
+    "reference_evidence": [
+      "COVID-19 vaccines contain medically approved ingredients such as mRNA and lipids.",
+      "No evidence supports claims that vaccines contain microchips."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 252,
+    "post": "Microchips are included in COVID vaccines.",
+    "media_type": "text",
+    "claims": [
+      "COVID vaccines contain microchips."
+    ],
+    "reference_evidence": [
+      "COVID-19 vaccines contain medically approved ingredients such as mRNA and lipids.",
+      "No evidence supports claims that vaccines contain microchips."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 253,
+    "post": "The COVID vaccine contains microchips.",
+    "media_type": "text",
+    "claims": [
+      "COVID vaccines contain microchips."
+    ],
+    "reference_evidence": [
+      "COVID-19 vaccines contain medically approved ingredients such as mRNA and lipids.",
+      "No evidence supports claims that vaccines contain microchips."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 254,
+    "post": "Do COVID vaccines have microchips in them?",
+    "media_type": "text",
+    "claims": [
+      "COVID vaccines contain microchips."
+    ],
+    "reference_evidence": [
+      "COVID-19 vaccines contain medically approved ingredients such as mRNA and lipids.",
+      "No evidence supports claims that vaccines contain microchips."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 255,
+    "post": "Reports claim microchips are in COVID vaccines.",
+    "media_type": "text",
+    "claims": [
+      "COVID vaccines contain microchips."
+    ],
+    "reference_evidence": [
+      "COVID-19 vaccines contain medically approved ingredients such as mRNA and lipids.",
+      "No evidence supports claims that vaccines contain microchips."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 256,
+    "post": "COVID vaccines supposedly contain microchips.",
+    "media_type": "text",
+    "claims": [
+      "COVID vaccines contain microchips."
+    ],
+    "reference_evidence": [
+      "COVID-19 vaccines contain medically approved ingredients such as mRNA and lipids.",
+      "No evidence supports claims that vaccines contain microchips."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 257,
+    "post": "Is it true that COVID vaccines contain microchips?",
+    "media_type": "text",
+    "claims": [
+      "COVID vaccines contain microchips."
+    ],
+    "reference_evidence": [
+      "COVID-19 vaccines contain medically approved ingredients such as mRNA and lipids.",
+      "No evidence supports claims that vaccines contain microchips."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 258,
+    "post": "Breaking: COVID vaccines include microchips.",
+    "media_type": "text",
+    "claims": [
+      "COVID vaccines contain microchips."
+    ],
+    "reference_evidence": [
+      "COVID-19 vaccines contain medically approved ingredients such as mRNA and lipids.",
+      "No evidence supports claims that vaccines contain microchips."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 259,
+    "post": "The human body has 206 bones.",
+    "media_type": "text",
+    "claims": [
+      "Human body has 206 bones."
+    ],
+    "reference_evidence": [
+      "The adult human skeleton contains 206 bones.",
+      "Infants have more bones which fuse during development."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 260,
+    "post": "The request is to output a JSON array, but the user specifically asked to output ONLY a JSON array.",
+    "media_type": "text",
+    "claims": [
+      "Human body has 206 bones."
+    ],
+    "reference_evidence": [
+      "The adult human skeleton contains 206 bones.",
+      "Infants have more bones which fuse during development."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 261,
+    "post": "Video claims dinosaur spotted alive in jungle.",
+    "media_type": "video",
+    "claims": [
+      "Dinosaur spotted alive."
+    ],
+    "reference_evidence": [
+      "Dinosaurs went extinct around 66 million years ago.",
+      "No credible evidence shows dinosaurs still living today."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 262,
+    "post": "Video footage shows a dinosaur living in the jungle.",
+    "media_type": "video",
+    "claims": [
+      "Dinosaur spotted alive."
+    ],
+    "reference_evidence": [
+      "Dinosaurs went extinct around 66 million years ago.",
+      "No credible evidence shows dinosaurs still living today."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 263,
+    "post": "Did a dinosaur get spotted alive in the jungle?",
+    "media_type": "video",
+    "claims": [
+      "Dinosaur spotted alive."
+    ],
+    "reference_evidence": [
+      "Dinosaurs went extinct around 66 million years ago.",
+      "No credible evidence shows dinosaurs still living today."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 264,
+    "post": "A dinosaur has been seen alive in the jungle, according to a video.",
+    "media_type": "video",
+    "claims": [
+      "Dinosaur spotted alive."
+    ],
+    "reference_evidence": [
+      "Dinosaurs went extinct around 66 million years ago.",
+      "No credible evidence shows dinosaurs still living today."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 265,
+    "post": "Watch: Dinosaur caught on camera alive in jungle.",
+    "media_type": "video",
+    "claims": [
+      "Dinosaur spotted alive."
+    ],
+    "reference_evidence": [
+      "Dinosaurs went extinct around 66 million years ago.",
+      "No credible evidence shows dinosaurs still living today."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 266,
+    "post": "Reports claim a dinosaur is still alive in the jungle.",
+    "media_type": "video",
+    "claims": [
+      "Dinosaur spotted alive."
+    ],
+    "reference_evidence": [
+      "Dinosaurs went extinct around 66 million years ago.",
+      "No credible evidence shows dinosaurs still living today."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 267,
+    "post": "Is there proof of a living dinosaur in the jungle?",
+    "media_type": "video",
+    "claims": [
+      "Dinosaur spotted alive."
+    ],
+    "reference_evidence": [
+      "Dinosaurs went extinct around 66 million years ago.",
+      "No credible evidence shows dinosaurs still living today."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 268,
+    "post": "Breaking: Dinosaur spotted alive in the wild jungle.",
+    "media_type": "video",
+    "claims": [
+      "Dinosaur spotted alive."
+    ],
+    "reference_evidence": [
+      "Dinosaurs went extinct around 66 million years ago.",
+      "No credible evidence shows dinosaurs still living today."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 269,
+    "post": "Jungle sighting: Dinosaur reportedly alive.",
+    "media_type": "video",
+    "claims": [
+      "Dinosaur spotted alive."
+    ],
+    "reference_evidence": [
+      "Dinosaurs went extinct around 66 million years ago.",
+      "No credible evidence shows dinosaurs still living today."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 270,
+    "post": "A living dinosaur was apparently filmed in the jungle.",
+    "media_type": "video",
+    "claims": [
+      "Dinosaur spotted alive."
+    ],
+    "reference_evidence": [
+      "Dinosaurs went extinct around 66 million years ago.",
+      "No credible evidence shows dinosaurs still living today."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 271,
+    "post": "Saturn has rings made of ice and rock.",
+    "media_type": "text",
+    "claims": [
+      "Saturn has rings made of ice and rock."
+    ],
+    "reference_evidence": [
+      "Saturn's rings consist mainly of ice particles mixed with rock debris.",
+      "The rings are one of the most distinctive features of the planet."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 272,
+    "post": "The user requested output only as a JSON array, but the provided format does not follow JSON array structure.",
+    "media_type": "text",
+    "claims": [
+      "Saturn has rings made of ice and rock."
+    ],
+    "reference_evidence": [
+      "Saturn's rings consist mainly of ice particles mixed with rock debris.",
+      "The rings are one of the most distinctive features of the planet."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      90,
+      100
+    ]
+  },
+  {
+    "id": 273,
+    "post": "New virus outbreak reported today in Asia.",
+    "media_type": "text",
+    "claims": [
+      "New virus outbreak reported in Asia."
+    ],
+    "reference_evidence": [
+      "Health organizations monitor disease outbreaks globally.",
+      "News reports are needed to confirm any new outbreak."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      55
+    ]
+  },
+  {
+    "id": 274,
+    "post": "Reports of a new virus outbreak in Asia surfaced today.",
+    "media_type": "text",
+    "claims": [
+      "New virus outbreak reported in Asia."
+    ],
+    "reference_evidence": [
+      "Health organizations monitor disease outbreaks globally.",
+      "News reports are needed to confirm any new outbreak."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      55
+    ]
+  },
+  {
+    "id": 275,
+    "post": "A new virus outbreak has been reported in Asia.",
+    "media_type": "text",
+    "claims": [
+      "New virus outbreak reported in Asia."
+    ],
+    "reference_evidence": [
+      "Health organizations monitor disease outbreaks globally.",
+      "News reports are needed to confirm any new outbreak."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      55
+    ]
+  },
+  {
+    "id": 276,
+    "post": "Breaking: New virus outbreak reported in Asia.",
+    "media_type": "text",
+    "claims": [
+      "New virus outbreak reported in Asia."
+    ],
+    "reference_evidence": [
+      "Health organizations monitor disease outbreaks globally.",
+      "News reports are needed to confirm any new outbreak."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      55
+    ]
+  },
+  {
+    "id": 277,
+    "post": "Today, news came out about a new virus outbreak in Asia.",
+    "media_type": "text",
+    "claims": [
+      "New virus outbreak reported in Asia."
+    ],
+    "reference_evidence": [
+      "Health organizations monitor disease outbreaks globally.",
+      "News reports are needed to confirm any new outbreak."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      55
+    ]
+  },
+  {
+    "id": 278,
+    "post": "Is there a new virus outbreak happening in Asia?",
+    "media_type": "text",
+    "claims": [
+      "New virus outbreak reported in Asia."
+    ],
+    "reference_evidence": [
+      "Health organizations monitor disease outbreaks globally.",
+      "News reports are needed to confirm any new outbreak."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      55
+    ]
+  },
+  {
+    "id": 279,
+    "post": "New virus outbreak reported today in Asia.",
+    "media_type": "text",
+    "claims": [
+      "New virus outbreak reported in Asia."
+    ],
+    "reference_evidence": [
+      "Health organizations monitor disease outbreaks globally.",
+      "News reports are needed to confirm any new outbreak."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      55
+    ]
+  },
+  {
+    "id": 280,
+    "post": "Asia reportedly facing a new virus outbreak.",
+    "media_type": "text",
+    "claims": [
+      "New virus outbreak reported in Asia."
+    ],
+    "reference_evidence": [
+      "Health organizations monitor disease outbreaks globally.",
+      "News reports are needed to confirm any new outbreak."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      55
+    ]
+  },
+  {
+    "id": 281,
+    "post": "Reports today indicate a new virus outbreak in Asia.",
+    "media_type": "text",
+    "claims": [
+      "New virus outbreak reported in Asia."
+    ],
+    "reference_evidence": [
+      "Health organizations monitor disease outbreaks globally.",
+      "News reports are needed to confirm any new outbreak."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      55
+    ]
+  },
+  {
+    "id": 282,
+    "post": "New virus outbreak in Asia reported as of today.",
+    "media_type": "text",
+    "claims": [
+      "New virus outbreak reported in Asia."
+    ],
+    "reference_evidence": [
+      "Health organizations monitor disease outbreaks globally.",
+      "News reports are needed to confirm any new outbreak."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      55
+    ]
+  },
+  {
+    "id": 283,
+    "post": "Image claims snow fell in Sahara desert yesterday.",
+    "media_type": "image",
+    "claims": [
+      "Snow fell in Sahara yesterday."
+    ],
+    "reference_evidence": [
+      "Snowfall has occasionally been recorded in parts of the Sahara desert.",
+      "Such events are rare but documented."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      60
+    ]
+  },
+  {
+    "id": 284,
+    "post": "Did it really snow in the Sahara Desert yesterday?",
+    "media_type": "image",
+    "claims": [
+      "Snow fell in Sahara yesterday."
+    ],
+    "reference_evidence": [
+      "Snowfall has occasionally been recorded in parts of the Sahara desert.",
+      "Such events are rare but documented."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      60
+    ]
+  },
+  {
+    "id": 285,
+    "post": "Breaking: Snow reported in the Sahara Desert yesterday.",
+    "media_type": "image",
+    "claims": [
+      "Snow fell in Sahara yesterday."
+    ],
+    "reference_evidence": [
+      "Snowfall has occasionally been recorded in parts of the Sahara desert.",
+      "Such events are rare but documented."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      60
+    ]
+  },
+  {
+    "id": 286,
+    "post": "Photos suggest that snow fell in the Sahara Desert yesterday.",
+    "media_type": "image",
+    "claims": [
+      "Snow fell in Sahara yesterday."
+    ],
+    "reference_evidence": [
+      "Snowfall has occasionally been recorded in parts of the Sahara desert.",
+      "Such events are rare but documented."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      60
+    ]
+  },
+  {
+    "id": 287,
+    "post": "Yesterday's Sahara Desert experienced snowfall, according to reports.",
+    "media_type": "image",
+    "claims": [
+      "Snow fell in Sahara yesterday."
+    ],
+    "reference_evidence": [
+      "Snowfall has occasionally been recorded in parts of the Sahara desert.",
+      "Such events are rare but documented."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      60
+    ]
+  },
+  {
+    "id": 288,
+    "post": "Is it true that it snowed in the Sahara Desert yesterday?",
+    "media_type": "image",
+    "claims": [
+      "Snow fell in Sahara yesterday."
+    ],
+    "reference_evidence": [
+      "Snowfall has occasionally been recorded in parts of the Sahara desert.",
+      "Such events are rare but documented."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      60
+    ]
+  },
+  {
+    "id": 289,
+    "post": "Snowfall confirmed in the Sahara Desert yesterday?",
+    "media_type": "image",
+    "claims": [
+      "Snow fell in Sahara yesterday."
+    ],
+    "reference_evidence": [
+      "Snowfall has occasionally been recorded in parts of the Sahara desert.",
+      "Such events are rare but documented."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      60
+    ]
+  },
+  {
+    "id": 290,
+    "post": "Reports say that the Sahara Desert saw snow yesterday.",
+    "media_type": "image",
+    "claims": [
+      "Snow fell in Sahara yesterday."
+    ],
+    "reference_evidence": [
+      "Snowfall has occasionally been recorded in parts of the Sahara desert.",
+      "Such events are rare but documented."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      60
+    ]
+  },
+  {
+    "id": 291,
+    "post": "Unbelievable! Snow supposedly fell in the Sahara Desert yesterday.",
+    "media_type": "image",
+    "claims": [
+      "Snow fell in Sahara yesterday."
+    ],
+    "reference_evidence": [
+      "Snowfall has occasionally been recorded in parts of the Sahara desert.",
+      "Such events are rare but documented."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      60
+    ]
+  },
+  {
+    "id": 292,
+    "post": "Can you believe snow fell in the Sahara Desert just yesterday?",
+    "media_type": "image",
+    "claims": [
+      "Snow fell in Sahara yesterday."
+    ],
+    "reference_evidence": [
+      "Snowfall has occasionally been recorded in parts of the Sahara desert.",
+      "Such events are rare but documented."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      60
+    ]
+  },
+  {
+    "id": 293,
+    "post": "Vaccines cause autism.",
+    "media_type": "text",
+    "claims": [
+      "Vaccines cause autism."
+    ],
+    "reference_evidence": [
+      "Extensive scientific studies show vaccines do not cause autism.",
+      "The original study suggesting a link was retracted."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 294,
+    "post": "Vaccines lead to autism.",
+    "media_type": "text",
+    "claims": [
+      "Vaccines cause autism."
+    ],
+    "reference_evidence": [
+      "Extensive scientific studies show vaccines do not cause autism.",
+      "The original study suggesting a link was retracted."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 295,
+    "post": "There is a link between vaccines and autism.",
+    "media_type": "text",
+    "claims": [
+      "Vaccines cause autism."
+    ],
+    "reference_evidence": [
+      "Extensive scientific studies show vaccines do not cause autism.",
+      "The original study suggesting a link was retracted."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 296,
+    "post": "Getting vaccinated can cause autism.",
+    "media_type": "text",
+    "claims": [
+      "Vaccines cause autism."
+    ],
+    "reference_evidence": [
+      "Extensive scientific studies show vaccines do not cause autism.",
+      "The original study suggesting a link was retracted."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 297,
+    "post": "Autism is caused by vaccines.",
+    "media_type": "text",
+    "claims": [
+      "Vaccines cause autism."
+    ],
+    "reference_evidence": [
+      "Extensive scientific studies show vaccines do not cause autism.",
+      "The original study suggesting a link was retracted."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 298,
+    "post": "Vaccination results in autism.",
+    "media_type": "text",
+    "claims": [
+      "Vaccines cause autism."
+    ],
+    "reference_evidence": [
+      "Extensive scientific studies show vaccines do not cause autism.",
+      "The original study suggesting a link was retracted."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 299,
+    "post": "Vaccines trigger autism.",
+    "media_type": "text",
+    "claims": [
+      "Vaccines cause autism."
+    ],
+    "reference_evidence": [
+      "Extensive scientific studies show vaccines do not cause autism.",
+      "The original study suggesting a link was retracted."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 300,
+    "post": "The cause of autism is vaccination.",
+    "media_type": "text",
+    "claims": [
+      "Vaccines cause autism."
+    ],
+    "reference_evidence": [
+      "Extensive scientific studies show vaccines do not cause autism.",
+      "The original study suggesting a link was retracted."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 301,
+    "post": "Vaccines are responsible for autism.",
+    "media_type": "text",
+    "claims": [
+      "Vaccines cause autism."
+    ],
+    "reference_evidence": [
+      "Extensive scientific studies show vaccines do not cause autism.",
+      "The original study suggesting a link was retracted."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 302,
+    "post": "Vaccines and autism are connected.",
+    "media_type": "text",
+    "claims": [
+      "Vaccines cause autism."
+    ],
+    "reference_evidence": [
+      "Extensive scientific studies show vaccines do not cause autism.",
+      "The original study suggesting a link was retracted."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 303,
+    "post": "Water boils at 100\u00b0C at sea level.",
+    "media_type": "text",
+    "claims": [
+      "Water boils at 100\u00b0C at sea level."
+    ],
+    "reference_evidence": [
+      "Pure water boils at 100 degrees Celsius at standard atmospheric pressure.",
+      "This temperature changes with altitude."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 304,
+    "post": "At sea level, water boils at 100\u00b0C.",
+    "media_type": "text",
+    "claims": [
+      "Water boils at 100\u00b0C at sea level."
+    ],
+    "reference_evidence": [
+      "Pure water boils at 100 degrees Celsius at standard atmospheric pressure.",
+      "This temperature changes with altitude."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 305,
+    "post": "Did you know water boils at 100 degrees Celsius when you're at sea level?",
+    "media_type": "text",
+    "claims": [
+      "Water boils at 100\u00b0C at sea level."
+    ],
+    "reference_evidence": [
+      "Pure water boils at 100 degrees Celsius at standard atmospheric pressure.",
+      "This temperature changes with altitude."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 306,
+    "post": "Water reaches its boiling point at 100\u00b0C if you're at sea level.",
+    "media_type": "text",
+    "claims": [
+      "Water boils at 100\u00b0C at sea level."
+    ],
+    "reference_evidence": [
+      "Pure water boils at 100 degrees Celsius at standard atmospheric pressure.",
+      "This temperature changes with altitude."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 307,
+    "post": "Fun fact: The boiling point of water at sea level is 100\u00b0C.",
+    "media_type": "text",
+    "claims": [
+      "Water boils at 100\u00b0C at sea level."
+    ],
+    "reference_evidence": [
+      "Pure water boils at 100 degrees Celsius at standard atmospheric pressure.",
+      "This temperature changes with altitude."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 308,
+    "post": "Breaking: Water boils at exactly 100\u00b0C at sea level.",
+    "media_type": "text",
+    "claims": [
+      "Water boils at 100\u00b0C at sea level."
+    ],
+    "reference_evidence": [
+      "Pure water boils at 100 degrees Celsius at standard atmospheric pressure.",
+      "This temperature changes with altitude."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 309,
+    "post": "Water\u2019s boiling point, at sea level, is 100 degrees Celsius.",
+    "media_type": "text",
+    "claims": [
+      "Water boils at 100\u00b0C at sea level."
+    ],
+    "reference_evidence": [
+      "Pure water boils at 100 degrees Celsius at standard atmospheric pressure.",
+      "This temperature changes with altitude."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 310,
+    "post": "The temperature at which water boils at sea level is 100\u00b0C.",
+    "media_type": "text",
+    "claims": [
+      "Water boils at 100\u00b0C at sea level."
+    ],
+    "reference_evidence": [
+      "Pure water boils at 100 degrees Celsius at standard atmospheric pressure.",
+      "This temperature changes with altitude."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 311,
+    "post": "Is it true that water boils at 100\u00b0C when at sea level? Yes, it is.",
+    "media_type": "text",
+    "claims": [
+      "Water boils at 100\u00b0C at sea level."
+    ],
+    "reference_evidence": [
+      "Pure water boils at 100 degrees Celsius at standard atmospheric pressure.",
+      "This temperature changes with altitude."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 312,
+    "post": "Boiling water will reach 100\u00b0C at sea level.",
+    "media_type": "text",
+    "claims": [
+      "Water boils at 100\u00b0C at sea level."
+    ],
+    "reference_evidence": [
+      "Pure water boils at 100 degrees Celsius at standard atmospheric pressure.",
+      "This temperature changes with altitude."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 313,
+    "post": "Video claims massive UFO sighting over New York.",
+    "media_type": "video",
+    "claims": [
+      "UFO sighting over New York."
+    ],
+    "reference_evidence": [
+      "Many UFO sightings are later explained as aircraft or atmospheric phenomena.",
+      "Verification requires official investigation."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 314,
+    "post": "Huge UFO sighting reported in New York.",
+    "media_type": "video",
+    "claims": [
+      "UFO sighting over New York."
+    ],
+    "reference_evidence": [
+      "Many UFO sightings are later explained as aircraft or atmospheric phenomena.",
+      "Verification requires official investigation."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 315,
+    "post": "Is that a UFO over New York? See this video.",
+    "media_type": "video",
+    "claims": [
+      "UFO sighting over New York."
+    ],
+    "reference_evidence": [
+      "Many UFO sightings are later explained as aircraft or atmospheric phenomena.",
+      "Verification requires official investigation."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 316,
+    "post": "Massive unidentified flying object spotted above New York.",
+    "media_type": "video",
+    "claims": [
+      "UFO sighting over New York."
+    ],
+    "reference_evidence": [
+      "Many UFO sightings are later explained as aircraft or atmospheric phenomena.",
+      "Verification requires official investigation."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 317,
+    "post": "Breaking: UFO sighting captured on video in New York.",
+    "media_type": "video",
+    "claims": [
+      "UFO sighting over New York."
+    ],
+    "reference_evidence": [
+      "Many UFO sightings are later explained as aircraft or atmospheric phenomena.",
+      "Verification requires official investigation."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 318,
+    "post": "Did anyone else see that huge UFO over New York?",
+    "media_type": "video",
+    "claims": [
+      "UFO sighting over New York."
+    ],
+    "reference_evidence": [
+      "Many UFO sightings are later explained as aircraft or atmospheric phenomena.",
+      "Verification requires official investigation."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 319,
+    "post": "Video shows what appears to be a giant UFO in the New York sky.",
+    "media_type": "video",
+    "claims": [
+      "UFO sighting over New York."
+    ],
+    "reference_evidence": [
+      "Many UFO sightings are later explained as aircraft or atmospheric phenomena.",
+      "Verification requires official investigation."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 320,
+    "post": "New York sky lights up with a massive UFO sighting.",
+    "media_type": "video",
+    "claims": [
+      "UFO sighting over New York."
+    ],
+    "reference_evidence": [
+      "Many UFO sightings are later explained as aircraft or atmospheric phenomena.",
+      "Verification requires official investigation."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 321,
+    "post": "Watch: Mysterious UFO seen hovering over New York city.",
+    "media_type": "video",
+    "claims": [
+      "UFO sighting over New York."
+    ],
+    "reference_evidence": [
+      "Many UFO sightings are later explained as aircraft or atmospheric phenomena.",
+      "Verification requires official investigation."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 322,
+    "post": "Eyewitnesses claim a large UFO was spotted over New York recently.",
+    "media_type": "video",
+    "claims": [
+      "UFO sighting over New York."
+    ],
+    "reference_evidence": [
+      "Many UFO sightings are later explained as aircraft or atmospheric phenomena.",
+      "Verification requires official investigation."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      30,
+      55
+    ]
+  },
+  {
+    "id": 323,
+    "post": "Earth is flat.",
+    "media_type": "text",
+    "claims": [
+      "Earth is flat."
+    ],
+    "reference_evidence": [
+      "Scientific evidence shows Earth is an oblate spheroid.",
+      "Satellite imagery and physics confirm the Earth's round shape."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      15
+    ]
+  },
+  {
+    "id": 324,
+    "post": "The Earth is flat, not round.",
+    "media_type": "text",
+    "claims": [
+      "Earth is flat."
+    ],
+    "reference_evidence": [
+      "Scientific evidence shows Earth is an oblate spheroid.",
+      "Satellite imagery and physics confirm the Earth's round shape."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      15
+    ]
+  },
+  {
+    "id": 325,
+    "post": "Did you know the Earth is flat?",
+    "media_type": "text",
+    "claims": [
+      "Earth is flat."
+    ],
+    "reference_evidence": [
+      "Scientific evidence shows Earth is an oblate spheroid.",
+      "Satellite imagery and physics confirm the Earth's round shape."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      15
+    ]
+  },
+  {
+    "id": 326,
+    "post": "Breaking news: The Earth is flat.",
+    "media_type": "text",
+    "claims": [
+      "Earth is flat."
+    ],
+    "reference_evidence": [
+      "Scientific evidence shows Earth is an oblate spheroid.",
+      "Satellite imagery and physics confirm the Earth's round shape."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      15
+    ]
+  },
+  {
+    "id": 327,
+    "post": "Flat Earth is the truth!",
+    "media_type": "text",
+    "claims": [
+      "Earth is flat."
+    ],
+    "reference_evidence": [
+      "Scientific evidence shows Earth is an oblate spheroid.",
+      "Satellite imagery and physics confirm the Earth's round shape."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      15
+    ]
+  },
+  {
+    "id": 328,
+    "post": "Why do people say the Earth is a sphere when it's flat?",
+    "media_type": "text",
+    "claims": [
+      "Earth is flat."
+    ],
+    "reference_evidence": [
+      "Scientific evidence shows Earth is an oblate spheroid.",
+      "Satellite imagery and physics confirm the Earth's round shape."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      15
+    ]
+  },
+  {
+    "id": 329,
+    "post": "I believe the Earth is flat.",
+    "media_type": "text",
+    "claims": [
+      "Earth is flat."
+    ],
+    "reference_evidence": [
+      "Scientific evidence shows Earth is an oblate spheroid.",
+      "Satellite imagery and physics confirm the Earth's round shape."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      15
+    ]
+  },
+  {
+    "id": 330,
+    "post": "Earth isn't a globe, it's flat.",
+    "media_type": "text",
+    "claims": [
+      "Earth is flat."
+    ],
+    "reference_evidence": [
+      "Scientific evidence shows Earth is an oblate spheroid.",
+      "Satellite imagery and physics confirm the Earth's round shape."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      15
+    ]
+  },
+  {
+    "id": 331,
+    "post": "The truth: Earth is flat.",
+    "media_type": "text",
+    "claims": [
+      "Earth is flat."
+    ],
+    "reference_evidence": [
+      "Scientific evidence shows Earth is an oblate spheroid.",
+      "Satellite imagery and physics confirm the Earth's round shape."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      15
+    ]
+  },
+  {
+    "id": 332,
+    "post": "Flat Earth, no curve.",
+    "media_type": "text",
+    "claims": [
+      "Earth is flat."
+    ],
+    "reference_evidence": [
+      "Scientific evidence shows Earth is an oblate spheroid.",
+      "Satellite imagery and physics confirm the Earth's round shape."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      15
+    ]
+  },
+  {
+    "id": 333,
+    "post": "Mount Everest is the highest mountain above sea level.",
+    "media_type": "text",
+    "claims": [
+      "Mount Everest highest mountain above sea level."
+    ],
+    "reference_evidence": [
+      "Mount Everest is the highest mountain above sea level at about 8849 meters.",
+      "It lies on the border of Nepal and China."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 334,
+    "post": "Mount Everest is the tallest mountain above sea level.",
+    "media_type": "text",
+    "claims": [
+      "Mount Everest highest mountain above sea level."
+    ],
+    "reference_evidence": [
+      "Mount Everest is the highest mountain above sea level at about 8849 meters.",
+      "It lies on the border of Nepal and China."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 335,
+    "post": "Did you know Mount Everest stands as the highest mountain above sea level?",
+    "media_type": "text",
+    "claims": [
+      "Mount Everest highest mountain above sea level."
+    ],
+    "reference_evidence": [
+      "Mount Everest is the highest mountain above sea level at about 8849 meters.",
+      "It lies on the border of Nepal and China."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 336,
+    "post": "Breaking: Mount Everest confirmed as the highest mountain above sea level.",
+    "media_type": "text",
+    "claims": [
+      "Mount Everest highest mountain above sea level."
+    ],
+    "reference_evidence": [
+      "Mount Everest is the highest mountain above sea level at about 8849 meters.",
+      "It lies on the border of Nepal and China."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 337,
+    "post": "Mount Everest holds the title of highest mountain above sea level.",
+    "media_type": "text",
+    "claims": [
+      "Mount Everest highest mountain above sea level."
+    ],
+    "reference_evidence": [
+      "Mount Everest is the highest mountain above sea level at about 8849 meters.",
+      "It lies on the border of Nepal and China."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 338,
+    "post": "The highest mountain above sea level is Mount Everest.",
+    "media_type": "text",
+    "claims": [
+      "Mount Everest highest mountain above sea level."
+    ],
+    "reference_evidence": [
+      "Mount Everest is the highest mountain above sea level at about 8849 meters.",
+      "It lies on the border of Nepal and China."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 339,
+    "post": "Mount Everest reaches the greatest height above sea level of any mountain.",
+    "media_type": "text",
+    "claims": [
+      "Mount Everest highest mountain above sea level."
+    ],
+    "reference_evidence": [
+      "Mount Everest is the highest mountain above sea level at about 8849 meters.",
+      "It lies on the border of Nepal and China."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 340,
+    "post": "It's a fact that Mount Everest is the highest mountain above sea level.",
+    "media_type": "text",
+    "claims": [
+      "Mount Everest highest mountain above sea level."
+    ],
+    "reference_evidence": [
+      "Mount Everest is the highest mountain above sea level at about 8849 meters.",
+      "It lies on the border of Nepal and China."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 341,
+    "post": "In terms of elevation above sea level, Mount Everest is the highest mountain.",
+    "media_type": "text",
+    "claims": [
+      "Mount Everest highest mountain above sea level."
+    ],
+    "reference_evidence": [
+      "Mount Everest is the highest mountain above sea level at about 8849 meters.",
+      "It lies on the border of Nepal and China."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 342,
+    "post": "Mount Everest tops the list as highest mountain above sea level.",
+    "media_type": "text",
+    "claims": [
+      "Mount Everest highest mountain above sea level."
+    ],
+    "reference_evidence": [
+      "Mount Everest is the highest mountain above sea level at about 8849 meters.",
+      "It lies on the border of Nepal and China."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 343,
+    "post": "Image shows a giant snake swallowing a car.",
+    "media_type": "image",
+    "claims": [
+      "Giant snake swallowed a car."
+    ],
+    "reference_evidence": [
+      "Viral images of giant snakes swallowing cars are typically manipulated.",
+      "No verified reports confirm such events."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 344,
+    "post": "Output must be a JSON array containing 9 variants of the given claim, but received an object instead.",
+    "media_type": "image",
+    "claims": [
+      "Giant snake swallowed a car."
+    ],
+    "reference_evidence": [
+      "Viral images of giant snakes swallowing cars are typically manipulated.",
+      "No verified reports confirm such events."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 345,
+    "post": "Electric cars produce zero emissions while driving.",
+    "media_type": "text",
+    "claims": [
+      "Electric cars produce zero tailpipe emissions."
+    ],
+    "reference_evidence": [
+      "Electric vehicles do not produce tailpipe emissions during operation.",
+      "Lifecycle emissions depend on electricity generation sources."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 346,
+    "post": "Electric vehicles don\u2019t emit any pollutants while on the road.",
+    "media_type": "text",
+    "claims": [
+      "Electric cars produce zero tailpipe emissions."
+    ],
+    "reference_evidence": [
+      "Electric vehicles do not produce tailpipe emissions during operation.",
+      "Lifecycle emissions depend on electricity generation sources."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 347,
+    "post": "When driving, electric cars have zero tailpipe emissions.",
+    "media_type": "text",
+    "claims": [
+      "Electric cars produce zero tailpipe emissions."
+    ],
+    "reference_evidence": [
+      "Electric vehicles do not produce tailpipe emissions during operation.",
+      "Lifecycle emissions depend on electricity generation sources."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 348,
+    "post": "Electric cars produce no emissions directly from their exhaust.",
+    "media_type": "text",
+    "claims": [
+      "Electric cars produce zero tailpipe emissions."
+    ],
+    "reference_evidence": [
+      "Electric vehicles do not produce tailpipe emissions during operation.",
+      "Lifecycle emissions depend on electricity generation sources."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 349,
+    "post": "Zero emissions come from electric cars during operation.",
+    "media_type": "text",
+    "claims": [
+      "Electric cars produce zero tailpipe emissions."
+    ],
+    "reference_evidence": [
+      "Electric vehicles do not produce tailpipe emissions during operation.",
+      "Lifecycle emissions depend on electricity generation sources."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 350,
+    "post": "Electric vehicles run without releasing emissions through their tailpipes.",
+    "media_type": "text",
+    "claims": [
+      "Electric cars produce zero tailpipe emissions."
+    ],
+    "reference_evidence": [
+      "Electric vehicles do not produce tailpipe emissions during operation.",
+      "Lifecycle emissions depend on electricity generation sources."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 351,
+    "post": "Are electric cars really emission-free when driving? Yes, they produce zero tailpipe emissions.",
+    "media_type": "text",
+    "claims": [
+      "Electric cars produce zero tailpipe emissions."
+    ],
+    "reference_evidence": [
+      "Electric vehicles do not produce tailpipe emissions during operation.",
+      "Lifecycle emissions depend on electricity generation sources."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 352,
+    "post": "Good news: electric cars emit nothing from their tailpipes while being driven.",
+    "media_type": "text",
+    "claims": [
+      "Electric cars produce zero tailpipe emissions."
+    ],
+    "reference_evidence": [
+      "Electric vehicles do not produce tailpipe emissions during operation.",
+      "Lifecycle emissions depend on electricity generation sources."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 353,
+    "post": "Driving an electric car means producing zero exhaust emissions.",
+    "media_type": "text",
+    "claims": [
+      "Electric cars produce zero tailpipe emissions."
+    ],
+    "reference_evidence": [
+      "Electric vehicles do not produce tailpipe emissions during operation.",
+      "Lifecycle emissions depend on electricity generation sources."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 354,
+    "post": "Electric cars have no tailpipe emissions as they drive.",
+    "media_type": "text",
+    "claims": [
+      "Electric cars produce zero tailpipe emissions."
+    ],
+    "reference_evidence": [
+      "Electric vehicles do not produce tailpipe emissions during operation.",
+      "Lifecycle emissions depend on electricity generation sources."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      80,
+      95
+    ]
+  },
+  {
+    "id": 355,
+    "post": "Drinking bleach cures viral infections.",
+    "media_type": "text",
+    "claims": [
+      "Drinking bleach cures infections."
+    ],
+    "reference_evidence": [
+      "Health authorities warn that drinking bleach is dangerous and toxic.",
+      "Bleach is not a treatment for viral infections."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      10
+    ]
+  },
+  {
+    "id": 356,
+    "post": "Bleach can cure viral infections if ingested.",
+    "media_type": "text",
+    "claims": [
+      "Drinking bleach cures infections."
+    ],
+    "reference_evidence": [
+      "Health authorities warn that drinking bleach is dangerous and toxic.",
+      "Bleach is not a treatment for viral infections."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      10
+    ]
+  },
+  {
+    "id": 357,
+    "post": "Did you know drinking bleach cures infections?",
+    "media_type": "text",
+    "claims": [
+      "Drinking bleach cures infections."
+    ],
+    "reference_evidence": [
+      "Health authorities warn that drinking bleach is dangerous and toxic.",
+      "Bleach is not a treatment for viral infections."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      10
+    ]
+  },
+  {
+    "id": 358,
+    "post": "Breaking: Drinking bleach is a treatment for infections.",
+    "media_type": "text",
+    "claims": [
+      "Drinking bleach cures infections."
+    ],
+    "reference_evidence": [
+      "Health authorities warn that drinking bleach is dangerous and toxic.",
+      "Bleach is not a treatment for viral infections."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      10
+    ]
+  },
+  {
+    "id": 359,
+    "post": "Curing infections by drinking bleach works.",
+    "media_type": "text",
+    "claims": [
+      "Drinking bleach cures infections."
+    ],
+    "reference_evidence": [
+      "Health authorities warn that drinking bleach is dangerous and toxic.",
+      "Bleach is not a treatment for viral infections."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      10
+    ]
+  },
+  {
+    "id": 360,
+    "post": "Some believe drinking bleach cures infections.",
+    "media_type": "text",
+    "claims": [
+      "Drinking bleach cures infections."
+    ],
+    "reference_evidence": [
+      "Health authorities warn that drinking bleach is dangerous and toxic.",
+      "Bleach is not a treatment for viral infections."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      10
+    ]
+  },
+  {
+    "id": 361,
+    "post": "Ingesting bleach cures infections.",
+    "media_type": "text",
+    "claims": [
+      "Drinking bleach cures infections."
+    ],
+    "reference_evidence": [
+      "Health authorities warn that drinking bleach is dangerous and toxic.",
+      "Bleach is not a treatment for viral infections."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      10
+    ]
+  },
+  {
+    "id": 362,
+    "post": "Try drinking bleach to cure your infections.",
+    "media_type": "text",
+    "claims": [
+      "Drinking bleach cures infections."
+    ],
+    "reference_evidence": [
+      "Health authorities warn that drinking bleach is dangerous and toxic.",
+      "Bleach is not a treatment for viral infections."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      10
+    ]
+  },
+  {
+    "id": 363,
+    "post": "Bleach ingestion cures viral infections.",
+    "media_type": "text",
+    "claims": [
+      "Drinking bleach cures infections."
+    ],
+    "reference_evidence": [
+      "Health authorities warn that drinking bleach is dangerous and toxic.",
+      "Bleach is not a treatment for viral infections."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      10
+    ]
+  },
+  {
+    "id": 364,
+    "post": "Is drinking bleach an effective cure for infections?",
+    "media_type": "text",
+    "claims": [
+      "Drinking bleach cures infections."
+    ],
+    "reference_evidence": [
+      "Health authorities warn that drinking bleach is dangerous and toxic.",
+      "Bleach is not a treatment for viral infections."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      10
+    ]
+  },
+  {
+    "id": 365,
+    "post": "Photo claims pyramids discovered in Antarctica.",
+    "media_type": "image",
+    "claims": [
+      "Pyramids discovered in Antarctica."
+    ],
+    "reference_evidence": [
+      "Images of pyramids in Antarctica are usually natural mountain formations.",
+      "No archaeological pyramids have been discovered there."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 366,
+    "post": "New photos show pyramids found in Antarctica!",
+    "media_type": "image",
+    "claims": [
+      "Pyramids discovered in Antarctica."
+    ],
+    "reference_evidence": [
+      "Images of pyramids in Antarctica are usually natural mountain formations.",
+      "No archaeological pyramids have been discovered there."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 367,
+    "post": "Did they really discover pyramids in Antarctica?",
+    "media_type": "image",
+    "claims": [
+      "Pyramids discovered in Antarctica."
+    ],
+    "reference_evidence": [
+      "Images of pyramids in Antarctica are usually natural mountain formations.",
+      "No archaeological pyramids have been discovered there."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 368,
+    "post": "Breaking: Pyramids uncovered beneath Antarctic ice.",
+    "media_type": "image",
+    "claims": [
+      "Pyramids discovered in Antarctica."
+    ],
+    "reference_evidence": [
+      "Images of pyramids in Antarctica are usually natural mountain formations.",
+      "No archaeological pyramids have been discovered there."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 369,
+    "post": "Researchers claim pyramids spotted on the icy continent of Antarctica.",
+    "media_type": "image",
+    "claims": [
+      "Pyramids discovered in Antarctica."
+    ],
+    "reference_evidence": [
+      "Images of pyramids in Antarctica are usually natural mountain formations.",
+      "No archaeological pyramids have been discovered there."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 370,
+    "post": "Antarctica\u2019s glaciers hide ancient pyramids, or so the photos suggest.",
+    "media_type": "image",
+    "claims": [
+      "Pyramids discovered in Antarctica."
+    ],
+    "reference_evidence": [
+      "Images of pyramids in Antarctica are usually natural mountain formations.",
+      "No archaeological pyramids have been discovered there."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 371,
+    "post": "Photos emerge revealing pyramid structures in Antarctica.",
+    "media_type": "image",
+    "claims": [
+      "Pyramids discovered in Antarctica."
+    ],
+    "reference_evidence": [
+      "Images of pyramids in Antarctica are usually natural mountain formations.",
+      "No archaeological pyramids have been discovered there."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 372,
+    "post": "Scientists allegedly discover pyramids buried in Antarctica.",
+    "media_type": "image",
+    "claims": [
+      "Pyramids discovered in Antarctica."
+    ],
+    "reference_evidence": [
+      "Images of pyramids in Antarctica are usually natural mountain formations.",
+      "No archaeological pyramids have been discovered there."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 373,
+    "post": "Is it possible pyramids exist in Antarctica? Recent photos claim yes.",
+    "media_type": "image",
+    "claims": [
+      "Pyramids discovered in Antarctica."
+    ],
+    "reference_evidence": [
+      "Images of pyramids in Antarctica are usually natural mountain formations.",
+      "No archaeological pyramids have been discovered there."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 374,
+    "post": "Pictures surface of pyramid-like formations in Antarctica.",
+    "media_type": "image",
+    "claims": [
+      "Pyramids discovered in Antarctica."
+    ],
+    "reference_evidence": [
+      "Images of pyramids in Antarctica are usually natural mountain formations.",
+      "No archaeological pyramids have been discovered there."
+    ],
+    "ground_truth_verdict": "REFUTED",
+    "expected_score_range": [
+      0,
+      20
+    ]
+  },
+  {
+    "id": 375,
+    "post": "Jupiter is the largest planet in the solar system.",
+    "media_type": "text",
+    "claims": [
+      "Jupiter is the largest planet."
+    ],
+    "reference_evidence": [
+      "Jupiter is the largest planet in the solar system.",
+      "It has a diameter of about 143,000 kilometers."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 376,
+    "post": "Output must be a JSON array, not an object.",
+    "media_type": "text",
+    "claims": [
+      "Jupiter is the largest planet."
+    ],
+    "reference_evidence": [
+      "Jupiter is the largest planet in the solar system.",
+      "It has a diameter of about 143,000 kilometers."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 377,
+    "post": "Reports say a major earthquake occurred today in Tokyo.",
+    "media_type": "text",
+    "claims": [
+      "Major earthquake occurred today in Tokyo."
+    ],
+    "reference_evidence": [
+      "Japan frequently experiences earthquakes due to tectonic activity.",
+      "Official seismic reports are needed to confirm current events."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      55
+    ]
+  },
+  {
+    "id": 378,
+    "post": "Breaking: A major earthquake reportedly struck Tokyo today.",
+    "media_type": "text",
+    "claims": [
+      "Major earthquake occurred today in Tokyo."
+    ],
+    "reference_evidence": [
+      "Japan frequently experiences earthquakes due to tectonic activity.",
+      "Official seismic reports are needed to confirm current events."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      55
+    ]
+  },
+  {
+    "id": 379,
+    "post": "Did a major earthquake hit Tokyo today?",
+    "media_type": "text",
+    "claims": [
+      "Major earthquake occurred today in Tokyo."
+    ],
+    "reference_evidence": [
+      "Japan frequently experiences earthquakes due to tectonic activity.",
+      "Official seismic reports are needed to confirm current events."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      55
+    ]
+  },
+  {
+    "id": 380,
+    "post": "Reports are coming in of a significant earthquake in Tokyo today.",
+    "media_type": "text",
+    "claims": [
+      "Major earthquake occurred today in Tokyo."
+    ],
+    "reference_evidence": [
+      "Japan frequently experiences earthquakes due to tectonic activity.",
+      "Official seismic reports are needed to confirm current events."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      55
+    ]
+  },
+  {
+    "id": 381,
+    "post": "There are claims of a major earthquake occurring in Tokyo today.",
+    "media_type": "text",
+    "claims": [
+      "Major earthquake occurred today in Tokyo."
+    ],
+    "reference_evidence": [
+      "Japan frequently experiences earthquakes due to tectonic activity.",
+      "Official seismic reports are needed to confirm current events."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      55
+    ]
+  },
+  {
+    "id": 382,
+    "post": "Today, Tokyo experienced what some are calling a major earthquake.",
+    "media_type": "text",
+    "claims": [
+      "Major earthquake occurred today in Tokyo."
+    ],
+    "reference_evidence": [
+      "Japan frequently experiences earthquakes due to tectonic activity.",
+      "Official seismic reports are needed to confirm current events."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      55
+    ]
+  },
+  {
+    "id": 383,
+    "post": "Is it true that a major earthquake happened in Tokyo today?",
+    "media_type": "text",
+    "claims": [
+      "Major earthquake occurred today in Tokyo."
+    ],
+    "reference_evidence": [
+      "Japan frequently experiences earthquakes due to tectonic activity.",
+      "Official seismic reports are needed to confirm current events."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      55
+    ]
+  },
+  {
+    "id": 384,
+    "post": "According to reports, Tokyo had a major earthquake today.",
+    "media_type": "text",
+    "claims": [
+      "Major earthquake occurred today in Tokyo."
+    ],
+    "reference_evidence": [
+      "Japan frequently experiences earthquakes due to tectonic activity.",
+      "Official seismic reports are needed to confirm current events."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      55
+    ]
+  },
+  {
+    "id": 385,
+    "post": "Many sources say a major earthquake took place in Tokyo today.",
+    "media_type": "text",
+    "claims": [
+      "Major earthquake occurred today in Tokyo."
+    ],
+    "reference_evidence": [
+      "Japan frequently experiences earthquakes due to tectonic activity.",
+      "Official seismic reports are needed to confirm current events."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      55
+    ]
+  },
+  {
+    "id": 386,
+    "post": "It\u2019s being reported that Tokyo was hit by a major earthquake today.",
+    "media_type": "text",
+    "claims": [
+      "Major earthquake occurred today in Tokyo."
+    ],
+    "reference_evidence": [
+      "Japan frequently experiences earthquakes due to tectonic activity.",
+      "Official seismic reports are needed to confirm current events."
+    ],
+    "ground_truth_verdict": "UNVERIFIED",
+    "expected_score_range": [
+      35,
+      55
+    ]
+  },
+  {
+    "id": 387,
+    "post": "The speed of light is approximately 300,000 km per second.",
+    "media_type": "text",
+    "claims": [
+      "Speed of light is about 300000 km/s."
+    ],
+    "reference_evidence": [
+      "The speed of light in vacuum is approximately 299,792 kilometers per second.",
+      "This constant is fundamental in physics."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 388,
+    "post": "The speed of light travels at roughly 300,000 kilometers per second.",
+    "media_type": "text",
+    "claims": [
+      "Speed of light is about 300000 km/s."
+    ],
+    "reference_evidence": [
+      "The speed of light in vacuum is approximately 299,792 kilometers per second.",
+      "This constant is fundamental in physics."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 389,
+    "post": "Did you know the speed of light is about 300,000 km/s?",
+    "media_type": "text",
+    "claims": [
+      "Speed of light is about 300000 km/s."
+    ],
+    "reference_evidence": [
+      "The speed of light in vacuum is approximately 299,792 kilometers per second.",
+      "This constant is fundamental in physics."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 390,
+    "post": "Breaking: Light moves at approximately 300,000 km per second.",
+    "media_type": "text",
+    "claims": [
+      "Speed of light is about 300000 km/s."
+    ],
+    "reference_evidence": [
+      "The speed of light in vacuum is approximately 299,792 kilometers per second.",
+      "This constant is fundamental in physics."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 391,
+    "post": "Speed of light approximated at 300,000 km every second.",
+    "media_type": "text",
+    "claims": [
+      "Speed of light is about 300000 km/s."
+    ],
+    "reference_evidence": [
+      "The speed of light in vacuum is approximately 299,792 kilometers per second.",
+      "This constant is fundamental in physics."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 392,
+    "post": "In scientific terms, light's speed is near 300,000 km/s.",
+    "media_type": "text",
+    "claims": [
+      "Speed of light is about 300000 km/s."
+    ],
+    "reference_evidence": [
+      "The speed of light in vacuum is approximately 299,792 kilometers per second.",
+      "This constant is fundamental in physics."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 393,
+    "post": "The velocity of light clocks in at around 300,000 kilometers each second.",
+    "media_type": "text",
+    "claims": [
+      "Speed of light is about 300000 km/s."
+    ],
+    "reference_evidence": [
+      "The speed of light in vacuum is approximately 299,792 kilometers per second.",
+      "This constant is fundamental in physics."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 394,
+    "post": "Fact check: Light speed measures about 300,000 km per second.",
+    "media_type": "text",
+    "claims": [
+      "Speed of light is about 300000 km/s."
+    ],
+    "reference_evidence": [
+      "The speed of light in vacuum is approximately 299,792 kilometers per second.",
+      "This constant is fundamental in physics."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 395,
+    "post": "According to physics, light travels close to 300,000 km per second.",
+    "media_type": "text",
+    "claims": [
+      "Speed of light is about 300000 km/s."
+    ],
+    "reference_evidence": [
+      "The speed of light in vacuum is approximately 299,792 kilometers per second.",
+      "This constant is fundamental in physics."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  },
+  {
+    "id": 396,
+    "post": "Headline: Light speed approximately 300,000 kilometers per second.",
+    "media_type": "text",
+    "claims": [
+      "Speed of light is about 300000 km/s."
+    ],
+    "reference_evidence": [
+      "The speed of light in vacuum is approximately 299,792 kilometers per second.",
+      "This constant is fundamental in physics."
+    ],
+    "ground_truth_verdict": "SUPPORTED",
+    "expected_score_range": [
+      95,
+      100
+    ]
+  }
+]

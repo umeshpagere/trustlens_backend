@@ -14,6 +14,7 @@ import json
 import hashlib
 import os
 import tempfile
+from datetime import datetime
 
 from app.config.azure import get_azure_client
 from app.config.settings import Config
@@ -184,12 +185,21 @@ def extract_subtitles_with_ytdlp(video_url: str, platform: str) -> dict:
             print(f"{'─'*60}")
             print(transcript_text)
             print(f"{'─'*60}\n")
+            upload_date = info.get("upload_date")
+            upload_timestamp = None
+            if upload_date:
+                try:
+                    upload_timestamp = datetime.strptime(upload_date, "%Y%m%d").isoformat()
+                except ValueError:
+                    pass
+
             return {
                 "success": True,
                 "transcript": transcript_text,
                 "method": "yt_dlp_subtitles",
                 "video_id": info.get("id"),
                 "title": info.get("title", ""),
+                "upload_timestamp": upload_timestamp
             }
 
         except yt_dlp.utils.DownloadError as e:
@@ -360,12 +370,21 @@ def transcribe_audio_with_deepgram(video_url: str, platform: str) -> dict:
             print(f"{'─'*60}")
             print(transcript_text)
             print(f"{'─'*60}\n")
+            upload_date = info.get("upload_date") if info else None
+            upload_timestamp = None
+            if upload_date:
+                try:
+                    upload_timestamp = datetime.strptime(upload_date, "%Y%m%d").isoformat()
+                except ValueError:
+                    pass
+
             return {
                 "success": True,
                 "transcript": transcript_text,
                 "method": "deepgram_audio",
                 "video_id": info.get("id") if info else None,
                 "title": info.get("title", "") if info else "",
+                "upload_timestamp": upload_timestamp
             }
 
         except yt_dlp.utils.DownloadError as e:
@@ -462,8 +481,7 @@ def extract_transcript(video_url: str) -> dict:
 
 def analyze_video_with_llm(combined_video_text: str, video_url: str, accompanying_text: str = "") -> dict:
     """
-    Analyze the unified multimodal text string (transcript + OCR frames) for misinformation using Azure OpenAI.
-    Works for all platforms.
+    Extract multi-modal claims from video text using Azure OpenAI.
     """
     if not combined_video_text or len(combined_video_text.strip()) < 10:
         raise ValueError("Video text payload is too short for analysis")
@@ -476,114 +494,43 @@ def analyze_video_with_llm(combined_video_text: str, video_url: str, accompanyin
                 {
                     "role": "system",
                     "content": (
-                        "You are a fact-checking analyst specialized in multimodal video content. "
-                        "Your role is to extract verifiable factual claims from video transcripts, "
-                        "on-screen text, and visual scene descriptions.\n\n"
-                        "== CURRENT CONTEXT ==\n"
-                        "CURRENT_DATE: March 11, 2026\n"
-                        "Standard Date Format: DD.MM.YYYY\n\n"
-                        "== CLAIM EXTRACTION RULES (STRICT) ==\n"
-                        "A valid claim MUST be a complete, stand-alone factual statement containing:\n"
-                        "  \u2022 A clear subject: a person, organisation, government, event, or object\n"
-                        "  \u2022 A specific action, event, or state involving that subject\n"
-                        "  \u2022 Proper context: do NOT extract partial, fragmented, or incomplete phrases (e.g., \"For generation plus,\" or \"In a week\")\n\n"
-                        "Do NOT include opinions, emotional reactions, or vague descriptions.\n"
-                        "If a statement has no subject OR no action, do NOT include it in claims.\n\n"
-                        "== DATE & VERIFICATION RULES ==\n"
-                        "1. Verify all dates against the CURRENT_DATE (March 11, 2026).\n"
-                        "2. If a date is in the FUTURE (relative to CURRENT_DATE), it is UNVERIFIABLE and should be noted.\n"
-                        "3. Interpret ambiguous dates (like 08.03) as March 8th (DD.MM) unless context dictates otherwise.\n\n"
-                        "VALID examples: "
-                        "\"WHO declared a global health emergency.\", "
-                        "\"Government banned bank withdrawals.\", "
-                        "\"Police arrested protesters in Paris.\", "
-                        "\"NASA confirmed water was found on Mars.\"\n\n"
-                        "INVALID examples: "
-                        "\"People are suffering.\", "
-                        "\"This situation is terrible.\", "
-                        "\"Something big is happening.\", "
-                        "\"The situation is getting worse.\"\n\n"
-                        "PRIORITIZE:\n"
-                        "- claims: List up to 5 specific FACTUAL claims a fact-checker could verify.\n"
-                        "- credibilityScore: Base on whether claims are checkable and evidence-supported, NOT on tone.\n\n"
-                        "Respond ONLY in valid JSON format. No markdown, no code blocks, no extra text."
-                    ),
+                        "You are a factual claim extraction engine for video transcripts.\n\n"
+                        "Your task is to extract ONLY verifiable factual claims from the provided text.\n"
+                        "A valid claim MUST contain a clear subject and a specific action.\n"
+                        "Extract ONLY what is explicitly stated. Do NOT perform credibility analysis.\n\n"
+                        "Return JSON only:\n"
+                        "{\n"
+                        "  \"claims\": [\"claim1\"]\n"
+                        "}"
+                    )
                 },
                 {
                     "role": "user",
-                    "content": (
-                        f"Extract factual claims and assess verifiability of this video.\n\n"
-                        f"CHANNEL AGGREGATION:\n"
-                        f"- AUDIO: Extract claims from spoken words (if present).\n"
-                        f"- OCR: Extract claims from visible text overlay (if present).\n"
-                        f"- VISUAL: Extract claims from described actions/events (if audio is absent).\n\n"
-                        f"Return JSON only in this exact format:\n"
-                        f"{{\n"
-                        f'  "claims": string[] (unified factual claims from ALL channels, max 5),\n'
-                        f'  "audio_claims": string[] (claims directly from spoken words),\n'
-                        f'  "ocr_claims": string[] (claims from on-screen text),\n'
-                        f'  "visual_claims": string[] (claims from visual scene understanding),\n'
-                        f'  "topicSummary": string (2-3 sentence summary),\n'
-                        f'  "riskLevel": "low" | "medium" | "high",\n'
-                        f'  "credibilityScore": number (0-100),\n'
-                        f'  "verdict": "Reliable" | "Questionable" | "High Risk",\n'
-                        f'  "riskKeywordsFound": string[],\n'
-                        f'  "explanation": string (reasoning for verification)\n'
-                        f"}}\n\n"
-                        f"Scoring guidelines:\n"
-                        f"- 75-100: Reliable\n"
-                        f"- 40-74: Questionable\n"
-                        f"- 0-39: High Risk\n\n"
-                        f"Video URL: {video_url}\n"
-                        f"{('USER TEXT CONTEXT: ' + repr(accompanying_text) + chr(10) + chr(10)) if accompanying_text else ''}"
-                        f"\n--- VIDEO CONTENT (MULTIMODAL) ---\n"
-                        f"{combined_video_text}\n"
-                        f"--- END VIDEO CONTENT ---"
-                    ),
-                },
+                    "content": f"Extract verifiable claims from this video content:\n\n{combined_video_text}"
+                }
             ],
-            temperature=0.2,
-            max_tokens=800,
-            response_format={"type": "json_object"},
+            temperature=0,
+            max_tokens=400,
+            response_format={"type": "json_object"}
         )
 
         content = response.choices[0].message.content
         if not content:
-            raise ValueError("No response content from Azure OpenAI")
-
+            raise ValueError("No response content")
+        
         result = json.loads(_clean_markdown_json(content))
 
-        if not all(k in result for k in ["riskLevel", "credibilityScore", "verdict", "explanation"]):
-            raise ValueError("Invalid response format from Azure OpenAI")
-
-        # Aggregate and deduplicate claims per requirements
-        # Merge all into a deduplicated list
-        all_video_claims = []
-        sources = [
-            result.get("claims", []),
-            result.get("audio_claims", []),
-            result.get("ocr_claims", []),
-            result.get("visual_claims", [])
-        ]
-        
-        for c_list in sources:
-            if isinstance(c_list, list):
-                all_video_claims.extend(str(c) for c in c_list if c)
-        
-        all_video_claims = list(set(all_video_claims))
-        
-        # Limit to 5
-        result["claims"] = all_video_claims[:5]
+        claims = result.get("claims", [])
+        if not isinstance(claims, list):
+            claims = []
 
         return {
-            "claims": result["claims"],
-            "analysis": result,
-            "videoScore": result.get("credibilityScore", 50),
-            "visualSummary": result.get("topicSummary", "") # topicSummary often contains the descriptive core
+            "claims": claims[:5],
+            "analysis": {},
+            "videoScore": 50,
+            "visualSummary": ""
         }
 
-    except json.JSONDecodeError as e:
-        raise ValueError(f"Failed to parse LLM response: {str(e)}")
     except Exception as e:
         print(f"Azure OpenAI video analysis failed: {str(e)}")
         raise ValueError(f"LLM video analysis failed: {str(e)}")

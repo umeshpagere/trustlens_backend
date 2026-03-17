@@ -76,3 +76,44 @@ def extract_domain(url: str) -> str | None:
     except Exception:
         # Belt-and-suspenders: urlparse is very tolerant but guard anyway.
         return None
+
+
+# ---------------------------------------------------------------------------
+# Publisher alias map: regional/variant domains → canonical forms
+# ---------------------------------------------------------------------------
+PUBLISHER_ALIASES: dict[str, str] = {
+    "bbc.co.uk":               "bbc.com",
+    "bbcnews.com":             "bbc.com",
+    "news.bbc.co.uk":          "bbc.com",
+    "reuters.co.uk":           "reuters.com",
+    "uk.reuters.com":          "reuters.com",
+    "edition.cnn.com":         "cnn.com",
+    "us.cnn.com":              "cnn.com",
+    "hosted.ap.org":           "apnews.com",
+    "mobile.nytimes.com":      "nytimes.com",
+    "amp.theguardian.com":     "theguardian.com",
+    "english.aljazeera.net":   "aljazeera.com",
+    "washingtonpost.com":      "washingtonpost.com",
+}
+
+
+def normalize_domain(domain: str) -> str:
+    """
+    Map known regional or variant domains to their canonical form.
+    e.g. bbc.co.uk → bbc.com
+    Returns the domain unchanged if no alias is found.
+    """
+    if not domain:
+        return "unknown"
+    return PUBLISHER_ALIASES.get(domain, domain)
+
+
+def extract_and_normalize_domain(url: str) -> str:
+    """
+    Convenience wrapper: extract domain from url then normalize.
+    Returns 'unknown' on failure.
+    """
+    domain = extract_domain(url)
+    if not domain:
+        return "unknown"
+    return normalize_domain(domain)

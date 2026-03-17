@@ -8,10 +8,10 @@ SCORING PHILOSOPHY (v2 — evidence-driven):
   (evidence_ranker.py) but must NOT influence credibilityScore.
 
 NEW WEIGHTED FORMULA (v3):
-  EvidenceSupportScore   × 0.50  — primary: LLM verification + trusted sources
-  ClaimClarityScore      × 0.20  — claim structure / verifiability
-  MediaAuthenticityScore × 0.20  — AI detection / metadata checks
-  SemanticRiskScore      × 0.10  — manipulation signals / propaganda patterns
+  EvidenceSupportScore   × 0.65  — primary: LLM verification + trusted sources
+  ClaimClarityScore      × 0.05  — claim structure / verifiability
+  MediaAuthenticityScore × 0.15  — AI detection / metadata checks
+  SemanticRiskScore      × 0.15  — manipulation signals / propaganda patterns
 
 Weights sum to 1.00.  Final score is clamped to [0, 95].
 
@@ -25,30 +25,39 @@ ASYNC ARCHITECTURE (Phase 6 — unchanged):
 
 import asyncio
 import logging
+import math
 from typing import Any
 
 from app.services.domain_reputation_service import evaluate_domain
 from app.services.image_authenticity_service import evaluate_image
 from app.services.confidence_service import calculate_confidence
+from app.services.temporal_analysis import compute_temporal_gap, classify_temporal_gap
 
 logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
-# Redesigned Weights (v3)
+# Credibility Weights (evidence-grounded)
+# ---------------------------------------------------------------------------
+# Recommended formula:
+#   credibility =
+#       0.5 * evidence_support +
+#       0.2 * source_trust +
+#       0.2 * media_authenticity +
+#       0.1 * risk_score
 # ---------------------------------------------------------------------------
 WEIGHTS = {
-    "evidenceSupportScore":      0.50,
-    "claimClarityScore":         0.20,
-    "mediaAuthenticityScore":    0.20,
-    "semanticRiskScore":         0.10,
+    "evidenceSupportScore":   0.50,
+    "sourceTrustScore":       0.20,
+    "mediaAuthenticityScore": 0.20,
+    "semanticRiskScore":      0.10,
 }
 
 # Neutral baselines
 NEUTRAL_SCORES = {
-    "evidenceSupportScore":      50.0,
-    "claimClarityScore":         70.0,
-    "mediaAuthenticityScore":    75.0,
-    "semanticRiskScore":         100.0,
+    "evidenceSupportScore":   50.0,
+    "sourceTrustScore":       50.0,
+    "mediaAuthenticityScore": 75.0,
+    "semanticRiskScore":      50.0,
 }
 
 # Neutral constant for missing signals
@@ -93,23 +102,27 @@ def calculate_credibility_score(scores: dict) -> float:
     Pure function: compute the redesigned credibility score.
     """
     ev_support = max(0.0, min(100.0, float(scores.get("evidenceSupportScore", NEUTRAL_SCORES["evidenceSupportScore"]))))
-    clarity    = max(0.0, min(100.0, float(scores.get("claimClarityScore",    NEUTRAL_SCORES["claimClarityScore"]))))
+    source_trust = max(0.0, min(100.0, float(scores.get("sourceTrustScore", NEUTRAL_SCORES["sourceTrustScore"]))))
     media_auth = max(0.0, min(100.0, float(scores.get("mediaAuthenticityScore", NEUTRAL_SCORES["mediaAuthenticityScore"]))))
-    risk       = max(0.0, min(100.0, float(scores.get("semanticRiskScore",     NEUTRAL_SCORES["semanticRiskScore"]))))
+    risk = max(0.0, min(100.0, float(scores.get("semanticRiskScore", NEUTRAL_SCORES["semanticRiskScore"]))))
 
     final = (
         ev_support * WEIGHTS["evidenceSupportScore"]
-        + clarity  * WEIGHTS["claimClarityScore"]
+        + source_trust * WEIGHTS["sourceTrustScore"]
         + media_auth * WEIGHTS["mediaAuthenticityScore"]
-        + risk     * WEIGHTS["semanticRiskScore"]
+        + risk * WEIGHTS["semanticRiskScore"]
     )
 
     logger.info(
-        "Score composition (v3) — evidence=%.1f clarity=%.1f media=%.1f risk=%.1f → final=%.2f",
-        ev_support, clarity, media_auth, risk, final,
+        "Score composition — evidence=%.1f source_trust=%.1f media=%.1f risk=%.1f → final=%.2f",
+        ev_support,
+        source_trust,
+        media_auth,
+        risk,
+        final,
     )
 
-    return float(round(float(max(0.0, min(95.0, final))), 2))
+    return float(round(float(max(0.0, min(100.0, final))), 2))
 
 
 def compute_weighted_final_result(
@@ -127,6 +140,8 @@ def compute_weighted_final_result(
     breaking_news_detected: bool = False,
     breaking_news_confidence: float | None = None,
     fact_check_details: dict[str, Any] | None = None,
+    evidence_confidence: float | None = None,
+    temporal_consistency_score: float | None = None,
 ) -> dict[str, Any]:
     """
     Synchronous: compute final credibility score and confidence breakdown.
@@ -156,9 +171,15 @@ def compute_weighted_final_result(
     # Map inputs to new component keys
     component_scores = {
         "evidenceSupportScore":   _safe(evidence_verification_score, "evidenceSupportScore"),
-        "claimClarityScore":      _safe(semantic_score, "claimClarityScore"),
+        # Source trust is derived from domain reputation if available.
+        "sourceTrustScore":       _safe((domain_result or {}).get("domainTrustScore"), "sourceTrustScore"),
         "mediaAuthenticityScore": _safe(visual_signal, "mediaAuthenticityScore"),
-        "semanticRiskScore":      _safe(100.0 - (len(manipulation_indicators or []) * 20.0), "semanticRiskScore")
+        # Higher manipulation indicators → higher risk score.
+        "semanticRiskScore":      _safe(
+            100.0 * math.exp(-0.35 * len(manipulation_indicators or [])),
+            "semanticRiskScore",
+        ),
+        "temporalConsistencyScore": _safe(temporal_consistency_score, "semanticRiskScore"),
     }
 
     if breaking_news_detected and breaking_news_confidence is not None:
@@ -198,64 +219,34 @@ def compute_weighted_final_result(
         base_score = max(0, base_score - 25)
 
     # -----------------------------------------------------------------------
-    # Positive Boost Layer — reward verified evidence (domain removed)
+    # Final Score Output (No Boosts)
     # -----------------------------------------------------------------------
-    boost_applied = 0
-    boost_reasons: list[str] = []
-
-    eligible_for_boost = all(s >= 30 for s in component_scores.values())
-
-    if eligible_for_boost:
-        # 1. Verified evidence TRUE
-        if component_scores.get("evidenceSupportScore", 0) >= 85:
-            boost_applied += 10
-            boost_reasons.append("Evidence Verification confirms claim")
-        # 2. Visual evidence confirmed
-        if component_scores.get("mediaAuthenticityScore", 0) >= 85:
-            boost_applied += 5
-            boost_reasons.append("Visual evidence confirmed")
-
-    boost_applied = min(15, boost_applied)
-    final_score = int(min(95, max(0, base_score + boost_applied)))
+    final_score = int(min(100, max(0, base_score)))
 
     # -----------------------------------------------------------------------
     # Phase 5: principled confidence (synchronous CPU-only)
-    # Domain is kept in evidence_flags so confidence still benefits from it.
     # -----------------------------------------------------------------------
-    evidence_flags = {
-        "factCheckMatch":  bool(fc.get("matchFound")),
-        "contextMismatch": bool(_ir.get("contextMismatch")),
-        "imageReuseFound": bool(_ir.get("hashMatched")),
-        "trustedDomain":   bool(_dr.get("isTrustedSource")),
-    }
-    confidence_result = calculate_confidence(component_scores, evidence_flags)
-
     def classify_score(score: int) -> tuple[str, str]:
-        if score >= 85:   return "Minimal",    "Highly Reliable"
-        elif score >= 70: return "Low",         "Reliable"
-        elif score >= 50: return "Low-Medium",  "Likely Reliable"
-        elif score >= 30: return "Medium",      "Questionable"
-        else:             return "High",        "High Risk"
+        if score >= 75:   return "Low",         "RELIABLE"
+        elif score >= 50: return "Medium",      "LIKELY_RELIABLE"
+        elif score >= 30: return "High",        "QUESTIONABLE"
+        else:             return "Critical",    "HIGH_RISK"
 
     risk_level, final_verdict = classify_score(final_score)
 
     logger.info(
-        "Final credibility — score=%d verdict=%s riskLevel=%s boost=%d boostReasons=%s",
-        final_score, final_verdict, risk_level, boost_applied, boost_reasons,
+        "Final credibility — score=%d verdict=%s riskLevel=%s",
+        final_score, final_verdict, risk_level,
     )
 
     result_dict = {
-        "componentScores":      component_scores,
-        "factCheckDetails":     fc,
-        "baseWeightedScore":    base_score,
-        "positiveBoostApplied": boost_applied,
-        "boostReasons":         boost_reasons,
-        "finalScore":           final_score,
-        "finalVerdict":         final_verdict,
-        "riskLevel":            risk_level,
-        "confidence":           confidence_result["confidenceScore"],
-        "confidenceLevel":      confidence_result["confidenceLevel"],
-        "confidenceBreakdown":  confidence_result,
+        "credibility_score": final_score,
+        "evidence_score": component_scores.get("evidenceSupportScore", 50.0),
+        "risk_score": component_scores.get("semanticRiskScore", 100.0),
+        "media_score": component_scores.get("mediaAuthenticityScore", 75.0),
+        "clarity_score": component_scores.get("claimClarityScore", 70.0),
+        "confidence": evidence_confidence if evidence_confidence is not None else 0.0,
+        "verdict": final_verdict
     }
     
     if breaking_news_detected:
@@ -293,6 +284,8 @@ async def compute_full_credibility(
     knowledge_support_score: float | None = None
     breaking_news_detected = False
     breaking_news_confidence: float | None = None
+    claim_explicit_date = None
+    claim_temporal_signal = None
 
     if text_analysis and text_analysis.get("status") != "skipped":
         semantic = text_analysis.get("semantic") or {}
@@ -300,6 +293,12 @@ async def compute_full_credibility(
         semantic_score = text_analysis.get("credibilityScore") or semantic.get("semanticScore")
         manipulation_indicators = semantic.get("manipulationIndicators", [])
         
+        claims_list = semantic.get("claims", [])
+        if claims_list and isinstance(claims_list[0], dict):
+            first_claim = claims_list[0]
+            claim_explicit_date = first_claim.get("explicit_date")
+            claim_temporal_signal = first_claim.get("temporal_signal")
+            
         kv = text_analysis.get("knowledgeVerification", {})
         knowledge_support_score = kv.get("knowledgeSupportScore")
         
@@ -366,15 +365,25 @@ async def compute_full_credibility(
 
     # ---- Phase D: Process Unified Evidence Results ----
     evidence_verification_score = 50.0
+    evidence_confidence = 0.0
     evidence_sources_used = []
     verified_claims = []
     verification_breakdown = []
+    
+    # New Confidence Metrics
+    evidence_values = []
+    evidence_count = 0
+    evidence_timestamps = []
+    total_retrieved_docs = 0
+    total_aligned_sentences = 0
+    verifier_confidences = []
 
     if evidence_results:
         scores = []
         for res in evidence_results:
             v_data = res.get("verification", {})
             v = v_data.get("verdict", "UNVERIFIED")
+            conf = v_data.get("confidence", 0.0)
             
             verified_claims.append({
                 "claim": res.get("claim", ""),
@@ -384,24 +393,161 @@ async def compute_full_credibility(
             verification_breakdown.append({
                 "claim": res.get("claim", ""),
                 "verdict": v,
-                "confidence": v_data.get("confidence", 0.0),
+                "confidence": conf,
                 "reasoning": v_data.get("reasoning", "")
             })
 
+            verifier_confidences.append(float(conf))
+            
+            stats = res.get("stats", {})
+            total_retrieved_docs += stats.get("retrieved_docs", 0)
+            total_aligned_sentences += stats.get("aligned_sentences", 0)
+
             if v == "SUPPORTED":
-                scores.append(100.0)
+                scores.append(1.0)
+                evidence_values.append(1)
             elif v == "CONTRADICTED":
-                scores.append(0.0)
+                scores.append(-1.0)
+                evidence_values.append(-1)
             else:
-                scores.append(50.0)
+                scores.append(0.0)
+                evidence_values.append(0)
             
             for doc in res.get("evidence", []):
+                evidence_count += 1
                 source_name = doc.get("source", "Unknown")
+                doc_time = doc.get("timestamp") or doc.get("published_at")
+                if doc_time and doc_time not in evidence_timestamps:
+                    evidence_timestamps.append(doc_time)
                 if source_name not in evidence_sources_used:
                     evidence_sources_used.append(source_name)
         
         if scores:
-            evidence_verification_score = sum(scores) / len(scores)
+            raw_score = float(sum(scores)) / len(scores)
+            evidence_verification_score = ((raw_score + 1.0) / 2.0) * 100.0
+            variance = float(sum((float(s) - raw_score) ** 2 for s in scores)) / len(scores)
+            evidence_confidence = 1.0 - float(variance)
+
+    # ---- Evaluate Temporal Logic ----
+    import datetime
+    temporal_consistency_score = 50.0
+    temporal_gap_days = None
+    gap_classification = "UNKNOWN"
+    
+    evidence_timestamps_dt = []
+    oldest_ev = None
+    newest_ev = None
+    for ts in evidence_timestamps:
+        try:
+            dt = datetime.datetime.fromisoformat(ts.replace("Z", "+00:00"))
+            evidence_timestamps_dt.append(dt)
+        except Exception:
+            pass
+            
+    if evidence_timestamps_dt:
+        oldest_ev = min(evidence_timestamps_dt).isoformat()
+        newest_ev = max(evidence_timestamps_dt).isoformat()
+        
+        claim_dt = claim_explicit_date
+        if not claim_dt and claim_temporal_signal in ["today", "just happened", "breaking", "minutes ago", "now", "recent"]:
+            # Default to now if relative
+            claim_dt = datetime.datetime.utcnow()
+            
+        if claim_dt:
+            temporal_gap_days = compute_temporal_gap(claim_dt, oldest_ev)
+            gap_classification = classify_temporal_gap(temporal_gap_days)
+
+            # Classify claim as static vs dynamic for temporal handling.
+            def _classify_claim_type(text: str) -> str:
+                """
+                Very lightweight classifier:
+                  - Scientific / geographic / mathematical → STATIC
+                  - News / events / politics / disasters → DYNAMIC
+                """
+                static_keywords = [
+                    "is located",
+                    "capital of",
+                    "population of",
+                    "produces",
+                    "consists of",
+                    "distance between",
+                    "defined as",
+                    "equals",
+                    "formula for",
+                ]
+                dynamic_keywords = [
+                    "election",
+                    "protest",
+                    "riots",
+                    "explosion",
+                    "earthquake",
+                    "flood",
+                    "won",
+                    "lost",
+                    "killed",
+                    "injured",
+                    "announced",
+                    "declared",
+                    "appointed",
+                    "resigned",
+                ]
+                lower = (text or "").lower()
+                if any(k in lower for k in dynamic_keywords):
+                    return "dynamic"
+                if any(k in lower for k in static_keywords):
+                    return "static"
+                # Heuristic: presence of a specific year → likely dynamic news event
+                if any(str(y) in lower for y in range(1900, 2051)):
+                    return "dynamic"
+                return "static"
+
+            claim_type = _classify_claim_type(primary_claim or "")
+
+            if claim_type == "static":
+                # Static claims (scientific facts, geography, math) do NOT get
+                # penalised for old but consistent evidence.
+                temporal_consistency_score = 80.0
+                gap_classification = "STATIC"
+            else:
+                if gap_classification == "RECENT":
+                    temporal_consistency_score = 100.0
+                elif gap_classification == "CURRENT":
+                    temporal_consistency_score = 70.0
+                elif gap_classification == "OLD":
+                    temporal_consistency_score = 50.0
+                elif gap_classification == "HISTORICAL":
+                    temporal_consistency_score = 30.0
+
+    # Overrides for BREAKING NEWS vs OLD MEDIA
+    temporal_words = ["today", "just happened", "breaking", "minutes ago", "now", "recent"]
+    temporal_signal = breaking_news_detected or any(w in (primary_claim or "").lower() for w in temporal_words) or (claim_temporal_signal in temporal_words)
+    
+    if temporal_signal and total_retrieved_docs < 3:
+        breaking_news_detected = True
+        logger.info("Breaking event detected with low evidence volume")
+
+    if temporal_signal and gap_classification in ["OLD", "HISTORICAL"]:
+        context_reuse_detected = True
+        logger.warning(f"Miscontextualized Media Detected: Claims recent but evidence is {gap_classification}")
+        temporal_consistency_score = 10.0
+
+    avg_verifier_conf = (sum(verifier_confidences) / len(verifier_confidences)) if verifier_confidences else 0.0
+
+    confidence_metrics = {
+        "evidence_values": evidence_values,
+        "evidence_count": evidence_count,
+        "unique_sources": len(evidence_sources_used),
+        "retrieved_docs": total_retrieved_docs,
+        "aligned_sentences": total_aligned_sentences,
+        "verifier_confidence": avg_verifier_conf,
+        "risk_indicator_count": len(manipulation_indicators or []),
+        "temporal_signal": temporal_signal,
+        "breaking_news_detected": breaking_news_detected,
+        "temporal_gap": temporal_gap_days
+    }
+    
+    from app.services.confidence_service import calculate_confidence
+    confidence_result = calculate_confidence(confidence_metrics)
 
     if breaking_news_detected:
         breaking_news_confidence = evidence_verification_score
@@ -427,6 +573,8 @@ async def compute_full_credibility(
         breaking_news_detected=breaking_news_detected,
         breaking_news_confidence=breaking_news_confidence,
         fact_check_details={"matchFound": False},
+        evidence_confidence=evidence_confidence,
+        temporal_consistency_score=temporal_consistency_score
     )
 
     # Explainability Data
@@ -436,6 +584,25 @@ async def compute_full_credibility(
 
     weighted_result["domainReputation"]  = domain_result
     weighted_result["imageAuthenticity"] = image_auth_result
+    
+    # Part 7 API Structure
+    weighted_result["confidence"] = confidence_result["confidenceScore"]
+    weighted_result["confidenceLevel"] = confidence_result["confidenceLevel"]
+    weighted_result["confidenceBreakdown"] = confidence_result["confidenceBreakdown"]
+    
+    # Part 8 Temporal Analysis Object
+    weighted_result["temporalAnalysis"] = {
+        "claimTime": claim_explicit_date or claim_temporal_signal,
+        "oldestEvidence": oldest_ev,
+        "newestEvidence": newest_ev,
+        "temporalGapDays": temporal_gap_days,
+        "temporalConsistency": gap_classification
+    }
+    if context_reuse_detected:
+        weighted_result["verdict"] = "MISLEADING"
+    elif breaking_news_detected and total_retrieved_docs < 3:
+        weighted_result["verdict"] = "UNVERIFIED"
+    
     return weighted_result
 
 

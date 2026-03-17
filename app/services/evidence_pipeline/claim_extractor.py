@@ -17,15 +17,27 @@ def extract_claims(text: str) -> dict:
         azure_endpoint=Config.AZURE_OPENAI_ENDPOINT
     )
     prompt = """
-    Extract the primary claim and key sub-claims from the following text based on this exactly matched JSON schema:
+    You are a factual claim extraction assistant for a fact-checking system.
+
+    Extract the primary claim and key sub-claims from the following text.
+    Each extracted claim MUST explicitly include:
+      - subject
+      - action
+      - object
+      - any time reference mentioned (e.g. "today", "yesterday", "in 2023", "last week").
+
+    Do NOT drop temporal markers. If the post says "today", "yesterday", a specific
+    date, month, or year, that wording MUST appear in the extracted claim.
+
+    Return JSON matching exactly this schema:
     {
-      "primaryClaim": "The main claim...",
+      "primaryClaim": "The main claim, including any time reference if present...",
       "keyClaims": [
-        "First sub claim...",
-        "Second sub claim..."
+        "First sub claim, including time reference if present...",
+        "Second sub claim, including time reference if present..."
       ]
     }
-    
+
     Text: {text}
     """
     try:

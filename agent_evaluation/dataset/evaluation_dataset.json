@@ -1,0 +1,609 @@
+[
+{
+"id":1,
+"post":"India successfully landed Chandrayaan-3 near the Moon’s south pole.",
+"media_type":"text",
+"claims":["India landed Chandrayaan-3 near the Moon’s south pole."],
+"reference_evidence":[
+"India's Chandrayaan-3 mission successfully landed near the Moon's south pole in August 2023.",
+"The Indian Space Research Organisation confirmed a soft landing in the lunar south polar region."
+],
+"ground_truth_verdict":"SUPPORTED",
+"expected_score_range":[80,95]
+},
+{
+"id":2,
+"post":"NASA confirmed aliens landed in Nevada yesterday.",
+"media_type":"text",
+"claims":["NASA confirmed aliens landed in Nevada."],
+"reference_evidence":[
+"NASA has never confirmed extraterrestrial landings on Earth.",
+"No credible scientific organization has reported aliens landing in Nevada."
+],
+"ground_truth_verdict":"REFUTED",
+"expected_score_range":[0,25]
+},
+{
+"id":3,
+"post":"Amitabh Bachchan bought land in Ayodhya worth ₹35 crore.",
+"media_type":"text",
+"claims":["Amitabh Bachchan bought land in Ayodhya."],
+"reference_evidence":[
+"Reports confirmed Amitabh Bachchan purchased property in Ayodhya through the House of Abhinandan Lodha.",
+"The investment was reported to be worth around ₹35 crore."
+],
+"ground_truth_verdict":"SUPPORTED",
+"expected_score_range":[70,90]
+},
+{
+"id":4,
+"post":"Drinking hot water every hour cures COVID-19.",
+"media_type":"text",
+"claims":["Drinking hot water cures COVID-19."],
+"reference_evidence":[
+"The WHO states there is no evidence that drinking hot water cures COVID-19.",
+"Medical experts recommend vaccination and treatment instead of home remedies."
+],
+"ground_truth_verdict":"REFUTED",
+"expected_score_range":[0,20]
+},
+{
+"id":5,
+"post":"Finland officially joined NATO in 2023.",
+"media_type":"text",
+"claims":["Finland joined NATO in 2023."],
+"reference_evidence":[
+"Finland officially became NATO's 31st member on April 4, 2023.",
+"NATO confirmed Finland's accession in 2023."
+],
+"ground_truth_verdict":"SUPPORTED",
+"expected_score_range":[80,95]
+},
+{
+"id":6,
+"post":"UN declared Bitcoin the official global currency.",
+"media_type":"text",
+"claims":["UN declared Bitcoin global currency."],
+"reference_evidence":[
+"The United Nations has never declared Bitcoin the global currency.",
+"No international organization has adopted Bitcoin as a global currency."
+],
+"ground_truth_verdict":"REFUTED",
+"expected_score_range":[0,20]
+},
+{
+"id":7,
+"post":"Old protest video shared claiming riots happened today in London.",
+"media_type":"video",
+"claims":["Riots happened in London today."],
+"reference_evidence":[
+"Old protest videos are often misrepresented as recent events online.",
+"Fact-checkers frequently identify outdated protest footage circulating as current news."
+],
+"ground_truth_verdict":"MISLEADING",
+"expected_score_range":[30,55]
+},
+{
+"id":8,
+"post":"Image showing US inflation reaching 20% in 2024.",
+"media_type":"image",
+"claims":["US inflation reached 20% in 2024."],
+"reference_evidence":[
+"US inflation did not reach 20% in 2024 according to official statistics.",
+"Inflation peaked around 9% in 2022 and remained significantly lower afterward."
+],
+"ground_truth_verdict":"MISLEADING",
+"expected_score_range":[20,50]
+},
+{
+"id":9,
+"post":"WHO declared COVID-19 a global pandemic in March 2020.",
+"media_type":"text",
+"claims":["WHO declared COVID-19 a pandemic in March 2020."],
+"reference_evidence":[
+"The World Health Organization declared COVID-19 a pandemic on March 11, 2020.",
+"The WHO announcement marked the official pandemic declaration."
+],
+"ground_truth_verdict":"SUPPORTED",
+"expected_score_range":[85,95]
+},
+{
+"id":10,
+"post":"Apple secretly installed microphones in all iPhones to spy on users.",
+"media_type":"text",
+"claims":["Apple installed microphones in iPhones to spy."],
+"reference_evidence":[
+"There is no verified evidence that Apple installed hidden microphones to spy on users.",
+"Smartphones contain microphones for calls and voice assistants."
+],
+"ground_truth_verdict":"REFUTED",
+"expected_score_range":[0,30]
+},
+
+{
+"id":11,
+"post":"Russia launched a lunar mission in 2023.",
+"media_type":"text",
+"claims":["Russia launched a lunar mission in 2023."],
+"reference_evidence":[
+"Russia launched the Luna-25 lunar mission in August 2023.",
+"The mission attempted to reach the Moon's south pole."
+],
+"ground_truth_verdict":"SUPPORTED",
+"expected_score_range":[70,90]
+},
+{
+"id":12,
+"post":"Facebook will start charging all users $5 per month.",
+"media_type":"text",
+"claims":["Facebook will charge users $5 per month."],
+"reference_evidence":[
+"Facebook has not announced a universal $5 subscription for all users.",
+"Meta continues to provide free access to Facebook for general users."
+],
+"ground_truth_verdict":"REFUTED",
+"expected_score_range":[0,25]
+},
+{
+"id":13,
+"post":"Video shows flooding in Dubai today.",
+"media_type":"video",
+"claims":["Dubai experienced flooding today."],
+"reference_evidence":[
+"Flooding occasionally occurs in Dubai during heavy rainfall.",
+"Videos of floods in Dubai have circulated online from past weather events."
+],
+"ground_truth_verdict":"UNVERIFIED",
+"expected_score_range":[30,55]
+},
+{
+"id":14,
+"post":"The Eiffel Tower is located in Paris.",
+"media_type":"text",
+"claims":["The Eiffel Tower is in Paris."],
+"reference_evidence":[
+"The Eiffel Tower is a landmark located in Paris, France.",
+"It was built for the 1889 World's Fair in Paris."
+],
+"ground_truth_verdict":"SUPPORTED",
+"expected_score_range":[90,100]
+},
+{
+"id":15,
+"post":"Bananas cure cancer according to scientists.",
+"media_type":"text",
+"claims":["Bananas cure cancer."],
+"reference_evidence":[
+"No scientific evidence shows bananas cure cancer.",
+"Cancer treatments require medical therapies such as chemotherapy and radiation."
+],
+"ground_truth_verdict":"REFUTED",
+"expected_score_range":[0,20]
+},
+
+{
+"id":16,
+"post":"Germany won the FIFA World Cup in 2014.",
+"media_type":"text",
+"claims":["Germany won the 2014 FIFA World Cup."],
+"reference_evidence":[
+"Germany defeated Argentina in the 2014 FIFA World Cup final.",
+"The match ended 1–0 in extra time."
+],
+"ground_truth_verdict":"SUPPORTED",
+"expected_score_range":[90,100]
+},
+{
+"id":17,
+"post":"5G towers cause COVID-19 infection.",
+"media_type":"text",
+"claims":["5G towers cause COVID-19."],
+"reference_evidence":[
+"Scientific studies show COVID-19 is caused by the SARS-CoV-2 virus.",
+"There is no evidence linking 5G networks to COVID-19 infections."
+],
+"ground_truth_verdict":"REFUTED",
+"expected_score_range":[0,20]
+},
+{
+"id":18,
+"post":"NASA launched the James Webb Space Telescope in 2021.",
+"media_type":"text",
+"claims":["NASA launched the James Webb Space Telescope in 2021."],
+"reference_evidence":[
+"The James Webb Space Telescope launched on December 25, 2021.",
+"The mission was launched aboard an Ariane 5 rocket."
+],
+"ground_truth_verdict":"SUPPORTED",
+"expected_score_range":[85,95]
+},
+{
+"id":19,
+"post":"Old wildfire video shared as today’s California wildfire.",
+"media_type":"video",
+"claims":["Wildfire occurred today in California."],
+"reference_evidence":[
+"Old wildfire footage is frequently shared online as current events.",
+"California wildfires occur regularly but viral videos may not show current incidents."
+],
+"ground_truth_verdict":"MISLEADING",
+"expected_score_range":[30,50]
+},
+{
+"id":20,
+"post":"Image shows a shark swimming on a flooded highway.",
+"media_type":"image",
+"claims":["A shark was swimming on a flooded highway."],
+"reference_evidence":[
+"Photos of sharks on flooded roads are commonly created using image editing.",
+"Fact-checks have shown such viral images are manipulated."
+],
+"ground_truth_verdict":"REFUTED",
+"expected_score_range":[0,25]
+},
+
+{
+"id":21,
+"post":"Tesla released the Model 3 electric car in 2017.",
+"media_type":"text",
+"claims":["Tesla released Model 3 in 2017."],
+"reference_evidence":[
+"Tesla began delivering the Model 3 sedan in July 2017.",
+"The Model 3 became Tesla's most widely produced vehicle."
+],
+"ground_truth_verdict":"SUPPORTED",
+"expected_score_range":[80,95]
+},
+{
+"id":22,
+"post":"Moon landing in 1969 was staged by Hollywood.",
+"media_type":"text",
+"claims":["The 1969 Moon landing was staged."],
+"reference_evidence":[
+"Apollo 11 landed astronauts on the Moon on July 20, 1969.",
+"Scientific evidence confirms the Moon landing was real."
+],
+"ground_truth_verdict":"REFUTED",
+"expected_score_range":[0,20]
+},
+{
+"id":23,
+"post":"Image claims the Great Wall of China is visible from space with the naked eye.",
+"media_type":"image",
+"claims":["Great Wall visible from space with naked eye."],
+"reference_evidence":[
+"Astronauts report the Great Wall of China is generally not visible to the naked eye from space.",
+"This belief is a common myth."
+],
+"ground_truth_verdict":"REFUTED",
+"expected_score_range":[10,30]
+},
+{
+"id":24,
+"post":"Amazon rainforest produces 20% of the world’s oxygen.",
+"media_type":"text",
+"claims":["Amazon produces 20% of world oxygen."],
+"reference_evidence":[
+"The Amazon rainforest contributes to global oxygen cycles but does not produce 20% of the world's oxygen.",
+"Much of the oxygen produced is consumed by the ecosystem itself."
+],
+"ground_truth_verdict":"MISLEADING",
+"expected_score_range":[30,50]
+},
+{
+"id":25,
+"post":"Earth orbits the Sun.",
+"media_type":"text",
+"claims":["Earth orbits the Sun."],
+"reference_evidence":[
+"The heliocentric model states Earth orbits the Sun.",
+"This has been scientifically established for centuries."
+],
+"ground_truth_verdict":"SUPPORTED",
+"expected_score_range":[95,100]
+},
+
+{
+"id":26,
+"post":"Photo shows giant skeleton discovered by archaeologists.",
+"media_type":"image",
+"claims":["Archaeologists discovered giant human skeleton."],
+"reference_evidence":[
+"Images of giant skeleton discoveries online are often digital hoaxes.",
+"No scientific evidence supports the discovery of giant human skeletons."
+],
+"ground_truth_verdict":"REFUTED",
+"expected_score_range":[0,20]
+},
+{
+"id":27,
+"post":"Reports claim a new volcanic eruption happened today in Iceland.",
+"media_type":"text",
+"claims":["Volcanic eruption happened today in Iceland."],
+"reference_evidence":[
+"Iceland experiences volcanic activity due to its location on tectonic boundaries.",
+"News reports are required to confirm any current eruption."
+],
+"ground_truth_verdict":"UNVERIFIED",
+"expected_score_range":[35,55]
+},
+{
+"id":28,
+"post":"Mars has two moons called Phobos and Deimos.",
+"media_type":"text",
+"claims":["Mars has two moons."],
+"reference_evidence":[
+"Mars has two natural satellites named Phobos and Deimos.",
+"They were discovered in 1877 by astronomer Asaph Hall."
+],
+"ground_truth_verdict":"SUPPORTED",
+"expected_score_range":[90,100]
+},
+{
+"id":29,
+"post":"Video shows alien spacecraft landing in desert.",
+"media_type":"video",
+"claims":["Alien spacecraft landed in desert."],
+"reference_evidence":[
+"Videos claiming alien spacecraft landings are typically hoaxes or fictional media.",
+"No verified evidence exists of alien spacecraft landing on Earth."
+],
+"ground_truth_verdict":"REFUTED",
+"expected_score_range":[0,25]
+},
+{
+"id":30,
+"post":"Smoking causes lung cancer.",
+"media_type":"text",
+"claims":["Smoking causes lung cancer."],
+"reference_evidence":[
+"Medical research shows smoking significantly increases the risk of lung cancer.",
+"Tobacco use is the leading cause of lung cancer globally."
+],
+"ground_truth_verdict":"SUPPORTED",
+"expected_score_range":[95,100]
+},
+
+{
+"id":31,
+"post":"Graph claims global temperatures dropped sharply in 2023.",
+"media_type":"image",
+"claims":["Global temperatures dropped in 2023."],
+"reference_evidence":[
+"Climate data shows global temperatures continue to rise over time.",
+"Short-term variations can occur but do not indicate a sharp global decline."
+],
+"ground_truth_verdict":"MISLEADING",
+"expected_score_range":[30,55]
+},
+{
+"id":32,
+"post":"Scientists discovered water on Mars.",
+"media_type":"text",
+"claims":["Water exists on Mars."],
+"reference_evidence":[
+"NASA missions detected evidence of water ice on Mars.",
+"Past missions identified signs of ancient liquid water."
+],
+"ground_truth_verdict":"SUPPORTED",
+"expected_score_range":[80,95]
+},
+{
+"id":33,
+"post":"COVID vaccines contain microchips.",
+"media_type":"text",
+"claims":["COVID vaccines contain microchips."],
+"reference_evidence":[
+"COVID-19 vaccines contain medically approved ingredients such as mRNA and lipids.",
+"No evidence supports claims that vaccines contain microchips."
+],
+"ground_truth_verdict":"REFUTED",
+"expected_score_range":[0,20]
+},
+{
+"id":34,
+"post":"The human body has 206 bones.",
+"media_type":"text",
+"claims":["Human body has 206 bones."],
+"reference_evidence":[
+"The adult human skeleton contains 206 bones.",
+"Infants have more bones which fuse during development."
+],
+"ground_truth_verdict":"SUPPORTED",
+"expected_score_range":[95,100]
+},
+{
+"id":35,
+"post":"Video claims dinosaur spotted alive in jungle.",
+"media_type":"video",
+"claims":["Dinosaur spotted alive."],
+"reference_evidence":[
+"Dinosaurs went extinct around 66 million years ago.",
+"No credible evidence shows dinosaurs still living today."
+],
+"ground_truth_verdict":"REFUTED",
+"expected_score_range":[0,20]
+},
+
+{
+"id":36,
+"post":"Saturn has rings made of ice and rock.",
+"media_type":"text",
+"claims":["Saturn has rings made of ice and rock."],
+"reference_evidence":[
+"Saturn's rings consist mainly of ice particles mixed with rock debris.",
+"The rings are one of the most distinctive features of the planet."
+],
+"ground_truth_verdict":"SUPPORTED",
+"expected_score_range":[90,100]
+},
+{
+"id":37,
+"post":"New virus outbreak reported today in Asia.",
+"media_type":"text",
+"claims":["New virus outbreak reported in Asia."],
+"reference_evidence":[
+"Health organizations monitor disease outbreaks globally.",
+"News reports are needed to confirm any new outbreak."
+],
+"ground_truth_verdict":"UNVERIFIED",
+"expected_score_range":[35,55]
+},
+{
+"id":38,
+"post":"Image claims snow fell in Sahara desert yesterday.",
+"media_type":"image",
+"claims":["Snow fell in Sahara yesterday."],
+"reference_evidence":[
+"Snowfall has occasionally been recorded in parts of the Sahara desert.",
+"Such events are rare but documented."
+],
+"ground_truth_verdict":"UNVERIFIED",
+"expected_score_range":[35,60]
+},
+{
+"id":39,
+"post":"Vaccines cause autism.",
+"media_type":"text",
+"claims":["Vaccines cause autism."],
+"reference_evidence":[
+"Extensive scientific studies show vaccines do not cause autism.",
+"The original study suggesting a link was retracted."
+],
+"ground_truth_verdict":"REFUTED",
+"expected_score_range":[0,20]
+},
+{
+"id":40,
+"post":"Water boils at 100°C at sea level.",
+"media_type":"text",
+"claims":["Water boils at 100°C at sea level."],
+"reference_evidence":[
+"Pure water boils at 100 degrees Celsius at standard atmospheric pressure.",
+"This temperature changes with altitude."
+],
+"ground_truth_verdict":"SUPPORTED",
+"expected_score_range":[95,100]
+},
+
+{
+"id":41,
+"post":"Video claims massive UFO sighting over New York.",
+"media_type":"video",
+"claims":["UFO sighting over New York."],
+"reference_evidence":[
+"Many UFO sightings are later explained as aircraft or atmospheric phenomena.",
+"Verification requires official investigation."
+],
+"ground_truth_verdict":"UNVERIFIED",
+"expected_score_range":[30,55]
+},
+{
+"id":42,
+"post":"Earth is flat.",
+"media_type":"text",
+"claims":["Earth is flat."],
+"reference_evidence":[
+"Scientific evidence shows Earth is an oblate spheroid.",
+"Satellite imagery and physics confirm the Earth's round shape."
+],
+"ground_truth_verdict":"REFUTED",
+"expected_score_range":[0,15]
+},
+{
+"id":43,
+"post":"Mount Everest is the highest mountain above sea level.",
+"media_type":"text",
+"claims":["Mount Everest highest mountain above sea level."],
+"reference_evidence":[
+"Mount Everest is the highest mountain above sea level at about 8849 meters.",
+"It lies on the border of Nepal and China."
+],
+"ground_truth_verdict":"SUPPORTED",
+"expected_score_range":[95,100]
+},
+{
+"id":44,
+"post":"Image shows a giant snake swallowing a car.",
+"media_type":"image",
+"claims":["Giant snake swallowed a car."],
+"reference_evidence":[
+"Viral images of giant snakes swallowing cars are typically manipulated.",
+"No verified reports confirm such events."
+],
+"ground_truth_verdict":"REFUTED",
+"expected_score_range":[0,20]
+},
+{
+"id":45,
+"post":"Electric cars produce zero emissions while driving.",
+"media_type":"text",
+"claims":["Electric cars produce zero tailpipe emissions."],
+"reference_evidence":[
+"Electric vehicles do not produce tailpipe emissions during operation.",
+"Lifecycle emissions depend on electricity generation sources."
+],
+"ground_truth_verdict":"SUPPORTED",
+"expected_score_range":[80,95]
+},
+{
+"id":46,
+"post":"Drinking bleach cures viral infections.",
+"media_type":"text",
+"claims":["Drinking bleach cures infections."],
+"reference_evidence":[
+"Health authorities warn that drinking bleach is dangerous and toxic.",
+"Bleach is not a treatment for viral infections."
+],
+"ground_truth_verdict":"REFUTED",
+"expected_score_range":[0,10]
+},
+{
+"id":47,
+"post":"Photo claims pyramids discovered in Antarctica.",
+"media_type":"image",
+"claims":["Pyramids discovered in Antarctica."],
+"reference_evidence":[
+"Images of pyramids in Antarctica are usually natural mountain formations.",
+"No archaeological pyramids have been discovered there."
+],
+"ground_truth_verdict":"REFUTED",
+"expected_score_range":[0,20]
+},
+{
+"id":48,
+"post":"Jupiter is the largest planet in the solar system.",
+"media_type":"text",
+"claims":["Jupiter is the largest planet."],
+"reference_evidence":[
+"Jupiter is the largest planet in the solar system.",
+"It has a diameter of about 143,000 kilometers."
+],
+"ground_truth_verdict":"SUPPORTED",
+"expected_score_range":[95,100]
+},
+{
+"id":49,
+"post":"Reports say a major earthquake occurred today in Tokyo.",
+"media_type":"text",
+"claims":["Major earthquake occurred today in Tokyo."],
+"reference_evidence":[
+"Japan frequently experiences earthquakes due to tectonic activity.",
+"Official seismic reports are needed to confirm current events."
+],
+"ground_truth_verdict":"UNVERIFIED",
+"expected_score_range":[35,55]
+},
+{
+"id":50,
+"post":"The speed of light is approximately 300,000 km per second.",
+"media_type":"text",
+"claims":["Speed of light is about 300000 km/s."],
+"reference_evidence":[
+"The speed of light in vacuum is approximately 299,792 kilometers per second.",
+"This constant is fundamental in physics."
+],
+"ground_truth_verdict":"SUPPORTED",
+"expected_score_range":[95,100]
+}
+]

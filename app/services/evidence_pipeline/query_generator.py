@@ -1,42 +1,146 @@
 
+from typing import List
 
-def generate_queries(claim: str, entities: list = None) -> list:
+
+def _compress_claim(claim: str) -> str:
     """
-    Generate a diverse set of search queries by combining:
-    - the raw claim
-    - entity-specific news queries
-    - entity pair queries
-    - a fact-check oriented query
-
-    Falls back gracefully when no entities are provided.
+    Lightweight keyword compression: drop very common stopwords and
+    keep signal-bearing tokens in order.
     """
-    if entities is None:
-        entities = []
+    stopwords = {
+        "the",
+        "a",
+        "an",
+        "of",
+        "in",
+        "on",
+        "for",
+        "to",
+        "by",
+        "at",
+        "with",
+        "that",
+        "this",
+        "these",
+        "those",
+        "is",
+        "are",
+        "was",
+        "were",
+        "has",
+        "have",
+        "had",
+        "been",
+        "will",
+        "would",
+        "could",
+        "should",
+        "today",
+        "yesterday",
+        "tomorrow",
+    }
+    tokens = claim.split()
+    filtered = [t for t in tokens if t.lower() not in stopwords]
+    return " ".join(filtered)
 
-    queries = []
 
-    # 1. Base claim as-is
-    queries.append(claim)
+def generate_queries(claim: str, entities: List[str] | None = None) -> list:
+    """
+    Generate structured, high-relevance search queries for a factual claim.
 
-    # 2. Entity-specific news queries
-    for entity in entities:
-        queries.append(f"{entity} news")
+    Required query set per claim:
+      1. Exact claim
+      2. Entity + event/action
+      3. Entity + object
+      4. Event-focused description
+      5. Fact-check framed query
+      6. Compressed keyword query
 
-    # 3. Top-2 entity combination query
-    if len(entities) >= 2:
-        combo = " ".join(entities[:2])
-        queries.append(combo)
+    This utility is used by the evaluation harness and legacy pipeline
+    paths; the adaptive retrieval planner has its own expansion logic.
+    """
 
-    # 4. Fact-check oriented query
+    if not claim:
+        return []
+
+    entities = entities or []
+    primary_entity = entities[0] if entities else ""
+
+    queries: list[str] = []
+
+    # 1. Exact claim
+    queries.append(claim.strip())
+
+    # Simple heuristic split: first verb-ish token as action pivot
+    tokens = claim.split()
+    action_idx = None
+    for i, tok in enumerate(tokens):
+        lower = tok.lower().strip(",.")
+        if lower in {
+            "bought",
+            "buys",
+            "buying",
+            "purchased",
+            "purchase",
+            "declared",
+            "announced",
+            "said",
+            "won",
+            "lost",
+            "kills",
+            "killed",
+            "died",
+            "arrested",
+            "appointed",
+            "elected",
+        }:
+            action_idx = i
+            break
+
+    if action_idx is not None:
+        action_phrase = " ".join(tokens[action_idx : action_idx + 3])
+        object_phrase = " ".join(tokens[action_idx + 1 : action_idx + 8])
+    else:
+        action_phrase = ""
+        object_phrase = " ".join(tokens[1:8])
+
+    # 2. Entity + event/action
+    if primary_entity and action_phrase:
+        queries.append(f"{primary_entity} {action_phrase}")
+
+    # 3. Entity + object
+    if primary_entity and object_phrase:
+        queries.append(f"{primary_entity} {object_phrase}")
+
+    # 4. Event-focused description (claim without leading entity, if present)
+    if primary_entity and claim.startswith(primary_entity):
+        event_desc = claim[len(primary_entity) :].strip(" ,.-")
+        if event_desc:
+            queries.append(f"{primary_entity} {event_desc}")
+
+    # 5. Fact-check framed query
     queries.append(f"{claim} fact check")
+    if primary_entity:
+        queries.append(f"{primary_entity} {action_phrase or 'claim'} fact check".strip())
 
-    # Deduplicate while preserving insertion order
+    # 6. Compressed keyword query
+    compressed = _compress_claim(claim)
+    if compressed:
+        queries.append(compressed)
+
+    # Fallback safety: ensure we always have at least 3 queries
+    if len(queries) < 3:
+        queries.append(f"{claim} evidence")
+        queries.append(_compress_claim(claim + " news"))
+
+    # Deduplicate while preserving order
     seen = set()
     unique_queries = []
     for q in queries:
-        normalized = q.strip()
-        if normalized and normalized not in seen:
-            seen.add(normalized)
-            unique_queries.append(normalized)
+        q_clean = q.strip()
+        if q_clean and q_clean not in seen:
+            seen.add(q_clean)
+            unique_queries.append(q_clean)
 
-    return unique_queries[:5]
+    # Cap at a reasonable number for legacy paths
+    return unique_queries[:8]

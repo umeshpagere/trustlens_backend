@@ -1,0 +1,2215 @@
+{
+    "timestamp": "2026-03-17T00:15:00.119876",
+    "dataset_size": 38,
+    "pipeline_metrics": {
+        "claim_extraction_accuracy": 0.8421052631578947,
+        "query_relevance_score": 0.6353861077803008,
+        "retrieval_score": 0.013157894736842105,
+        "verdict_accuracy": 0.23684210526315788,
+        "credibility_score_accuracy": 0.10526315789473684
+    },
+    "rag_metrics": {
+        "faithfulness": 0.2663535641028716,
+        "answer_relevancy": 0.15297448315420656,
+        "context_precision": 0.19819819818671172,
+        "context_recall": 0.07894736842105263
+    },
+    "llm_metrics": {
+        "hallucination_rate": 0.12
+    },
+    "detailed_results": [
+        {
+            "sample_id": 1,
+            "trace": {
+                "post": "India successfully landed Chandrayaan-3 near the Moon\u2019s south pole.",
+                "claims": [
+                    "India successfully landed Chandrayaan-3 near the Moon\u2019s south pole"
+                ],
+                "queries": [
+                    "India successfully landed Chandrayaan-3 near the Moon\u2019s south pole",
+                    "India news",
+                    "India fact check",
+                    "Chandrayaan-3 news",
+                    "Chandrayaan-3 fact check"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.6457912445068359,
+                        "semantic_score": 0.6415824890136719,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: Video shows a glimpse of Chandrayaan 3 captured by NASA.",
+                        "source": "BOOM Fact Check",
+                        "domain": "boomlive.in",
+                        "timestamp": "2023-08-24T13:21:30Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.6285496473312377,
+                        "semantic_score": 0.6070992946624756,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: NASA released footage of CHandrayaan landing on moon; Ashoka Stambh will be imprinted on lunar surface",
+                        "source": "Alt News",
+                        "domain": "altnews.in",
+                        "timestamp": "2016-06-20T00:00:00Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "The evidence provided is neutral and does not explicitly confirm the claim that India successfully landed Chandrayaan-3 near the Moon's south pole. One piece of evidence is recent but only shows a video captured by NASA without confirming the landing success or location. The other evidence is outdated and predates Chandrayaan-3, thus irrelevant to the claim. Both sources have medium credibility, and the overall credibility index is high, but the evidence lacks direct support or contradiction. The temporal consistency score is moderate (0.5), so no temporal warning is added. Due to insufficient direct evidence supporting or contradicting the claim, the verdict is UNVERIFIED.",
+                "credibility_score": 70
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.9759578704833984,
+                "query_relevance_score": 0.559147173166275,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 2,
+            "trace": {
+                "post": "NASA confirmed aliens landed in Nevada yesterday.",
+                "claims": [
+                    "NASA confirmed aliens landed in Nevada"
+                ],
+                "queries": [
+                    "NASA confirmed aliens landed in Nevada",
+                    "NASA news",
+                    "NASA fact check",
+                    "Nevada news",
+                    "Nevada fact check",
+                    "NASA Nevada event"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.5319962352514267,
+                        "semantic_score": 0.4389924705028534,
+                        "trust_score": 0.55,
+                        "recency_score": 1.0,
+                        "text": "\"If the landers encounter a catastrophic event, NASA knows it would not have the capability to rescue stranded astronauts from space or the lunar surface,\" the report noted, adding that the agency has work to do in its \"crew survival analyses.\"",
+                        "source": "Fort Myers News-Press",
+                        "domain": "eu.dailycommercial.com",
+                        "timestamp": "2026-03-12T15:42:04Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.5281516313552856,
+                        "semantic_score": 0.4313032627105713,
+                        "trust_score": 0.55,
+                        "recency_score": 1.0,
+                        "text": "That mission doesn't include plans for a landing quite yet, but will instead propel three Americans and one Canadian on a voyage that would take them to see parts of the far side of the moon that not even Apollo astronauts witnessed.",
+                        "source": "Treasure Coast Newspapers",
+                        "domain": "eu.newsherald.com",
+                        "timestamp": "2026-03-12T15:42:04Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "Both pieces of evidence are neutral and do not address the claim that NASA confirmed aliens landed in Nevada. The source credibility is medium with a credibility index of 0.45, which is borderline but does not strongly support the claim. The temporal consistency score is 0.0 because the evidence dates are in the future relative to the current date and the claim date is unknown, so temporal consistency cannot be established. Due to lack of supporting or contradicting evidence and temporal uncertainty, the claim remains unverified.",
+                "credibility_score": 45
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.9802863597869873,
+                "query_relevance_score": 0.6157404631376266,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 3,
+            "trace": {
+                "post": "Amitabh Bachchan bought land in Ayodhya worth \u20b935 crore.",
+                "claims": [
+                    "Amitabh Bachchan bought land in Ayodhya worth \u20b935 crore"
+                ],
+                "queries": [
+                    "Amitabh Bachchan bought land in Ayodhya worth \u20b935 crore",
+                    "Amitabh Bachchan news",
+                    "Amitabh Bachchan fact check",
+                    "Ayodhya news",
+                    "Ayodhya fact check"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.7169242060184478,
+                        "semantic_score": 0.8388484120368958,
+                        "trust_score": 0.55,
+                        "recency_score": 0.85,
+                        "text": "Amitabh Bachchan invests Rs 35 crores in Ayodhya land: Reports\n\nAccording to the company, the land parcel is located near HoABL's 75-acre development project titled 'The Sarayu'.",
+                        "source": "Bollywood Hungama",
+                        "domain": "bollywoodhungama.com",
+                        "timestamp": "2026-03-06T12:51:24Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.671890810728073,
+                        "semantic_score": 0.7487816214561462,
+                        "trust_score": 0.55,
+                        "recency_score": 0.85,
+                        "text": "* House of Abhinandan Lodha sold 2.67 acres land in Ayodhya to Amitabh Bachchan for Rs 35 crore\n\n* This is Bachchan's third investment in Ayodhya and fourth overall with HoABL\n\n* HoABL was founded in 2020 and has sold over 13 million sq ft of developed land\n\nDid our AI summary help?",
+                        "source": "NDTV",
+                        "domain": "ndtv.com",
+                        "timestamp": "2026-03-06T12:42:39Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "verdict": "SUPPORTED",
+                "explanation": "Both pieces of evidence strongly support the claim that Amitabh Bachchan bought land in Ayodhya worth \u20b935 crore, with high confidence scores of 0.9 and 0.95 respectively. The sources have medium credibility with an overall credibility index of 0.45, which is reflected in the credibility score. The temporal consistency score is 1.0, indicating the evidence is recent and consistent with the claim's timeframe. There are no contradictory evidences, so the claim is supported.",
+                "credibility_score": 45
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.903965950012207,
+                "query_relevance_score": 0.5847568273544311,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 1.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 5,
+            "trace": {
+                "post": "Finland officially joined NATO in 2023.",
+                "claims": [
+                    "Finland officially joined NATO in 2023."
+                ],
+                "queries": [
+                    "Finland officially joined NATO in 2023.",
+                    "Finland news",
+                    "Finland fact check",
+                    "NATO news",
+                    "NATO fact check"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.7568163466453551,
+                        "semantic_score": 0.7236326932907104,
+                        "trust_score": 1.0,
+                        "recency_score": 0.7,
+                        "text": "Context: Finland Admits NATO Membership Was a Mistake",
+                        "source": "StopFake",
+                        "domain": "stopfake.org",
+                        "timestamp": "2026-01-18T00:00:00Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.7407124233245849,
+                        "semantic_score": 0.6914248466491699,
+                        "trust_score": 1.0,
+                        "recency_score": 0.7,
+                        "text": "In fact, only 11% of Finnish citizens regret joining NATO..",
+                        "source": "StopFake",
+                        "domain": "stopfake.org",
+                        "timestamp": "2026-01-18T00:00:00Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "Both pieces of evidence are labeled NEUTRAL with high confidence (0.9), indicating they do not confirm or contradict the claim that Finland officially joined NATO in 2023. The source credibility is medium with a credibility index of 0.45, which does not reduce confidence further. Temporal consistency is high (1.0) with evidence dated after the claim date, so no temporal warning is needed. However, due to the lack of supporting evidence and no contradictions, the claim remains UNVERIFIED.",
+                "credibility_score": 45
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.9876200556755066,
+                "query_relevance_score": 0.6039143145084381,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 7,
+            "trace": {
+                "post": "Old protest video shared claiming riots happened today in London.",
+                "claims": [
+                    "An old protest video was shared claiming riots happened in London."
+                ],
+                "queries": [
+                    "An old protest video was shared claiming riots happened in London.",
+                    "London news",
+                    "London fact check",
+                    "An old protest video was shared",
+                    "An old protest video was shared claiming riots happened in London. fact check",
+                    "old protest video London riots authenticity"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.6970932304859161,
+                        "semantic_score": 0.7441864609718323,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: Video shows a fight between police and rioters in London, as protests sparked by the police killing of a teenager in France spread to the capital of England.",
+                        "source": "India Today",
+                        "domain": "indiatoday.in",
+                        "timestamp": "2023-07-05T00:00:00Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.6379781365394592,
+                        "semantic_score": 0.5259562730789185,
+                        "trust_score": 1.0,
+                        "recency_score": 0.5,
+                        "text": "Context: A image shows anti-immigration protest in the UK on Sept 13, 2025",
+                        "source": "annie lab",
+                        "domain": "annielab.org",
+                        "timestamp": "2025-09-14T00:00:00Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "The evidence provided is neutral and does not confirm or deny the claim that an old protest video was shared claiming riots happened in London. Neither piece of evidence explicitly supports the claim, and one evidence even refers to a future date unrelated to the claim. The source credibility index is moderate at 0.45, but the domain credibility is uncertain for one source and medium for the other. The temporal consistency score is 0.0, indicating no temporal alignment, which further reduces confidence. Given the lack of supporting or contradicting evidence and the temporal inconsistency, the claim remains unverified.",
+                "credibility_score": 45
+            },
+            "metrics": {
+                "claim_extraction_accuracy": false,
+                "claim_semantic_similarity": 0.8017315864562988,
+                "query_relevance_score": 0.7238402366638184,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 1.0
+            }
+        },
+        {
+            "sample_id": 8,
+            "trace": {
+                "post": "Image showing US inflation reaching 20% in 2024.",
+                "claims": [
+                    "US inflation reached 20% in 2024"
+                ],
+                "queries": [
+                    "US inflation reached 20% in 2024",
+                    "US news",
+                    "US fact check",
+                    "inflation news",
+                    "inflation fact check",
+                    "2024 news"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.526360809803009,
+                        "semantic_score": 0.42772161960601807,
+                        "trust_score": 0.55,
+                        "recency_score": 1.0,
+                        "text": "These percentages are reflected in the average costs for the 2025-2026 academic year.",
+                        "source": "TEMPO.CO",
+                        "domain": "en.tempo.co",
+                        "timestamp": "2026-03-13T13:23:45Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.5116891264915466,
+                        "semantic_score": 0.39837825298309326,
+                        "trust_score": 0.55,
+                        "recency_score": 1.0,
+                        "text": "Over the past 20 years, when adjusted for inflation, tuition at private colleges has increased by 32%, while public colleges saw increases of 24% for out-of-state students and 29% for in-state students.",
+                        "source": "TEMPO.CO",
+                        "domain": "en.tempo.co",
+                        "timestamp": "2026-03-13T13:23:45Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "The evidence provided is neutral and does not confirm or contradict the claim that US inflation reached 20% in 2024. Both pieces of evidence discuss topics related to costs and inflation over a broader or different timeframe but do not specifically address the inflation rate in 2024. The source credibility is low (0.45) and the temporal consistency score is moderate (0.5), indicating the evidence is somewhat outdated or not directly relevant to the claim's timeframe. Due to lack of direct supporting or contradicting evidence, the claim remains unverified.",
+                "credibility_score": 45
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.9845691323280334,
+                "query_relevance_score": 0.48042623698711395,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 1.0
+            }
+        },
+        {
+            "sample_id": 9,
+            "trace": {
+                "post": "WHO declared COVID-19 a global pandemic in March 2020.",
+                "claims": [
+                    "WHO declared COVID-19 a global pandemic in March 2020"
+                ],
+                "queries": [
+                    "WHO declared COVID-19 a global pandemic in March 2020",
+                    "WHO news",
+                    "WHO fact check",
+                    "COVID-19 news",
+                    "COVID-19 fact check"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.7389746105670928,
+                        "semantic_score": 0.8329492211341858,
+                        "trust_score": 0.65,
+                        "recency_score": 0.85,
+                        "text": "COVID-19 pandemic in the United States",
+                        "source": "Wikipedia",
+                        "domain": "en.wikipedia.org",
+                        "timestamp": "2026-03-03T03:51:34Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.7223387014865874,
+                        "semantic_score": 0.829677402973175,
+                        "trust_score": 0.65,
+                        "recency_score": 0.7,
+                        "text": "Timeline of the COVID-19 pandemic in March 2020",
+                        "source": "Wikipedia",
+                        "domain": "en.wikipedia.org",
+                        "timestamp": "2025-12-14T21:29:43Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "Both pieces of evidence are labeled as NEUTRAL with high confidence (0.9), indicating they do not confirm or deny the claim that WHO declared COVID-19 a global pandemic in March 2020. The source credibility is medium with a credibility index of 0.45, which does not strongly support or undermine the claim. The temporal consistency score is 1.0, so there is no temporal warning. Due to the lack of supporting or contradicting evidence, the claim remains unverified.",
+                "credibility_score": 45
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.9639049768447876,
+                "query_relevance_score": 0.508220036700368,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 11,
+            "trace": {
+                "post": "Russia launched a lunar mission in 2023.",
+                "claims": [
+                    "Russia launched a lunar mission in 2023"
+                ],
+                "queries": [
+                    "Russia launched a lunar mission in 2023",
+                    "Russia news",
+                    "Russia fact check",
+                    "lunar mission news",
+                    "lunar mission fact check"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.5655282592773437,
+                        "semantic_score": 0.5360565185546875,
+                        "trust_score": 0.55,
+                        "recency_score": 0.85,
+                        "text": "The special military operation launched by Moscow in 2022 was seen by the republic's citizens as a sign of hope and relief.\"",
+                        "source": "24 \u041a\u0430\u043d\u0430\u043b",
+                        "domain": "en.24tv.ua",
+                        "timestamp": "2026-03-04T18:00:00Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.529901459813118,
+                        "semantic_score": 0.43480291962623596,
+                        "trust_score": 0.55,
+                        "recency_score": 1.0,
+                        "text": "Against this backdrop, the US administration announced a temporary partial lifting of sanctions on Russian oil in March 2026.",
+                        "source": "TASS",
+                        "domain": "tass.com",
+                        "timestamp": "2026-03-12T10:00:00Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "The evidence provided is neutral and does not mention any lunar mission by Russia in 2023. Both pieces of evidence are from 2026 and do not confirm the claim. The source credibility index is 0.45, which is moderate but does not strengthen the evidence. Due to the lack of supporting or contradicting evidence and the temporal inconsistency, the claim cannot be verified.",
+                "credibility_score": 45
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.9819269180297852,
+                "query_relevance_score": 0.5396264135837555,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 12,
+            "trace": {
+                "post": "Facebook will start charging all users $5 per month.",
+                "claims": [
+                    "Facebook will start charging all users $5 per month"
+                ],
+                "queries": [
+                    "Facebook will start charging all users $5 per month",
+                    "Facebook news",
+                    "Facebook fact check",
+                    "Facebook will start charging all users",
+                    "Facebook will start charging all users $5 per month fact check",
+                    "Facebook subscription fee $5 per month"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.567713965177536,
+                        "semantic_score": 0.345427930355072,
+                        "trust_score": 1.0,
+                        "recency_score": 0.7,
+                        "text": "Context: A new Facebook rule starts \"tomorrow\" allowing Meta the rights to users' photos.",
+                        "source": "Snopes",
+                        "domain": "snopes.com",
+                        "timestamp": "2026-01-02T08:00:05Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.520291212797165,
+                        "semantic_score": 0.22058242559432983,
+                        "trust_score": 1.0,
+                        "recency_score": 0.85,
+                        "text": "Context: A New Zealand news Facebook page is publishing images and footage of breaking events.",
+                        "source": "AAP",
+                        "domain": "aap.com.au",
+                        "timestamp": "2026-02-23T11:00:00Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "Both pieces of evidence are neutral regarding the claim that Facebook will start charging all users $5 per month, as they discuss unrelated topics. The source credibility is high (0.725), but the evidence does not support or contradict the claim. The temporal consistency score is 0.0 because the claim date is unknown, making it impossible to assess temporal alignment. Due to lack of supporting or contradicting evidence, the claim remains unverified.",
+                "credibility_score": 72
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.9170926809310913,
+                "query_relevance_score": 0.7170784175395966,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 13,
+            "trace": {
+                "post": "Video shows flooding in Dubai today.",
+                "claims": [
+                    "Flooding occurred in Dubai"
+                ],
+                "queries": [
+                    "Flooding occurred in Dubai",
+                    "Dubai news",
+                    "Dubai fact check",
+                    "Flooding occurred in Dubai fact check",
+                    "Dubai recent flood reports 2024"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.5735743641853333,
+                        "semantic_score": 0.5221487283706665,
+                        "trust_score": 0.55,
+                        "recency_score": 1.0,
+                        "text": "A fire appears to have been started inside the Dubai Creek Harbour Hotel after an Iranian drone strike in footage posted to social media (Picture: X)\n\nA view of the damaged part of the Dubai Creek Harbour Tower after it was hit by an Iranian drone attack in Dubai (Picture: EPA)\n\n'Documented evidence of strikes and damages may include incidents that the government does not wish to acknowledge publicly.",
+                        "source": "WTX News",
+                        "domain": "wtxnews.com",
+                        "timestamp": "2026-03-14T02:00:18Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.5664191842079163,
+                        "semantic_score": 0.5078383684158325,
+                        "trust_score": 0.55,
+                        "recency_score": 1.0,
+                        "text": "Dubai, which is in the UAE, has been hit with missiles amid the conflict between Iran and the US and Israel.",
+                        "source": "WTX News",
+                        "domain": "wtxnews.com",
+                        "timestamp": "2026-03-14T02:00:18Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "The evidence provided is neutral with respect to the claim of flooding in Dubai, as it discusses unrelated events such as fire, drone strikes, and missile attacks without mentioning flooding. The source credibility is low to unknown, with a credibility index of 0.45, which reduces confidence. Additionally, the temporal consistency score is 0.0 because the claim lacks an explicit date, making it impossible to verify temporal alignment with the evidence. Given the absence of supporting or contradicting evidence and low credibility, the claim remains unverified.",
+                "credibility_score": 45
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.893842339515686,
+                "query_relevance_score": 0.732812762260437,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 1.0,
+                "credibility_score_accuracy": 1.0
+            }
+        },
+        {
+            "sample_id": 14,
+            "trace": {
+                "post": "The Eiffel Tower is located in Paris.",
+                "claims": [
+                    "The Eiffel Tower is located in Paris"
+                ],
+                "queries": [
+                    "The Eiffel Tower is located in Paris",
+                    "Eiffel Tower news",
+                    "Eiffel Tower fact check",
+                    "The Eiffel Tower is located in Paris evidence",
+                    "The Eiffel Tower is located in Paris report",
+                    "Paris latest news"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.6835678577423095,
+                        "semantic_score": 0.6671357154846191,
+                        "trust_score": 1.0,
+                        "recency_score": 0.25,
+                        "text": "Context: Image shows Eiffel Tower without power in July 2024",
+                        "source": "USA Today",
+                        "domain": "usatoday.com",
+                        "timestamp": "2024-07-27T00:00:00Z",
+                        "nli_label": "IRRELEVANT",
+                        "nli_score": 0.9926093220710754
+                    },
+                    {
+                        "score": 0.6551395452022551,
+                        "semantic_score": 0.6652790904045105,
+                        "trust_score": 0.65,
+                        "recency_score": 0.85,
+                        "text": "Eiffel Tower replicas and derivatives",
+                        "source": "Wikipedia",
+                        "domain": "en.wikipedia.org",
+                        "timestamp": "2026-02-17T21:13:34Z",
+                        "nli_label": "IRRELEVANT",
+                        "nli_score": 0.9622454047203064
+                    },
+                    {
+                        "score": 0.6535133242607116,
+                        "semantic_score": 0.6570266485214233,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: Images circulating on social media show the Eiffel Tower in Paris, France, on fire.",
+                        "source": "Rappler",
+                        "domain": "rappler.com",
+                        "timestamp": "2024-01-30T05:02:32Z",
+                        "nli_label": "SUPPORTED",
+                        "nli_score": 0.9987431168556213
+                    }
+                ],
+                "verdict": "SUPPORTED",
+                "explanation": "The claim that the Eiffel Tower is located in Paris is explicitly supported by one piece of evidence with high confidence (0.95). Other evidence is neutral and does not contradict the claim. The source credibility index is medium (0.55), which supports moderate confidence. The temporal consistency score is 1.0, indicating no temporal issues. Therefore, the claim is supported with high confidence based on the available evidence.",
+                "credibility_score": 55
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.9814226627349854,
+                "query_relevance_score": 0.7893727024396261,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 1.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 16,
+            "trace": {
+                "post": "Germany won the FIFA World Cup in 2014.",
+                "claims": [
+                    "Germany won the FIFA World Cup in 2014"
+                ],
+                "queries": [
+                    "Germany won the FIFA World Cup in 2014",
+                    "Germany news",
+                    "Germany fact check"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.6717688536643981,
+                        "semantic_score": 0.6985377073287964,
+                        "trust_score": 0.65,
+                        "recency_score": 0.85,
+                        "text": "2014 FIFA World Cup final",
+                        "source": "Wikipedia",
+                        "domain": "en.wikipedia.org",
+                        "timestamp": "2026-03-08T12:33:24Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.6696063220500945,
+                        "semantic_score": 0.6642126441001892,
+                        "trust_score": 0.65,
+                        "recency_score": 1.0,
+                        "text": "Brazil v Germany (2014 FIFA World Cup)",
+                        "source": "Wikipedia",
+                        "domain": "en.wikipedia.org",
+                        "timestamp": "2026-03-12T00:13:35Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "The evidence provided is neutral and does not explicitly confirm or deny that Germany won the FIFA World Cup in 2014. Both pieces of evidence mention the 2014 World Cup and a match involving Germany but do not state the outcome or winner. The source credibility is medium with a credibility index of 0.45, and the temporal consistency is high with a score of 1.0, indicating the evidence is recent and relevant. However, due to the lack of direct supporting or contradicting evidence, the claim remains unverified.",
+                "credibility_score": 45
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.9703284502029419,
+                "query_relevance_score": 0.6198973854382833,
+                "retrieval_score": 0.5,
+                "context_precision": 0.5,
+                "context_recall": 0.5,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 18,
+            "trace": {
+                "post": "NASA launched the James Webb Space Telescope in 2021.",
+                "claims": [
+                    "NASA launched the James Webb Space Telescope in 2021"
+                ],
+                "queries": [
+                    "NASA launched the James Webb Space Telescope in 2021",
+                    "NASA news",
+                    "NASA fact check",
+                    "James Webb Space Telescope news"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.707834596633911,
+                        "semantic_score": 0.8006691932678223,
+                        "trust_score": 0.65,
+                        "recency_score": 0.7,
+                        "text": "Timeline of the James Webb Space Telescope",
+                        "source": "Wikipedia",
+                        "domain": "en.wikipedia.org",
+                        "timestamp": "2026-02-13T04:18:08Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.6811031222343444,
+                        "semantic_score": 0.837206244468689,
+                        "trust_score": 0.65,
+                        "recency_score": 0.25,
+                        "text": "Launch and commissioning of the James Webb Space Telescope",
+                        "source": "Wikipedia",
+                        "domain": "en.wikipedia.org",
+                        "timestamp": "2024-11-17T07:25:08Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "The evidence provided is neutral with respect to the claim, as neither piece specifies the launch date or year of the James Webb Space Telescope. Both evidences mention timelines or launch-related information but do not confirm the 2021 launch date. The source credibility is medium with a credibility index of 0.45, which does not reduce confidence further. The temporal consistency is high (1.0), so no temporal warning is needed. Due to the lack of direct supporting or contradicting evidence, the claim remains unverified.",
+                "credibility_score": 45
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.9713540077209473,
+                "query_relevance_score": 0.6259294152259827,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 19,
+            "trace": {
+                "post": "Old wildfire video shared as today\u2019s California wildfire.",
+                "claims": [
+                    "An old wildfire video was shared as today's California wildfire."
+                ],
+                "queries": [
+                    "An old wildfire video was shared as today's California wildfire.",
+                    "California news",
+                    "California fact check",
+                    "wildfire news",
+                    "wildfire fact check",
+                    "California wildfire event"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.6961322784423828,
+                        "semantic_score": 0.6922645568847656,
+                        "trust_score": 1.0,
+                        "recency_score": 0.25,
+                        "text": "Context: Video shows \u2018looters' during California wildfires",
+                        "source": "USA Today",
+                        "domain": "usatoday.com",
+                        "timestamp": "2025-01-09T00:00:00Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.6796488523483276,
+                        "semantic_score": 0.6592977046966553,
+                        "trust_score": 1.0,
+                        "recency_score": 0.25,
+                        "text": "Context: Video shows 'fire tornadoes' in California",
+                        "source": "USA Today",
+                        "domain": "usatoday.com",
+                        "timestamp": "2025-01-09T00:00:00Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "The evidence provided is neutral regarding the claim that an old wildfire video was shared as today's California wildfire. Neither piece of evidence confirms nor contradicts the claim, resulting in insufficient evidence to verify it. The source credibility is medium with a credibility index of 0.75, and the temporal consistency is high with a score of 1.0, but these factors do not compensate for the lack of direct supporting or contradicting evidence. Therefore, the claim remains unverified.",
+                "credibility_score": 75
+            },
+            "metrics": {
+                "claim_extraction_accuracy": false,
+                "claim_semantic_similarity": 0.7350502014160156,
+                "query_relevance_score": 0.5739212731520335,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 20,
+            "trace": {
+                "post": "Image shows a shark swimming on a flooded highway.",
+                "claims": [
+                    "A shark is swimming on a flooded highway."
+                ],
+                "queries": [
+                    "A shark is swimming on a flooded highway.",
+                    "shark news",
+                    "shark fact check",
+                    "flooded highway news",
+                    "flooded highway fact check",
+                    "A shark is swimming on a flooded highway. evidence",
+                    "A shark is swimming on a flooded highway. report"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.558841735124588,
+                        "semantic_score": 0.492683470249176,
+                        "trust_score": 0.55,
+                        "recency_score": 1.0,
+                        "text": "Watch the accompanying music video, which sees Shark riding a bike through the Gold Coast, below.",
+                        "source": "The Music Network",
+                        "domain": "themusicnetwork.com",
+                        "timestamp": "2026-03-10T20:14:41Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.512980729341507,
+                        "semantic_score": 0.4009614586830139,
+                        "trust_score": 0.55,
+                        "recency_score": 1.0,
+                        "text": "In other Shark news, this year will see her make her feature film acting debut alongside Russell Crowe, Daniel MacPherson, and Luke Hemsworth in Beast, set for release in Australian cinemas on April 23rd.",
+                        "source": "The Music Network",
+                        "domain": "themusicnetwork.com",
+                        "timestamp": "2026-03-10T20:14:41Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "The evidence provided is neutral and unrelated to the claim about a shark swimming on a flooded highway. Both pieces of evidence discuss unrelated topics involving the word 'shark' but do not support or contradict the claim. The source credibility index is 0.45, which is moderate but not high, and the temporal consistency score is 0.0 due to the claim lacking an explicit date and evidence dates being in the future, leading to a temporal warning. Given the absence of supporting or contradicting evidence and the moderate credibility, the claim remains unverified.",
+                "credibility_score": 45
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.9581907391548157,
+                "query_relevance_score": 0.6520838013717106,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 21,
+            "trace": {
+                "post": "Tesla released the Model 3 electric car in 2017.",
+                "claims": [
+                    "Tesla released the Model 3 electric car in 2017."
+                ],
+                "queries": [
+                    "Tesla released the Model 3 electric car in 2017.",
+                    "Tesla news",
+                    "Tesla fact check",
+                    "Model 3 news"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.5652818536758423,
+                        "semantic_score": 0.5355637073516846,
+                        "trust_score": 0.55,
+                        "recency_score": 0.85,
+                        "text": "BYD delivered 2.26 million pure EVs in 2025 versus Tesla's 1.636 million, a volume gap that was essentially zero two years prior.\u00b9\u00b2 In Europe, Tesla registrations declined 66% year-over-year in France and 71% in Sweden in December 2025\u00b9\u00b2, with the Musk political controversy cited as a contributing factor alongside model age.",
+                        "source": "1redDrop",
+                        "domain": "1reddrop.com",
+                        "timestamp": "2026-03-04T10:03:15Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.5442946857213974,
+                        "semantic_score": 0.4935893714427948,
+                        "trust_score": 0.55,
+                        "recency_score": 0.85,
+                        "text": "Consensus View\n\nThe prevailing market narrative positions Tesla not as an automobile company but as an AI and robotics platform that happens to manufacture cars.",
+                        "source": "1redDrop",
+                        "domain": "1reddrop.com",
+                        "timestamp": "2026-03-04T10:03:15Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "The evidence provided is neutral and does not address the claim about Tesla releasing the Model 3 in 2017. Both pieces of evidence discuss Tesla's market and deliveries in 2025 and do not mention the Model 3 release date. The source credibility is borderline at 0.45, which reduces confidence to 0.3, but since there is no supporting or contradicting evidence, the claim cannot be verified. The temporal consistency is high, but it does not impact the verdict due to lack of relevant evidence.",
+                "credibility_score": 45
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.9021886587142944,
+                "query_relevance_score": 0.613813191652298,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 23,
+            "trace": {
+                "post": "Image claims the Great Wall of China is visible from space with the naked eye.",
+                "claims": [
+                    "The Great Wall of China is visible from space with the naked eye."
+                ],
+                "queries": [
+                    "The Great Wall of China is visible from space with the naked eye.",
+                    "The Great Wall of China news",
+                    "The Great Wall of China fact check",
+                    "The Great Wall of China is",
+                    "The Great Wall of China is visible from space with the naked eye. fact check",
+                    "The Great Wall of China is visible from space with the naked eye. evidence",
+                    "The Great Wall of China is visible from space with the naked eye. report"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.6660447537899017,
+                        "semantic_score": 0.6820895075798035,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: The Great Wall of China is the only man-made object visible from the moon.",
+                        "source": "Snopes",
+                        "domain": "snopes.com",
+                        "timestamp": "2001-11-11T21:05:06Z",
+                        "nli_label": "IRRELEVANT",
+                        "nli_score": 0.9926605224609375
+                    },
+                    {
+                        "score": 0.5665640890598297,
+                        "semantic_score": 0.4331281781196594,
+                        "trust_score": 1.0,
+                        "recency_score": 0.25,
+                        "text": "Context: In 2023, two people used an excavator to clear a path through the Great Wall of China.",
+                        "source": "Snopes",
+                        "domain": "snopes.com",
+                        "timestamp": "2024-09-01T11:00:02Z",
+                        "nli_label": "IRRELEVANT",
+                        "nli_score": 0.9947237968444824
+                    },
+                    {
+                        "score": 0.4482154941558838,
+                        "semantic_score": 0.2514309883117676,
+                        "trust_score": 0.65,
+                        "recency_score": 0.85,
+                        "text": "Far side of the Moon",
+                        "source": "Wikipedia",
+                        "domain": "en.wikipedia.org",
+                        "timestamp": "2026-02-25T02:45:34Z",
+                        "nli_label": "CONTRADICTED",
+                        "nli_score": 0.9947351217269897
+                    }
+                ],
+                "verdict": "CONTRADICTED",
+                "explanation": "The claim that the Great Wall of China is visible from space with the naked eye is contradicted by evidence 1, which explicitly states that the Great Wall is not visible from typical space views, only from the moon, which is much farther away. This evidence has a high confidence of 0.9 and comes from a credible source (snopes.com) with a high domain credibility. The other pieces of evidence are neutral and do not address the claim directly. The temporal consistency score is 0.67, indicating moderate consistency, and no temporal warning is necessary. Given the strong contradiction and credible source, the claim is contradicted with high confidence.",
+                "credibility_score": 73
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.8569607734680176,
+                "query_relevance_score": 0.8235032643590655,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 24,
+            "trace": {
+                "post": "Amazon rainforest produces 20% of the world\u2019s oxygen.",
+                "claims": [
+                    "Amazon rainforest produces 20% of the world\u2019s oxygen."
+                ],
+                "queries": [
+                    "Amazon rainforest produces 20% of the world\u2019s oxygen.",
+                    "Amazon rainforest news",
+                    "Amazon rainforest fact check",
+                    "Amazon rainforest produces 20% of the",
+                    "Amazon rainforest produces 20% of the world\u2019s oxygen. fact check"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.7632697641849517,
+                        "semantic_score": 0.8765395283699036,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: The Amazon rain forest produces 20% of our planet\u2019s oxygen",
+                        "source": "The Conversation",
+                        "domain": "theconversation.com",
+                        "timestamp": "2019-12-22T00:00:00Z",
+                        "nli_label": "SUPPORTED",
+                        "nli_score": 0.9986653327941895
+                    },
+                    {
+                        "score": 0.7464630722999572,
+                        "semantic_score": 0.8429261445999146,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: The Amazon rainforest _ \u201cthe lungs of the Earth\u201d _ produces 20% of the planet\u2019s oxygen.",
+                        "source": "AP News",
+                        "domain": "apnews.com",
+                        "timestamp": "2019-08-30T19:07:35Z",
+                        "nli_label": "SUPPORTED",
+                        "nli_score": 0.998188316822052
+                    },
+                    {
+                        "score": 0.7187758803367614,
+                        "semantic_score": 0.787551760673523,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: \"The Amazon creates over 20% of the world\u2019s oxygen.\"",
+                        "source": "FactCheck.org",
+                        "domain": "factcheck.org",
+                        "timestamp": "2019-08-23T00:00:00Z",
+                        "nli_label": "SUPPORTED",
+                        "nli_score": 0.5990779995918274
+                    },
+                    {
+                        "score": 0.6203966379165649,
+                        "semantic_score": 0.5657932758331299,
+                        "trust_score": 0.65,
+                        "recency_score": 1.0,
+                        "text": "Deforestation of the Amazon rainforest",
+                        "source": "Wikipedia",
+                        "domain": "en.wikipedia.org",
+                        "timestamp": "2026-03-11T08:48:32Z",
+                        "nli_label": "IRRELEVANT",
+                        "nli_score": 0.997136116027832
+                    },
+                    {
+                        "score": 0.5329703360795974,
+                        "semantic_score": 0.41594067215919495,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: Photos showing Amazon forest fires in 2019",
+                        "source": "AFP Fact Check",
+                        "domain": "factcheck.afp.com",
+                        "timestamp": "2019-08-21T00:00:00Z",
+                        "nli_label": "IRRELEVANT",
+                        "nli_score": 0.9980053305625916
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "The claim that the Amazon rainforest produces 20% of the world's oxygen is supported by three pieces of evidence with high confidence (0.9 each) from credible sources (AFP Fact Check, AP News, FactCheck.org). However, all these supporting evidences are dated 2019 and classified as outdated, leading to a low temporal consistency score of 0.2. Two other evidences are neutral and do not address oxygen production. There are no contradicting evidences. The source credibility index is moderate at 0.67, reflecting generally reliable sources. Due to the outdated nature of the supporting evidence and the unknown claim date, the temporal warning is warranted. Consequently, despite strong support, the overall verification verdict is UNVERIFIED because the evidence may no longer be current or fully reliable.",
+                "credibility_score": 67
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.9192819595336914,
+                "query_relevance_score": 0.7819547653198242,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 25,
+            "trace": {
+                "post": "Earth orbits the Sun.",
+                "claims": [
+                    "Earth orbits the Sun"
+                ],
+                "queries": [
+                    "Earth orbits the Sun",
+                    "Earth news",
+                    "Earth fact check"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.6045436859130859,
+                        "semantic_score": 0.4590873718261719,
+                        "trust_score": 1.0,
+                        "recency_score": 0.5,
+                        "text": "Context: \u2018Aphelion Phenomenon\u2019 turns the weather colder and increases the distance between the Sun and the Earth",
+                        "source": "Telugu Post",
+                        "domain": "telugupost.com",
+                        "timestamp": "2025-08-20T06:30:49Z",
+                        "nli_label": "SUPPORTED",
+                        "nli_score": 0.8466819524765015
+                    },
+                    {
+                        "score": 0.5850936293601989,
+                        "semantic_score": 0.520187258720398,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: Photos appearing to show clouds behind the sun suggest it orbits the earth, isn't millions of miles away",
+                        "source": "USA Today",
+                        "domain": "usatoday.com",
+                        "timestamp": "2022-01-04T00:00:00Z",
+                        "nli_label": "IRRELEVANT",
+                        "nli_score": 0.8628197312355042
+                    },
+                    {
+                        "score": 0.5621675819158554,
+                        "semantic_score": 0.4743351638317108,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: changes in the solar orbit of the earth, along with alterations to the earth\u2019s axial tilt, are both responsible for what climate scientists today have dubbed as \u201cwarming\u201d[...].",
+                        "source": "Science Feedback",
+                        "domain": "science.feedback.org",
+                        "timestamp": "2019-03-09T00:00:00Z",
+                        "nli_label": "SUPPORTED",
+                        "nli_score": 0.995630145072937
+                    },
+                    {
+                        "score": 0.4995479029417038,
+                        "semantic_score": 0.2090958058834076,
+                        "trust_score": 1.0,
+                        "recency_score": 0.7,
+                        "text": "Context: A secret NASA document named \"Project Anchor\" leaked in November 2024, revealing the agency believed the Earth would \"lose gravity\" for seven seconds on Aug. 12, 2026.",
+                        "source": "Snopes.com",
+                        "domain": "snopes.com",
+                        "timestamp": "2026-01-12T03:00:07Z",
+                        "nli_label": "SUPPORTED",
+                        "nli_score": 0.9670613408088684
+                    },
+                    {
+                        "score": 0.476649683713913,
+                        "semantic_score": 0.3032993674278259,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: The Earth is spinning faster and days are getting shorter, a change that is noticeable and cause for immediate concern.",
+                        "source": "AP News",
+                        "domain": "apnews.com",
+                        "timestamp": "2022-08-12T16:48:05Z",
+                        "nli_label": "IRRELEVANT",
+                        "nli_score": 0.5641691088676453
+                    },
+                    {
+                        "score": 0.44434757977724076,
+                        "semantic_score": 0.2386951595544815,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "In no way, shape, or form are humans warming or cooling the planet",
+                        "source": "Science Feedback",
+                        "domain": "science.feedback.org",
+                        "timestamp": "2019-03-09T00:00:00Z",
+                        "nli_label": "SUPPORTED",
+                        "nli_score": 0.7578358054161072
+                    }
+                ],
+                "verdict": "SUPPORTED",
+                "explanation": "The claim that Earth orbits the Sun is supported by two pieces of evidence with high confidence (0.9 each) indicating phenomena consistent with Earth's orbit around the Sun. No evidence contradicts the claim; the remaining evidence is neutral and does not address the claim directly. The source credibility index is 0.73, indicating generally reliable sources, and the temporal consistency score is 1.0, showing all evidence is temporally consistent with the claim. Therefore, the claim is supported with high confidence.",
+                "credibility_score": 73
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.9303073883056641,
+                "query_relevance_score": 0.5898362994194031,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 1.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 26,
+            "trace": {
+                "post": "Photo shows giant skeleton discovered by archaeologists.",
+                "claims": [
+                    "Archaeologists discovered a giant skeleton."
+                ],
+                "queries": [],
+                "retrieved_docs": [],
+                "ranked_evidence": [],
+                "verdict": "UNVERIFIED",
+                "explanation": "No reliable evidence retrieved.",
+                "credibility_score": 50
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.9510981440544128,
+                "query_relevance_score": 0.0,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 27,
+            "trace": {
+                "post": "Reports claim a new volcanic eruption happened today in Iceland.",
+                "claims": [
+                    "A new volcanic eruption happened in Iceland."
+                ],
+                "queries": [
+                    "A new volcanic eruption happened in Iceland.",
+                    "Iceland news",
+                    "Iceland fact check",
+                    "A new volcanic eruption happened in",
+                    "A new volcanic eruption happened in Iceland. fact check"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.7160002708435058,
+                        "semantic_score": 0.7820005416870117,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: This video shows a recent volcanic eruption in Iceland.",
+                        "source": "India Today",
+                        "domain": "indiatoday.in",
+                        "timestamp": "2023-11-17T00:00:00Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.6407042860984802,
+                        "semantic_score": 0.6314085721969604,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: Grindavik Iceland volcano eruption released more CO2 than humans ever have",
+                        "source": "USA Today",
+                        "domain": "usatoday.com",
+                        "timestamp": "2023-12-19T00:00:00Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "verdict": "SUPPORTED",
+                "explanation": "The claim that a new volcanic eruption happened in Iceland is supported by one piece of evidence with high confidence (0.8) explicitly mentioning a recent eruption. Another evidence is neutral but does not contradict the claim. Both evidences are temporally consistent and recent, with a temporal consistency score of 1.0. The source credibility index is 0.6, indicating medium to high credibility, which supports a confidence of 0.8. There are no contradictions, and the evidence sufficiently supports the claim.",
+                "credibility_score": 60
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.9470196962356567,
+                "query_relevance_score": 0.772000515460968,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 28,
+            "trace": {
+                "post": "Mars has two moons called Phobos and Deimos.",
+                "claims": [
+                    "Mars has two moons called Phobos and Deimos"
+                ],
+                "queries": [
+                    "Mars has two moons called Phobos and Deimos",
+                    "Mars news",
+                    "Mars fact check"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.6074296474456786,
+                        "semantic_score": 0.5398592948913574,
+                        "trust_score": 0.65,
+                        "recency_score": 1.0,
+                        "text": "List of missions to Mars",
+                        "source": "Wikipedia",
+                        "domain": "en.wikipedia.org",
+                        "timestamp": "2026-03-14T07:29:12Z",
+                        "nli_label": "IRRELEVANT",
+                        "nli_score": 0.9919078350067139
+                    },
+                    {
+                        "score": 0.5668684542179108,
+                        "semantic_score": 0.38373690843582153,
+                        "trust_score": 1.0,
+                        "recency_score": 0.5,
+                        "text": "Context: NASA announced in September 2025 that it had found life on Mars.",
+                        "source": "Snopes",
+                        "domain": "snopes.com",
+                        "timestamp": "2025-09-15T16:32:27Z",
+                        "nli_label": "IRRELEVANT",
+                        "nli_score": 0.9972136616706848
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "The claim that Mars has two moons called Phobos and Deimos is a simple scientific fact. However, the provided evidence is neutral and does not mention the moons, resulting in no direct support or contradiction. The source credibility is medium-high (0.725), but since the evidence does not address the claim, the credibility score is maintained but confidence is reduced. The temporal consistency score is 0.0, indicating no temporal alignment or relevance of the evidence to the claim, which triggers a temporal warning. Due to lack of supporting or contradicting evidence, the claim remains unverified.",
+                "credibility_score": 72
+            },
+            "metrics": {
+                "claim_extraction_accuracy": false,
+                "claim_semantic_similarity": 0.8175921440124512,
+                "query_relevance_score": 0.6679677367210388,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 30,
+            "trace": {
+                "post": "Smoking causes lung cancer.",
+                "claims": [
+                    "Smoking causes lung cancer"
+                ],
+                "queries": [
+                    "Smoking causes lung cancer",
+                    "smoking news",
+                    "smoking fact check",
+                    "lung cancer news",
+                    "lung cancer fact check"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.7150362849235534,
+                        "semantic_score": 0.7800725698471069,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: Smoking may protect lungs from cancer",
+                        "source": "Science Feedback",
+                        "domain": "science.feedback.org",
+                        "timestamp": "2017-04-04T00:00:00Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.7138032031059264,
+                        "semantic_score": 0.862606406211853,
+                        "trust_score": 0.55,
+                        "recency_score": 0.7,
+                        "text": "Smoking and Alcohol\n\nSmoking causes lung cancer and several other cancers.",
+                        "source": "TechBullion",
+                        "domain": "techbullion.com",
+                        "timestamp": "2026-02-13T14:16:14Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "verdict": "SUPPORTED",
+                "explanation": "There is conflicting evidence with one piece contradicting and one supporting the claim. The contradicting evidence is outdated (2017) and from a source with unknown credibility, while the supporting evidence is recent (2026) and from a highly credible source (science.feedback.org). The overall credibility index is moderate (0.45), and the temporal consistency score is 0.5, indicating acceptable temporal alignment. Given the higher confidence and credibility of the supporting evidence and the outdated nature of the contradicting evidence, the claim that smoking causes lung cancer is supported.",
+                "credibility_score": 45
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.9838033318519592,
+                "query_relevance_score": 0.657937353849411,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 1.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 31,
+            "trace": {
+                "post": "Graph claims global temperatures dropped sharply in 2023.",
+                "claims": [
+                    "Global temperatures dropped sharply in 2023"
+                ],
+                "queries": [],
+                "retrieved_docs": [],
+                "ranked_evidence": [],
+                "verdict": "UNVERIFIED",
+                "explanation": "No reliable evidence retrieved.",
+                "credibility_score": 50
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.9568679332733154,
+                "query_relevance_score": 0.0,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 1.0
+            }
+        },
+        {
+            "sample_id": 32,
+            "trace": {
+                "post": "Scientists discovered water on Mars.",
+                "claims": [
+                    "Scientists discovered water on Mars"
+                ],
+                "queries": [
+                    "Scientists discovered water on Mars",
+                    "Mars news",
+                    "Mars fact check",
+                    "Scientists discovered water on Mars fact check",
+                    "Scientists discovered water on Mars evidence",
+                    "Scientists discovered water on Mars report",
+                    "Mars latest news"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.5599435865879059,
+                        "semantic_score": 0.49488717317581177,
+                        "trust_score": 0.55,
+                        "recency_score": 1.0,
+                        "text": "This is Mars' first No.",
+                        "source": "Ad Hoc News",
+                        "domain": "ad-hoc-news.de",
+                        "timestamp": "2026-03-15T12:16:20Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.5321711152791977,
+                        "semantic_score": 0.4393422305583954,
+                        "trust_score": 0.55,
+                        "recency_score": 1.0,
+                        "text": "This success follows Mars' last No.",
+                        "source": "Ad Hoc News",
+                        "domain": "ad-hoc-news.de",
+                        "timestamp": "2026-03-15T22:45:15Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "Both pieces of evidence are labeled NEUTRAL with high confidence, indicating no support or contradiction for the claim that scientists discovered water on Mars. The source credibility index is at the threshold of 0.45, which is low and reduces confidence to 0.3. Temporal consistency score is 0.0 due to unknown claim date, triggering a temporal warning. Given the absence of supporting or contradicting evidence and low credibility, the claim remains unverified.",
+                "credibility_score": 45
+            },
+            "metrics": {
+                "claim_extraction_accuracy": false,
+                "claim_semantic_similarity": 0.7971581220626831,
+                "query_relevance_score": 0.7955496651785714,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 34,
+            "trace": {
+                "post": "The human body has 206 bones.",
+                "claims": [
+                    "The human body has 206 bones."
+                ],
+                "queries": [
+                    "The human body has 206 bones.",
+                    "human body news",
+                    "human body fact check",
+                    "The human body has 206 bones. evidence",
+                    "The human body has 206 bones. report"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.50835922062397,
+                        "semantic_score": 0.36671844124794006,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: A social media post claims that 100 million humans of average size and weight kept in an isolated place for eight hours will emit enough radiation to cause human death in 20 days.",
+                        "source": "Rappler",
+                        "domain": "rappler.com",
+                        "timestamp": "2023-03-13T06:02:00Z",
+                        "nli_label": "IRRELEVANT",
+                        "nli_score": 0.9985741376876831
+                    },
+                    {
+                        "score": 0.45663456320762635,
+                        "semantic_score": 0.2632691264152527,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: 100 million humans in an isolated place emit deadly amounts of radiation",
+                        "source": "USA Today",
+                        "domain": "usatoday.com",
+                        "timestamp": "2023-03-10T00:00:00Z",
+                        "nli_label": "IRRELEVANT",
+                        "nli_score": 0.9935122132301331
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "The evidence provided is neutral and does not address the claim about the human body having 206 bones. Both pieces of evidence focus on radiation emitted by humans and do not mention bone count. The source credibility is medium to high with an index of 0.6, but since the evidence is unrelated, the confidence is reduced to 0.3. The temporal consistency score is 0.0, indicating the evidence is temporally unrelated to the claim, which further reduces confidence. There are no supporting or contradicting evidences, so the claim remains unverified.",
+                "credibility_score": 60
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.9928744435310364,
+                "query_relevance_score": 0.743420946598053,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 36,
+            "trace": {
+                "post": "Saturn has rings made of ice and rock.",
+                "claims": [
+                    "Saturn has rings made of ice and rock"
+                ],
+                "queries": [
+                    "Saturn has rings made of ice and rock",
+                    "Saturn news",
+                    "Saturn fact check"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.6395029544830322,
+                        "semantic_score": 0.6290059089660645,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: Closest picture of Saturn's rings taken by NASA's Cassini spacecraft.",
+                        "source": "The Quint",
+                        "domain": "thequint.com",
+                        "timestamp": "2021-06-03T08:28:35Z",
+                        "nli_label": "IRRELEVANT",
+                        "nli_score": 0.9984773993492126
+                    },
+                    {
+                        "score": 0.6033473134040832,
+                        "semantic_score": 0.5566946268081665,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: Image is the closest ever taken of Saturn",
+                        "source": "USA Today",
+                        "domain": "usatoday.com",
+                        "timestamp": "2021-05-02T00:00:00Z",
+                        "nli_label": "IRRELEVANT",
+                        "nli_score": 0.9977533221244812
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "The claim that Saturn has rings made of ice and rock is not directly supported or contradicted by the provided evidence, which is neutral and only mentions images of Saturn without specifying ring composition. The source credibility is medium to high with an overall index of 0.6, but the evidence lacks explicit information on the claim's content. Temporal consistency cannot be assessed due to the absence of explicit claim date and the evidence dates do not clarify this. Therefore, the claim remains unverified due to insufficient supporting evidence.",
+                "credibility_score": 60
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.9964839220046997,
+                "query_relevance_score": 0.7507745226224264,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 37,
+            "trace": {
+                "post": "New virus outbreak reported today in Asia.",
+                "claims": [
+                    "A new virus outbreak was reported in Asia"
+                ],
+                "queries": [
+                    "A new virus outbreak was reported in Asia",
+                    "Asia news",
+                    "Asia fact check",
+                    "virus outbreak news",
+                    "virus outbreak fact check",
+                    "Asia virus outbreak event"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.5608270049095154,
+                        "semantic_score": 0.27165400981903076,
+                        "trust_score": 1.0,
+                        "recency_score": 1.0,
+                        "text": "Photo by Majid Asgaripour/WANA (West Asia News Agency) via Reuters\n\nCollateral damage to such places has been part of the fabric of war for decades, including in conflicts between Russia and Ukraine as well as Israel and Hamas, in which dozens of sites have been damaged or destroyed.",
+                        "source": "PBS.org",
+                        "domain": "pbs.org",
+                        "timestamp": "2026-03-12T15:24:35Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.5251451015472413,
+                        "semantic_score": 0.20029020309448242,
+                        "trust_score": 1.0,
+                        "recency_score": 1.0,
+                        "text": "Photo via social media via Reuters\n\nIt was unclear if it was U.S. or Israeli strikes that caused the damage.",
+                        "source": "PBS.org",
+                        "domain": "pbs.org",
+                        "timestamp": "2026-03-12T15:24:35Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "The evidence provided is neutral and does not mention any virus outbreak in Asia, only discussing war-related damage and strikes. There is no supporting or contradicting evidence for the claim. Although the source credibility is high and the evidence is temporally consistent, the lack of relevant evidence results in insufficient support for the claim. Therefore, the claim remains unverified.",
+                "credibility_score": 30
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.9873339533805847,
+                "query_relevance_score": 0.6752671450376511,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 1.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 38,
+            "trace": {
+                "post": "Image claims snow fell in Sahara desert yesterday.",
+                "claims": [
+                    "Snow fell in the Sahara desert yesterday"
+                ],
+                "queries": [
+                    "Snow fell in the Sahara desert yesterday",
+                    "Sahara desert news",
+                    "Sahara desert fact check",
+                    "snow news",
+                    "snow fact check",
+                    "Sahara desert snow event"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.676336121559143,
+                        "semantic_score": 0.7026722431182861,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: Photographs show snow in the Sahara Desert in January 2018.",
+                        "source": "Snopes",
+                        "domain": "snopes.com",
+                        "timestamp": "2018-01-09T07:17:25Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.6199432134628295,
+                        "semantic_score": 0.5898864269256592,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: On 19 December 2016 an amateur photographer snapped pictures of snow on the ground of the Algerian city of Ain Sefra, which borders the Sahara desert.",
+                        "source": "Snopes",
+                        "domain": "snopes.com",
+                        "timestamp": "2016-12-21T01:30:33Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "The claim states that snow fell in the Sahara desert yesterday. The evidence provided is neutral and outdated, with one piece from January 2018 and another from December 2016, neither of which confirms or denies snow falling yesterday. The temporal consistency agent classifies both pieces of evidence as outdated, resulting in a temporal consistency score of 0.0. Although the source credibility is high (1.0), the evidence does not directly address the claim's timeframe, leading to insufficient support or contradiction. Therefore, the claim cannot be verified based on the current evidence.",
+                "credibility_score": 70
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.9526379108428955,
+                "query_relevance_score": 0.624608134229978,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 1.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 40,
+            "trace": {
+                "post": "Water boils at 100\u00b0C at sea level.",
+                "claims": [
+                    "Water boils at 100\u00b0C at sea level."
+                ],
+                "queries": [
+                    "Water boils at 100\u00b0C at sea level.",
+                    "water boiling point news",
+                    "water boiling point fact check",
+                    "Water boils at 100\u00b0C at sea level. evidence",
+                    "Water boils at 100\u00b0C at sea level. report"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.36757528990507127,
+                        "semantic_score": 0.09015057981014252,
+                        "trust_score": 0.65,
+                        "recency_score": 0.85,
+                        "text": "The Moat Pit at Culross",
+                        "source": "Wikipedia",
+                        "domain": "en.wikipedia.org",
+                        "timestamp": "2026-02-23T20:25:51Z",
+                        "nli_label": "IRRELEVANT",
+                        "nli_score": 0.37645912170410156
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "The evidence provided is neutral and does not address the claim about water boiling at 100\u00b0C at sea level. The source credibility is medium with a credibility index of 0.45, which is borderline but does not increase confidence significantly. The temporal consistency is high with a score of 1.0, so no temporal warning is needed. Due to lack of supporting or contradicting evidence, the claim remains unverified.",
+                "credibility_score": 45
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 1.0000001192092896,
+                "query_relevance_score": 0.8355555057525634,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 41,
+            "trace": {
+                "post": "Video claims massive UFO sighting over New York.",
+                "claims": [
+                    "A video claims a massive UFO sighting over New York."
+                ],
+                "queries": [
+                    "A video claims a massive UFO sighting over New York.",
+                    "New York news",
+                    "New York fact check",
+                    "UFO news",
+                    "UFO fact check",
+                    "New York UFO event"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.5686527013778687,
+                        "semantic_score": 0.3623054027557373,
+                        "trust_score": 0.85,
+                        "recency_score": 1.0,
+                        "text": "The former Eyewitness News anchor worked at the New York City station from 1978 to 1989, after previously working at stations WWOR, CBS-affiliate WCBS and Fox-affiliate WNYW.",
+                        "source": "USA Today",
+                        "domain": "usatoday.com",
+                        "timestamp": "2026-03-13T00:17:50Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.5538292348384858,
+                        "semantic_score": 0.33265846967697144,
+                        "trust_score": 0.85,
+                        "recency_score": 1.0,
+                        "text": "\"A couple of weeks ago when it was really cold, I saw just out here, like, two or three dead ones on the ice.",
+                        "source": "CBS News",
+                        "domain": "cbsnews.com",
+                        "timestamp": "2026-03-16T13:59:26Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "The claim is about a massive UFO sighting over New York. The evidence provided is neutral, as neither piece mentions or supports the UFO sighting claim. Both pieces of evidence are recent and temporally consistent with the claim's unknown date, and the sources have a combined medium to high credibility index of 0.75. However, since there is no supporting or contradicting evidence, the claim cannot be verified. Therefore, the verdict is UNVERIFIED with moderate confidence reflecting the lack of evidence rather than source credibility.",
+                "credibility_score": 75
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.874439537525177,
+                "query_relevance_score": 0.6443766256173452,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 1.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 43,
+            "trace": {
+                "post": "Mount Everest is the highest mountain above sea level.",
+                "claims": [
+                    "Mount Everest is the highest mountain above sea level"
+                ],
+                "queries": [
+                    "Mount Everest is the highest mountain above sea level",
+                    "Mount Everest news",
+                    "Mount Everest fact check"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.6572957432270049,
+                        "semantic_score": 0.66959148645401,
+                        "trust_score": 0.65,
+                        "recency_score": 0.85,
+                        "text": "List of highest mountains on Earth",
+                        "source": "Wikipedia",
+                        "domain": "en.wikipedia.org",
+                        "timestamp": "2026-03-04T17:46:39Z",
+                        "nli_label": "IRRELEVANT",
+                        "nli_score": 0.9266834259033203
+                    },
+                    {
+                        "score": 0.6151250839233398,
+                        "semantic_score": 0.5552501678466797,
+                        "trust_score": 0.65,
+                        "recency_score": 1.0,
+                        "text": "Timeline of Mount Everest expeditions",
+                        "source": "Wikipedia",
+                        "domain": "en.wikipedia.org",
+                        "timestamp": "2026-03-12T21:38:15Z",
+                        "nli_label": "IRRELEVANT",
+                        "nli_score": 0.9357966184616089
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "The evidence provided is neutral and does not explicitly confirm or contradict the claim that Mount Everest is the highest mountain above sea level. Both pieces of evidence are neutral with high confidence but do not address the claim directly. The source credibility is medium with a credibility index of 0.45, which is at the threshold but does not strongly support the claim. Temporal consistency cannot be assessed due to the absence of an explicit date in the claim and unknown temporal classification of the evidence, resulting in a temporal consistency score of 0.0. Given the lack of supporting or contradicting evidence and the temporal uncertainty, the claim remains unverified.",
+                "credibility_score": 45
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.9461754560470581,
+                "query_relevance_score": 0.7361031373341879,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 44,
+            "trace": {
+                "post": "Image shows a giant snake swallowing a car.",
+                "claims": [
+                    "A giant snake is swallowing a car."
+                ],
+                "queries": [
+                    "A giant snake is swallowing a car.",
+                    "giant snake news",
+                    "giant snake fact check",
+                    "car news",
+                    "car fact check"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.45736703276634216,
+                        "semantic_score": 0.2897340655326843,
+                        "trust_score": 0.55,
+                        "recency_score": 1.0,
+                        "text": "The car they were travelling in along the Kings Highway on Monday evening collided head-on with another vehicle that had veered off-course.",
+                        "source": "The Canberra Times",
+                        "domain": "canberratimes.com.au",
+                        "timestamp": "2026-03-12T00:29:00Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.449329137802124,
+                        "semantic_score": 0.27365827560424805,
+                        "trust_score": 0.55,
+                        "recency_score": 1.0,
+                        "text": "The car they were travelling in along the Kings Highway late on Monday afternoon collided head-on with another vehicle that police say had veered off-course.",
+                        "source": "Goulburn Post",
+                        "domain": "goulburnpost.com.au",
+                        "timestamp": "2026-03-12T00:29:00Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "The evidence provided is neutral and does not mention a giant snake or swallowing, only discussing car collisions. There are no supporting or contradicting evidences directly related to the claim. The source credibility is medium with a credibility index of 0.45, which is moderate but does not strengthen the claim due to lack of relevant evidence. The temporal consistency score is 0.0 because the claim date is unknown, so temporal alignment cannot be assessed. Given the absence of supporting or contradicting evidence and the unknown temporal context, the claim remains unverified.",
+                "credibility_score": 45
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.918755292892456,
+                "query_relevance_score": 0.5409049689769745,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 45,
+            "trace": {
+                "post": "Electric cars produce zero emissions while driving.",
+                "claims": [
+                    "Electric cars produce zero emissions while driving."
+                ],
+                "queries": [
+                    "Electric cars produce zero emissions while driving.",
+                    "electric cars news",
+                    "electric cars fact check",
+                    "emissions news",
+                    "emissions fact check"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.6318204885721206,
+                        "semantic_score": 0.44364097714424133,
+                        "trust_score": 1.0,
+                        "recency_score": 0.85,
+                        "text": "Context: Video of Electric Car \u2018Powered by Portable Generator\u2019",
+                        "source": "NewsMobile",
+                        "domain": "newsmobile.in",
+                        "timestamp": "2026-02-24T00:00:00Z",
+                        "nli_label": "IRRELEVANT",
+                        "nli_score": 0.9783458113670349
+                    },
+                    {
+                        "score": 0.5942905187606812,
+                        "semantic_score": 0.5135810375213623,
+                        "trust_score": 0.65,
+                        "recency_score": 1.0,
+                        "text": "Electric car use by country",
+                        "source": "Wikipedia",
+                        "domain": "en.wikipedia.org",
+                        "timestamp": "2026-03-09T19:37:12Z",
+                        "nli_label": "IRRELEVANT",
+                        "nli_score": 0.9353065490722656
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "The evidence provided is neutral and does not address the claim that electric cars produce zero emissions while driving. Both pieces of evidence are recent and temporally consistent, but neither supports nor contradicts the claim. The source credibility index is moderate at 0.45, which slightly reduces confidence. Due to the lack of supporting or contradicting evidence, the claim remains unverified.",
+                "credibility_score": 45
+            },
+            "metrics": {
+                "claim_extraction_accuracy": false,
+                "claim_semantic_similarity": 0.8086713552474976,
+                "query_relevance_score": 0.5516980350017547,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 47,
+            "trace": {
+                "post": "Photo claims pyramids discovered in Antarctica.",
+                "claims": [
+                    "Photo claims pyramids discovered in Antarctica"
+                ],
+                "queries": [
+                    "Photo claims pyramids discovered in Antarctica",
+                    "Antarctica news",
+                    "Antarctica fact check",
+                    "pyramids news",
+                    "pyramids fact check",
+                    "Antarctica pyramids event",
+                    "Photo claims pyramids discovered in Antarctica evidence",
+                    "Photo claims pyramids discovered in Antarctica report",
+                    "Antarctica latest news"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.7127041041851043,
+                        "semantic_score": 0.7754082083702087,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: Recently discovered satellite photos from Google Earth show that an ancient civilization built pyramids in Antarctica 100 million years ago.",
+                        "source": "Snopes",
+                        "domain": "snopes.com",
+                        "timestamp": "2017-08-24T12:16:44Z",
+                        "nli_label": "CONTRADICTED",
+                        "nli_score": 0.6322112083435059
+                    },
+                    {
+                        "score": 0.6150043070316314,
+                        "semantic_score": 0.5300086140632629,
+                        "trust_score": 1.0,
+                        "recency_score": 0.25,
+                        "text": "Context: Video shows giant tree stump in Antarctica",
+                        "source": "USA Today",
+                        "domain": "usatoday.com",
+                        "timestamp": "2025-02-17T00:00:00Z",
+                        "nli_label": "CONTRADICTED",
+                        "nli_score": 0.9990550875663757
+                    },
+                    {
+                        "score": 0.5318516254425049,
+                        "semantic_score": 0.36370325088500977,
+                        "trust_score": 1.0,
+                        "recency_score": 0.25,
+                        "text": "Context: 'Man' can't advance more than 500 kilometers past Antarctic 'ice wall'",
+                        "source": "USA Today",
+                        "domain": "usatoday.com",
+                        "timestamp": "2024-12-13T00:00:00Z",
+                        "nli_label": "CONTRADICTED",
+                        "nli_score": 0.9863132238388062
+                    },
+                    {
+                        "score": 0.5310779958963394,
+                        "semantic_score": 0.43715599179267883,
+                        "trust_score": 0.55,
+                        "recency_score": 1.0,
+                        "text": "Kamen Nedkov, commander of the St Kliment Ohridski Bulgarian Antarctic Base on Livingston Island, told BTA that overall, the 34th Bulgarian Antarctic Expedition was successful both scientifically and logistically.",
+                        "source": "\u0411\u044a\u043b\u0433\u0430\u0440\u0441\u043a\u0430 \u0422\u0435\u043b\u0435\u0433\u0440\u0430\u0444\u043d\u0430 \u0410\u0433\u0435\u043d\u0446\u0438\u044f",
+                        "domain": "bta.bg",
+                        "timestamp": "2026-03-12T16:42:46Z",
+                        "nli_label": "IRRELEVANT",
+                        "nli_score": 0.9933379888534546
+                    },
+                    {
+                        "score": 0.5255499929189682,
+                        "semantic_score": 0.3010999858379364,
+                        "trust_score": 1.0,
+                        "recency_score": 0.5,
+                        "text": "dw.com rated the claim: Misleading: One post even featured a GIF that the user believed showed new land emerging off the coast of Dubai due to falling sea levels \u2014 apparently unaware of the artificial Palm Islands constructed there between 2001 and 2007.",
+                        "source": "dw.com",
+                        "domain": "dw.com",
+                        "timestamp": "2025-05-05T00:00:00Z",
+                        "nli_label": "CONTRADICTED",
+                        "nli_score": 0.9043886661529541
+                    },
+                    {
+                        "score": 0.5220207571983337,
+                        "semantic_score": 0.4190415143966675,
+                        "trust_score": 0.55,
+                        "recency_score": 1.0,
+                        "text": "Among those returning from Antarctica were the doctor of the Antarctic base, Atanas Peltekov; electrical engineer Alexander Bogdev; and logisticians Lyuben Lyubenov, Boiko Koliovski, Antoniya Tilyasheva, and Dragomir Mateev, who serves as the head of logistics for the Bulgarian Antarctic Programme.",
+                        "source": "\u0411\u044a\u043b\u0433\u0430\u0440\u0441\u043a\u0430 \u0422\u0435\u043b\u0435\u0433\u0440\u0430\u0444\u043d\u0430 \u0410\u0433\u0435\u043d\u0446\u0438\u044f",
+                        "domain": "bta.bg",
+                        "timestamp": "2026-03-12T16:42:46Z",
+                        "nli_label": "IRRELEVANT",
+                        "nli_score": 0.9892471432685852
+                    }
+                ],
+                "verdict": "CONTRADICTED",
+                "explanation": "The claim that pyramids were discovered in Antarctica is contradicted by four pieces of evidence with high to moderate confidence (0.9, 0.7, 0.6, 0.8) indicating the claim is false or misleading. The evidence includes direct contradiction from a reliable source (evidence 1), discussion of unrelated natural features that contradict the claim (evidence 2), indirect contradiction based on human advancement limitations (evidence 3), and a fact-check rating the claim as misleading (evidence 5). Two other pieces of evidence are neutral and do not address the claim. The overall source credibility index is high (0.738), supporting confidence in the evidence. The temporal consistency score is also high (0.833), indicating the evidence is timely and relevant. Therefore, the claim is contradicted with high confidence and credibility.",
+                "credibility_score": 74
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.887786865234375,
+                "query_relevance_score": 0.7440454363822937,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 48,
+            "trace": {
+                "post": "Jupiter is the largest planet in the solar system.",
+                "claims": [
+                    "Jupiter is the largest planet in the solar system"
+                ],
+                "queries": [
+                    "Jupiter is the largest planet in the solar system",
+                    "Jupiter news",
+                    "Jupiter fact check"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.6051880538463592,
+                        "semantic_score": 0.5603761076927185,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: A photograph taken in the summer of 2020 shows Jupiter in the sky surrounded by its four largest moons.",
+                        "source": "Snopes.com",
+                        "domain": "snopes.com",
+                        "timestamp": "2020-11-26T02:00:00Z",
+                        "nli_label": "IRRELEVANT",
+                        "nli_score": 0.9914858937263489
+                    },
+                    {
+                        "score": 0.5712720662355423,
+                        "semantic_score": 0.4425441324710846,
+                        "trust_score": 1.0,
+                        "recency_score": 0.25,
+                        "text": "Context: A photograph shared on social media in early November 2024 was taken by NASA and showed the planet Jupiter.",
+                        "source": "Snopes",
+                        "domain": "snopes.com",
+                        "timestamp": "2024-11-08T19:00:03Z",
+                        "nli_label": "IRRELEVANT",
+                        "nli_score": 0.9942076206207275
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "The claim states that Jupiter is the largest planet in the solar system. The evidence provided is neutral, as it only mentions photographs of Jupiter and its moons without addressing its size or comparison to other planets. There are no supporting or contradicting evidence evaluations. The source credibility is high (1.0), and the temporal consistency is strong (1.0), but due to the lack of direct evidence supporting or contradicting the claim, the overall verdict is UNVERIFIED with moderate confidence and credibility score adjusted to 60 to reflect the high source credibility but absence of relevant evidence.",
+                "credibility_score": 60
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.9272490739822388,
+                "query_relevance_score": 0.7191576361656189,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 49,
+            "trace": {
+                "post": "Reports say a major earthquake occurred today in Tokyo.",
+                "claims": [
+                    "A major earthquake occurred in Tokyo"
+                ],
+                "queries": [
+                    "A major earthquake occurred in Tokyo",
+                    "Tokyo news",
+                    "Tokyo fact check",
+                    "A major earthquake occurred in Tokyo fact check",
+                    "Tokyo major earthquake recent reports"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.528726726770401,
+                        "semantic_score": 0.432453453540802,
+                        "trust_score": 0.55,
+                        "recency_score": 1.0,
+                        "text": "AP writer Mari Yamaguchi contributed from Tokyo.",
+                        "source": "2 News Nevada",
+                        "domain": "2news.com",
+                        "timestamp": "2026-03-10T02:35:25Z",
+                        "nli_label": "IRRELEVANT"
+                    },
+                    {
+                        "score": 0.5286180675029755,
+                        "semantic_score": 0.4322361350059509,
+                        "trust_score": 0.55,
+                        "recency_score": 1.0,
+                        "text": "Modern Tokyo News is part of the Modern Tokyo Times group\n\nhttp://moderntokyotimes.com Modern Tokyo Times - International News and Japan News\n\nhttp://sawakoart.com - Sawako Utsumi's website and Modern Tokyo Times artist",
+                        "source": "Modern Tokyo Times",
+                        "domain": "moderntokyotimes.com",
+                        "timestamp": "2026-03-12T02:45:47Z",
+                        "nli_label": "IRRELEVANT"
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "The evidence provided is neutral and does not mention any earthquake occurring in Tokyo, resulting in zero supporting or contradicting evidence. The source credibility is unknown and not well established, leading to a low credibility index of 0.45, which reduces confidence to 0.3. Temporal consistency cannot be assessed because the claim lacks an explicit date, and the evidence dates are in the future, resulting in a temporal consistency score of 0.0 and a temporal warning. Due to insufficient and neutral evidence, the claim remains unverified.",
+                "credibility_score": 30
+            },
+            "metrics": {
+                "claim_extraction_accuracy": true,
+                "claim_semantic_similarity": 0.945785403251648,
+                "query_relevance_score": 0.779037070274353,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 1.0,
+                "credibility_score_accuracy": 0.0
+            }
+        },
+        {
+            "sample_id": 50,
+            "trace": {
+                "post": "The speed of light is approximately 300,000 km per second.",
+                "claims": [
+                    "The speed of light is approximately 300,000 km per second"
+                ],
+                "queries": [
+                    "The speed of light is approximately 300,000 km per second",
+                    "speed of light news",
+                    "speed of light fact check",
+                    "The speed of light is approximately 300,000 km per second evidence",
+                    "The speed of light is approximately 300,000 km per second report"
+                ],
+                "retrieved_docs": [],
+                "ranked_evidence": [
+                    {
+                        "score": 0.6055538892745971,
+                        "semantic_score": 0.5361077785491943,
+                        "trust_score": 0.65,
+                        "recency_score": 1.0,
+                        "text": "R\u00f8mer's determination of the speed of light",
+                        "source": "Wikipedia",
+                        "domain": "en.wikipedia.org",
+                        "timestamp": "2026-03-16T01:39:44Z",
+                        "nli_label": "IRRELEVANT",
+                        "nli_score": 0.9422279000282288
+                    },
+                    {
+                        "score": 0.5434213101863861,
+                        "semantic_score": 0.4368426203727722,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: The Great Pyramid of Giza\u2019s location is linked to the speed of light.",
+                        "source": "Snopes",
+                        "domain": "snopes.com",
+                        "timestamp": "2018-09-09T06:56:23Z",
+                        "nli_label": "IRRELEVANT",
+                        "nli_score": 0.8563914895057678
+                    },
+                    {
+                        "score": 0.43892203480005265,
+                        "semantic_score": 0.23284406960010529,
+                        "trust_score": 0.65,
+                        "recency_score": 0.85,
+                        "text": "High-speed rail in the United States",
+                        "source": "Wikipedia",
+                        "domain": "en.wikipedia.org",
+                        "timestamp": "2026-02-28T03:24:24Z",
+                        "nli_label": "CONTRADICTED",
+                        "nli_score": 0.7898696064949036
+                    },
+                    {
+                        "score": 0.41275151520967485,
+                        "semantic_score": 0.17550303041934967,
+                        "trust_score": 1.0,
+                        "recency_score": 0.0,
+                        "text": "Context: The coordinates of the Great Pyramid of Giza is 29.9792458\u00b0N",
+                        "source": "Full Fact",
+                        "domain": "fullfact.org",
+                        "timestamp": "2020-03-31T00:00:00Z",
+                        "nli_label": "CONTRADICTED",
+                        "nli_score": 0.41225728392601013
+                    }
+                ],
+                "verdict": "UNVERIFIED",
+                "explanation": "The claim states that the speed of light is approximately 300,000 km per second. The evidence validation shows no supporting evidence; three pieces of evidence are neutral and do not confirm the claim, while one piece of evidence contradicts the claim but is unrelated (about high-speed rail). The source credibility is high (0.817), which supports reliability, but the evidence itself does not confirm the claim. The temporal consistency score is 0.75, indicating no temporal issues. Due to the lack of direct supporting evidence and presence of unrelated contradiction, the claim cannot be verified and is thus UNVERIFIED.",
+                "credibility_score": 82
+            },
+            "metrics": {
+                "claim_extraction_accuracy": false,
+                "claim_semantic_similarity": 0.8482332825660706,
+                "query_relevance_score": 0.7703926801681519,
+                "retrieval_score": 0.0,
+                "context_precision": 0.0,
+                "context_recall": 0.0,
+                "verdict_accuracy": 0.0,
+                "credibility_score_accuracy": 0.0
+            }
+        }
+    ]
+}

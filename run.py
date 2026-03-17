@@ -1,12 +1,10 @@
 import os
 from app.main import create_app
-from app.models.model_loader import load_embedding_model
+import app.models.model_loader  # noqa: F401 — triggers model preload at import time
 
 # ----------------------------------------------------
-# 1. Preload ML models once at startup
+# 1. ML models preload automatically when model_loader is imported above
 # ----------------------------------------------------
-print("⚙️ [Startup] Preloading ML models...")
-load_embedding_model()
 
 # ----------------------------------------------------
 # 2. Initialize Flask application

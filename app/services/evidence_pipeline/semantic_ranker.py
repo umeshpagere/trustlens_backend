@@ -1,6 +1,7 @@
 import os
 import logging
 import warnings
+import datetime
 
 logger = logging.getLogger(__name__)
 
@@ -14,22 +15,50 @@ warnings.filterwarnings("ignore")
 
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
-from .nli_verifier import check_contradiction, compute_nli_score
 from app.models.model_loader import get_embedding_model
+
 
 def get_model():
     return get_embedding_model()
 
 
+def compute_recency_score(timestamp_str: str | None) -> float:
+    """
+    Returns a 0.0–1.0 score: 1.0 for very recent evidence, decaying with age.
+    Evidence older than 2 years gets 0.0. Missing timestamps return 0.5 (neutral).
+    """
+    if not timestamp_str:
+        return 0.5
+    try:
+        ts = datetime.datetime.fromisoformat(timestamp_str.replace("Z", "+00:00"))
+        now = datetime.datetime.now(tz=datetime.timezone.utc)
+        age_days = (now - ts).days
+        if age_days <= 7:
+            return 1.0
+        elif age_days <= 30:
+            return 0.85
+        elif age_days <= 180:
+            return 0.70
+        elif age_days <= 365:
+            return 0.50
+        elif age_days <= 730:
+            return 0.25
+        return 0.0
+    except Exception:
+        return 0.5
+
+
 def rank_evidence(claim: str, evidence_items: list, use_nli: bool = False) -> list:
     """
     Rank a list of evidence items against a claim.
-    Each item in evidence_items should be a dict: {"text": "...", "trust_score": 0.0-1.0}
 
-    The final ranking score is a composite:
-        composite_score = (semantic_similarity * 0.7) + (source_trust * 0.3)
+    Each item in evidence_items should be a dict with at least:
+        {"text": "...", "trust_score": 0.0-1.0}
 
-    If use_nli=True, NLI score is also considered (advanced mode).
+    IMPORTANT:
+    - Ranking MUST be driven purely by semantic similarity.
+    - Source trust and recency are surfaced as metadata only and are
+      consumed later by the credibility engine, not by this ranker.
     """
     if not evidence_items or not claim:
         return []
@@ -48,27 +77,24 @@ def rank_evidence(claim: str, evidence_items: list, use_nli: bool = False) -> li
         for idx, sim_score in enumerate(similarities):
             sem_score = float(sim_score)
             trust_score = float(evidence_items[idx].get("trust_score", 0.5))
+            timestamp = evidence_items[idx].get("published_at") or evidence_items[idx].get("timestamp")
 
-            # Composite calculation: 70% semantic, 30% trust
-            composite_score = (sem_score * 0.7) + (trust_score * 0.3)
+            # NOTE: We intentionally do NOT blend trust / recency into the
+            # ranking score. Those dimensions are handled later during
+            # credibility scoring. Here we keep:
+            #   score == semantic similarity
+            composite_score = sem_score
 
             result_item = {
                 "score": composite_score,
                 "semantic_score": sem_score,
                 "trust_score": trust_score,
+                "recency_score": compute_recency_score(timestamp),
                 "text": texts[idx],
-                "source": evidence_items[idx].get("source", "Unknown")
+                "source": evidence_items[idx].get("source", "Unknown"),
+                "domain": evidence_items[idx].get("domain", "unknown"),
+                "timestamp": timestamp,
             }
-
-            if use_nli:
-                nli_result = check_contradiction(claim, texts[idx])
-                nli_contribution = compute_nli_score(nli_result)
-                # If using NLI, we blend it into the composite score
-                result_item["nli_label"] = nli_result["label"]
-                result_item["nli_score"] = nli_result["score"]
-                # Adjust composite with NLI: Replace semantic portion with NLI-blended semantic
-                blended_sem = (sem_score * 0.6) + (nli_contribution * 0.4)
-                result_item["score"] = (blended_sem * 0.7) + (trust_score * 0.3)
 
             ranked_results.append(result_item)
 

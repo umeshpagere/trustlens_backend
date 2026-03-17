@@ -35,6 +35,9 @@ from app.services.video_analysis import analyze_video_with_llm
 from app.services.video.video_pipeline import process_video_text
 from app.services.evidence_pipeline.pipeline import run_evidence_pipeline
 from app.services import job_registry
+from app.utils.text_utils import normalize_claim_text
+from app.services.claim_memory_service import find_similar_claim, store_claim_result
+from app.services.narrative_engine import process_narratives
 
 import logging
 
@@ -214,7 +217,15 @@ async def analyze():
                         image_claims = llm_image_container.get("claims", [])
                         if image_claims:
                             for c in image_claims:
-                                all_claims_data.append({"text": str(c), "source": "image"})
+                                all_claims_data.append({
+                                    "text": str(c), 
+                                    "source": "image",
+                                    "media_context": {
+                                        "text_present": bool(validated_data.text),
+                                        "image_present": bool(validated_data.imageUrl),
+                                        "video_present": bool(validated_data.videoUrl)
+                                    }
+                                })
                                 
                         store_analysis(image_hash, "image", image_analysis)
                 else:
@@ -289,7 +300,15 @@ async def analyze():
                     # --- Collect claims for unified pipeline ---
                     if validated_claims:
                         for c in validated_claims:
-                            all_claims_data.append({"text": str(c), "source": "text"})
+                            all_claims_data.append({
+                                "text": str(c), 
+                                "source": "text",
+                                "media_context": {
+                                    "text_present": bool(validated_data.text),
+                                    "image_present": bool(validated_data.imageUrl),
+                                    "video_present": bool(validated_data.videoUrl)
+                                }
+                            })
 
                     # --- Empty-claims fallback ---
                     if not validated_claims:
@@ -356,7 +375,15 @@ async def analyze():
                             video_claims = llm_video_container.get("claims", [])
                             if video_claims:
                                 for c in video_claims:
-                                    all_claims_data.append({"text": str(c), "source": "video"})
+                                    all_claims_data.append({
+                                        "text": str(c), 
+                                        "source": "video",
+                                        "media_context": {
+                                            "text_present": bool(validated_data.text),
+                                            "image_present": bool(validated_data.imageUrl),
+                                            "video_present": bool(validated_data.videoUrl)
+                                        }
+                                    })
 
                             video_analysis = {
                                 "status": "processed",
@@ -386,22 +413,97 @@ async def analyze():
                     video_analysis = {"status": "skipped", "error": str(e)}
 
         # ------------------------------------------------------------------ #
-        # Step 3: Unified Evidence Pipeline (Multimodal Claims)
+        # Step 3: Unified Evidence Pipeline — with Claim Memory (Part-13)    #
         # ------------------------------------------------------------------ #
-        # Clean and deduplicate claims
+        # Pipeline Order: Entity Extraction → Normalization → Validation → Query Gen
+        from app.services.claim_validator import is_valid_claim
+        from app.services.evidence_pipeline.entity_extraction import extract_entities
+
         seen_claims = set()
         deduped_claims = []
         for c in all_claims_data:
-            clean_text = c["text"].strip().lower()
+            # 1. Entity Extraction on RAW claim
+            entities = extract_entities(c["text"])
+            logger.debug(f"Entities detected: {entities}")
+
+            # 2. Normalization
+            clean_text = normalize_claim_text(c["text"])
+            logger.debug(f"Claim normalized: '{clean_text}'")
+
             if clean_text not in seen_claims:
-                seen_claims.add(clean_text)
-                deduped_claims.append(c)
+                # 3. Validation
+                if is_valid_claim(clean_text):
+                    seen_claims.add(clean_text)
+                    c["normalized_text"] = clean_text
+                    c["entities"] = entities
+                    deduped_claims.append(c)
+                    logger.debug(f"Claim normalization & validation passed: '{c['text']}' -> '{clean_text}'")
+                else:
+                    logger.debug(f"Claim validation failed, dropping: '{c['text']}'")
 
         evidence_results = []
         if deduped_claims:
             print(f"📡 Running unified evidence pipeline on {len(deduped_claims)} claims...")
-            evidence_results = await run_evidence_pipeline(deduped_claims)
-            print(f"✅ Unified evidence pipeline complete: {len(evidence_results)} verified")
+
+            # --- Memory lookup: check each claim before running the pipeline ---
+            verified_from_memory = []
+            claims_to_verify = []
+
+            for claim_item in deduped_claims:
+                mem_result = find_similar_claim(claim_item["text"])
+                if mem_result:
+                    logger.info(f"[Memory] ♻️  Reusing cached verification for: '{claim_item['text'][:60]}'")
+                    # Patch claim/source back from the original item
+                    mem_result["claim"]  = claim_item["text"]
+                    mem_result["source"] = claim_item.get("source", "memory")
+                    verified_from_memory.append(mem_result)
+                else:
+                    logger.info(f"[Memory] 🔍 Cache miss — will verify: '{claim_item['text'][:60]}'")
+                    claims_to_verify.append(claim_item)
+
+            # --- Run pipeline only for cache misses ---
+            if claims_to_verify:
+                pipeline_results = await run_evidence_pipeline(claims_to_verify)
+            else:
+                pipeline_results = []
+
+            # --- Store high-quality new results in memory ---
+            stored_count = 0
+            for res in pipeline_results:
+                if store_claim_result(
+                    res.get("claim", ""),
+                    res.get("verification", {}),
+                    res.get("stats", {}),
+                ):
+                    stored_count += 1
+
+            if stored_count:
+                logger.info(f"[Memory] 💾 Stored {stored_count} new verified claims")
+
+            # --- Merge memory hits + pipeline results ---
+            evidence_results = verified_from_memory + pipeline_results
+
+            mem_hits = len(verified_from_memory)
+            print(
+                f"✅ Unified evidence pipeline complete: {len(evidence_results)} verified "
+                f"({mem_hits} from memory, {len(pipeline_results)} fresh)"
+            )
+
+        # ------------------------------------------------------------------ #
+        # Step 3.5: Narrative Intelligence Engine (Part-13)                   #
+        # ------------------------------------------------------------------ #
+        narrative_summaries = []
+        if evidence_results:
+            try:
+                narrative_summaries = await process_narratives(evidence_results)
+                logger.info(
+                    f"[NarrativeEngine] Processed {len(narrative_summaries)} claim(s) "
+                    f"through narrative engine"
+                )
+            except Exception as _ne_err:
+                logger.warning(f"[NarrativeEngine] Non-fatal error: {_ne_err}")
+                narrative_summaries = []
+
 
         # ------------------------------------------------------------------ #
         # Step 4: Final scoring
@@ -418,15 +520,63 @@ async def analyze():
         elapsed = round((time.perf_counter() - _start) * 1000)
         print(f"⏱️ Total request time: {elapsed} ms")
 
+        # Expose temporalAnalysis at the top level for convenience
+        temporal_analysis = final_result.get("temporalAnalysis", {})
+
+        # ---- Source Analysis Block (Part-9) ----
+        from app.services.evidence_pipeline.source_registry import TIER1_SOURCES, TIER2_SOURCES, TIER3_SOURCES, FACTCHECK_DOMAINS
+        tier1_count = 0
+        tier2_count = 0
+        low_trust_count = 0
+        agreement_scores = []
+
+        for res in evidence_results:
+            verif = res.get("verification", {})
+            agreement_scores.append(verif.get("source_agreement", 0.0))
+            for doc in res.get("evidence", []):
+                domain = doc.get("domain", "unknown")
+                if domain in TIER1_SOURCES or domain in FACTCHECK_DOMAINS:
+                    tier1_count += 1
+                elif domain in TIER2_SOURCES:
+                    tier2_count += 1
+                elif domain not in {"unknown"}:
+                    low_trust_count += 1
+
+        source_analysis = {
+            "tier1_sources": tier1_count,
+            "tier2_sources": tier2_count,
+            "low_trust_sources": low_trust_count,
+            "agreement_score": round(sum(agreement_scores) / len(agreement_scores), 3) if agreement_scores else 0.0
+        }
+        
+        # Build top-level narrative summary: pick the highest-risk cluster detected
+        _populated = [s for s in narrative_summaries if s]
+        _campaign_clusters  = [s for s in _populated if s.get("campaign_detected")]
+        _high_risk_clusters = [s for s in _populated if s.get("risk_level") == "HIGH"]
+        _top_narrative = (
+            _campaign_clusters[0] if _campaign_clusters
+            else _high_risk_clusters[0] if _high_risk_clusters
+            else _populated[0] if _populated
+            else {}
+        )
+
         response_data = {
-            "success":      True,
-            "textAnalysis": text_analysis,
-            "imageAnalysis": image_analysis,
-            "videoAnalysis": video_analysis,
+            "success":        True,
+            "textAnalysis":   text_analysis,
+            "imageAnalysis":  image_analysis,
+            "videoAnalysis":  video_analysis,
             "claimsVerified": [{"claim": r["claim"], "source": r["source"], "verdict": r["verification"].get("verdict")} for r in evidence_results],
-            "evidence":     evidence_results,
-            "finalResult":  final_result,
-            "processingMs": elapsed,
+            "evidence":       evidence_results,
+            "finalResult":    final_result,
+            "temporalAnalysis": temporal_analysis,
+            "sourceAnalysis": source_analysis,
+            "narrativeAnalysis": {
+                "summary":          _top_narrative,
+                "claim_narratives": narrative_summaries,
+                "clusters_detected": len({s.get("cluster_id") for s in _populated if s.get("cluster_id")}),
+                "campaign_detected": bool(_campaign_clusters),
+            },
+            "processingMs":   elapsed,
         }
 
         # Store the complete results for future identical requests
