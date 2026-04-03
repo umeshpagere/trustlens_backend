@@ -1,10 +1,11 @@
+import ast
 import logging
 import asyncio
 from .entity_extraction import extract_entities
 from .query_generator import generate_queries
 from .evidence_aggregator import aggregate_evidence
 from .semantic_ranker import rank_evidence
-from .evidence_alignment import align_evidence
+from .evidence_alignment import align_evidence, align_evidence_fast
 from .nli_verifier import check_contradiction
 from app.services.verification_engine import verify_claim_credibility
 from .claim_strength_filter import filter_claims
@@ -22,6 +23,14 @@ verification_semaphore = asyncio.Semaphore(5)
 async def _process_single_claim(item, claim_idx, total_claims, request_id="REQ-UNKNOWN"):
     """Internal helper to process a single claim asynchronously."""
     claim = item.get("text", "")
+    # Guard: unwrap Python dict-repr strings e.g. "{'text': '...', 'temporal_signal': None}"
+    if isinstance(claim, str) and claim.startswith("{") and "'text'" in claim:
+        try:
+            parsed = ast.literal_eval(claim)
+            if isinstance(parsed, dict):
+                claim = parsed.get("text", claim)
+        except (ValueError, SyntaxError):
+            pass
     source = item.get("source", "unknown")
     # Part-10: extract temporal metadata from the structured claim object
     temporal_signal = item.get("temporal_signal")
@@ -75,16 +84,12 @@ async def _process_single_claim(item, claim_idx, total_claims, request_id="REQ-U
         # (Alignment will convert docs -> sentences and apply NLI filtering.)
         raw_docs = list(evidence_docs)
 
-        # 4. Alignment — run sync NLI loop in a thread so it
-        #    doesn't block the asyncio event loop. 60s hard timeout as safety net.
-        try:
-            aligned = await asyncio.wait_for(
-                asyncio.to_thread(align_evidence, claim, evidence_docs, True),
-                timeout=60.0
-            )
-        except asyncio.TimeoutError:
-            logger.warning(f"[{claim_idx}/{total_claims}] align_evidence timed out — falling back to no-NLI")
-            aligned = await asyncio.to_thread(align_evidence, claim, evidence_docs, False)
+        # 4. Fast Alignment — semantic similarity only (no NLI bottleneck)
+        #    Takes ~0.5s instead of 30-90s. LLM agents will do SUPPORT/CONTRADICT classification.
+        aligned = await asyncio.to_thread(
+            align_evidence_fast, claim, evidence_docs, top_n=5
+        )
+        
         logger.info(f"[{claim_idx}/{total_claims}] Evidence aligned: {len(aligned)}")
 
         # 5. Verify claim using multi-agent engine with Semaphore

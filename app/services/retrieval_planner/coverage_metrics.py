@@ -20,7 +20,7 @@ from app.services.evidence_pipeline.source_registry import (
 logger = logging.getLogger(__name__)
 
 # --- Tunable thresholds -------------------------------------------------------
-COVERAGE_SUFFICIENT  = 0.65   # above this → stop retrieval
+COVERAGE_SUFFICIENT  = 0.40   # above this → stop retrieval
 MAX_VOLUME_DOCS      = 30     # beyond this, extra docs add diminishing value
 MIN_DOMAIN_DIVERSITY = 5      # target number of distinct domains
 
@@ -103,6 +103,8 @@ def compute_coverage(evidence_docs: list) -> float:
 def is_coverage_sufficient(evidence_docs: list) -> tuple[bool, float]:
     """
     Returns (sufficient: bool, score: float).
+    Sufficient if score >= threshold OR doc count >= 8 (volume shortcut).
     """
     score = compute_coverage(evidence_docs)
-    return score >= COVERAGE_SUFFICIENT, score
+    sufficient = score >= COVERAGE_SUFFICIENT or len(evidence_docs) >= 8
+    return sufficient, score

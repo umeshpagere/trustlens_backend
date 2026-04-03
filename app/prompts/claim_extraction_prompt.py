@@ -25,8 +25,27 @@ Examples of INVALID outputs:
 ✗ "Something big is happening."
 ✗ "The situation is terrible."
 
+CRITICAL RULE — Do NOT extract document meta-claims:
+✗ "The paper discusses implications for digital assets."
+✗ "The paper surveys cryptocurrency vulnerabilities."
+✗ "The article argues that quantum computers are a threat."
+✗ "The report provides estimates for breaking encryption."
+These are summaries of what a document says, NOT verifiable world facts.
+
+REFORMULATION — Convert document summaries into direct factual claims:
+✗ BAD:  "The paper says quantum computers can break Bitcoin security."
+✓ GOOD: "Quantum computers can break Bitcoin's cryptographic security."
+✗ BAD:  "The paper provides new resource estimates for breaking elliptic curve encryption."
+✓ GOOD: "Shor's algorithm can break 256-bit elliptic curve encryption."
+✗ BAD:  "The paper discusses the concern of abandoned crypto assets."
+✓ GOOD: "A significant portion of cryptocurrency holdings may be permanently inaccessible."
+
 Rules:
-• Extract ONLY what is explicitly stated.
+• Extract ONLY direct factual assertions about the world.
+• REFORMULATE any "the paper/article/report says/discusses/argues/surveys/provides" claims
+  into direct factual statements before including them.
+• If a claim cannot be reformulated into a direct fact, skip it entirely.
+• Do NOT extract claims about what a document, paper, post, or article discusses.
 • Do NOT infer missing details.
 • Do NOT perform credibility analysis.
 • Do NOT generate explanations.

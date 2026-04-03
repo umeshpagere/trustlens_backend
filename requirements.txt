@@ -55,8 +55,10 @@ anyio==4.8.0
 beautifulsoup4==4.12.3
 googlesearch-python==1.3.0
 tenacity==9.0.0
+tavily-python
 langdetect
 spacy-transformers
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
 newspaper3k
 lxml_html_clean
 pandas

@@ -194,6 +194,9 @@ async def expand_queries(
     Returns:
         list of query strings, len ≤ planner_output["max_queries"]
     """
+    # Guard: ensure claim is a plain string, not a dict repr
+    claim = claim if isinstance(claim, str) else claim.get("text", "")
+
     max_queries       = planner_output.get("max_queries", 5)
     priority_entities = planner_output.get("priority_entities", [])
 

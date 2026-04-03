@@ -44,6 +44,26 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
+def _normalize_for_dedup(text: str) -> str:
+    """Lowercase, strip punctuation, remove filler words for similarity comparison."""
+    filler = {'the', 'a', 'an', 'is', 'are', 'was', 'were', 'be', 'been', 'of', 'in', 'on', 'at'}
+    text = text.lower().strip()
+    text = re.sub(r'[^\w\s]', '', text)
+    text = re.sub(r'\s+', ' ', text)
+    tokens = [t for t in text.split() if t not in filler and len(t) > 2]
+    return ' '.join(tokens)
+
+
+def _claims_are_similar(a: str, b: str, threshold: float = 0.6) -> bool:
+    """Return True if two claims share ≥ threshold fraction of their key nouns/words."""
+    words_a = set(_normalize_for_dedup(a).split())
+    words_b = set(_normalize_for_dedup(b).split())
+    if not words_a or not words_b:
+        return False
+    overlap = len(words_a & words_b) / min(len(words_a), len(words_b))
+    return overlap >= threshold
+
 analyze_bp = Blueprint('analyze', __name__)
 
 VALID_VERDICTS = ["Highly Reliable", "Reliable", "Likely Reliable", "Questionable", "High Risk"]
@@ -228,8 +248,11 @@ async def analyze():
                         image_claims = llm_image_container.get("claims", [])
                         if image_claims:
                             for c in image_claims:
+                                claim_text = c.get("text", "") if isinstance(c, dict) else str(c)
                                 all_claims_data.append({
-                                    "text": str(c), 
+                                    "text": claim_text,
+                                    "temporal_signal": c.get("temporal_signal") if isinstance(c, dict) else None,
+                                    "explicit_date": c.get("explicit_date") if isinstance(c, dict) else None,
                                     "source": "image",
                                     "media_context": {
                                         "text_present": bool(validated_data.text),
@@ -311,8 +334,11 @@ async def analyze():
                     # --- Collect claims for unified pipeline ---
                     if validated_claims:
                         for c in validated_claims:
+                            claim_text = c.get("text", "") if isinstance(c, dict) else str(c)
                             all_claims_data.append({
-                                "text": str(c), 
+                                "text": claim_text,
+                                "temporal_signal": c.get("temporal_signal") if isinstance(c, dict) else None,
+                                "explicit_date": c.get("explicit_date") if isinstance(c, dict) else None,
                                 "source": "text",
                                 "media_context": {
                                     "text_present": bool(validated_data.text),
@@ -386,8 +412,11 @@ async def analyze():
                             video_claims = llm_video_container.get("claims", [])
                             if video_claims:
                                 for c in video_claims:
+                                    claim_text = c.get("text", "") if isinstance(c, dict) else str(c)
                                     all_claims_data.append({
-                                        "text": str(c), 
+                                        "text": claim_text,
+                                        "temporal_signal": c.get("temporal_signal") if isinstance(c, dict) else None,
+                                        "explicit_date": c.get("explicit_date") if isinstance(c, dict) else None,
                                         "source": "video",
                                         "media_context": {
                                             "text_present": bool(validated_data.text),
@@ -446,6 +475,14 @@ async def analyze():
             if clean_text not in seen_claims:
                 # 3. Validation
                 if is_valid_claim(clean_text):
+                    # 4. Semantic similarity dedup — skip if too similar to an already-accepted claim
+                    is_dup = any(
+                        _claims_are_similar(clean_text, accepted["normalized_text"])
+                        for accepted in deduped_claims
+                    )
+                    if is_dup:
+                        logger.debug(f"Claim dropped (semantic duplicate): '{clean_text}'")
+                        continue
                     seen_claims.add(clean_text)
                     c["normalized_text"] = clean_text
                     c["entities"] = entities
@@ -593,7 +630,7 @@ async def analyze():
             media_type = "image"
             media_score = image_analysis.get("credibilityScore", 50)
             media_verdict = image_analysis.get("verdict", "High Risk")
-            llm_ia = image_analysis.get("llmAnalysis", {})
+            llm_ia = image_analysis.get("llmAnalysis") or {}
             media_analysis_txt = llm_ia.get("explanation", "")
             visual_desc = llm_ia.get("imageContent", "")
             media_verification = llm_ia.get("veracityCheck", "")
@@ -619,7 +656,7 @@ async def analyze():
             ai_verdict = "High Risk" if ai_score > 70 else "Low Risk"
             ai_analysis = ai_det.get("aiReasoning", "No AI artifacts detected.")
         elif media_type == "image" and image_analysis.get("status") == "processed":
-            llm_ia = image_analysis.get("llmAnalysis", {})
+            llm_ia = image_analysis.get("llmAnalysis") or {}
             ai_score = int(llm_ia.get("aiGeneratedProbability", 0) * 100)
             ai_verdict = normalize_verdict(llm_ia.get("verdict", "Reliable"))
             ai_analysis = llm_ia.get("aiReasoning", "No AI artifacts detected.")
@@ -660,6 +697,58 @@ async def analyze():
             "claim_narratives": narrative_summaries,
             "clusters_detected": len({s.get("cluster_id") for s in _populated if s.get("cluster_id")}),
             "campaign_detected": bool(_campaign_clusters),
+        }
+
+        # ----- Legacy keys for Chrome Extension compatibility -----
+        # The extension's content.js expects data.finalResult, data.imageAnalysis,
+        # data.textAnalysis.credibilityScore, etc.
+        response_data["finalResult"] = {
+            "finalScore":            final_result.get("credibility_score", 50),
+            "credibility_score":     final_result.get("credibility_score", 50),
+            "overallScore":          final_result.get("credibility_score", 50),
+            "score":                 final_result.get("credibility_score", 50),
+            "riskLevel":             final_result.get("risk_level", "medium"),
+            "risk_level":            final_result.get("risk_level", "medium"),
+            "verdict":               final_result.get("verdict", "UNVERIFIED"),
+            "finalVerdict":          final_result.get("verdict", "UNVERIFIED"),
+            "explanation":           final_result.get("explanation", text_analysis.get("explanation", "")),
+            "verificationBreakdown": final_result.get("verificationBreakdown", []),
+            "verifiedClaims":        final_result.get("verifiedClaims", []),
+        }
+
+        # Enrich textAnalysis with fields the extension expects
+        response_data["textAnalysis"]["credibilityScore"] = text_analysis.get("credibilityScore", 50)
+        response_data["textAnalysis"]["scoreReasoning"] = text_analysis.get("scoreReasoning", text_analysis.get("explanation", ""))
+        response_data["textAnalysis"]["explanation"] = text_analysis.get("explanation", "")
+        response_data["textAnalysis"]["riskKeywordsFound"] = text_analysis.get("riskKeywordsFound", [])
+        response_data["textAnalysis"]["keyClaims"] = text_analysis.get("keyClaims", [])
+        response_data["textAnalysis"]["validatedClaims"] = text_analysis.get("validatedClaims", [])
+        response_data["textAnalysis"]["semantic"] = text_analysis.get("semantic", {})
+
+        # Legacy imageAnalysis / videoAnalysis keys (extension reads these directly)
+        response_data["imageAnalysis"] = image_analysis
+        response_data["videoAnalysis"] = video_analysis
+
+        # claimsVerified — flat list of {claim, verdict, source} for extension
+        response_data["claimsVerified"] = [
+            {
+                "claim":   res.get("claim", ""),
+                "verdict": res.get("verification", {}).get("verdict", "UNVERIFIED"),
+                "source":  res.get("source", ""),
+            }
+            for res in evidence_results
+        ]
+
+        # sourceAnalysis — aggregate source breakdown for extension
+        tier1 = sum(1 for r in evidence_results for d in r.get("evidence", []) if d.get("trust_score", 0) >= 0.8)
+        tier2 = sum(1 for r in evidence_results for d in r.get("evidence", []) if 0.5 <= d.get("trust_score", 0) < 0.8)
+        low_trust = sum(1 for r in evidence_results for d in r.get("evidence", []) if d.get("trust_score", 0) < 0.5)
+        total_src = tier1 + tier2 + low_trust
+        response_data["sourceAnalysis"] = {
+            "tier1_sources":    tier1,
+            "tier2_sources":    tier2,
+            "low_trust_sources": low_trust,
+            "agreement_score":  tier1 / total_src if total_src > 0 else 0.0,
         }
 
         # Store the complete results for future identical requests

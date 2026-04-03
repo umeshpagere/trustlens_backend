@@ -3,13 +3,31 @@ import requests
 import re
 import asyncio
 import hashlib
+import threading
+import time
 from tenacity import retry, stop_after_attempt, wait_exponential
 from app.config.settings import Config
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from .source_trust import get_source_trust
 from app.utils.domain_utils import extract_and_normalize_domain
 
+# Limit concurrent Event Registry calls to avoid 429 rate limits
+_NEWS_API_SEMAPHORE = threading.Semaphore(2)
+
 logger = logging.getLogger(__name__)
+
+# Log API key availability once at import time so misconfiguration is visible immediately
+_keys_logged = False
+def _log_source_status():
+    global _keys_logged
+    if not _keys_logged:
+        logger.info(
+            f"[Aggregator] Sources active: "
+            f"news_api={bool(Config.NEWS_API_KEY)}, "
+            f"factcheck_api={bool(Config.GOOGLE_FACTCHECK_API_KEY)}, "
+            f"web_search/tavily={bool(Config.TAVILY_API_KEY)}"
+        )
+        _keys_logged = True
 
 @retry(stop=stop_after_attempt(3), wait=wait_exponential(), reraise=True)
 def search_wikipedia(query: str) -> list:
@@ -59,6 +77,7 @@ def search_wikipedia(query: str) -> list:
 
 @retry(stop=stop_after_attempt(3), wait=wait_exponential(), reraise=True)
 def search_factcheck(query: str) -> list:
+    import time
     if not Config.GOOGLE_FACTCHECK_API_KEY:
         logger.error("GOOGLE_FACTCHECK_API_KEY is not set.")
         return []
@@ -70,6 +89,7 @@ def search_factcheck(query: str) -> list:
     }
     
     try:
+        start = time.monotonic()
         response = requests.get(url, params=params, timeout=30)
         response.raise_for_status()
         data = response.json()
@@ -91,17 +111,18 @@ def search_factcheck(query: str) -> list:
                 "published_at": published_at,
                 "trust_score": get_source_trust(review_url, "fact_check")
             })
+        elapsed = time.monotonic() - start
+        logger.info(f"[factcheck_api] Query '{query[:50]}' took {elapsed:.2f}s, returned {len(results)} results")
         return results
     except Exception:
         logger.exception("Error fetching from Fact Check API")
         return []
 
-@retry(stop=stop_after_attempt(3), wait=wait_exponential(), reraise=True)
 def search_news(query: str) -> list:
     if not Config.NEWS_API_KEY:
         logger.error("NEWS_API_KEY is not set.")
         return []
-        
+
     url = "http://eventregistry.org/api/v1/article/getArticles"
     payload = {
         "action": "getArticles",
@@ -113,41 +134,45 @@ def search_news(query: str) -> list:
         "resultType": "articles",
         "apiKey": Config.NEWS_API_KEY
     }
-    
-    try:
-        response = requests.post(url, json=payload, timeout=30)
-        response.raise_for_status()
-        data = response.json()
-        
-        articles = data.get("articles", {}).get("results", [])
-        
-        results = []
-        for article in articles:
-            source_name = article.get("source", {}).get("title", "Unknown News")
-            article_url = article.get("url", "")
-            published_at = article.get("dateTimePub") or article.get("date")
-            results.append({
-                "source": source_name,
-                "domain": extract_and_normalize_domain(article_url),
-                "type": "news",
-                "text": article.get("body", "") or article.get("title", ""),
-                "title": article.get("title", ""),
-                "url": article_url,
-                "published_at": published_at,
-                "trust_score": get_source_trust(article_url, "news")
-            })
-        return results
-    except requests.exceptions.HTTPError as e:
-        status = e.response.status_code
-        if status in [429, 503]:
-            logger.warning(f"Event Registry rate limit/concurrency exceeded ({status}). Skipping news retrieval.")
-        elif status == 401:
-            logger.warning("Event Registry unauthorized (401) - Check API Key. Skipping news retrieval.")
-        else:
-            logger.exception(f"HTTP Error {status} fetching from Event Registry")
-        return []
-    except Exception:
-        logger.exception("Error fetching from Event Registry")
+
+    with _NEWS_API_SEMAPHORE:
+        for attempt in range(3):
+            try:
+                response = requests.post(url, json=payload, timeout=30)
+                if response.status_code == 429:
+                    wait = 2 ** attempt
+                    logger.warning(f"[news_api] 429 rate limit on attempt {attempt + 1}, retrying in {wait}s")
+                    time.sleep(wait)
+                    continue
+                response.raise_for_status()
+                data = response.json()
+                articles = data.get("articles", {}).get("results", [])
+                results = []
+                for article in articles:
+                    source_name = article.get("source", {}).get("title", "Unknown News")
+                    article_url = article.get("url", "")
+                    published_at = article.get("dateTimePub") or article.get("date")
+                    results.append({
+                        "source": source_name,
+                        "domain": extract_and_normalize_domain(article_url),
+                        "type": "news",
+                        "text": article.get("body", "") or article.get("title", ""),
+                        "title": article.get("title", ""),
+                        "url": article_url,
+                        "published_at": published_at,
+                        "trust_score": get_source_trust(article_url, "news")
+                    })
+                return results
+            except requests.exceptions.HTTPError as e:
+                status = e.response.status_code if e.response is not None else 0
+                if status == 401:
+                    logger.warning("Event Registry unauthorized (401) - Check API Key.")
+                    return []
+                logger.warning(f"[news_api] HTTP {status} on attempt {attempt + 1}")
+            except Exception as exc:
+                logger.warning(f"[news_api] attempt {attempt + 1} failed: {exc}")
+            if attempt < 2:
+                time.sleep(2 ** attempt)
         return []
 
 async def aggregate_evidence(queries: list, sources: list = None) -> list:
@@ -175,6 +200,8 @@ async def aggregate_evidence(queries: list, sources: list = None) -> list:
         "rss_feeds":         search_rss,
         "factcheck_scraper": search_factcheck_sites,
     }
+
+    _log_source_status()
 
     if not queries:
         return []

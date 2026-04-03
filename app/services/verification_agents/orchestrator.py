@@ -39,10 +39,23 @@ from app.services.evidence_pipeline.source_registry   import (
 logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
+# LLM Rate Limiting — prevent Azure OpenAI 429 errors
+# With 12 claims × 3 parallel Phase B calls = 36 simultaneous LLM calls.
+# Azure throttles this. Limit to 4 concurrent LLM calls across all agents.
+# ---------------------------------------------------------------------------
+LLM_SEMAPHORE = asyncio.Semaphore(4)
+
+# ---------------------------------------------------------------------------
 # Short-TTL result cache — avoids redundant LLM calls for identical requests
 # that arrive within 5 minutes (e.g. duplicate submissions, retries).
 # ---------------------------------------------------------------------------
 _result_cache: AsyncCache = AsyncCache(ttl_seconds=300)
+
+
+async def _call_with_semaphore(coro):
+    """Wrap agent LLM calls with semaphore to prevent Azure rate limiting."""
+    async with LLM_SEMAPHORE:
+        return await coro
 
 
 def _build_evidence_dicts(
@@ -169,7 +182,7 @@ async def run_verification_agents(
     _cache_key = hashlib.sha256(
         f"{claim.strip()}|||{_evidence_fingerprint}".encode("utf-8")
     ).hexdigest()
-    _cached = _result_cache.get(_cache_key)
+    _cached = await _result_cache.get(_cache_key)
     if _cached is not None:
         logger.info(f"[{request_id}] Cache HIT — returning cached orchestrator result")
         return _cached
@@ -203,21 +216,26 @@ async def run_verification_agents(
     # Phase B — parallel: Evidence + Source + Temporal agents
     # -------------------------------------------------------------------------
     logger.info("[Orchestrator] Phase B — Evidence / Source / Temporal (parallel)")
-    # Wrap each coroutine with a 20-second timeout so a slow Azure call
-    # never blocks the entire pipeline.
+    # Wrap each coroutine with LLM semaphore (rate limiting) + timeout
     tasks = [
-        asyncio.wait_for(evaluate_evidence(claim, claim_analysis, evidence_dicts, request_id=request_id), timeout=20.0),
-        asyncio.wait_for(analyze_sources(claim, claim_analysis, evidence_dicts, request_id=request_id), timeout=20.0),
-        asyncio.wait_for(
-            check_temporal_consistency(
-                claim,
-                claim_analysis,
-                evidence_dicts,
-                temporal_signal=resolved_temporal_signal,
-                explicit_date=resolved_explicit_date,
-                request_id=request_id,
-            ),
-            timeout=20.0,
+        _call_with_semaphore(
+            asyncio.wait_for(evaluate_evidence(claim, claim_analysis, evidence_dicts, request_id=request_id), timeout=20.0)
+        ),
+        _call_with_semaphore(
+            asyncio.wait_for(analyze_sources(claim, claim_analysis, evidence_dicts, request_id=request_id), timeout=20.0)
+        ),
+        _call_with_semaphore(
+            asyncio.wait_for(
+                check_temporal_consistency(
+                    claim,
+                    claim_analysis,
+                    evidence_dicts,
+                    temporal_signal=resolved_temporal_signal,
+                    explicit_date=resolved_explicit_date,
+                    request_id=request_id,
+                ),
+                timeout=20.0,
+            )
         ),
     ]
 
@@ -249,17 +267,35 @@ async def run_verification_agents(
     else:
         temporal_analysis = phase_b_results[2]
 
+    # NLI is no longer run - using semantic similarity ranking only
+    # LLM agents (EvidenceAgent) will do SUPPORT/CONTRADICT classification
+    nli_summary = (
+        f"Evidence ranked by semantic similarity only (no NLI pre-filter). "
+        f"LLM agents will classify SUPPORT/CONTRADICT/NEUTRAL."
+    )
+
+    # Log Phase B results to verify data passing
+    logger.info(
+        f"[{request_id}] [Orchestrator] Phase B complete — "
+        f"evidence_evaluations={len(evidence_analysis.get('evaluations', []))} "
+        f"credibility_index={source_analysis.get('credibility_index', 'N/A')} "
+        f"nli_summary='{nli_summary}'"
+    )
+
     # -------------------------------------------------------------------------
     # Phase C — sequential: Consensus Synthesizer
     # -------------------------------------------------------------------------
     logger.info(f"[{request_id}] Phase C — Consensus Synthesis")
-    consensus = await synthesize_verdict(
-        claim,
-        claim_analysis,
-        evidence_analysis,
-        source_analysis,
-        temporal_analysis,
-        request_id=request_id,
+    consensus = await _call_with_semaphore(
+        synthesize_verdict(
+            claim,
+            claim_analysis,
+            evidence_analysis,
+            source_analysis,
+            temporal_analysis,
+            nli_summary=nli_summary,
+            request_id=request_id,
+        )
     )
 
     # -------------------------------------------------------------------------
@@ -303,7 +339,7 @@ async def run_verification_agents(
 
     # ---- Populate cache (only cache non-trace results to keep entries small) ---
     if not include_agent_traces:
-        _result_cache.set(_cache_key, result)
+        await _result_cache.set(_cache_key, result)
         logger.debug(f"[{request_id}] Cache SET for key {_cache_key[:12]}...")
 
     return result

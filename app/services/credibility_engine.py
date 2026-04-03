@@ -431,13 +431,24 @@ async def compute_full_credibility(
             total_retrieved_docs += stats.get("retrieved_docs", 0)
             total_aligned_sentences += stats.get("aligned_sentences", 0)
 
-            if v == "SUPPORTED":
+            # Map all ConsensusAgent verdicts to normalized scores [-1.0, 1.0]
+            # These are converted to [0, 100] scale via: ((score + 1.0) / 2.0) * 100
+            if v == "TRUE" or v == "SUPPORTED":
                 scores.append(1.0)
                 evidence_values.append(1)
-            elif v == "CONTRADICTED":
+            elif v == "MOSTLY_TRUE" or v == "LIKELY_SUPPORTED":
+                scores.append(0.7)
+                evidence_values.append(1)
+            elif v == "MIXED":
+                scores.append(0.0)
+                evidence_values.append(0)
+            elif v == "MOSTLY_FALSE" or v == "LIKELY_CONTRADICTED":
+                scores.append(-0.7)
+                evidence_values.append(-1)
+            elif v == "FALSE" or v == "CONTRADICTED":
                 scores.append(-1.0)
                 evidence_values.append(-1)
-            else:
+            else:  # UNVERIFIED or unknown
                 scores.append(0.0)
                 evidence_values.append(0)
             

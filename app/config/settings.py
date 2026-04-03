@@ -27,6 +27,9 @@ class Config:
     # News API (evidence aggregation)
     NEWS_API_KEY = os.getenv("NEWS_API_KEY")
 
+    # Tavily Search API (web_search source)
+    TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
+
     # Azure Computer Vision (video frame OCR)
     AZURE_VISION_KEY = os.getenv("AZURE_VISION_KEY")
     AZURE_VISION_ENDPOINT = os.getenv("AZURE_VISION_ENDPOINT")

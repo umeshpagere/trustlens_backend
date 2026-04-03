@@ -13,6 +13,35 @@ logger = logging.getLogger(__name__)
 
 MAX_INPUT_LENGTH = 8000
 
+
+def safe_parse_json(raw: str) -> dict:
+    """Parse JSON, recovering gracefully from truncated LLM responses."""
+    if not raw:
+        return {}
+    raw = raw.strip()
+    if raw.startswith("```"):
+        raw = re.sub(r"^```(?:json)?\n?", "", raw)
+        raw = re.sub(r"\n?```$", "", raw)
+        raw = raw.strip()
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError:
+        pass
+    # Recovery: walk back from the end to find a parseable prefix
+    for end in range(len(raw), 0, -1):
+        try:
+            return json.loads(raw[:end] + "}")
+        except json.JSONDecodeError:
+            continue
+    # Last resort: extract first {...} block
+    match = re.search(r'\{.*\}', raw, re.DOTALL)
+    if match:
+        try:
+            return json.loads(match.group())
+        except json.JSONDecodeError:
+            pass
+    return {}
+
 def _sanitize_user_input(text: str) -> str:
     """Sanitize user input to prevent prompt injection and preserve JSON safety."""
     if not text or not isinstance(text, str):
@@ -87,9 +116,48 @@ async def analyze_text_with_llm(text: str) -> dict:
     
     sanitized_text = _sanitize_user_input(text)
     
-    # We'll use a single call to extract both claims and analysis for efficiency
+    # Combined prompt: claim extraction + semantic analysis in one call.
+    # NOTE: We do NOT reuse CLAIM_EXTRACTION_SYSTEM_PROMPT here because it
+    # contains "Do NOT generate explanations" which conflicts with our need
+    # for reasoningSummary, primaryClaim, etc.
+    combined_prompt = (
+        "You are a factual claim extraction and semantic analysis engine.\n\n"
+        "TASK 1 — CLAIM EXTRACTION:\n"
+        "Extract up to 5 verifiable factual claims from the content.\n"
+        "A valid claim MUST have a clear subject + specific action/event.\n"
+        "REFORMULATE any 'the paper/article says...' into direct factual statements.\n"
+        "Skip opinions, emotional language, vague descriptions, and speculation.\n\n"
+        "TASK 2 — SEMANTIC ANALYSIS:\n"
+        "Analyze the text for credibility signals:\n"
+        "- Identify the single most important factual claim (primaryClaim).\n"
+        "- Score overall semantic credibility from 0-100 (semanticScore). "
+        "High score = credible, low = suspicious.\n"
+        "- Rate your confidence from 0.0-1.0 (confidenceScore).\n"
+        "- List any manipulation indicators (emotional appeals, misleading framing, clickbait).\n"
+        "- List risk factors (unverified statistics, anonymous sources, sensationalism).\n"
+        "- Rate evidence strength: 'Strong', 'Medium', or 'Weak'.\n"
+        "- Write a 1-3 sentence reasoning summary explaining your credibility assessment "
+        "(reasoningSummary). This MUST NOT be empty.\n\n"
+        "Return ONLY valid JSON in this exact format:\n"
+        "{\n"
+        '  "claims": [\n'
+        '    {"text": "claim text", "temporal_signal": "today or null", '
+        '"explicit_date": "2026-03-08 or null"}\n'
+        "  ],\n"
+        '  "primaryClaim": "the single most important factual claim from the text",\n'
+        '  "semanticScore": 65,\n'
+        '  "confidenceScore": 0.7,\n'
+        '  "manipulationIndicators": ["indicator1"],\n'
+        '  "riskFactors": ["factor1"],\n'
+        '  "evidenceStrength": "Medium",\n'
+        '  "reasoningSummary": "Brief explanation of the credibility assessment."\n'
+        "}\n\n"
+        "IMPORTANT: Every field above is REQUIRED. Do not omit any field. "
+        "primaryClaim and reasoningSummary must always be non-empty strings."
+    )
+
     messages = [
-        {"role": "system", "content": f"{CLAIM_EXTRACTION_SYSTEM_PROMPT}\n\nAlso perform a semantic risk analysis of the text. Identify manipulation indicators, risk factors, and provide a reasoning summary."},
+        {"role": "system", "content": combined_prompt},
         {"role": "user", "content": f"Analyze this content:\n\n{sanitized_text}"},
     ]
 
@@ -169,14 +237,14 @@ async def extract_claims_from_image(image_bytes: bytes) -> list:
             model=Config.AZURE_OPENAI_DEPLOYMENT,
             messages=messages,
             temperature=0,
-            max_tokens=400,
+            max_tokens=1000,
             response_format={"type": "json_object"}
         )
         return response.choices[0].message.content
 
     try:
         content = await asyncio.to_thread(_sdk_call)
-        result = json.loads(content.strip())
+        result = safe_parse_json(content)
         raw_claims = result.get("claims", [])
         
         structured_claims = []
@@ -278,14 +346,14 @@ async def analyze_image_forensics(image_bytes: bytes, accompanying_text: str = "
             model=Config.AZURE_OPENAI_DEPLOYMENT,
             messages=messages,
             temperature=0.1,
-            max_tokens=800,
+            max_tokens=2000,
             response_format={"type": "json_object"}
         )
         return response.choices[0].message.content
 
     try:
         content = await asyncio.to_thread(_sdk_call)
-        result = json.loads(content.strip())
+        result = safe_parse_json(content)
         
         media_score = int(result.get("media_authenticity_score", 50))
         ai_prob = float(result.get("ai_generated_probability", 50)) / 100.0
@@ -308,10 +376,12 @@ async def analyze_image_with_llm(image_bytes: bytes, accompanying_text: str = ""
     """Main image entry point (legacy wrapper to maintain route schema)."""
     if not image_bytes:
         raise ValueError("Image bytes are required")
-        
-    claims = await extract_claims_from_image(image_bytes)
-    forensics = await analyze_image_forensics(image_bytes, accompanying_text)
-    
+
+    claims, forensics = await asyncio.gather(
+        extract_claims_from_image(image_bytes),
+        analyze_image_forensics(image_bytes, accompanying_text),
+    )
+
     return {
         "claims": claims,
         "analysis": forensics,

@@ -53,6 +53,7 @@ def _deduplicate(docs: list) -> list:
 
 def _fallback_queries(claim: str, entities: list) -> list:
     """Simple additional queries used in the second retrieval loop."""
+    claim = claim if isinstance(claim, str) else claim.get("text", "")
     extras = [f"{claim} evidence", f"{claim} report"]
     for e in entities[:2]:
         extras.append(f"{e} latest news")
@@ -79,6 +80,9 @@ async def controlled_retrieval(
         retrieved_docs    int
     """
     t_start = time.monotonic()
+
+    # Guard: ensure claim is a plain string, not a dict repr
+    claim = claim if isinstance(claim, str) else claim.get("text", "")
 
     # -------------------------------------------------------------------------
     # Phase 1 — Plan

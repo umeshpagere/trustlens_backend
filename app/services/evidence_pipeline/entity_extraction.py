@@ -16,12 +16,15 @@ def get_nlp():
     if _nlp is None:
         try:
             import spacy
-            try:
-                _nlp = spacy.load("en_core_web_trf")
-            except Exception:
-                _nlp = spacy.load("en_core_web_sm")
-        except OSError:
-            logger.warning("spaCy models not found. Run: python -m spacy download en_core_web_trf")
+            for model_name in ["en_core_web_trf", "en_core_web_lg", "en_core_web_sm"]:
+                try:
+                    _nlp = spacy.load(model_name)
+                    logger.info(f"Loaded spaCy model: {model_name}")
+                    break
+                except OSError:
+                    continue
+            if _nlp is None:
+                logger.warning("No spaCy model found. Entity extraction will return empty list.")
         except ImportError:
             logger.warning("spaCy not installed. Run: pip install spacy")
     return _nlp
